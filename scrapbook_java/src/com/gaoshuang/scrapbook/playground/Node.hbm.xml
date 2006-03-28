@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+    PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="scrapbook.Node" table="rule_nodes">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <property name="name" />
+    <property name="description" />
+    <set cascade="save-update" inverse="true" lazy="true" name="children">
+      <key column="parent" />
+      <one-to-many class="scrapbook.Node" />
+    </set>
+    <many-to-one cascade="none" class="scrapbook.Node" 
+      column="parent" name="parent" />
+  </class>
+</hibernate-mapping>

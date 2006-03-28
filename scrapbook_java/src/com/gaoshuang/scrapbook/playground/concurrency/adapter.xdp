@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<pattern id="adapter">
+ <role name="Target">
+  <member name="Target" package="com.gaoshuang.scrapbook.playground.patternbox" project="scrapbook_java"/>
+ </role>
+ <role name="Client">
+  <member name="Client" package="com.gaoshuang.scrapbook.playground.patternbox" project="scrapbook_java"/>
+ </role>
+ <role name="Adaptee">
+  <member name="Adaptee" package="com.gaoshuang.scrapbook.playground.patternbox" project="scrapbook_java"/>
+ </role>
+ <role name="Adapter">
+  <member name="Adapter" package="com.gaoshuang.scrapbook.playground.patternbox" project="scrapbook_java"/>
+ </role>
+</pattern>
