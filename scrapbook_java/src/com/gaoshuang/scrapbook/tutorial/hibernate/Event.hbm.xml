@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.gaoshuang.scrapbook.tutorial.hibernate">
+
+        <class name="Event" table="EVENTS">
+                <id name="id" column="uid" type="long">
+                        <generator class="increment"/>
+                </id>
+                <property name="date" type="timestamp"/>
+                <property name="title" column="eventtitle"/>
+                
+		<set name="participatingUsers" table="participations">
+		    <key column="event_uid"/>
+		    <many-to-many column="user_uid" class="User"/>
+		</set>
+        </class>
+</hibernate-mapping>

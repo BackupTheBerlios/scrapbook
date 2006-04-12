@@ -1,0 +1,1 @@
+java -classpath .\lib\hibernate3.jar;.\lib\log4j-1.2.9.jar;.\lib\antlr-2.7.4.jar;.\lib\jta.jar;.\lib\commons-logging-1.0.4.jar;.\lib\hsqldb.jar;.\lib\cglib-full-2.0.2.jar;.\lib\commons-collections-2.1.1.jar;.\lib\dom4j-1.5.2.jar;.\lib\jdbc2_0-stdext.jar;.\bin de.gloegl.road2hibernate.EventManager %1 %2 %3 %4 %5 %6

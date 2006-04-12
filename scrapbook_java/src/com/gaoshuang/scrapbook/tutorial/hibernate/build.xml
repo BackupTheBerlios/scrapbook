@@ -1,0 +1,29 @@
+<project name="hibernate-tutorial" default="compile">
+
+    <property name="sourcedir" value="${basedir}/src"/>
+    <property name="targetdir" value="${basedir}/bin"/>
+    <property name="librarydir" value="${basedir}/lib"/>
+
+    <target name="compile" depends="copy-resources">
+	  <javac srcdir="${sourcedir}"
+	         destdir="${targetdir}"
+	         debug="on"
+	  >
+	  
+	  	<classpath>
+		  	<fileset dir="${librarydir}">
+		  		<include name="*.jar"/>
+		  	</fileset>
+	  	</classpath>		
+	  </javac>
+    </target>
+    
+    <target name="copy-resources">
+    	<copy todir="${targetdir}">
+		<fileset dir="${sourcedir}">
+			<exclude name="**/*.java"/>
+		</fileset>
+	</copy>
+    </target>
+
+</project>

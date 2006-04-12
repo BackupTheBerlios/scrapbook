@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.gaoshuang.scrapbook.tutorial.hibernate">
+
+    <class name="User" table="USERS">
+        <id name="id" column="uid" type="long">
+                <generator class="increment"/>
+        </id>
+        <property name="age"/>
+        <property name="firstname"/>
+        <property name="lastname"/>
+        <property name="stringarray" type="StringArray"/>
+        <property name="stringlist" type="StringList"/>
+        
+		<set name="favouriteEvents" table="favourite_events">
+		    <key column="user_uid"/>
+		    <many-to-many column="event_uid" class="Event"/>
+		</set>
+		
+		<set name="emails"  table="user_emails">
+		    <key column="user_uid"/>
+		    <element column="email" type="string"/>
+		</set>
+		
+		<set name="emails"  table="user_emails">
+		    <key column="user_uid"/>
+		    <element column="email" type="string"/>
+		</set>		
+		
+		<set name="eventsJoined" table="participations" inverse="true">
+		    <key column="user_uid"/>
+		    <many-to-many column="event_uid" class="Event"/>
+		</set>
+    </class>
+
+</hibernate-mapping>
