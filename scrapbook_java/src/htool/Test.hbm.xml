@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+  <class name="htool.Test" table="test" schema="public" lazy="false">
+    <id name="Id" type="java.lang.Integer">
+      <column name="id" scale="4" precision="0" not-null="true" unique="true" sql-type="int4" />
+      <generator class="assigned" />
+    </id>
+    <property name="Testtxt" type="java.lang.String">
+      <column name="testtxt" scale="255" precision="0" not-null="false" sql-type="text" />
+    </property>
+    <property name="Testtest" type="java.sql.Array">
+      <column name="testtest" scale="255" precision="0" not-null="false" sql-type="_int2" />
+    </property>
+  </class>
+</hibernate-mapping>

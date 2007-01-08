@@ -10,6 +10,8 @@ import org.hibernate.LockMode;
 import org.hibernate.cfg.Configuration;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -52,6 +54,13 @@ public class EventManager {
 			Long userId = new Long(args[1]);
 			Long eventId = new Long(args[2]);
 			instance.addParticipant(userId, eventId);
+		}else if (args[0].equals("usertypetest")) {
+			Long id = instance.usertypeTest();
+			System.out.println("Saved with id " + id);
+		}else if (args[0].equals("usertypeupdatetest")) {
+			Long userId = new Long(args[1]);
+			instance.usertypeUpdateTest(userId);
+			System.out.println("update dated user with id " + userId);
 		}
 		System.exit(0);
 	}
@@ -196,6 +205,57 @@ public class EventManager {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	private Long usertypeTest() {
+		try {
+			Session session = HibernateUtil.currentSession();
+			Transaction tx = session.beginTransaction();
+
+			User theUser = new User();
+			theUser.setFirstname("fname");
+			theUser.setLastname("lname");
+			theUser.setAge(30);
+			theUser.setStringArray(new String[]{"aaa","bba","cca"});
+			List<String> list= new ArrayList<String>();
+			list.add("aal");
+			list.add("bbl");
+			theUser.setStringList(list);
+
+			Long id = (Long) session.save(theUser);
+
+			tx.commit();
+			hsqlCleanup(session);
+			HibernateUtil.closeSession();
+
+			return id;
+		} catch (HibernateException e) {
+			throw new RuntimeException(e);
+		}
+	}	
+	
+	private void usertypeUpdateTest(Long userId) {
+		try {
+			Session session = HibernateUtil.currentSession();
+			Transaction tx = session.beginTransaction();
+
+			User user = (User) session.load(User.class, userId);
+			user.setStringArray(new String[]{"11","22","33"});
+			//user.setStringArray(null);
+			//user.setStringList(null);
+			//user.setStringList(Arrays.asList(new String[]{"abc","abc","abc"}));
+			
+			List<String> l = user.getStringList();
+			l.add("efg");
+			user.setStringList(l);
+			
+
+			tx.commit();
+			hsqlCleanup(session);
+			HibernateUtil.closeSession();
+		} catch (HibernateException e) {
+			throw new RuntimeException(e);
+		}
+	}	
 
 	private void hsqlCleanup(Session s) {
 		try {

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+  <class name="htool.PgTsParser" table="pg_ts_parser" schema="public" lazy="false">
+    <id name="PrsName" type="java.lang.String">
+      <column name="prs_name" scale="255" precision="0" not-null="true" unique="true" sql-type="text" />
+      <generator class="assigned" />
+    </id>
+    <property name="PrsStart" type="java.lang.Object">
+      <column name="prs_start" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="PrsNexttoken" type="java.lang.Object">
+      <column name="prs_nexttoken" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="PrsEnd" type="java.lang.Object">
+      <column name="prs_end" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="PrsHeadline" type="java.lang.Object">
+      <column name="prs_headline" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="PrsLextype" type="java.lang.Object">
+      <column name="prs_lextype" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="PrsComment" type="java.lang.String">
+      <column name="prs_comment" scale="255" precision="0" not-null="false" sql-type="text" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="middlegen.extranet.User" 
+    table="users"
+>
+
+    <id
+        name="id"
+        type="java.lang.Integer"
+        column="id"
+    >
+    
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="firstname"
+        type="java.lang.String"
+        column="firstname"
+        length="255"
+    />
+    <property
+        name="lastlogin"
+        type="java.sql.Timestamp"
+        column="lastlogin"
+        length="8"
+    />
+    <property
+        name="lastname"
+        type="java.lang.String"
+        column="lastname"
+        length="255"
+    />
+    <property
+        name="password"
+        type="java.lang.String"
+        column="password"
+        length="255"
+    />
+    <property
+        name="username"
+        type="java.lang.String"
+        column="username"
+        unique="true"
+        length="255"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

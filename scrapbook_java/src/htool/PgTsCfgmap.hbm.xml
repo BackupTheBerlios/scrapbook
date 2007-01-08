@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+  <class name="htool.PgTsCfgmap" table="pg_ts_cfgmap" schema="public" lazy="false">
+    <composite-id name="id" class="htool.PgTsCfgmapId">
+      <key-property name="TsName" type="java.lang.String">
+        <column name="ts_name" scale="255" precision="0" not-null="true" sql-type="text" />
+      </key-property>
+      <key-property name="TokAlias" type="java.lang.String">
+        <column name="tok_alias" scale="255" precision="0" not-null="true" sql-type="text" />
+      </key-property>
+    </composite-id>
+    <property name="DictName" type="java.sql.Array">
+      <column name="dict_name" scale="255" precision="0" not-null="false" sql-type="_text" />
+    </property>
+  </class>
+</hibernate-mapping>

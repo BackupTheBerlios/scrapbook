@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="middlegen.extranet.Test1" 
+    table="test1"
+>
+
+    <id
+        name="id"
+        type="java.lang.Short"
+        column="id"
+    >
+    
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="txt"
+        type="java.lang.String"
+        column="txt"
+        length="-1"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

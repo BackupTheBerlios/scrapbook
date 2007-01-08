@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+  <class name="htool.Users" table="users" schema="public" lazy="false">
+    <id name="Id" type="java.lang.Integer">
+      <column name="id" scale="4" precision="0" not-null="true" unique="true" sql-type="int4" />
+      <generator class="assigned" />
+    </id>
+    <property name="Firstname" type="java.lang.String">
+      <column name="firstname" scale="255" precision="0" not-null="false" sql-type="varchar" />
+    </property>
+    <property name="Lastlogin" type="java.util.Date">
+      <column name="lastlogin" scale="8" precision="0" not-null="false" sql-type="timestamp" />
+    </property>
+    <property name="Lastname" type="java.lang.String">
+      <column name="lastname" scale="255" precision="0" not-null="false" sql-type="varchar" />
+    </property>
+    <property name="Password" type="java.lang.String">
+      <column name="password" scale="255" precision="0" not-null="false" sql-type="varchar" />
+    </property>
+    <property name="Username" type="java.lang.String">
+      <column name="username" scale="255" precision="0" not-null="false" unique="true" sql-type="varchar" />
+    </property>
+  </class>
+</hibernate-mapping>

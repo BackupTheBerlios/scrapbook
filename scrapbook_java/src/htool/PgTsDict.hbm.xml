@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 
+        Auto-generated mapping file from
+        the hibernate.org cfg2hbm engine
+-->
+  <class name="htool.PgTsDict" table="pg_ts_dict" schema="public" lazy="false">
+    <id name="DictName" type="java.lang.String">
+      <column name="dict_name" scale="255" precision="0" not-null="true" unique="true" sql-type="text" />
+      <generator class="assigned" />
+    </id>
+    <property name="DictInit" type="java.lang.Object">
+      <column name="dict_init" scale="4" precision="0" not-null="false" sql-type="regprocedure" />
+    </property>
+    <property name="DictInitoption" type="java.lang.String">
+      <column name="dict_initoption" scale="255" precision="0" not-null="false" sql-type="text" />
+    </property>
+    <property name="DictLexize" type="java.lang.Object">
+      <column name="dict_lexize" scale="4" precision="0" not-null="true" sql-type="regprocedure" />
+    </property>
+    <property name="DictComment" type="java.lang.String">
+      <column name="dict_comment" scale="255" precision="0" not-null="false" sql-type="text" />
+    </property>
+  </class>
+</hibernate-mapping>

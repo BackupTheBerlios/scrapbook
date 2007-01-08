@@ -12,8 +12,8 @@
         <property name="age"/>
         <property name="firstname"/>
         <property name="lastname"/>
-        <property name="stringarray" type="StringArray"/>
-        <property name="stringlist" type="StringList"/>
+        <property name="stringArray" type="com.gaoshuang.scrapbook.tutorial.hibernate.usertype.StringArray"/>
+        <property name="stringList" type="com.gaoshuang.scrapbook.tutorial.hibernate.usertype.StringList"/>
         
 		<set name="favouriteEvents" table="favourite_events">
 		    <key column="user_uid"/>
@@ -24,11 +24,6 @@
 		    <key column="user_uid"/>
 		    <element column="email" type="string"/>
 		</set>
-		
-		<set name="emails"  table="user_emails">
-		    <key column="user_uid"/>
-		    <element column="email" type="string"/>
-		</set>		
 		
 		<set name="eventsJoined" table="participations" inverse="true">
 		    <key column="user_uid"/>

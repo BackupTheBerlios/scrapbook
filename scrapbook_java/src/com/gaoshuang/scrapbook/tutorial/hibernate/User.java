@@ -72,7 +72,7 @@ public class User {
 		id = newId;
 	}
 
-	public List getStringList() {
+	public List<String> getStringList() {
 		return stringList;
 	}
 
