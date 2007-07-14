@@ -1,0 +1,9 @@
+Fri 130707
+
+top.php   renamed old file to top.php.01.sean
+12:57pm - made username auto clear text field more user friendly
+
+Sat 140707
+register_ativate.php
+forgotten_password_success.php - basic layout added
+configuration.php

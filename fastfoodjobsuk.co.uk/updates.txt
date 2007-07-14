@@ -1,0 +1,57 @@
+Thurs 120707
+
+top.php
+index.php
+css/basic.css
+bottom.php
+news.php
+news_fixed.html
+
+
+images/wingleft_19.gif
+images/wingrigh_19.gif
+
+Added:
+
+cantact.php
+aboutus.php
+
+-----
+
+Fri 130707
+
+top.php
+// returned the platinum image size and reference to class
+
+default.css
+gold.php
+supplier.php
+restaurants.php
+franchises.php
+supplier_show.php
+
+added a few images...
+
+
+Sat 140707
+
+platinum.php
+suppliers_show.php
+register.php
+register_activate.php
+register_activated.php
+register_address.php
+register_thankyou.pho
+admin_gold_create.php
+
+suppliers_show.php
+login.php
+
+
+basic.css
+
+-------
+MADE TWO NEW FILES - top_wpv.php and bottom-wpv.php
+These plus the platinum page facilitates the layout that was specified in the powerpoint slide.
+-------
+
