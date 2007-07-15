@@ -56,6 +56,22 @@ if (isset($_POST["create"])){
 }
 require("top.php");
 ?>
+<link rel=stylesheet href="css/admin_create.css" type="text/css">
+<link rel=stylesheet href="css/admin_news_create.css" type="text/css">
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">News</span> <span class="redbar">|</span><br />
+    <br />
+    <p style = "padding-left:5px; margin:0px;">Please enter the heading of your news item, then a descriptive passage and the link to the file that YOU will provide on the server. Please supply the abosolute path and do not use the same name for a file twice or overwrite will occur.</p></td>
+ </tr>
+ <tr>
+  <td><hr noshade="noshade" size="1" />
+  </td>
+ </tr>
+</table>
 <form action="admin_news_create.php" method="POST">
 <input type=hidden name="create" value="1">
 

@@ -4,6 +4,7 @@ checkForAddress();
 ob_start();
 ?>
 <?php include ("jobinfo.php") ?>
+<?php include ("phpfn.php") ?>
 <?php
 
 // Load key from QueryString
@@ -43,13 +44,14 @@ switch ($sAction) {
 }
 ?>
 <?php include ("top.php") ?>
-<script type="text/javascript" src="scripts/ewp.js"></script>
-<script type="text/javascript">
+
+ <script type="text/javascript" src="scripts/ewp.js"></script>
+ <script type="text/javascript">
 <!--
 EW_dateSep = "/"; // set date separator
 //-->
 </script>
-<script type="text/javascript">
+ <script type="text/javascript">
 <!--
 function EW_checkMyForm(EW_this) {
 if (EW_this.x_overview && !EW_hasValue(EW_this.x_overview, "TEXTAREA")) {
@@ -81,10 +83,8 @@ return true;
 
 //-->
 </script>
-Job post<br>
-<br>
-<a class="contact" href="javascript:history.go(-1);">&laquo; back</a>
-<form name="fjobadd" id="fjobadd" action="job_post.php" method="post" onsubmit="return EW_checkMyForm(this);">
+ <h2 style = "margin-left:5px;">Create your job post </h2>
+<form name="fjobadd" id="fjobadd" action="job_post.php" method="post" onsubmit="return EW_checkMyForm(this);" style= "margin:5px;">
 <p>
 <input type="hidden" name="a_add" value="A">
 <?php
@@ -95,10 +95,13 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	$_SESSION[ewSessionMessage] = ""; // Clear message
 }
 ?>
-<table>
+<table class="job">
 	<tr>
-		<td>Position </td>
-		<td>
+	 <td colspan="2" class="smallRed">* required</td>
+	 </tr>
+	<tr>
+		<td width="134"><span style="font-weight: bold">Position </span></td>
+		<td width="316">
 <select id='x_position' name='x_position'>
                   <?php
         if (isset($x_position)){
@@ -123,28 +126,44 @@ if (@$_SESSION[ewSessionMessage] <> "") {
       ?></select></td>
 	</tr>
 	<tr>
-		<td>Overview<span>&nbsp;* <br />
+	 <td>&nbsp;</td>
+	 <td class="backgroundBorderStriped">Your job description must not discriminate directly or indirectly against an applicant on the basis of gender, marital status, nationality, race, disability, religious beliefs or sexual orientation.</td>
+	 </tr>
+	<tr>
+		<td><span style="font-weight: bold">Job description</span><span>&nbsp;* <br />
 		    (Up to 255 letters)</span></td>
 		<td>
         <textarea name="x_overview" cols="35" rows="3" id="x_overview"><?php echo @$x_overview; ?></textarea></td>
 	</tr>
 	<tr>
-		<td>Salary (GBP pa)</td>
+	 <td colspan="2" class="line">&nbsp;</td>
+	 </tr>
+	<tr>
+	 <td colspan="2"><h3>Financial Info:</h3></td>
+	 </tr>
+	<tr>
+		<td><span style="font-weight: bold">Salary</span> (GBP pa)</td>
 		<td>
 <input type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>">		</td>
 	</tr>
 	<tr>
-		<td>Bonus</td>
+		<td><span style="font-weight: bold">Bonus</span></td>
 		<td>
 <input type="text" name="x_bonus" id="x_bonus" value="<?php echo htmlspecialchars(@$x_bonus) ?>">		</td>
 	</tr>
 	<tr>
-		<td>Benifits</td>
+		<td><span style="font-weight: bold">Benifits</span></td>
 		<td>
 <input type="text" name="x_benifits" id="x_benifits" value="<?php echo htmlspecialchars(@$x_benifits) ?>">		</td>
 	</tr>
 	<tr>
-		<td>Location</td>
+	 <td colspan="2" class="line">&nbsp;</td>
+	 </tr>
+	<tr>
+	 <td colspan="2"><h3>Personal Info:</h3></td>
+	 </tr>
+	<tr>
+		<td><span style="font-weight: bold">Location</span></td>
 		<td>
         <select d='x_location' name='x_location'>
       <?php
@@ -172,17 +191,17 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	</tr>
 
 	<tr>
-		<td>Profile<span>&nbsp;*</span></td>
+		<td><span style="font-weight: bold">Profile</span><span>&nbsp;*</span></td>
 		<td>
 <textarea name="x_profile" cols="35" rows="6" id="x_profile"><?php echo @$x_profile; ?></textarea></td>
 	</tr>
 	<tr>
-		<td>Recruiter / Company<span>&nbsp;*</span></td>
+		<td><span style="font-weight: bold">Recruiter / Company</span><span>&nbsp;*</span></td>
 		<td>
 <input type="text" name="x_company" id="x_company" value="<?php echo htmlspecialchars(@$x_company) ?>"></td>
 	</tr>    
 	<tr>
-		<td>Contact Email<span>&nbsp;*</span></td>
+		<td><span style="font-weight: bold">Contact Email</span><span>&nbsp;*</span></td>
 		<td>
 <input type="text" name="x_contact_email" id="x_contact_email" value="<?php echo htmlspecialchars(@$x_contact_email) ?>"></td>
 	</tr>

@@ -98,6 +98,22 @@ if (isset($_POST["create"])){
 	}
 -->
 </script>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Spotlight </span> <span class="redbar">|</span><br />
+    <br />
+    <p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logos and images should be 153 wide by 104 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
+      <br />
+     Complete the information required - information can always be modified later.</p></td>
+ </tr>
+ <tr>
+  <td><hr noshade="noshade" size="1" />
+  </td>
+ </tr>
+</table>
 <form action="admin_platinum_create.php" method="POST" enctype="multipart/form-data">
 <input type=hidden name="create" value="1">
 

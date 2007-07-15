@@ -29,7 +29,7 @@ Or, you can add your logo and 25 words of text.<br /></p>
   $rowCount=0;  
   echo "<TR>";
   foreach ($results as $obj){
-    echo "<TD>";
+    echo "<TD valign=\"top\" width = \"135\">";
     echo "<table id=\"table_inner\">";
     echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
     echo "</td></tr>";

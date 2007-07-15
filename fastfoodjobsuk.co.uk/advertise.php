@@ -22,7 +22,7 @@
 <br></td>
 </tr>
 <tr>
-<td width="168"><a href="platinum_membership_form.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="admin_platinum_create.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
 <td width="380" valign="top" class="contact"><span class="redhead">Platinum*	<br>
 </span>Company Logo On <b>All pages*</b> including Home Page<br>
 
@@ -46,12 +46,12 @@ displayed on UK Food Franchises Page.</td>
 4 word heading and 10 word text (max) linked to your web site.</td>
 </tr>
 <tr>
-<td width="168"><a href="feature.html"><img src="images/ads_35.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="job_post.php"><img src="images/ads_35.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Recruitment<br>
 </span><b>Monthly</b> Single Job Advert<br></td>
 </tr>
 <tr>
-<td width="168"><a href="feature.html"><img src="images/ads_36.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="admin_supplier_create.php"><img src="images/ads_36.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Suppliers<br>
 </span>Company Logo linked to your web site with 25 words <br>
 

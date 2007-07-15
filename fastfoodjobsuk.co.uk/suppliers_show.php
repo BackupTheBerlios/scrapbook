@@ -28,11 +28,11 @@
     echo "</td>";
   } else {
     foreach ($results as $obj){
-      echo "<TD>";
+      echo "<TD width = \"135\" valign=\"top\" >";
       echo "<table id=\"table_inner\">";
       echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
       echo "</td></tr>";
-      echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\">".$obj->name."</a></td></tr>";
+      echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
       echo "<TR><TD><BR></td></tr></table>";
       echo "</td>";

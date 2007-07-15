@@ -82,8 +82,27 @@ if (isset($_POST["create"])){
 }
 require("top.php");
 ?>
-<form action="admin_franchise_create.php" method="POST" enctype="multipart/form-data">
+<link rel=stylesheet href="css/admin_create.css" type="text/css">
+<link rel=stylesheet href="css/admin_franchise_create.css" type="text/css">
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Franchise for Sale Advertisment </span> <span class="redbar">|</span><br />
+    <br />
+    <p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 135 wide by 115 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
+      <br />
+  Complete the town or county, the name of the franchise, a brief description, website address (if available) and your telephone number. Once completed you can amend this advertisement from the super user area.</p></td>
+ </tr>
+ <tr>
+  <td><hr noshade="noshade" size="1" />
+  </td>
+ </tr>
+</table>
+<form action="admin_franchise_create.php" method="POST" enctype="multipart/form-data" >
 <input type=hidden name="create" value="1">
+
 
 <table id="table_create">
   <TR>
