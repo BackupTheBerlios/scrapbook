@@ -1,0 +1,22 @@
+#table{
+
+}
+
+#table_inner{
+  padding:0px;
+}
+
+.cell_logo{
+border:#86C8ED solid 1px;
+vertical-align: top;
+margin:0px;
+}
+
+.cell_heading{
+vertical-align: top;
+}
+
+.cell_description{
+vertical-align: top;
+}
+

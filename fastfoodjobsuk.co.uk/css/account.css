@@ -1,0 +1,27 @@
+.spacer{
+  width:100%;
+  height:1px;
+  background-color:#C0C0C0;
+		margin-top:10px;
+	
+}
+
+.table {
+  border-collapse:collapse;
+  margin:0;
+  margin-bottom:30px;
+}
+.table td{
+  border-color:#000000;
+  border-width:1px;
+  border-style: none none none solid;
+  border-collapse:collapse;
+  margin:0;
+  padding:3px;
+  
+}
+
+#loggedin{
+  padding-bottom:10px;
+  font-weight:bold;
+}

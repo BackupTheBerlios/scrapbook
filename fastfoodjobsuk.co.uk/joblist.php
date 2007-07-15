@@ -332,36 +332,46 @@ if ($nTotalRecs > 0) {
 <table id="ewlistmain">
 	<!-- Table header -->
 	<tr>
-    <td valign="top">
+    <td valign="top"><span style="font-weight: bold">
         position
-        <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
-        <img src="images/sortup.gif" width="10" height="9" border="0">
-        <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
-        <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
-    <td valign="top">
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
+    <td valign="top"><span style="font-weight: bold">
         overview
-        <?php if (@$_SESSION[ewSessionTblSort . "_x_overview"] == "ASC") { ?>
-        <img src="images/sortup.gif" width="10" height="9" border="0">
-        <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_overview"] == "DESC") { ?>
-        <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
-    <td valign="top">
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_overview"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_overview"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
+    <td valign="top"><span style="font-weight: bold">
         salary
-        <?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
-        <img src="images/sortup.gif" width="10" height="9" border="0">
-        <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
-        <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
-    <td valign="top">
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
+    <td valign="top"><span style="font-weight: bold">
         location
-        <?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
-        <img src="images/sortup.gif" width="10" height="9" border="0">
-        <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
-        <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
-    <td valign="top">
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
+    <td valign="top"><span style="font-weight: bold">
         company
-        <?php if (@$_SESSION[ewSessionTblSort . "_x_company"] == "ASC") { ?>
-        <img src="images/sortup.gif" width="10" height="9" border="0">
-        <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
-        <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_company"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
 	    <td valign="top">&nbsp;</td>
 	</tr>
     <?php
@@ -381,12 +391,12 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 		$nRecActual++;
 
 		// Set row color
-		$sItemRowClass = " class=\"ewTableRow\"";
+		$sItemRowClass = " class=\"row_odd\"";
 		$sListTrJs = " onmouseover='ew_mouseover(this);' onmouseout='ew_mouseout(this);' onclick='ew_click(this);'";
 
 		// Display alternate color for rows
 		if ($nRecCount % 2 <> 1) {
-			$sItemRowClass = " class=\"ewTableAltRow\"";
+			$sItemRowClass = " class=\"row_even\"";
 		}
 		$x_jobid = $row["jobid"];
 		$x_onlineuser_onlineuserid = $row["onlineuser_onlineuserid"];
@@ -482,7 +492,7 @@ $x_position = $sTmp;
 		    <!-- company -->
 	    <td>
                 <?php echo $x_company; ?>    </td>
-		    <td><a href="<?php if ($x_jobid <> "") {echo "jobview.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">View</a></td>
+		    <td><a href="<?php if ($x_jobid <> "") {echo "jobview.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>"><b>View</b></a></td>
 		    <!-- contact_email -->
 	    <!-- dt_created -->
 	    <!-- dt_expire -->

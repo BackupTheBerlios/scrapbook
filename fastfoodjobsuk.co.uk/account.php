@@ -40,7 +40,7 @@ function generate($title,$user,$object,$modifyLink){
       }
       echo "<TD class=\"$rowclass\">".date("d/m/y",(int)$obj->dt_created)."</td>";
       $class=strtolower(get_class($obj))."Id";
-      echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_modify.php?id=".$obj->$class."\">Modify</a></td>";
+      echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_modify.php?id=".$obj->$class."\"><b>Modify</b></a></td>";
       echo "</tr>";
     }
   }
