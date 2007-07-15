@@ -13,7 +13,7 @@
 									<h1>UK Franchises</h1>
 									<div class="roundbottom">
 										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
-								</div>
+								</div><p style ="margin-left:10px;">Click on the logo to visit the companies web site or on the archived link for more details.</p>
 <table id="table" cellspacing = "0" cellpadding = "0">
 <?php
 

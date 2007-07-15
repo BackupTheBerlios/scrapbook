@@ -85,7 +85,7 @@ require("top.php");
     <td valign="top" width="463">
 <span class="redbar">| </span><span class="heading">Gold Member Advertisment </span> <span class="redbar">|</span><br>
 <br>
-<p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 167 wide by 116 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
+<p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 135 wide by 115 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
  <br />
 Complete the Restaurant name, a brief description, website address (if available) and your telephone number. Once completed you can amend this advertisement from your member area.</p>
     </td>

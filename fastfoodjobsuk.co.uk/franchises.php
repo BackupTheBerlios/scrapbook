@@ -13,7 +13,12 @@
 									<h1>Franchises for Sale</h1>
 									<div class="roundbottom">
 										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
-								</div>
+								</div><p style = "margin-left:10px;">Selling a trading franchise is a discreet business both for the franchisee and franchisor.
+Advertising in this section requires no pre-set information, it is designed to protect your business and privacy.<br /><br />
+
+An advert could be as simple as; 'Pizza franchise for sale, Essex. Trading 3 years. Contact Fred on 123456789'<br /><br />
+
+Or, you can add your logo and 25 words of text.<br /></p>
 <table id="table">
 <?php
 

@@ -24,8 +24,8 @@ global $goldTableCols,$truncateText,$logoWidth,$logoHeight,$platinumImageWidth,$
  $truncateText=25;
 
 // controls the logo size
- $logoWidth=140;
- $logoHeight=120;
+ $logoWidth=134;
+ $logoHeight=115;
 
 // platinum image sizes
  $platinumImageWidth=153;
