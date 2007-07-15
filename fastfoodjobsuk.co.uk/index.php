@@ -20,9 +20,9 @@ require("top.php");
   <tr>
     <td><img src="images/mid_20.gif" alt="" width="462" height="163" usemap="#mid_20c2838cbf" border="0" />
         <map name="mid_20c2838cbf" id="mid_20c2838cbf">
-          <area shape="rect" coords="310,6,443,125" href="feature.html" alt="" />
-          <area shape="rect" coords="163,9,296,120" href="feature.html" alt="" />
-          <area shape="rect" coords="21,7,146,117" href="feature.html" alt="" />
+          <area shape="rect" coords="310,6,443,125" href="job_post.php" alt="" />
+          <area shape="rect" coords="163,9,296,120" href="cv_post.php" alt="" />
+          <area shape="rect" coords="23,8,148,118" href="joblist.php" alt="" />
       </map></td>
   </tr>
   <tr>

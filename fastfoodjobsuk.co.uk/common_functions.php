@@ -109,4 +109,11 @@ function getAllObjects($instance, $sortBy='', $ascending=true, $limit='')
 	
 }
 
+//expiry date
+function expiryDate($numberOfDays=30)
+{
+	$future = mktime(23,59,59,date("m"),date("d")+$numberOfDays,date("Y"));
+	return date("Y-m-d", $future);
+}
+
 ?>

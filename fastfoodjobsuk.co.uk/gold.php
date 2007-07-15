@@ -14,7 +14,7 @@
 									<div class="roundbottom">
 										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
 								</div>
-<table id="table">
+<table id="table" cellspacing = "0" cellpadding = "0">
 <?php
 
   $member=new Gold_membership();
@@ -23,9 +23,9 @@
   $rowCount=0;  
   echo "<TR>";
   foreach ($results as $obj){
-    echo "<TD>";
+    echo "<TD valign=\"top\">";
     echo "<table id=\"table_inner\">";
-    echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
+    echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" align = \"top\">";
     echo "</td></tr>";
     echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->heading."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";

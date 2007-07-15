@@ -12,7 +12,7 @@
 									<div class="roundbottom">
 										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
 								</div>
-<table id="table">
+<table id="table" cellspacing = "0" cellpadding = "0">
 <?php
   $type=(int)$_GET["type"];
 
@@ -32,7 +32,7 @@
       echo "<table id=\"table_inner\">";
       echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
       echo "</td></tr>";
-      echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
+      echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
       echo "<TR><TD><BR></td></tr></table>";
       echo "</td>";

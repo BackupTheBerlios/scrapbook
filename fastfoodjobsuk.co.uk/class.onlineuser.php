@@ -243,18 +243,22 @@ class OnlineUser
 	* Saves the object to the database
 	* @return integer $onlineuserId
 	*/
-	function Save()
+	function Save($updatePassword=false)
 	{
 		$Database = new DatabaseConnection();
 		$this->pog_query = "select `onlineuserid` from `onlineuser` where `onlineuserid`='".$this->onlineuserId."' LIMIT 1";
 		$Database->Query($this->pog_query);
-		if ($Database->Rows() > 0)
+		
+		if ($Database->Rows() > 0) //update
 		{
+			$password=$this->pass_word;
+			if ($updatePassword)
+				$password=PASSWORD($password);
 			$this->pog_query = "update `onlineuser` set 
 			`email`='".$Database->Escape($this->email)."', 
 			`first_name`='".$Database->Escape($this->first_name)."', 
 			`last_name`='".$Database->Escape($this->last_name)."', 
-			`pass_word`=PASSWORD('".$this->pass_word."'), 
+			`pass_word`='".$password."', 
 			`address_1`='".$Database->Escape($this->address_1)."', 
 			`address_2`='".$Database->Escape($this->address_2)."', 
 			`address_3`='".$Database->Escape($this->address_3)."', 
