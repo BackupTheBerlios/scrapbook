@@ -28,6 +28,6 @@ global $goldTableCols,$truncateText,$logoWidth,$logoHeight,$platinumImageWidth,$
  $logoHeight=120;
 
 // platinum image sizes
- $platinumImageWidth=1532;
+ $platinumImageWidth=153;
  $platinumImageHeight=104;
 ?>

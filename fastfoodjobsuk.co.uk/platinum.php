@@ -3,7 +3,7 @@
 
 $id=(int)$_GET["id"];
 $member=new Platinum_membership();
-$member->Get($id);
+$member=$member->Get($id);
 
 ?>
 <?php
@@ -11,7 +11,7 @@ $member->Get($id);
 ?>
 <link rel=stylesheet href="css/platinum.css" type="text/css">
   <img src="logos/<?php echo $member->logo; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">
-  <BR>
+  <br>
 <div id="heading">
   <?php echo $member->heading; ?>
 </div>

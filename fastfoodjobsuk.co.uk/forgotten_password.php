@@ -41,15 +41,20 @@ if (isset($_POST["reset"])){
 <?php
 	require("top.php");
 ?>
-<form action="forgotten_password.php" method="POST">
+<form action="forgotten_password.php" method="POST" style = "margin:0px;">
 <input type=hidden name="reset" value="1">
+      <span class="redbar">| </span><span class="heading">Password Retrieval</span> <span class="redbar">|</span><br>
+<br>
+<table class = "registerTable">
+<tr>
+ <td>
+Please enter your registered e-mail address and we will send you an email with a new temporary password.<br /><br /></td>
+</tr><tr>
+<td>  <input type="text" name="email">
+ </td></tr><tr>
+ <td> <input type="submit" value="Reset Password"></td></tr></table>
 
-<P>
-  Please enter your registered e-mail address and we will send you an email with a new temporary password. </p>
-</p>
-<p>
-  <input type="text" name="email">
-  <input type="submit" value="Reset Password">
+
 </p>
 
 </form>

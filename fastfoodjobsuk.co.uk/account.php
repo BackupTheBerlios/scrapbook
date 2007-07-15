@@ -39,28 +39,36 @@ function generate($title,$user,$object,$modifyLink){
         echo "<TD class=\"$rowclass\">".substr($obj->link,7)."</td>";
       }
       echo "<TD class=\"$rowclass\">".date("d/m/y",(int)$obj->dt_created)."</td>";
-      $class=strtolower(get_class($obj));
-      $status=$class."_status";
+      $class=get_class($obj);
       $class.="Id";
-      
-      if ($obj->$status=='active'){
-        echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_status.php?id=".$obj->$class."&status=1\">Deactivate</a></td>";
-      } else if ($obj->$status=='active') {
-        echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_status.php?id=".$obj->$class."&status=0\">Reactivate</a></td>";
-      }
-
       echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_modify.php?id=".$obj->$class."\">Modify</a></td>";
-      echo "<TD class=\"$rowclass\"><a href=\"#\" onClick=\"sure(".$obj->$class.",'$modifyLink')\">Delete</a></td>";
-
       echo "</tr>";
     }
   }
   echo "</table>";
 }
 
+function showAdmin(){
+  echo "<table id=\"table_admin\">";
+  echo "<form action=\"account.php\" method=\"POST\">";
+  echo "<TR><TD>Log in as which user?</TD>";
+  echo "<TD><select name=\"whichUser\">";
+  $users=new OnlineUser();
+  $results=$users->GetList(array(array("onlineuserid",">=","0")),"onlineuserid");
+  foreach ($results as $obj){
+    echo "<option value=\"".$obj->onlineuserId."\">".$obj->email."</option>\n";
+  }
+  echo "</select>";
+  echo "</td></tr>";
+  echo "<TR><TD><input type=submit value=\"OK\"></td></tr>";
+  echo "</form>";
+  echo "</table>";
+}
+
 // if this is set, then the admin_xxxx_create pages display a cancel button. When clicked
 // the user is taken back to the page specified below
 $_SESSION["cancel"]="account.php";
+
 
 if(isset($_POST["whichUser"]) && isSuperUser(false)){
   $user=$user->Get((int)$_POST["whichUser"]);
@@ -70,24 +78,18 @@ require("top.php");
 ?>
 
 <link rel="stylesheet" href="css/account.css" type="text/css">
-
-<script language="JavaScript">
-function sure(id,link){
-  if (confirm("Are you sure you want to delete this record?")){
-    window.location='admin_'+link+'_delete.php?id='+id;
-  }
-}
-</script>
-
+<table class="paddingforinfocell"><tr><td>
 <?php
 if (isSuperUser(false)){
-  generate("Restaurants",$user,new Restaurant(),"restaurant");
-  generate("Franchises",$user,new Franchise(),"franchise");
+  showAdmin();
 }
-
+generate("Restaurants",$user,new Restaurant(),"restaurant");
+generate("Franchises",$user,new Franchise(),"franchise");
 generate("Gold Adverts",$user,new Gold_membership(),"gold");
 generate("Platinum Adverts",$user,new Platinum_membership(),"platinum");
 generate("Suppliers",$user,new Supplier(),"supplier");
-
+?>
+</td></tr></table>
+<?php
 require("bottom.php");
 ?>

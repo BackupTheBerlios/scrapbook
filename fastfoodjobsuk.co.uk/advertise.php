@@ -1,10 +1,5 @@
 <?php
-	require("common_all.php");
-
-$id=(int)$_GET["id"];
-$member=new Platinum_membership();
-$member->Get($id);
-
+  require("common_all.php");
 ?>
 <?php
 	require("top_wpv.php");
@@ -27,7 +22,7 @@ $member->Get($id);
 <br></td>
 </tr>
 <tr>
-<td width="168"><a href="feature.html"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="admin_platinum_create.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
 <td width="380" valign="top" class="contact"><span class="redhead">Platinum*	<br>
 </span>Company Logo On <b>All pages*</b> including Home Page<br>
 
