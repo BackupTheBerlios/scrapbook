@@ -22,7 +22,7 @@
 <br></td>
 </tr>
 <tr>
-<td width="168"><a href="admin_platinum_create.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="platinum_membership_form.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
 <td width="380" valign="top" class="contact"><span class="redhead">Platinum*	<br>
 </span>Company Logo On <b>All pages*</b> including Home Page<br>
 

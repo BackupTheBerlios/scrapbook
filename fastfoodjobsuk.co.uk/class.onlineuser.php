@@ -354,5 +354,16 @@ class OnlineUser
 			return $Database->Query($pog_query);
 		}
 	}
+	
+	function canAccess($object){
+
+	   if ( $this->onlineuserId!=$object->onlineuser_onlineuserid) //not owner
+	 	{
+		// at this point the current user ID does not match the one on the 
+		// the advert AND the super user is not performing this action so
+		// something is suspect!
+		 exit;
+	   }
+	}	
 }
 ?>

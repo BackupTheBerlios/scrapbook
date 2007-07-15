@@ -1,9 +1,9 @@
 <?php
 require("common_user.php");
-function generate($title,$user,$object,$modifyLink){
+function generate($title,$user,$object){
   global $truncateText;
   
-  echo $title."<BR>";
+  echo $title."<br/>";
   echo "<div class=\"spacer\"></div>";
   $results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_created");
   echo "<table class=\"table\">";
@@ -11,9 +11,9 @@ function generate($title,$user,$object,$modifyLink){
   $rowclass="";
   
   if (count($results)==0){
-    echo "<TR><td>";
+    echo "<tr><td>";
     echo "You currently have no entries";
-    echo "</Td></tr>";
+    echo "</td></tr>";
   } else {
     foreach ($results as $obj){
       
@@ -24,23 +24,24 @@ function generate($title,$user,$object,$modifyLink){
       }
       $alt=!$alt;
       
-      echo "<TR>";
+      echo "<tr>";
       if (isset($obj->name)){
-        echo "<TD class=\"$rowclass\">".$obj->name."</td>";
+        echo "<td class=\"$rowclass\">".$obj->name."</td>";
       } else if(isset($obj->heading)) {
-        echo "<TD class=\"$rowclass\">".$obj->heading."</td>";
+        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
       }
       if (isset($obj->description)){
-        echo "<TD class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
       } else if(isset($obj->text)){
-        echo "<TD class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
       }
       if (isset($obj->link)){
-        echo "<TD class=\"$rowclass\">".substr($obj->link,7)."</td>";
+        echo "<td class=\"$rowclass\">".substr($obj->link,7)."</td>";
       }
-      echo "<TD class=\"$rowclass\">".date("d/m/y",(int)$obj->dt_created)."</td>";
-      $class=strtolower(get_class($obj))."Id";
-      echo "<TD class=\"$rowclass\"><a href=\"admin_".$modifyLink."_modify.php?id=".$obj->$class."\"><b>Modify</b></a></td>";
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+      $class=strtolower(get_class($obj));
+		$classId=$class."Id"; 
+      echo "<td class=\"$rowclass\"><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></td>";
       echo "</tr>";
     }
   }

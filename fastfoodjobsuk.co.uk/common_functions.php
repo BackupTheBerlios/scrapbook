@@ -1,4 +1,5 @@
 <?php
+include("phpfn.php");
 /* a few common user funtions*/
 
 // check user is logged in. If they are not, this script stops executing and they are redirected
@@ -60,12 +61,9 @@ function checkForAddress(){
 }
 function generateFilename($id,$originalFilename){
   $stamp=date("U");
-  $filename=$id;
-  for ($i=0;$i<strlen($stamp);$i++){
-    $filename.=chr(97+(int)$stamp[$i]);
-  }
-  $filename.=strtolower(substr($originalFilename,strrpos($originalFilename,".")));
-  
+	//trim sapce
+  $filename=ereg_replace( ' +', '', $originalFilename );
+  $filename=strtolower($id.'_'.$stamp.'_'.$filename);
   return $filename;
 }
 

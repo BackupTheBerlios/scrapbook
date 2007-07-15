@@ -4,7 +4,6 @@ checkForAddress();
 ob_start();
 ?>
 <?php include ("jobinfo.php") ?>
-<?php include ("phpfn.php") ?>
 <?php
 
 // Load key from QueryString

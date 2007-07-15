@@ -3,8 +3,6 @@ require("common_all.php");
 ob_start();
 ?>
 <?php include ("jobinfo.php") ?>
-<?php include ("phpfn.php") ?>
-
 <?php
 $nStartRec = 0;
 $nStopRec = 0;
