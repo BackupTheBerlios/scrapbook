@@ -79,9 +79,9 @@ require("top.php");
 <link rel="stylesheet" href="css/account.css" type="text/css">
 <table class="paddingforinfocell"><tr><td>
 <?php
-if (isSuperUser(false)){
-  showAdmin();
-}
+//if (isSuperUser(false)){
+  //showAdmin();
+//}
 generate("Restaurants",$user,new Restaurant(),"restaurant");
 generate("Franchises",$user,new Franchise(),"franchise");
 generate("Gold Adverts",$user,new Gold_membership(),"gold");

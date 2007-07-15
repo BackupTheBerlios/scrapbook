@@ -332,7 +332,6 @@ if ($nTotalRecs > 0) {
 <table id="ewlistmain">
 	<!-- Table header -->
 	<tr>
-    <td>&nbsp;</td>
     <td valign="top">
         position
         <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
@@ -363,7 +362,8 @@ if ($nTotalRecs > 0) {
         <img src="images/sortup.gif" width="10" height="9" border="0">
         <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
         <img src="images/sortdown.gif" width="10" height="9" border="0">        <?php } ?>    </td>
-	    </tr>
+	    <td valign="top">&nbsp;</td>
+	</tr>
     <?php
 
 // Set the last record to display
@@ -405,7 +405,6 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 ?>
 	<!-- Table body -->
 	<tr<?php echo $sItemRowClass; ?><?php echo $sListTrJs; ?>>
-    <td><a href="<?php if ($x_jobid <> "") {echo "jobview.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">View</a></td>
     <!-- jobid -->
 	    <!-- onlineuser_onlineuserid -->
 	    <!-- position -->
@@ -479,12 +478,11 @@ $x_position = $sTmp;
 		    <!-- bonus -->
 	    <!-- benifits -->
 	    <!-- location -->
-	    <td><?php echo $x_location; ?>
-
- 		  </td>
+	    <td><?php echo $x_location; ?> 		  </td>
 		    <!-- company -->
 	    <td>
                 <?php echo $x_company; ?>    </td>
+		    <td><a href="<?php if ($x_jobid <> "") {echo "jobview.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">View</a></td>
 		    <!-- contact_email -->
 	    <!-- dt_created -->
 	    <!-- dt_expire -->
