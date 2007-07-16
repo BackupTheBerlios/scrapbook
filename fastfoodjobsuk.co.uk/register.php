@@ -25,7 +25,7 @@ if (isset($_POST["register"])){
   if ($showAddress==1){
     $address1=$_POST["address1"];
     $address2=$_POST["address2"];
-    $address2=$_POST["address3"];
+    $address3=$_POST["address3"];
     $postcode=$_POST["postcode"];
     $telephone=$_POST["telephone"];
     $fax=$_POST["fax"];
@@ -45,7 +45,7 @@ if (isset($_POST["register"])){
     if (($result=validate($telephone,"phonenumber",45))!==true)
       $errorText.="<LI>Your telephone number is $result";
   
-    if (($result=validate($fax,"phonenumber",45))!==true)
+    if ($fax!="" && ($result=validate($fax,"phonenumber",45))!==true)
       $errorText.="<LI>Your fax number is $result";
 
   }
@@ -192,7 +192,7 @@ if (isset($_POST["register"])){
             Post Code:
           </td>
           <TD>
-            <input type="text" name="postCode" value="<?php echo (isset($_POST["postCode"]) ? $_POST["postCode"] : ""); ?>">
+            <input type="text" name="postcode" value="<?php echo (isset($_POST["postCode"]) ? $_POST["postCode"] : ""); ?>">
           </td>
         </tr>
         <TR>

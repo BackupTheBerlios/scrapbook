@@ -55,3 +55,8 @@ MADE TWO NEW FILES - top_wpv.php and bottom-wpv.php
 These plus the platinum page facilitates the layout that was specified in the powerpoint slide.
 -------
 
+Sun 150707
+
+suppliers_show.php
+gold.php
+account.php

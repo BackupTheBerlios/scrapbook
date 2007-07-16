@@ -79,10 +79,11 @@ require("top.php");
 
 <link rel="stylesheet" href="css/account.css" type="text/css">
 <table class="paddingforinfocell"><tr><td>
+<P>
+  <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">User Profile</a>
+</p>
+
 <?php
-//if (isSuperUser(false)){
-  //showAdmin();
-//}
 generate("Restaurants",$user,new Restaurant(),"restaurant");
 generate("Franchises",$user,new Franchise(),"franchise");
 generate("Gold Adverts",$user,new Gold_membership(),"gold");
