@@ -18,18 +18,18 @@ if (isset($_GET["code"])){
     $code=$db->Escape($_GET["code"]);
     $email=$db->Escape($_GET["email"]);
     
-    $db->Query("SELECT onlineuserid FROM onlineuser WHERE dt_created='$code' AND email='$email'");
+    $db->Query("SELECT onlineuserid FROM onlineuser WHERE email='$email'");
     if ($db->Rows()>0){
-      
       $user=new OnlineUser();
       $user=$user->Get($db->Result(0,"onlineuserid"));
-      $user->user_status="active";
-      $user->Save();
-      $_SESSION["onlineuser"]=$user;
-      header("Location: register_activated.php");
-    } else {
-      $errorText="<LI>Either the email address or code you entered is incorrect";
+	  if($code==strtotime($user->dt_created)){
+      	$user->user_status="active";
+      	$user->Save();
+      	//$_SESSION["onlineuser"]=$user;
+		header("Location: register_activated.php");
+	  } 
     }
+    $errorText="<LI>Either the email address or code you entered is incorrect";
     
   } else {
     $errorText="<ul>$errorText</ul>";

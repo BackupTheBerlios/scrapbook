@@ -81,7 +81,7 @@ class OnlineUser
 		);
 	var $pog_query;
 	
-	function OnlineUser($email='', $first_name='', $last_name='', $pass_word='', $address_1='', $address_2='', $address_3='', $postcode='', $tel='', $fax='', $dt_created='', $user_status='')
+	function OnlineUser($email='', $first_name='', $last_name='', $pass_word='', $address_1='', $address_2='', $address_3='', $postcode='', $tel='', $fax='', $user_status='')
 	{
 		$this->email = $email;
 		$this->first_name = $first_name;
@@ -93,7 +93,6 @@ class OnlineUser
 		$this->postcode = $postcode;
 		$this->tel = $tel;
 		$this->fax = $fax;
-		$this->dt_created = $dt_created;
 		$this->user_status = $user_status;
 	}
 	
@@ -333,10 +332,11 @@ class OnlineUser
 
 	   if ( $this->onlineuserId!=$object->onlineuser_onlineuserid) //not owner
 	 	{
-		// at this point the current user ID does not match the one on the 
-		// the advert AND the super user is not performing this action so
-		// something is suspect!
-		 exit;
+			// at this point the current user ID does not match the one on the 
+			// the advert AND the super user is not performing this action so
+			// something is suspect! kick her out!
+			header("Location: logout.php");
+			exit;
 	   }
 	}	
 }

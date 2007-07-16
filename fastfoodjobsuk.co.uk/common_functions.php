@@ -67,7 +67,7 @@ function generateFilename($id,$originalFilename){
   return $filename;
 }
 
-function validate($d,$eregi,$length){
+function validate($d,$eregi,$length,$minLength=0){
 
   switch ($eregi){
     case "email":
@@ -81,7 +81,7 @@ function validate($d,$eregi,$length){
       $eregi='^[a-z ]+$';
       break;
     case "phonenumber":
-      $eregi='^[0-9\(\)\-]+$';
+      $eregi='^[0-9\(\)\-\ ]+$';
       break;
   }
    
@@ -89,7 +89,9 @@ function validate($d,$eregi,$length){
 		return "invalid";
 	} else if (strlen($d)>$length){
 		return "too long";
-	} else if (strlen($d)==0) {
+	}else if (strlen($d)<$minLength){
+		return "too short";
+	}else if (strlen($d)==0) {
 	  return "mandatory";
 	} else {
     return true;

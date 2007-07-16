@@ -10,14 +10,8 @@ if ($id==0){
 }
 if ($id>0){	
 	$supplier=$supplier->Get($id);
-	if ($supplier != null){
-		//check to see user has access to modify this object	
-		$user->canAccess($supplier);
-	}
-	else //fake id
-	{
-		exit();
-	}	
+	//check to see user has access to modify this object	
+	$user->canAccess($supplier);
 } else { //new object
 	$supplier->onlineuser_onlineuserid = $user->onlineuserId;
 	

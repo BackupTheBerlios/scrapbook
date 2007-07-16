@@ -50,7 +50,7 @@ if (isset($_POST["register"])){
 
   }
 
-  if (($result=validate($password,"password",45))!==true)
+  if (($result=validate($password,"password",45, 6))!==true)
     $errorText.="<LI>Your password is $result";
 
   if ($_POST["readTerms"]!="on"){
@@ -62,9 +62,10 @@ if (isset($_POST["register"])){
     if ($db->Rows()>0){
       $errorText.="<LI>The email address you have entered is taken";
     } else {
-      $created=date("U");
-      $user=new OnlineUser($email, $first_name, $last_name, $password, '', '', '', '', '', '', $created, 'temp');
-      $user->Save();
+      $user=new OnlineUser($email, $first_name, $last_name, $password, '', '', '', '', '', '', 'temp');
+      $userId=$user->Save();
+	  $user=$user->Get($userId);
+	  $created=strtotime($user->dt_created);
       
       $headers="From: noreply@fastfoodjobsuk.co.uk\r\n";
       $headers.="X-Mailer: CJS_MailSystem\r\n";
@@ -124,101 +125,102 @@ if (isset($_POST["register"])){
   ?>">
   <table class = "registerTable">
     <tr>
-      <Td>
+      <td>
        <span class="redbar">| </span><span class="heading">Registration</span> <span class="redbar">|</span><br>
 <br>
       </td>
     </tr>
-    <TR>
-      <TD colspan=2>
+    <tr>
+      <td colspan=2>
       <?php
         echo $errorText;
       ?>
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         First Name:
       </td>
-      <TD>
+      <td>
         <input type="text" name="firstName" value="<?php echo (isset($_POST["firstName"]) ? $_POST["firstName"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Last Name:
       </td>
-      <TD>
+      <td>
         <input type="text" name="lastName" value="<?php echo (isset($_POST["lastName"]) ? $_POST["lastName"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Email Address:
       </td>
-      <TD>
+      <td>
         <input type="text" name="email" value="<?php echo (isset($_POST["email"]) ? $_POST["email"] : ""); ?>">
       </td>
     </tr>
     <?php
       if ($showAddress==1){
       ?>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Address 1:
           </td>
-          <TD>
+          <td>
             <input type="text" name="address1" value="<?php echo (isset($_POST["address1"]) ? $_POST["address1"] : ""); ?>">
           </td>
         </tr>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Address 2:
           </td>
-          <TD>
+          <td>
             <input type="text" name="address2" value="<?php echo (isset($_POST["address2"]) ? $_POST["address2"] : ""); ?>">
           </td>
         </tr>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Address 3:
           </td>
-          <TD>
+          <td>
             <input type="text" name="address3" value="<?php echo (isset($_POST["address3"]) ? $_POST["address3"] : ""); ?>">
           </td>
         </tr>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Post Code:
           </td>
-          <TD>
+          <td>
             <input type="text" name="postcode" value="<?php echo (isset($_POST["postCode"]) ? $_POST["postCode"] : ""); ?>">
           </td>
         </tr>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Telephone:
           </td>
-          <TD>
+          <td>
             <input type="text" name="telephone" value="<?php echo (isset($_POST["telephone"]) ? $_POST["telephone"] : ""); ?>">
           </td>
         </tr>
-        <TR>
-          <TD>
+        <tr>
+          <td>
             Facsimile:
           </td>
-          <TD>
+          <td>
             <input type="text" name="fax" value="<?php echo (isset($_POST["fax"]) ? $_POST["fax"] : ""); ?>">
           </td>
         </tr>
       <?php
       }
     ?>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Password:
-      </td>
-      <TD>
+            <br />
+            (minimum length 6)</td>
+      <td>
         <input type="password" name="password" value="">
       </td>
     </tr>
@@ -232,18 +234,18 @@ if (isset($_POST["register"])){
       </td>
     </tr>
     -->
-    <TR>
-      <TD>
+    <tr>
+      <td>
         I have read the <a href="terms.html" style="color:#0000FF">terms</a>
       </td>
-      <TD>
+      <td>
         <input type="checkbox" name="readTerms">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
       </td>
-      <TD>
+      <td>
         <input type="submit" value="Submit">
       </td>
     </tr>

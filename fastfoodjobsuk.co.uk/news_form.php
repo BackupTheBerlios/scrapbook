@@ -8,14 +8,8 @@ if ($id==0){
 }
 if ($id>0){	
 	$news=$news->Get($id);
-	if ($news != null){
-		//check to see user has access to modify this object	
-		$news->canAccess($news);
-	}
-	else //fake id
-	{
-		exit();
-	}	
+	//check to see user has access to modify this object	
+	$news->canAccess($news);
 } else { //new object
 	$news->onlineuser_onlineuserid = $user->onlineuserId;
 

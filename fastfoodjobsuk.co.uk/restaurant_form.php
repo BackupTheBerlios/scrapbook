@@ -9,14 +9,7 @@ if ($id==0){
 }
 if ($id>0){	
 	$restaurant=$restaurant->Get($id);
-	if ($restaurant != null){
-		//check to see user has access to modify this object	
-		$user->canAccess($restaurant);
-	}
-	else //fake id
-	{
-		exit();
-	}	
+	$user->canAccess($restaurant);
 } else { //new object
 	$restaurant->onlineuser_onlineuserid = $user->onlineuserId;
 

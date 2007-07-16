@@ -11,14 +11,9 @@ if ($id==0){
 }
 if ($id>0){	
 	$franchise=$franchise->Get($id);
-	if ($franchise != null){
-		//check to see user has access to modify this object	
-		$user->canAccess($franchise);
-	}
-	else //fake id
-	{
-		exit();
-	}	
+	//check to see user has access to this object	
+	$user->canAccess($franchise);
+	
 } else { //new object
 	$franchise->onlineuser_onlineuserid = $user->onlineuserId;
 	

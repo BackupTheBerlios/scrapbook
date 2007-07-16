@@ -10,14 +10,7 @@ if ($id==0){
 }
 if ($id>0){	
 	$member=$member->Get($id);
-	if ($member != null){
-		//check to see user has access to modify this object	
-		$user->canAccess($member);
-	}
-	else //fake id
-	{
-		exit();
-	}	
+	$user->canAccess($member);
 } else { //new object
 	$member->onlineuser_onlineuserid = $user->onlineuserId;
 
