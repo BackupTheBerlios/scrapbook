@@ -36,9 +36,6 @@ if (isset($_POST["register"])){
     if (($result=validate($address2,"",255))!==true)
       $errorText.="<LI>The second line of your address is $result";
   
-    if (($result=validate($address3,"",255))!==true)
-      $errorText.="<LI>The third line of your address is $result";
-  
     if (($result=validate($postcode,"",20))!==true)
       $errorText.="<LI>Your post code is $result";
   

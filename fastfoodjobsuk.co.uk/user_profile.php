@@ -28,23 +28,23 @@ if ((bool)$_POST["submitting"]){
   if (($result=validate($user->email,"email",45))!==true)
     $errorText.="<LI>Your email address is $result";
 
-  if (($result=validate($user->address_1,"",255))!==true)
-    $errorText.="<LI>The first line of your address is $result";
-
-  if (($result=validate($user->address_2,"",255))!==true)
-    $errorText.="<LI>The second line of your address is $result";
-
-  if (($result=validate($user->address_3,"",255))!==true)
-    $errorText.="<LI>The third line of your address is $result";
-
-  if (($result=validate($user->postcode,"",20))!==true)
-    $errorText.="<LI>Your post code is $result";
-
-  if (($result=validate($user->tel,"phonenumber",45))!==true)
-    $errorText.="<LI>Your telephone number is $result";
-
-  if ($user->fax!="" && (($result=validate($user->fax,"phonenumber",45))!==true))
-    $errorText.="<LI>Your fax number is $result";
+	if (!isSuperUser(false))
+	{
+	  if (($result=validate($user->address_1,"",255))!==true)
+		$errorText.="<LI>The first line of your address is $result";
+	
+	  if (($result=validate($user->address_2,"",255))!==true)
+		$errorText.="<LI>The second line of your address is $result";
+	
+	  if (($result=validate($user->postcode,"",20))!==true)
+		$errorText.="<LI>Your post code is $result";
+	
+	  if (($result=validate($user->tel,"phonenumber",45))!==true)
+		$errorText.="<LI>Your telephone number is $result";
+	
+	  if ($user->fax!="" && (($result=validate($user->fax,"phonenumber",45))!==true))
+		$errorText.="<LI>Your fax number is $result";
+	}
 
   if ($errorText==""){
     $query=$db->Query("SELECT * FROM onlineuser WHERE email='".$db->Escape($user->email)."' AND onlineuserid!='".$user->onlineuserId."' LIMIT 1");
@@ -70,90 +70,90 @@ require("top.php");
 <input type=hidden name="submitting" value="true">
 
 <table>
-  <TR>
-    <TD colspan=2>
+  <tr>
+    <td colspan=2>
     <?php
       echo $errorText;
     ?>
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       First Name:
     </td>
-    <TD>
+    <td>
       <input type="text" name="firstName" value="<?php echo $user->first_name; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Last Name:
     </td>
-    <TD>
+    <td>
       <input type="text" name="lastName" value="<?php echo $user->last_name; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Email Address:
     </td>
-    <TD>
+    <td>
       <input type="text" name="email" value="<?php echo $user->email; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Address 1:
     </td>
-    <TD>
+    <td>
       <input type="text" name="address1" value="<?php echo $user->address_1; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Address 2:
     </td>
-    <TD>
+    <td>
       <input type="text" name="address2" value="<?php echo $user->address_2; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Address 3:
     </td>
-    <TD>
+    <td>
       <input type="text" name="address3" value="<?php echo $user->address_3; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Post Code:
     </td>
-    <TD>
+    <td>
       <input type="text" name="postcode" value="<?php echo $user->postcode; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Telephone:
     </td>
-    <TD>
+    <td>
       <input type="text" name="tel" value="<?php echo $user->tel; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Facsimile:
     </td>
-    <TD>
+    <td>
       <input type="text" name="fax" value="<?php echo $user->fax; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
     </td>
-    <TD>
-      <input type="button" value="Cancel" onClick="window.location='account.php'">
+    <td>
+      <input type="button" value="Cancel" onclick="window.location='account.php'">
       &nbsp;&nbsp;&nbsp;
       <input type="submit" value="Update">
     </td>

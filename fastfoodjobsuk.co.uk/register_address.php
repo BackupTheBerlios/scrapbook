@@ -14,38 +14,22 @@ if (isset($_POST["register"])){
   $tel=$_POST["telephone"];
   $fax=$_POST["fax"];
   
-  if ($address1==""){
-    $errorText.="<li>Address 1 is mandatory";
-  } else if (strlen($address1)>255){
-    $errorText.="<li>Address line 1 is too long";
-  }
-  
-  if(strlen($address2)>255){
-    $errorText.="<li>Address line 2 is too long";
-  }
-  
-  if(strlen($address3)>255){
-    $errorText.="<li>Address line 3 is too long";
-  }
-  
-  if ($postcode==""){
-    $errorText.="<li>Post code is mandatory";
-  } else if (strlen($postcode)>20){
-    $errorText.="<li>Post code is too long";
-  }
 
-
-  if ($tel==""){
-    $errorText.="<li>Telephone number is mandatory";
-  } else if (strlen($tel)>45){
-    $errorText.="<li>Telephone number is too long";
-  } else if (!eregi("^[0-9]+$",$tel)){
-    $errorText.="<li>Telephone number can only contain numbers";
-  }
-  if (strlen($fax)>45){
-    $errorText.="<li>Fax number is too long";
-  }
+    if (($result=validate($address1,"",255))!==true)
+      $errorText.="<LI>The first line of your address is $result";
   
+    if (($result=validate($address2,"",255))!==true)
+      $errorText.="<LI>The second line of your address is $result";
+  
+    if (($result=validate($postcode,"",20))!==true)
+      $errorText.="<LI>Your post code is $result";
+  
+    if (($result=validate($telephone,"phonenumber",45))!==true)
+      $errorText.="<LI>Your telephone number is $result";
+  
+    if ($fax!="" && ($result=validate($fax,"phonenumber",45))!==true)
+      $errorText.="<LI>Your fax number is $result";
+	  
   if ($errorText==""){
     $user=$_SESSION["onlineuser"];
     $user->address_1=$address1;
@@ -75,75 +59,75 @@ if (isset($_POST["register"])){
   <input type=hidden name="register" value="1">
   <table class = "registerTable">
     <tr>
-      <Th>
+      <th>
               <span class="redbar">| </span><span class="heading">Registration</span> <span class="redbar">|</span><br>
 <br>
       </th>
     </tr>
-    <TR>
-      <TD colspan=2>
+    <tr>
+      <td colspan=2>
         Before you can proceed, we need a few more details...
       </td>
     </tr>
-    <TR>
-      <TD colspan=2>
+    <tr>
+      <td colspan=2>
       <?php
         echo $errorText;
       ?>
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Address 1:
       </td>
-      <TD>
+      <td>
         <input type="text" name="address1" value="<?php echo (isset($_POST["address1"]) ? $_POST["address1"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Address 2:
       </td>
-      <TD>
+      <td>
         <input type="text" name="address2" value="<?php echo (isset($_POST["address2"]) ? $_POST["address2"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Address 3:
       </td>
-      <TD>
+      <td>
         <input type="text" name="address3" value="<?php echo (isset($_POST["address3"]) ? $_POST["address3"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Post Code:
       </td>
-      <TD>
+      <td>
         <input type="text" name="postcode" value="<?php echo (isset($_POST["postcode"]) ? $_POST["postcode"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Telephone:
       </td>
-      <TD>
+      <td>
         <input type="text" name="telephone" value="<?php echo (isset($_POST["telephone"]) ? $_POST["telephone"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         Fax:
       </td>
-      <TD>
+      <td>
         <input type="text" name="fax" value="<?php echo (isset($_POST["fax"]) ? $_POST["fax"] : ""); ?>">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
       </td>
-      <TD>
+      <td>
         <input type="submit" value="Submit">
       </td>
     </tr>
