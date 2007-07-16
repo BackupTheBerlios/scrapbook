@@ -1,23 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `news` (
-	`newsid` int(11) NOT NULL auto_increment,
-	`heading` VARCHAR(255) NOT NULL,
-	`description` TEXT NOT NULL,
-	`link` VARCHAR(255) NOT NULL,
-	`live` TINYINT NOT NULL,
-	`dt_created` BIGINT NOT NULL, PRIMARY KEY  (`newsid`));
-*/
-
-/**
-* <b>News</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=News&attributeList=array+%28%0A++0+%3D%3E+%27heading%27%2C%0A++1+%3D%3E+%27description%27%2C%0A++2+%3D%3E+%27link%27%2C%0A++3+%3D%3E+%27live%27%2C%0A++4+%3D%3E+%27dt_created%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27TEXT%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27TINYINT%27%2C%0A++4+%3D%3E+%27BIGINT%27%2C%0A%29
-*/
 class News
 {
 	var $newsId = '';
@@ -43,9 +24,14 @@ class News
 	var $live;
 	
 	/**
-	 * @var BIGINT
+	 * @var timestamp
 	 */
 	var $dt_created;
+	
+	/**
+	 * @var date
+	 */
+	var $dt_expire;
 	
 	var $pog_attribute_type = array(
 		"newsId" => array("NUMERIC", "INT"),
@@ -53,7 +39,7 @@ class News
 		"description" => array("TEXT", "TEXT"),
 		"link" => array("TEXT", "VARCHAR", "255"),
 		"live" => array("NUMERIC", "TINYINT"),
-		"dt_created" => array("NUMERIC", "BIGINT"),
+		"dt_created" => array("NUMERIC", "TIMESTAMP"),
 		);
 	var $pog_query;
 	
@@ -196,12 +182,11 @@ class News
 		}
 		else
 		{
-			$this->pog_query = "insert into `news` (`heading`, `description`, `link`, `live`, `dt_created` ) values (
+			$this->pog_query = "insert into `news` (`heading`, `description`, `link`, `live`) values (
 			'".$Database->Escape($this->heading)."', 
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
-			'".$Database->Escape($this->live)."', 
-			'".$Database->Escape($this->dt_created)."' )";
+			'".$Database->Escape($this->live)."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);
 		if ($this->newsId == "")

@@ -110,6 +110,7 @@ class Platinum_membership
 		$newObject->text = $Database->Unescape($Database->Result($i, "text"));
 		$newObject->link = $Database->Unescape($Database->Result($i, "link"));
 		$newObject->dt_created = $Database->Unescape($Database->Result($i, "dt_created"));
+		$newObject->dt_expire = $Database->Unescape($Database->Result($i, "dt_expire"));		
 		$newObject->platinum_membership_status = $Database->Result($i, "platinum_membership_status");
 		return $newObject;
 	}		
@@ -217,6 +218,7 @@ class Platinum_membership
 			`text`='".$Database->Escape($this->text)."', 
 			`link`='".$Database->Escape($this->link)."', 
 			`dt_created`='".$Database->Escape($this->dt_created)."', 
+			`dt_expire`='".$Database->Escape($this->dt_expire)."', 
 			`platinum_membership_status`='".$this->platinum_membership_status."' where `platinum_membershipid`='".$this->platinum_membershipId."'";
 		}
 		else

@@ -1,26 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `gold_membership` (
-	`gold_membershipid` int(11) NOT NULL auto_increment,
-	`onlineuser_onlineuserid` INT NOT NULL,
-	`logo` VARCHAR(255) NOT NULL,
-	`name` VARCHAR(255) NOT NULL,
-	`description` TEXT NOT NULL,
-	`link` VARCHAR(255) NOT NULL,
-	`tel` VARCHAR(45) NOT NULL,
-	`dt_created` BIGINT NOT NULL,
-	`gold_membership_status` ENUM('temp','active','disabled') NOT NULL, PRIMARY KEY  (`gold_membershipid`));
-*/
-
-/**
-* <b>Gold_membership</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=Gold_membership&attributeList=array+%28%0A++0+%3D%3E+%27onlineuser_onlineuserid%27%2C%0A++1+%3D%3E+%27logo%27%2C%0A++2+%3D%3E+%27name%27%2C%0A++3+%3D%3E+%27description%27%2C%0A++4+%3D%3E+%27link%27%2C%0A++5+%3D%3E+%27tel%27%2C%0A++6+%3D%3E+%27dt_created%27%2C%0A++7+%3D%3E+%27gold_membership_status%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27INT%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27TEXT%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++6+%3D%3E+%27BIGINT%27%2C%0A++7+%3D%3E+%27ENUM%28%5C%5C%5C%27temp%5C%5C%5C%27%2C%5C%5C%5C%27active%5C%5C%5C%27%2C%5C%5C%5C%27disabled%5C%5C%5C%27%29%27%2C%0A%29
-*/
 class Gold_membership
 {
 	var $gold_membershipId = '';
@@ -56,9 +34,14 @@ class Gold_membership
 	var $tel;
 	
 	/**
-	 * @var BIGINT
+	 * @var timestamp
 	 */
 	var $dt_created;
+	
+	/**
+	 * @var date
+	 */
+	var $dt_expire;
 	
 	/**
 	 * @var ENUM('temp','active','disabled')
@@ -73,7 +56,8 @@ class Gold_membership
 		"description" => array("TEXT", "TEXT"),
 		"link" => array("TEXT", "VARCHAR", "255"),
 		"tel" => array("TEXT", "VARCHAR", "45"),
-		"dt_created" => array("NUMERIC", "BIGINT"),
+		"dt_created" => array("NUMERIC", "TIMESTAMP"),
+		"dt_expire" => array("NUMERIC", "DATE"),
 		"gold_membership_status" => array("SET", "ENUM", "'temp','active','disabled'"),
 		);
 	var $pog_query;
@@ -116,6 +100,7 @@ class Gold_membership
 		$newObject->link = $Database->Unescape($Database->Result($i, "link"));
 		$newObject->tel = $Database->Unescape($Database->Result($i, "tel"));
 		$newObject->dt_created = $Database->Unescape($Database->Result($i, "dt_created"));
+		$newObject->dt_expire = $Database->Unescape($Database->Result($i, "dt_expire"));			
 		$newObject->gold_membership_status = $Database->Result($i, "gold_membership_status");
 		return $newObject;
 	}	
@@ -222,18 +207,19 @@ class Gold_membership
 			`link`='".$Database->Escape($this->link)."', 
 			`tel`='".$Database->Escape($this->tel)."', 
 			`dt_created`='".$Database->Escape($this->dt_created)."', 
+			`dt_expire`='".$Database->Escape($this->dt_expire)."', 			
 			`gold_membership_status`='".$this->gold_membership_status."' where `gold_membershipid`='".$this->gold_membershipId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `gold_membership` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `dt_created`, `gold_membership_status` ) values (
+			$this->pog_query = "insert into `gold_membership` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `dt_expire`, `gold_membership_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->name)."', 
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
-			'".$Database->Escape($this->dt_created)."', 
+			'".$Database->Escape(expiryDate())."', 
 			'".$this->gold_membership_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

@@ -1,27 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `franchise` (
-	`franchiseid` int(11) NOT NULL auto_increment,
-	`onlineuser_onlineuserid` INT NOT NULL,
-	`logo` VARCHAR(255) NOT NULL,
-	`town` VARCHAR(255) NOT NULL,
-	`name` VARCHAR(255) NOT NULL,
-	`description` TEXT NOT NULL,
-	`link` VARCHAR(255) NOT NULL,
-	`tel` VARCHAR(255) NOT NULL,
-	`dt_created` BIGINT NOT NULL,
-	`franchise_status` ENUM('temp','active','disabled') NOT NULL, PRIMARY KEY  (`franchiseid`));
-*/
-
-/**
-* <b>Franchise</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=Franchise&attributeList=array+%28%0A++0+%3D%3E+%27onlineuser_onlineuserid%27%2C%0A++1+%3D%3E+%27logo%27%2C%0A++2+%3D%3E+%27town%27%2C%0A++3+%3D%3E+%27name%27%2C%0A++4+%3D%3E+%27description%27%2C%0A++5+%3D%3E+%27link%27%2C%0A++6+%3D%3E+%27tel%27%2C%0A++7+%3D%3E+%27dt_created%27%2C%0A++8+%3D%3E+%27franchise_status%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27INT%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++4+%3D%3E+%27TEXT%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++7+%3D%3E+%27BIGINT%27%2C%0A++8+%3D%3E+%27ENUM%28%5C%5C%5C%27temp%5C%5C%5C%27%2C%5C%5C%5C%27active%5C%5C%5C%27%2C%5C%5C%5C%27disabled%5C%5C%5C%27%29%27%2C%0A%29
-*/
 class Franchise
 {
 	var $franchiseId = '';
@@ -62,9 +39,14 @@ class Franchise
 	var $tel;
 	
 	/**
-	 * @var BIGINT
+	 * @var timestamp
 	 */
 	var $dt_created;
+	
+	/**
+	 * @var date
+	 */
+	var $dt_expire;
 	
 	/**
 	 * @var ENUM('temp','active','disabled')
@@ -80,7 +62,8 @@ class Franchise
 		"description" => array("TEXT", "TEXT"),
 		"link" => array("TEXT", "VARCHAR", "255"),
 		"tel" => array("TEXT", "VARCHAR", "255"),
-		"dt_created" => array("NUMERIC", "BIGINT"),
+		"dt_created" => array("NUMERIC", "TIMESTAMP"),
+		"dt_expire" => array("NUMERIC", "DATE"),
 		"franchise_status" => array("SET", "ENUM", "'temp','active','disabled'"),
 		);
 	var $pog_query;
@@ -125,6 +108,7 @@ class Franchise
 		$newObject->link = $Database->Unescape($Database->Result($i, "link"));
 		$newObject->tel = $Database->Unescape($Database->Result($i, "tel"));
 		$newObject->dt_created = $Database->Unescape($Database->Result($i, "dt_created"));
+		$newObject->dt_expire = $Database->Unescape($Database->Result($i, "dt_expire"));			
 		$newObject->franchise_status = $Database->Result($i, "franchise_status");
 		return $newObject;
 
@@ -234,12 +218,13 @@ class Franchise
 			`description`='".$Database->Escape($this->description)."', 
 			`link`='".$Database->Escape($this->link)."', 
 			`tel`='".$Database->Escape($this->tel)."', 
-			`dt_created`='".$Database->Escape($this->dt_created)."', 
+			`dt_created`='".$Database->Escape($this->dt_created)."',
+			`dt_expire`='".$Database->Escape($this->dt_expire)."', 			 
 			`franchise_status`='".$this->franchise_status."' where `franchiseid`='".$this->franchiseId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `franchise` (`onlineuser_onlineuserid`, `logo`, `town`, `name`, `description`, `link`, `tel`, `dt_created`, `franchise_status` ) values (
+			$this->pog_query = "insert into `franchise` (`onlineuser_onlineuserid`, `logo`, `town`, `name`, `description`, `link`, `tel`, `dt_expire`, `franchise_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->town)."', 
@@ -247,7 +232,7 @@ class Franchise
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
-			'".$Database->Escape($this->dt_created)."', 
+			'".$Database->Escape(expiryDate())."', 
 			'".$this->franchise_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

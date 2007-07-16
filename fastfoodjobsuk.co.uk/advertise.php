@@ -22,7 +22,7 @@
 <br></td>
 </tr>
 <tr>
-<td width="168"><a href="admin_platinum_create.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="platinum_membership_form.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0" /></a></td>
 <td width="380" valign="top" class="contact"><span class="redhead">Platinum*	<br>
 </span>Company Logo On <b>All pages*</b> including Home Page<br>
 
@@ -31,7 +31,7 @@ linked to your Personal Company web page including<br>
 2 images, 370 words, logo, contact details, web site and e-mail links. <b>NO REFFERAL FEE &#150; NO COMPLICATED FORMS.</b></td>
 </tr>
 <tr>
-<td width="168"><a href="admin_gold_create.php"><img src="images/ads_33.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="gold_membership_form.php"><img src="images/ads_33.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Gold	<br>
 </span>
 Company Logo linked to your web site with 25 words,<br>
@@ -51,7 +51,7 @@ displayed on UK Food Franchises Page.</td>
 </span><b>Monthly</b> Single Job Advert<br></td>
 </tr>
 <tr>
-<td width="168"><a href="admin_supplier_create.php"><img src="images/ads_36.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="supplier_form.php"><img src="images/ads_36.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Suppliers<br>
 </span>Company Logo linked to your web site with 25 words <br>
 

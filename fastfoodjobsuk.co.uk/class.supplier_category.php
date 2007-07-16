@@ -1,19 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `supplier_category` (
-	`supplier_category_id` int(11) NOT NULL auto_increment,
-	`name` VARCHAR(45) NOT NULL, PRIMARY KEY  (`supplier_category_id`));
-*/
-
-/**
-* <b>Supplier_category</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=Supplier_category&attributeList=array+%28%0A++0+%3D%3E+%27name%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%2845%29%27%2C%0A%29
-*/
 class Supplier_category
 {
 	var $supplier_categoryId = '';

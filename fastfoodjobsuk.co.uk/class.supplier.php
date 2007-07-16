@@ -1,27 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `supplier` (
-	`supplierid` int(11) NOT NULL auto_increment,
-	`onlineuser_onlineuserid` INT NOT NULL,
-	`supplier_category_id` INT NOT NULL,
-	`name` VARCHAR(45) NOT NULL,
-	`logo` VARCHAR(255) NOT NULL,
-	`description` TEXT NOT NULL,
-	`link` VARCHAR(255) NOT NULL,
-	`tel` VARCHAR(45) NOT NULL,
-	`dt_created` BIGINT NOT NULL,
-	`supplier_status` ENUM('temp','active','disabled') NOT NULL, PRIMARY KEY  (`supplierid`));
-*/
-
-/**
-* <b>Supplier</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=Supplier&attributeList=array+%28%0A++0+%3D%3E+%27onlineuser_onlineuserid%27%2C%0A++1+%3D%3E+%27supplier_category_id%27%2C%0A++2+%3D%3E+%27name%27%2C%0A++3+%3D%3E+%27logo%27%2C%0A++4+%3D%3E+%27description%27%2C%0A++5+%3D%3E+%27link%27%2C%0A++6+%3D%3E+%27tel%27%2C%0A++7+%3D%3E+%27dt_created%27%2C%0A++8+%3D%3E+%27supplier_status%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27INT%27%2C%0A++1+%3D%3E+%27INT%27%2C%0A++2+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++3+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++4+%3D%3E+%27TEXT%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++7+%3D%3E+%27BIGINT%27%2C%0A++8+%3D%3E+%27ENUM%28%5C%5C%5C%27temp%5C%5C%5C%27%2C%5C%5C%5C%27active%5C%5C%5C%27%2C%5C%5C%5C%27disabled%5C%5C%5C%27%29%27%2C%0A%29
-*/
 class Supplier
 {
 	var $supplierId = '';
@@ -62,9 +39,14 @@ class Supplier
 	var $tel;
 	
 	/**
-	 * @var BIGINT
+	 * @var timestamp
 	 */
 	var $dt_created;
+	
+	/**
+	 * @var date
+	 */
+	var $dt_expire;
 	
 	/**
 	 * @var ENUM('temp','active','disabled')
@@ -80,7 +62,8 @@ class Supplier
 		"description" => array("TEXT", "TEXT"),
 		"link" => array("TEXT", "VARCHAR", "255"),
 		"tel" => array("TEXT", "VARCHAR", "45"),
-		"dt_created" => array("NUMERIC", "BIGINT"),
+		"dt_created" => array("NUMERIC", "TIMESTAMP"),
+		"dt_expire" => array("NUMERIC", "DATE"),
 		"supplier_status" => array("SET", "ENUM", "'temp','active','disabled'"),
 		);
 	var $pog_query;
@@ -126,6 +109,7 @@ class Supplier
 		$newObject->link = $Database->Unescape($Database->Result($i, "link"));
 		$newObject->tel = $Database->Unescape($Database->Result($i, "tel"));
 		$newObject->dt_created = $Database->Unescape($Database->Result($i, "dt_created"));
+		$newObject->dt_expire = $Database->Unescape($Database->Result($i, "dt_expire"));		
 		$newObject->supplier_status = $Database->Result($i, "supplier_status");
 		return $newObject;
 	}		
@@ -232,11 +216,12 @@ class Supplier
 			`link`='".$Database->Escape($this->link)."', 
 			`tel`='".$Database->Escape($this->tel)."', 
 			`dt_created`='".$Database->Escape($this->dt_created)."', 
+			`dt_expire`='".$Database->Escape($this->dt_expire)."', 
 			`supplier_status`='".$this->supplier_status."' where `supplierid`='".$this->supplierId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `supplier` (`onlineuser_onlineuserid`, `supplier_category_id`, `name`, `logo`, `description`, `link`, `tel`, `dt_created`, `supplier_status` ) values (
+			$this->pog_query = "insert into `supplier` (`onlineuser_onlineuserid`, `supplier_category_id`, `name`, `logo`, `description`, `link`, `tel`, `dt_expire`, `supplier_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->supplier_category_id)."', 
 			'".$Database->Escape($this->name)."', 
@@ -244,7 +229,7 @@ class Supplier
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
-			'".$Database->Escape($this->dt_created)."', 
+			'".$Database->Escape(expiryDate())."', 			 
 			'".$this->supplier_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

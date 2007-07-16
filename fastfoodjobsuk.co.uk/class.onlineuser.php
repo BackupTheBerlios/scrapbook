@@ -1,30 +1,4 @@
 <?php
-/*
-	This SQL query will create the table to store your object.
-
-	CREATE TABLE `onlineuser` (
-	`onlineuserid` int(11) NOT NULL auto_increment,
-	`email` VARCHAR(45) NOT NULL,
-	`first_name` VARCHAR(45) NOT NULL,
-	`last_name` VARCHAR(45) NOT NULL,
-	`pass_word` VARCHAR(45) NOT NULL,
-	`address_1` VARCHAR(255) NOT NULL,
-	`address_2` VARCHAR(255) NOT NULL,
-	`address_3` VARCHAR(255) NOT NULL,
-	`postcode` VARCHAR(20) NOT NULL,
-	`tel` VARCHAR(45) NOT NULL,
-	`fax` VARCHAR(45) NOT NULL,
-	`dt_created` BIGINT NOT NULL,
-	`user_status` ENUM('temp','active','disabled') NOT NULL, PRIMARY KEY  (`onlineuserid`));
-*/
-
-/**
-* <b>OnlineUser</b> class with integrated CRUD methods.
-* @author Php Object Generator
-* @version POG 2.6.3 / PHP4
-* @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php4&wrapper=pog&objectName=OnlineUser&attributeList=array+%28%0A++0+%3D%3E+%27email%27%2C%0A++1+%3D%3E+%27first_name%27%2C%0A++2+%3D%3E+%27last_name%27%2C%0A++3+%3D%3E+%27pass_word%27%2C%0A++4+%3D%3E+%27address_1%27%2C%0A++5+%3D%3E+%27address_2%27%2C%0A++6+%3D%3E+%27address_3%27%2C%0A++7+%3D%3E+%27postcode%27%2C%0A++8+%3D%3E+%27tel%27%2C%0A++9+%3D%3E+%27fax%27%2C%0A++10+%3D%3E+%27dt_created%27%2C%0A++11+%3D%3E+%27user_status%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++1+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++2+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++3+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++7+%3D%3E+%27VARCHAR%2820%29%27%2C%0A++8+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++9+%3D%3E+%27VARCHAR%2845%29%27%2C%0A++10+%3D%3E+%27BIGINT%27%2C%0A++11+%3D%3E+%27ENUM%28%5C%5C%5C%27temp%5C%5C%5C%27%2C%5C%5C%5C%27active%5C%5C%5C%27%2C%5C%5C%5C%27disabled%5C%5C%5C%27%29%27%2C%0A%29
-*/
 class OnlineUser
 {
 	var $onlineuserId = '';
@@ -80,9 +54,10 @@ class OnlineUser
 	var $fax;
 	
 	/**
-	 * @var BIGINT
+	 * @var timestamp
 	 */
 	var $dt_created;
+
 	
 	/**
 	 * @var ENUM('temp','active','disabled')
@@ -101,7 +76,7 @@ class OnlineUser
 		"postcode" => array("TEXT", "VARCHAR", "20"),
 		"tel" => array("TEXT", "VARCHAR", "45"),
 		"fax" => array("TEXT", "VARCHAR", "45"),
-		"dt_created" => array("NUMERIC", "BIGINT"),
+		"dt_created" => array("NUMERIC", "TIMESTAMP"),
 		"user_status" => array("SET", "ENUM", "'temp','active','disabled'"),
 		);
 	var $pog_query;
@@ -270,7 +245,7 @@ class OnlineUser
 		}
 		else
 		{
-			$this->pog_query = "insert into `onlineuser` (`email`, `first_name`, `last_name`, `pass_word`, `address_1`, `address_2`, `address_3`, `postcode`, `tel`, `fax`, `dt_created`, `user_status` ) values (
+			$this->pog_query = "insert into `onlineuser` (`email`, `first_name`, `last_name`, `pass_word`, `address_1`, `address_2`, `address_3`, `postcode`, `tel`, `fax`, `user_status` ) values (
 			'".$Database->Escape($this->email)."', 
 			'".$Database->Escape($this->first_name)."', 
 			'".$Database->Escape($this->last_name)."', 
@@ -280,8 +255,7 @@ class OnlineUser
 			'".$Database->Escape($this->address_3)."', 
 			'".$Database->Escape($this->postcode)."', 
 			'".$Database->Escape($this->tel)."', 
-			'".$Database->Escape($this->fax)."', 
-			'".$Database->Escape($this->dt_created)."', 
+			'".$Database->Escape($this->fax)."',  
 			'".$this->user_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

@@ -4,58 +4,60 @@ require("common_super.php");
 //checkForAddress();
 $errorText="";
 
-// when modifying a profile, you set the session parameter [modify][object] with the object data to pre-populate the fields
-// you also set [modify][stage]=1 which means the fields will be pre-populated with data from the session variables.
-// you only want to do this once. Next time, stage is set to 2 because we want to pre-populate the fields
-// with data from the POST
+$franchise=new Franchise();
+$id=intval($_GET["id"]);
+if ($id==0){
+	$id=intval($_POST["id"]);
+}
+if ($id>0){	
+	$franchise=$franchise->Get($id);
+	if ($franchise != null){
+		//check to see user has access to modify this object	
+		$user->canAccess($franchise);
+	}
+	else //fake id
+	{
+		exit();
+	}	
+} else { //new object
+	$franchise->onlineuser_onlineuserid = $user->onlineuserId;
+	
+	//default link
+	$franchise->link="http://";	
 
-if($_SESSION["modify"]["stage"]==1){
-  $franchise=$_SESSION["modify"]["object"];
-  
-  if ($user->onlineuserId!=$franchise->onlineuser_onlineuserid && !isSuperUser(false)){
-    // at this point the current user ID does not match the one on the 
-    // the advert AND the super user is not performing this action so
-    // something is suspect!
-    exit;
-  }
-  
-  $currentFilename=$franchise->logo;
-  $county=$franchise->town;
-  $name=$franchise->name;
-  $description=$franchise->description;
-  $link=$franchise->link;
-  $tel=$franchise->tel;
-  $_SESSION["modify"]["stage"]=2;
-} else {
-  $currentFilename=$_POST["currentFilename"];
-  $county=$_POST["county"];
-  $name=$_POST["name"];
-  $description=$_POST["description"];
-  $link=$_POST["link"];
-  $tel=$_POST["tel"];
+	$franchise->franchise_status='active';
 }
 
-if (isset($_POST["create"])){
+
+//check if form is being submitted
+if ((bool)$_POST["submitting"])
+{
+  $franchise->logo=$_POST["currentFilename"];
+  $franchise->county=$_POST["county"];
+  $franchise->name=$_POST["name"];
+  $franchise->description=$_POST["description"];
+  $franchise->link=$_POST["link"];
+  $franchise->tel=$_POST["tel"];
   
   $tempFilename=$_FILES["logo"]["tmp_name"];
   if ($tempFilename!=""){
-    $currentFilename=generateFilename($user->onlineuserId,$_FILES["logo"]["name"]);
-    move_uploaded_file($tempFilename,"logos/$currentFilename");
+    $franchise->logo=generateFilename($user->onlineuserId,$_FILES["logo"]["name"]);
+    move_uploaded_file($tempFilename,"logos/$franchise->logo");
   }
 
-  if (($result=validate($county,"",255))!==true){
+  if (($result=validate($franchise->county,"",255))!==true){
     $errorText.="<li>The chosen county is $result";
   }
-  if (($result=validate($name,"",255))!==true){
+  if (($result=validate($franchise->name,"",255))!==true){
     $errorText.="<li>The name is $result";
   }
-  if (($result=validate($description,"",5000))!==true){
+  if (($result=validate($franchise->description,"",5000))!==true){
     $errorText.="<li>The description is $result";
   }
-  if (($result=validate($tel,"phonenumber",45))!==true){
+  if (($result=validate($franchise->tel,"phonenumber",45))!==true){
     $errorText.="<li>The telephone number is $result";
   }
-  if (($result=validate($link,"",255))!==true){
+  if (($result=validate($franchise->link,"",255))!==true){
     $errorText.="<li>Website URL is $result";
   }
 
@@ -64,14 +66,6 @@ if (isset($_POST["create"])){
       mkdir("logos");
     }
     
-    $franchise=new Franchise($user->onlineuserId, $currentFilename, $county, $name, $description, $link, $tel, date("U"),"active");
-
-    if ($_SESSION["modify"]["stage"]==2){
-      $obj=$_SESSION["modify"]["object"];
-      $franchise->franchiseId=$obj->franchiseId;
-    }
-    unset($_SESSION["modify"]);
-
     $franchise->Save();
     $errorText="<P><B>Franchise has successfully been saved</b></p>";
     unset($_POST);
@@ -82,8 +76,6 @@ if (isset($_POST["create"])){
 }
 require("top.php");
 ?>
-<link rel=stylesheet href="css/admin_create.css" type="text/css">
-<link rel=stylesheet href="css/admin_franchise_create.css" type="text/css">
 <table border="0" cellspacing="0" cellpadding="0">
  <tr>
   <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
@@ -100,54 +92,54 @@ require("top.php");
   </td>
  </tr>
 </table>
-<form action="admin_franchise_create.php" method="POST" enctype="multipart/form-data" >
-<input type=hidden name="create" value="1">
-
+<form action="franchise_form.php" method="POST" enctype="multipart/form-data" >
+<input type=hidden name="id" value="<?php echo $franchise->franchiseId; ?>">
+<input type=hidden name="submitting" value="true">
 
 <table id="table_create">
-  <TR>
-    <TD colspan=2 id="cell_error_text">
+  <tr>
+    <td colspan=2 id="cell_error_text">
     <?php
       echo $errorText;
     ?>
     </td>
   </tr>
   <?php
-    if ($currentFilename!=""){
+    if ($franchise->logo!=""){
       echo "<TR>";
       echo "<TD>";
       echo "Current Logo:";
       echo "</td>";
       echo "<TD>";
-      echo "<img src=\"logos/$currentFilename\" width=\"$logoWidth\" height=\"$logoHeight\">";
+      echo "<img src=\"logos/$franchise->logo\" width=\"$logoWidth\" height=\"$logoHeight\">";
       echo "</td>";
       echo "</tr>";
     }
   ?>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Upload Logo:
     </td>
-    <TD>
+    <td>
       <input type="file" id="file" name="logo">
-      <input type="hidden" name="currentFilename" value="<?php echo $currentFilename; ?>">
+      <input type="hidden" name="currentFilename" value="<?php echo $franchise->logo; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Town or County:
     </td>
-    <TD>
+    <td>
       <select name="county" id="county">
       <?php
-        if (isset($county)){
+        if (isset($franchise->county)){
           $f=fopen("county_list.htm","r");
           while (!feof($f)){
             $d=fgets($f);
             $start=strpos($d,"\"")+1;
             $end=strrpos($d,"\"");
             $val=substr($d,$start,$end-$start);
-            if ($val==$county){
+            if ($val==$franchise->county){
               $newD=substr($d,0,$end+1);
               $newD.=" SELECTED";
               $newD.=substr($d,$end+1);
@@ -163,44 +155,44 @@ require("top.php");
       </select>
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Name:
     </td>
-    <TD>
-      <input type="text" id="name" name="name" value="<?php echo $name; ?>">
+    <td>
+      <input type="text" id="name" name="name" value="<?php echo $franchise->name; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Description:
     </td>
-    <TD>
+    <td>
       <textarea name="description" id="description"><?php
-        echo $description;
+        echo $franchise->description;
       ?></textarea>
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Telephone Number:
     </td>
-    <TD>
-      <input type="text" id="tel" name="tel" value="<?php echo $tel; ?>">
+    <td>
+      <input type="text" id="tel" name="tel" value="<?php echo $franchise->tel; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Link:
     </td>
-    <TD>
-      <input type="text" id="link" name="link" value="<?php echo (isset($link) ? $link : "http://"); ?>">
+    <td>
+      <input type="text" id="link" name="link" value="<?php echo $franchise->link ; ?>">
     </td>
   </tr>
-  <TR>
-    <TD>
+  <tr>
+    <td>
     </td>
-    <TD>
+    <td>
       <input type="submit" id="submit" value="Submit">
       <?php
         if (isset($_SESSION["cancel"])){
