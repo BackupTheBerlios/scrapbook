@@ -79,8 +79,11 @@ require("top.php");
 
 <link rel="stylesheet" href="css/account.css" type="text/css">
 <table class="paddingforinfocell"><tr><td>
-<P>
-  <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">User Profile</a>
+<p>
+  <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">Update Profile</a>
+</p>
+<p>
+  <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
 </p>
 
 <?php

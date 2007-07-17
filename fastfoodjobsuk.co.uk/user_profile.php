@@ -153,10 +153,9 @@ require("top.php");
     <td>
     </td>
     <td>
-      <input type="button" value="Cancel" onclick="window.location='account.php'">
+      <input type="submit" value="Update" />
       &nbsp;&nbsp;&nbsp;
-      <input type="submit" value="Update">
-    </td>
+      <input type="button" value="Cancel" onclick="window.location='account.php'" /></td>
   </tr>
   
 </table>

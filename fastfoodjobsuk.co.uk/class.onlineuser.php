@@ -225,14 +225,15 @@ class OnlineUser
 		
 		if ($Database->Rows() > 0) //update
 		{
-			$password=$this->pass_word;
+		
+			$passwordSql="'$this->pass_word'";
 			if ($updatePassword)
-				$password=PASSWORD($password);
+				$passwordSql="PASSWORD('".$this->pass_word."')";
 			$this->pog_query = "update `onlineuser` set 
 			`email`='".$Database->Escape($this->email)."', 
 			`first_name`='".$Database->Escape($this->first_name)."', 
-			`last_name`='".$Database->Escape($this->last_name)."', 
-			`pass_word`='".$password."', 
+			`last_name`='".$Database->Escape($this->last_name)."',`pass_word`=".
+			 $passwordSql.", 
 			`address_1`='".$Database->Escape($this->address_1)."', 
 			`address_2`='".$Database->Escape($this->address_2)."', 
 			`address_3`='".$Database->Escape($this->address_3)."', 
