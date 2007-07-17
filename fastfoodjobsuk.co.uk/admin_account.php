@@ -4,10 +4,11 @@ require("common_super.php");
 $db=new DatabaseConnection();
 $firstname=$_POST["firstname"];
 $lastname=$_POST["lastname"];
+$email=$_POST["email"];
 $matches=false;
 $resultArray=array();
 
-if ($firstname!="" || $lastname!=""){
+if ($firstname!="" || $lastname!=""||$email!=""){
   $where="";
   $where=($firstname!="" ? "first_name like '%".$db->Escape($firstname)."%'" : "");
   if ($lastname!=""){
@@ -16,6 +17,12 @@ if ($firstname!="" || $lastname!=""){
     }
     $where.="last_name like '%".$db->Escape($lastname)."%'";
   }
+  if ($email!=""){
+    if ($where!=""){
+      $where.=" AND ";
+    }
+    $where.="email like '%".$db->Escape($email)."%'";
+  }  
   $result=$db->Query("SELECT onlineuserId, first_name, last_name, email FROM onlineuser WHERE $where AND onlineuserId!='1'");
   if ( ($rows=$db->Rows()) > 0){
     $matches=true;
@@ -27,7 +34,7 @@ if ($firstname!="" || $lastname!=""){
 
 require("top.php");
 ?>
-<BR>
+<br>
 <table id="table">
 <form action="admin_account.php" method="POST">
   <tr>
@@ -55,6 +62,15 @@ require("top.php");
   
   <tr>
     <td>
+      Eamil:
+    </td>
+    <td>
+      <input name="email" id="email" value="<?php echo $email; ?>">
+    </td>
+  </tr>  
+  
+  <tr>
+    <td>
     </td>
     <td>
       <input type=submit value="Search">
@@ -63,17 +79,17 @@ require("top.php");
   </form>
   
   <tr>
-    <TD colspan=2>
-      <BR><BR>
+    <td colspan=2>
+      <br><br>
     </td>
   </tr>
   
   <form action="account.php" method="POST">
-  <TR>
-    <TD>
+  <tr>
+    <td>
       Log in as which user?
-    </TD>
-    <TD>
+    </td>
+    <td>
       <select name="whichUser" size=8>
       <option value="1">Super User - super@fastfoodjobsuk.co.uk</option>
       <?php
@@ -88,9 +104,9 @@ require("top.php");
     </td>
   </tr>
   <tr>
-    <Td>
+    <td>
     </td>
-    <Td>
+    <td>
       <input type=submit value="OK">
     </td>
   </tr>
