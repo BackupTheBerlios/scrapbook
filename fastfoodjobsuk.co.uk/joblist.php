@@ -331,7 +331,7 @@ if ($nTotalRecs > 0) {
 	<!-- Table header -->
 	<tr>
     <td valign="top"><span style="font-weight: bold">
-        position
+        Position
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
@@ -339,23 +339,23 @@ if ($nTotalRecs > 0) {
                 <?php } ?>    
                 </span></td>
     <td valign="top"><span style="font-weight: bold">
-        overview
+        Job descriptio
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_overview"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_overview"] == "DESC") { ?>
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
                 </span></td>
-    <td valign="top"><span style="font-weight: bold">
-        salary
+    <td valign="top">
+        <span style="font-weight: bold">Salary</span> (GBP pa)
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
-                </span></td>
+                </td>
     <td valign="top"><span style="font-weight: bold">
-        location
+        Location
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
@@ -363,7 +363,7 @@ if ($nTotalRecs > 0) {
                 <?php } ?>    
                 </span></td>
     <td valign="top"><span style="font-weight: bold">
-        company
+        Recruiter / Company
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_company"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
