@@ -26,6 +26,7 @@ if (($sAction == "") || ((is_null($sAction)))) {
 	$x_company = @$_POST["x_company"];
 	$x_profile = @$_POST["x_profile"];
 	$x_contact_email = @$_POST["x_contact_email"];
+	$x_link = @$_POST["x_link"];
 	$x_job_status = @$_POST["x_job_status"];
 }
 $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
@@ -141,9 +142,9 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	 <td colspan="2"><h3>Financial Info:</h3></td>
 	 </tr>
 	<tr>
-		<td><span style="font-weight: bold">Salary</span> (GBP pa)</td>
-		<td>
-<input type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>">		</td>
+		<td><span style="font-weight: bold">Yearly Salary</span></td>
+		<td><input type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>"> 
+		    GBP		</td>
 	</tr>
 	<tr>
 		<td><span style="font-weight: bold">Bonus</span></td>
@@ -204,6 +205,13 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 		<td>
 <input type="text" name="x_contact_email" id="x_contact_email" value="<?php echo htmlspecialchars(@$x_contact_email) ?>"></td>
 	</tr>
+    <?php if (isSuperUser(false)){ ?> 
+	<tr>
+		<td bgcolor="#FF9900"><span style="font-weight: bold">External Job Link (Super user only) </span></td>
+		<td bgcolor="#FF9900">
+<input name="x_link" type="text" id="x_link" value="<?php echo htmlspecialchars(@$x_link) ?>" size="45"></td>
+	</tr>    
+    <?php } ?> 
 <?php $x_job_status = "temp" // Set default value ?>
 <input type="hidden" id="x_job_status" name="x_job_status" value="<?php echo @$x_job_status; ?>">
 </table>
@@ -245,12 +253,13 @@ function AddData($conn)
 	$fieldList["`onlineuser_onlineuserid`"] = $user->onlineuserId;
 	// Field dt_expire
 	$fieldList["`dt_expire`"] = " '".expiryDate()."'";
-	// Field job_status
+	// Field job_status, free for now
 	$fieldList["`job_status`"] = " 'active'";		
 	
 
 	// Field position
-	$theValue = ($GLOBALS["x_position"] != "") ? intval($GLOBALS["x_position"]) : "NULL";
+	$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_position"]) : $GLOBALS["x_position"]; 	
+	$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";	
 	$fieldList["`position`"] = $theValue;
 
 	// Field overview
@@ -263,7 +272,8 @@ function AddData($conn)
 	$fieldList["`salary`"] = $theValue;
 
 	// Field bonus
-	$theValue = ($GLOBALS["x_bonus"] != "") ? intval($GLOBALS["x_bonus"]) : "NULL";
+	$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_bonus"]) : $GLOBALS["x_bonus"]; 
+	$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";	
 	$fieldList["`bonus`"] = $theValue;
 
 	// Field benifits
@@ -290,6 +300,11 @@ function AddData($conn)
 	$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_contact_email"]) : $GLOBALS["x_contact_email"]; 
 	$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
 	$fieldList["`contact_email`"] = $theValue;
+	
+	// Field link
+	$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_link"]) : $GLOBALS["x_link"]; 
+	$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+	$fieldList["`link`"] = $theValue;	
 
 
 	// Inserting event

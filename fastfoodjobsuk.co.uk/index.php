@@ -22,7 +22,7 @@ require("top.php");
         <map name="mid_20c2838cbf" id="mid_20c2838cbf">
           <area shape="rect" coords="310,6,443,125" href="job_post.php" alt="" />
           <area shape="rect" coords="163,9,296,120" href="cv_post.php" alt="" />
-          <area shape="rect" coords="23,8,148,118" href="joblist.php" alt="" />
+          <area shape="rect" coords="23,8,148,118" href="job_search.php" alt="" />
       </map></td>
   </tr>
   <tr>

@@ -41,9 +41,13 @@ switch ($sAction)
 <?php include ("top.php") ?>
 <script type="text/javascript" src="ewp.js"></script>
 <p>View Job<br><br>
-<a href="joblist.php">Back to List</a>&nbsp;
-<a href="<?php if ($x_jobid <> "") {echo "jobedit.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a>&nbsp;
-<a href="<?php if ($x_jobid <> "") {echo "jobdelete.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Delete</a>&nbsp;</p>
+<a href="joblist.php">Back to List</a>
+<?php if (isSuperUser(false)){ ?>   
+    &nbsp;
+    <a href="<?php if ($x_jobid <> "") {echo "jobedit.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a>  
+	&nbsp;  
+    <a href="<?php if ($x_jobid <> "") {echo "jobdelete.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Delete</a>&nbsp;</p>
+<?php } ?>
 <p>
 <form>
 <table>
@@ -57,82 +61,23 @@ switch ($sAction)
 	<tr>
 	    <td><span style="font-weight: bold">Position</span></td>
 		    <td>
-    <?php
-switch ($x_position) {
-	case "1":
-		$sTmp = "Sales & Marketing";
-		break;
-	case "2":
-		$sTmp = "Head Office";
-		break;
-	case "3":
-		$sTmp = "Training";
-		break;
-	case "4":
-		$sTmp = "Field Support";
-		break;
-	case "5":
-		$sTmp = "Operational / Regional Manager";
-		break;
-	case "6":
-		$sTmp = "Area Manager";
-		break;
-	case "7":
-		$sTmp = "General Manager";
-		break;
-	case "8":
-		$sTmp = "Manager";
-		break;
-	case "9":
-		$sTmp = "Assistant Manager";
-		break;
-	case "10":
-		$sTmp = "Supervisor";
-		break;
-	case "11":
-		$sTmp = "Trainee Manager";
-		break;
-	case "12":
-		$sTmp = "Driver";
-		break;
-	case "13":
-		$sTmp = "Kitchen Manager";
-		break;
-	case "14":
-		$sTmp = "Team Leader";
-		break;
-	case "15":
-		$sTmp = "Chef / Cook";
-		break;
-	case "16":
-		$sTmp = "Kitchen Staff";
-		break;
-	case "17":
-		$sTmp = "Waiting / Counter Operative";
-		break;
-	default:
-		$sTmp = "";
-}
-$ox_position = $x_position; // Backup original value
-$x_position = $sTmp;
-?>
     <?php echo $x_position; ?>
-    <?php $x_position = $ox_position; // Restore original value ?>            </td>
+     </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Overview</span></td>
+	    <td><span style="font-weight: bold">Job description</span></td>
 		    <td>
             <?php echo str_replace(chr(10), "<br>", $x_overview); ?>            </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Salary(GBP pa)</span></td>
+	    <td><span style="font-weight: bold">Yearly Salary</span></td>
 		    <td>
-            <?php echo $x_salary; ?>            </td>
+            &pound;<?php echo $x_salary; ?>            </td>
 	    </tr>
 	<tr>
 	    <td><span style="font-weight: bold">Bonus</span></td>
 		    <td>
-            <?php echo $x_bonus; ?>            </td>
+            <?php echo $x_bonus; ?>  </td>
 	    </tr>
 	<tr>
 	    <td><span style="font-weight: bold">Benifits</span></td>
@@ -142,25 +87,8 @@ $x_position = $sTmp;
 	<tr>
 	    <td><span style="font-weight: bold">Location</span></td>
 		    <td>
-    <?php
-switch ($x_location) {
-	case "0":
-		$sTmp = "all";
-		break;
-	case "1":
-		$sTmp = "kent";
-		break;
-	case "2":
-		$sTmp = "london";
-		break;
-	default:
-		$sTmp = "";
-}
-$ox_location = $x_location; // Backup original value
-$x_location = $sTmp;
-?>
     <?php echo $x_location; ?>
-    <?php $x_location = $ox_location; // Restore original value ?>            </td>
+	 </td>
 	    </tr>
 	<tr>
         <td><span style="font-weight: bold">Date Posted</span></td>
@@ -183,13 +111,13 @@ $x_location = $sTmp;
 	    </tr>
         <?php if (isSuperUser(false)){ ?> 
 			<tr>
-	    		<td><span style="font-weight: bold">dt expire</span></td>
+	    		<td><span style="font-weight: bold">Expiry Date</span></td>
                 <td>
                     <?php echo FormatDateTime($x_dt_expire,5); ?>            
                 </td>
 	    	</tr>
 			<tr>
-	    		<td><span style="font-weight: bold">job status</span></td>
+	    		<td><span style="font-weight: bold">Job Status</span></td>
 		    	<td>
             		<?php echo $x_job_status; ?>
                 </td>

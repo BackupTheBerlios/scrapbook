@@ -32,10 +32,8 @@ SetUpDisplayRecs();
 
 // Open connection to the database
 $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
-
-// Handle reset command
+//handle reset (get all)
 ResetCmd();
-
 // Get search criteria for Advanced Search
 SetUpAdvancedSearch();
 
@@ -133,93 +131,9 @@ if ($nDisplayRecs <= 0) { // Display all records
 $nStartRec = 1;
 SetUpStartRec(); // Set up start record position
 ?>
-<p>Job List</p>
-<form id="fjoblistsrch" name="fjoblistsrch" action="joblist.php"  onsubmit="return EW_checkMyForm2(this);" >
-<input type="hidden" name="a_search" value="E">
-<table>
-	<tr>
-	    <td>position</td>
-		    <td>&nbsp;=		        <input type="hidden" name="z_position" value="=,,"></td>
-		    <td>
-		        <table border="0" cellspacing="0" cellpadding="0"><tr>
-		            <td> <select id='x_position' name='x_position'>
-            <option value="all">All</option>
-                  <?php
-        if (isset($x_position)){
-          $f=fopen("position_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_position){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("position_list.htm");
-        }
-      ?></select></td>
-			    </tr></table>		    </td>
-	    </tr>
-	<tr>
-	    <td>salary</td>
-		    <td>&nbsp;between		        <input type="hidden" name="z_salary" value="BETWEEN,,"></td>
-		    <td>
-		        <table border="0" cellspacing="0" cellpadding="0"><tr>
-		            <td>                        <input type="text" name="x_salary" id="x_salary" size="30" value="<?php echo htmlspecialchars(@$x_salary) ?>">    </td>
-				    <td>and
-				        <input type="hidden" name="w_salary" value="AND,,"></td>
-				    <td>                        <input type="text" name="y_salary" id="y_salary" size="30" value="<?php echo htmlspecialchars(@$y_salary) ?>">    </td>
-			    </tr></table>		    </td>
-	    </tr>
-	<tr>
-	    <td>location</td>
-		    <td>&nbsp;=		        <input type="hidden" name="z_location" value="=,','"></td>
-		    <td>
-		        <table border="0" cellspacing="0" cellpadding="0"><tr>
-		            <td><select d='x_location' name='x_location'>
-            <option value='all'>All</option>
-      <?php
-        if (isset($x_location)){
-          $f=fopen("county_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_location){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("county_list.htm");
-        }
-      ?>
-      </select></td>
-			    </tr></table>		    </td>
-	    </tr>
-</table>
-<table>
-	<tr>
-	    <td>
-	        <input type="Submit" name="Submit" value="Search">
-	        &nbsp;
-	        <a href="joblist.php?cmd=reset">Show all</a></td>
-	    </tr>
-</table>
-</form>
-<p>
+<p>Job List<br />
+    <br />
+<a href="job_search.php">Back to Search</a></p>
 <?php
 if (@$_SESSION[ewSessionMessage] <> "") {
 ?>
@@ -317,9 +231,9 @@ if ($nTotalRecs > 0) {
 		<td nowrap>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td align="right" valign="top" nowrap>Records Per Page&nbsp;
 		    <select name="<?php echo ewTblRecPerPage; ?>" onchange="this.form.submit();" class="phpmaker">
+		        <option value="10"<?php if ($nDisplayRecs == 10) { echo " selected";  }?>>10</option>
 		        <option value="20"<?php if ($nDisplayRecs == 20) { echo " selected";  }?>>20</option>
 		        <option value="50"<?php if ($nDisplayRecs == 50) { echo " selected";  }?>>50</option>
-		        <option value="ALL"<?php if (@$_SESSION[ewSessionTblRecPerPage] == -1) { echo " selected";  }?>>All Records</option>
 		            </select>		</td>
 <?php } ?>
 	</tr>
@@ -339,7 +253,7 @@ if ($nTotalRecs > 0) {
                 <?php } ?>    
                 </span></td>
     <td valign="top"><span style="font-weight: bold">
-        Job descriptio
+        Job description
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_overview"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_overview"] == "DESC") { ?>
@@ -347,13 +261,11 @@ if ($nTotalRecs > 0) {
                 <?php } ?>    
                 </span></td>
     <td valign="top">
-        <span style="font-weight: bold">Salary</span> (GBP pa)
-                <?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
+        <span style="font-weight: bold">Yearly salary</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>    
-                </td>
+                <?php } ?>                </td>
     <td valign="top"><span style="font-weight: bold">
         Location
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
@@ -363,14 +275,21 @@ if ($nTotalRecs > 0) {
                 <?php } ?>    
                 </span></td>
     <td valign="top"><span style="font-weight: bold">
-        Recruiter / Company
+        Recruiter /Company
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_company"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
                 </span></td>
+                   <td valign="top"><span style="font-weight: bold">Expires on</span></td>        
 	    <td valign="top">&nbsp;</td>
+         <?php if (isSuperUser(false)){ ?> 
+        
+ 
+            <td valign="top">&nbsp;</td>
+     
+         <?php } ?> 
 	</tr>
     <?php
 
@@ -410,6 +329,7 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 		$x_dt_created = $row["dt_created"];
 		$x_dt_expire = $row["dt_expire"];
 		$x_job_status = $row["job_status"];
+		$x_link = $row["link"];
 ?>
 	<!-- Table body -->
 	<tr<?php echo $sItemRowClass; ?><?php echo $sListTrJs; ?>>
@@ -417,72 +337,14 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 	    <!-- onlineuser_onlineuserid -->
 	    <!-- position -->
 	    <td>
-    <?php
-switch ($x_position) {
-	case "1":
-		$sTmp = "Sales & Marketing";
-		break;
-	case "2":
-		$sTmp = "Head Office";
-		break;
-	case "3":
-		$sTmp = "Training";
-		break;
-	case "4":
-		$sTmp = "Field Support";
-		break;
-	case "5":
-		$sTmp = "Operational / Regional Manager";
-		break;
-	case "6":
-		$sTmp = "Area Manager";
-		break;
-	case "7":
-		$sTmp = "General Manager";
-		break;
-	case "8":
-		$sTmp = "Manager";
-		break;
-	case "9":
-		$sTmp = "Assistant Manager";
-		break;
-	case "10":
-		$sTmp = "Supervisor";
-		break;
-	case "11":
-		$sTmp = "Trainee Manager";
-		break;
-	case "12":
-		$sTmp = "Driver";
-		break;
-	case "13":
-		$sTmp = "Kitchen Manager";
-		break;
-	case "14":
-		$sTmp = "Team Leader";
-		break;
-	case "15":
-		$sTmp = "Chef / Cook";
-		break;
-	case "16":
-		$sTmp = "Kitchen Staff";
-		break;
-	case "17":
-		$sTmp = "Waiting / Counter Operative";
-		break;
-	default:
-		$sTmp = "";
-}
-$ox_position = $x_position; // Backup original value
-$x_position = $sTmp;
-?>
-    <?php echo $x_position; ?>    <?php $x_position = $ox_position; // Restore original value ?>    </td>
+
+    <?php echo $x_position; ?>  </td>
 		    <!-- overview -->
 	    <td>
                 <?php echo str_replace(chr(10), "<br>", $x_overview); ?>    </td>
 		    <!-- salary -->
 	    <td>
-                <?php echo $x_salary; ?>    </td>
+                &pound;<?php echo $x_salary; ?></td>
 		    <!-- bonus -->
 	    <!-- benifits -->
 	    <!-- location -->
@@ -490,11 +352,25 @@ $x_position = $sTmp;
 		    <!-- company -->
 	    <td>
                 <?php echo $x_company; ?>    </td>
-		    <td><a href="<?php if ($x_jobid <> "") {echo "jobview.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>"><b>View</b></a></td>
+                 <td><?php echo $x_dt_expire; ?> </td>  
+		    <td>
+            <?php if ($x_link <> "") {
+					$ahref="<a href='$x_link' target='_external'>View Detail</a>";
+				  } else {
+					 $ahref="<a href='jobview.php?jobid=".urlencode($x_jobid)."'>View Detail</a>"; 
+				  }	
+			?>
+            
+            <?php echo $ahref; ?></td>
 		    <!-- contact_email -->
 	    <!-- dt_created -->
 	    <!-- dt_expire -->
 	    <!-- job_status -->
+            <?php if (isSuperUser(false)){ ?> 
+                 
+            <td><a href="<?php if ($x_jobid <> "") {echo "jobedit.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a></td>
+     
+         <?php } ?> 
 	    </tr>
     <?php
 	}
@@ -561,7 +437,7 @@ function SetUpAdvancedSearch()
 		$GLOBALS["x_position"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["x_position"]) : @$_GET["x_position"];
 	$GLOBALS["z_position"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["z_position"]) : @$_GET["z_position"];
 	$arrFldOpr = split(",", $GLOBALS["z_position"]);
-	if ($GLOBALS["x_position"] <> "" And is_numeric($GLOBALS["x_position"]) And isValidOpr($arrFldOpr)) {
+	if ($GLOBALS["x_position"] <> "" And isValidOpr($arrFldOpr)) {
 		$sSrchStr .= "`position` " . $arrFldOpr[0] . " " . @$arrFldOpr[1] . AdjustSql($GLOBALS["x_position"]) . @$arrFldOpr[2] . " ";
 	}
 	if ($sSrchStr <> "") {
@@ -710,7 +586,6 @@ function SetUpStartRec()
 		$_SESSION[ewSessionTblStartRec] = $nStartRec;
 	}
 }
-
 //-------------------------------------------------------------------------------
 // Function ResetCmd
 // - Clear list page parameters

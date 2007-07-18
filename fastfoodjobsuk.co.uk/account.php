@@ -3,18 +3,20 @@ require("common_user.php");
 function generate($title,$user,$object){
   global $truncateText;
   
-  echo $title."<br/>";
-  echo "<div class=\"spacer\"></div>";
+
   $results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_created");
-  echo "<table class=\"table\">";
+
   $alt=false;
   $rowclass="";
   
   if (count($results)==0){
-    echo "<tr><td>";
-    echo "You currently have no entries";
-    echo "</td></tr>";
+    //echo "<tr><td>";
+    //echo "You currently have no entries";
+    //echo "</td></tr>";
   } else {
+    echo $title."<br/>";
+  echo "<div class=\"spacer\"></div>";
+    echo "<table class=\"table\">";
     foreach ($results as $obj){
       
       if ($alt){
@@ -44,8 +46,9 @@ function generate($title,$user,$object){
       echo "<td class=\"$rowclass\"><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></td>";
       echo "</tr>";
     }
+	echo "</table>";
   }
-  echo "</table>";
+  
 }
 
 function showAdmin(){
@@ -87,13 +90,65 @@ require("top.php");
 </p>
 
 <?php
-generate("Restaurants",$user,new Restaurant(),"restaurant");
-generate("Franchises",$user,new Franchise(),"franchise");
-generate("Gold Adverts",$user,new Gold_membership(),"gold");
-generate("Platinum Adverts",$user,new Platinum_membership(),"platinum");
-generate("Suppliers",$user,new Supplier(),"supplier");
+//generateCVLink($user);
+//generateJobLink($user);
+generate("Venue(s)",$user,new Restaurant());
+generate("Franchise For sales",$user,new Franchise());
+generate("Gold Advert(s)",$user,new Gold_membership());
+generate("Platinum Advert(s)",$user,new Platinum_membership());
+generate("Supplier(s)",$user,new Supplier());
 ?>
 </td></tr></table>
 <?php
+/*
+function generateJobLink($title,$user,$object){
+  global $truncateText;
+  
+  $results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_created");
+
+  $alt=false;
+  $rowclass="";
+  
+  if (count($results)==0){
+    //echo "<tr><td>";
+    //echo "You currently have no entries";
+    //echo "</td></tr>";
+  } else {
+    echo $title."<br/>";
+  echo "<div class=\"spacer\"></div>";
+    echo "<table class=\"table\">";
+    foreach ($results as $obj){
+      
+      if ($alt){
+        $rowclass="row_odd";
+      } else {
+        $rowclass="row_even";
+      }
+      $alt=!$alt;
+      
+      echo "<tr>";
+      if (isset($obj->name)){
+        echo "<td class=\"$rowclass\">".$obj->name."</td>";
+      } else if(isset($obj->heading)) {
+        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
+      }
+      if (isset($obj->description)){
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+      } else if(isset($obj->text)){
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+      }
+      if (isset($obj->link)){
+        echo "<td class=\"$rowclass\">".substr($obj->link,7)."</td>";
+      }
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+      $class=strtolower(get_class($obj));
+		$classId=$class."Id"; 
+      echo "<td class=\"$rowclass\"><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></td>";
+      echo "</tr>";
+    }
+  }
+  echo "</table>";
+}
+*/
 require("bottom.php");
 ?>

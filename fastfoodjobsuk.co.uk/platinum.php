@@ -4,6 +4,11 @@
 $id=(int)$_GET["id"];
 $member=new Platinum_membership();
 $member=$member->Get($id);
+if ($member->platinum_membershipId==0) //object not exist
+{
+	header("Location: index.php");
+	exit();
+}
 
 ?>
 <?php

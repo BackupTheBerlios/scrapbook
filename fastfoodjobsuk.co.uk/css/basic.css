@@ -6,6 +6,25 @@
 
 body { color: black; background-color: white; background-image: url(../images/back.gif); margin: 0; padding: 0; }
 p {}
+td.line{
+border-bottom: #666666 dotted 1px;
+}
+table.job{
+border: #666666 dotted 1px;background-color:#FFFFCC;
+}
+table.job td {
+line-height: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left;vertical-align: top;
+}
+td.backgroundBorderStriped{
+background-color:#CCCCCC;
+border: #666666 dotted 1px;
+padding:6px;
+font-size: 9px;
+}
+.smallRed{
+font-size:8px;
+color:red;
+}
 td   { color: black; font-size: 10px; line-height: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left; }
 .ads { color: black; font-size: 10px; line-height: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left; vertical-align: top; border:#86C8ED solid 1px;
 margin:0px;
@@ -124,7 +143,7 @@ a.smallAdd:hover {
 	/*		margin-bottom:4px;*/
 	float:right;
 		}
-		.roundcont { width: 450px; background-color: #86C8ED; color: #fff; margin-top:5px; margin-bottom:10px; margin-left:4px;}
+		.roundcont { width: 435px; background-color: #86C8ED; color: #fff; margin-top:5px; margin-bottom:10px; margin-left:4px;}
 
 .roundcont p {
 	
@@ -167,6 +186,7 @@ padding:20px;
 	border:1px #CCC solid;
 margin-right:5px;
 margin-bottom:5px;
+float:left;
 }
 .topimageright{
 	border:1px #CCC solid;
@@ -191,11 +211,11 @@ font-size:12px;
 margin-left:5px;
 text-align::left;
 }
-.row_odd{
+.row_even{
   background-color:#FFFFFF;
 }
 
-.row_even{
+.row_odd{
   background-color:#F5F5F5;
 	
 }

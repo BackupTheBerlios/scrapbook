@@ -32,7 +32,7 @@ function isSuperUser($active=true){
   } else {
 	if ($active){
 	  $_SESSION["redirect"]=$_SERVER["PHP_SELF"];
-	  header("Location: login.php");
+	  header("Location: logout.php");
 	  exit;
 	} else {
 	  return false;

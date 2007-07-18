@@ -9,7 +9,7 @@ if ($id==0){
 if ($id>0){	
 	$news=$news->Get($id);
 	//check to see user has access to modify this object	
-	$news->canAccess($news);
+	$user->canAccess($news);
 } else { //new object
 	$news->onlineuser_onlineuserid = $user->onlineuserId;
 
