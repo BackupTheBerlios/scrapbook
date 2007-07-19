@@ -14,12 +14,15 @@
               <?php echo $member->address; ?>
             </div>
 						<div>
+						Tel: 
               <?php echo $member->tel; ?>
 						</div>
 						<div>
+						Fax: 
               <?php echo $member->fax; ?>
 						</div>
 						<div>
+						Email: 
               <?php echo $member->email; ?>
 						</div>
 						<div>
