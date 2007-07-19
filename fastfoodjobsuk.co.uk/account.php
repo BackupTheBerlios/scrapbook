@@ -63,8 +63,10 @@ function generate($title,$user,$object){
         //echo "<td class=\"$rowclass\">";
         echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a>";
       }
-      //echo "<td class=\"$rowclass\">";
-      echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a>";
+      if ( isSuperUser(false) ){
+        //echo "<td class=\"$rowclass\">";
+        echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a>";
+      }
       //echo "</td>";
       echo "</ul>";
       echo "</td>";
