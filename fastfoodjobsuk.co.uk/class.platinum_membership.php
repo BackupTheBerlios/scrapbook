@@ -29,10 +29,16 @@ class Platinum_membership
 	var $heading;
 	
 	/**
-	 * @var TINYINT
+	 * @var TEXT
 	 */
 	var $text;
 	
+	var $name;
+	var $address;
+	var $tel;
+	var $fax;
+	var $email;
+
 	/**
 	 * @var VARCHAR(255)
 	 */
@@ -60,7 +66,12 @@ class Platinum_membership
 		"image1" => array("TEXT", "VARCHAR", "255"),
 		"image2" => array("TEXT", "VARCHAR", "255"),
 		"heading" => array("TEXT", "VARCHAR", "255"),
-		"text" => array("NUMERIC", "TINYINT"),
+		"text" => array("TEXT", "TEXT"),
+		"name" => array("TEXT", "VARCHAR","255"),
+		"address" => array("TEXT", "TEXT"),
+		"tel" => array("TEXT", "VARCHAR","40"),
+		"fax" => array("TEXT", "VARCHAR","40"),
+		"email" => array("TEXT", "VARCHAR","255"),
 		"link" => array("TEXT", "VARCHAR", "255"),
 		"dt_created" => array("NUMERIC", "TIMESTAMP"),
 		"dt_expire" => array("NUMERIC", "DATE"),
@@ -68,7 +79,7 @@ class Platinum_membership
 		);
 	var $pog_query;
 	
-	function Platinum_membership($onlineuser_onlineuserid='', $logo='', $image1='', $image2='', $heading='', $text='', $link='', $dt_created='', $platinum_membership_status='')
+	function Platinum_membership($onlineuser_onlineuserid='', $logo='', $image1='', $image2='', $heading='', $text='', $name='', $address='', $tel='', $fax='', $email='', $link='', $dt_created='', $platinum_membership_status='')
 	{
 		$this->onlineuser_onlineuserid = $onlineuser_onlineuserid;
 		$this->logo = $logo;
@@ -76,6 +87,11 @@ class Platinum_membership
 		$this->image2 = $image2;
 		$this->heading = $heading;
 		$this->text = $text;
+		$this->name=$name;
+		$this->address=$address;
+		$this->tel=$tel;
+		$this->fax=$fax;
+		$this->email=$email;
 		$this->link = $link;
 		$this->dt_created = $dt_created;
 		$this->platinum_membership_status = $platinum_membership_status;
@@ -108,6 +124,11 @@ class Platinum_membership
 		$newObject->image2 = $Database->Unescape($Database->Result($i, "image2"));
 		$newObject->heading = $Database->Unescape($Database->Result($i, "heading"));
 		$newObject->text = $Database->Unescape($Database->Result($i, "text"));
+		$newObject->name = $Database->Unescape($Database->Result($i, "name"));
+		$newObject->address = $Database->Unescape($Database->Result($i, "address"));
+		$newObject->tel = $Database->Unescape($Database->Result($i, "tel"));
+		$newObject->fax = $Database->Unescape($Database->Result($i, "fax"));
+		$newObject->email = $Database->Unescape($Database->Result($i, "email"));
 		$newObject->link = $Database->Unescape($Database->Result($i, "link"));
 		$newObject->dt_created = $Database->Unescape($Database->Result($i, "dt_created"));
 		$newObject->dt_expire = $Database->Unescape($Database->Result($i, "dt_expire"));		
@@ -216,6 +237,11 @@ class Platinum_membership
 			`image2`='".$Database->Escape($this->image2)."', 
 			`heading`='".$Database->Escape($this->heading)."', 
 			`text`='".$Database->Escape($this->text)."', 
+			`name`='".$Database->Escape($this->name)."', 
+			`address`='".$Database->Escape($this->address)."', 
+			`tel`='".$Database->Escape($this->tel)."', 
+			`fax`='".$Database->Escape($this->fax)."', 
+			`email`='".$Database->Escape($this->email)."', 
 			`link`='".$Database->Escape($this->link)."', 
 			`dt_created`='".$Database->Escape($this->dt_created)."', 
 			`dt_expire`='".$Database->Escape($this->dt_expire)."', 
@@ -223,13 +249,18 @@ class Platinum_membership
 		}
 		else
 		{
-			$this->pog_query = "insert into `platinum_membership` (`onlineuser_onlineuserid`, `logo`, `image1`, `image2`, `heading`, `text`, `link`, `dt_expire`, `platinum_membership_status` ) values (
+			$this->pog_query = "insert into `platinum_membership` (`onlineuser_onlineuserid`, `logo`, `image1`, `image2`, `heading`, `text`, `name`, `address`, `tel`, `fax`, `email`, `link`, `dt_expire`, `platinum_membership_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->image1)."', 
 			'".$Database->Escape($this->image2)."', 
 			'".$Database->Escape($this->heading)."', 
 			'".$Database->Escape($this->text)."', 
+			'".$Database->Escape($this->name)."', 
+			'".$Database->Escape($this->address)."', 
+			'".$Database->Escape($this->tel)."', 
+			'".$Database->Escape($this->fax)."', 
+			'".$Database->Escape($this->email)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape(expiryDate())."', 
 			'".$this->platinum_membership_status."' )";

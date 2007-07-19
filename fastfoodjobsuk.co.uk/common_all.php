@@ -6,6 +6,7 @@
 	require("class.onlineuser.php");		
 	require("class.platinum_membership.php");
 	require("class.restaurant.php");
+	require("class.spotlight.php");	
 	require("class.supplier.php");	
 	require("class.supplier_category.php");		
   	

@@ -28,6 +28,11 @@ if ((bool)$_POST["submitting"])
 	$member->image2=$_POST["currentFilenameImg2"];
 	$member->heading=$_POST["heading"];
 	$member->text=$_POST["text"];
+	$member->name=$_POST["name"];
+	$member->address=$_POST["address"];
+	$member->tel=$_POST["tel"];
+	$member->fax=$_POST["fax"];
+	$member->email=$_POST["email"];
 	$member->link=$_POST["link"];
 	
 	if (($tempFilename=$_FILES["logo"]["tmp_name"])!=""){
@@ -50,6 +55,21 @@ if ((bool)$_POST["submitting"])
 	}
 	if (($result=validate($member->text,"",5000))!==true){
 		$errorText.="<li>The text is $result";
+	}
+	if (($result=validate($member->name,"",255))!==true){
+		$errorText.="<li>The company name is $result";
+	}
+	if (($result=validate($member->address,"",255))!==true){
+		$errorText.="<li>The address is $result";
+	}
+	if (($result=validate($member->tel,"phonenumber",40))!==true){
+		$errorText.="<li>The telephone number is $result";
+	}
+	if (($result=validate($member->fax,"phonenumber",40))!==true){
+		$errorText.="<li>The fax number is $result";
+	}
+	if (($result=validate($member->email,"email",255))!==true){
+		$errorText.="<li>The email address is $result";
 	}
 	if (($result=validate($member->link,"",255))!==true){
 		$errorText.="<li>Website link is $result";
@@ -186,6 +206,49 @@ require("top.php");
         echo $member->text;
       ?></textarea>
 
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Company Name:
+    </td>
+    <td>
+      <input type="text" id="name" name="name" value="<?php echo $member->name; ?>">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Address:
+    </td>
+    <td>
+      <textarea name="address" id="address"><?php
+        echo $member->address;
+      ?></textarea>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Telephone:
+    </td>
+    <td>
+      <input type="text" id="tel" name="tel" value="<?php echo $member->tel; ?>">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fax:
+    </td>
+    <td>
+      <input type="text" id="fax" name="fax" value="<?php echo $member->fax; ?>">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Email:
+    </td>
+    <td>
+      <input type="text" id="email" name="email" value="<?php echo $member->email; ?>">
     </td>
   </tr>
   <tr>

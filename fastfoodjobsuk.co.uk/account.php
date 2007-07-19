@@ -43,7 +43,31 @@ function generate($title,$user,$object){
       echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
       $class=strtolower(get_class($obj));
 		$classId=$class."Id"; 
-      echo "<td class=\"$rowclass\"><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></td>";
+      $status=$class."_status"; 
+      echo "<td class=\"$rowclass\">";
+      echo "<ul style=\"padding-left:1.5em;line-height:1.6em\"><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a>";
+      //echo "</td>";
+      switch ($obj->$status){
+        case "active":
+          //echo "<td class=\"$rowclass\">";
+          echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Deactivate</a>";
+          //echo "</td>";
+          break;
+        case "disabled":
+          //echo "<td class=\"$rowclass\">";
+          echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a>";
+          //echo "</td>";
+          break;
+      }
+      if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
+        //echo "<td class=\"$rowclass\">";
+        echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a>";
+      }
+      //echo "<td class=\"$rowclass\">";
+      echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a>";
+      //echo "</td>";
+      echo "</ul>";
+      echo "</td>";
       echo "</tr>";
     }
 	echo "</table>";
@@ -81,6 +105,15 @@ require("top.php");
 ?>
 
 <link rel="stylesheet" href="css/account.css" type="text/css">
+
+<script language="JavaScript">
+function sure(classname,id){
+  if (confirm("Are you sure you wish to delete this record?")){
+    window.location='delete.php?type='+classname+'&id='+id;
+  }
+}
+</script>
+
 <table class="paddingforinfocell"><tr><td>
 <p>
   <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">Update Profile</a>
