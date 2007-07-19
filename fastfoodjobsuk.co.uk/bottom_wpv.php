@@ -5,7 +5,30 @@
   <BR>
   <img src="logos/<?php echo $member->image2; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageright">
 </div>
-						<div id = "address">The address Goes Here</div></td>
+						<div>
+						<a href="<?php echo $member->link; ?>">
+              <?php echo $member->name; ?>
+             </a> 
+						</div>
+            <div id = "address">
+              <?php echo $member->address; ?>
+            </div>
+						<div>
+              <?php echo $member->tel; ?>
+						</div>
+						<div>
+              <?php echo $member->fax; ?>
+						</div>
+						<div>
+              <?php echo $member->email; ?>
+						</div>
+						<div>
+              <a href="<?php echo $member->link; ?>">
+              <?php echo $member->link; ?>
+              </a>
+						</div>
+          
+          </td>
 </tr>
                     </table>
                     </td>
