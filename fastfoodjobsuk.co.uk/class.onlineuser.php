@@ -329,16 +329,16 @@ class OnlineUser
 		}
 	}
 	
-	function canAccess($object){
-
-	   if ( $this->onlineuserId!=$object->onlineuser_onlineuserid) //not owner
-	 	{
-			// at this point the current user ID does not match the one on the 
-			// the advert AND the super user is not performing this action so
-			// something is suspect! kick her out!
-			header("Location: logout.php");
+  function canAccess($object){
+    if ( $this->onlineuserId!=$object->onlineuser_onlineuserid){
+      // at this point the current user ID does not match the one on the 
+	    // the advert AND the super user is not performing this action so
+	    // something is suspect! kick her out!
+      header("Location: logout.php");
 			exit;
-	   }
-	}	
+    } else {
+      return true;
+    }
+  }
 }
 ?>
