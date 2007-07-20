@@ -62,8 +62,9 @@ if ((bool)$_POST["submitting"])
     }
     
     $franchise->Save();
-    $errorText="<P><B>Franchise has successfully been saved</b></p>";
+    //$errorText="<P><B>Franchise has successfully been saved</b></p>";
     unset($_POST);
+	header("Location: franchise_success.php");
   } else {
     $errorText="<ul>".$errorText."</ul>";
   }

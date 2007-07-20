@@ -32,9 +32,16 @@ if ($firstname!="" || $lastname!=""||$email!=""){
   }
 }
 
-require("top.php");
+require("top_wide.php");
 ?>
 <br>
+<script language="JavaScript">
+function sure(classname,id){
+  if (confirm("Are you sure you wish to delete this record?")){
+    window.location='delete.php?type='+classname+'&id='+id;
+  }
+}
+</script>
 <table id="table">
 <form action="admin_account.php" method="POST">
   <tr>
@@ -114,5 +121,8 @@ require("top.php");
   </table>
 
 <?php
-require("bottom.php");
+generate("News",$user,new News(),true);
+generate("Venue(s)",$user,new Restaurant());
+generate("Franchise For sales",$user,new Franchise());
+require("bottom_wide.php");
 ?>

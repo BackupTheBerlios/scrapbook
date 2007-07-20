@@ -116,4 +116,100 @@ function expiryDate($numberOfDays=30)
 	return date("Y-m-d", $future);
 }
 
+// report table
+function generate($title,$user,$object,$getAll=false){
+  global $truncateText;
+
+	if  ($getAll)
+	{
+	   $results=  getAllObjects($object, "dt_created", false);
+	}
+	else
+	{
+  		$results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_expire" );
+    }
+
+  $alt=false;
+  $rowclass="";
+  
+  if (count($results)>0||isSuperUser(false)) {
+    $class=strtolower(get_class($object));
+	echo $title." Admin";
+	if (isSuperUser(false))
+	{
+    	echo "  - <a href='".$class."_form.php'>create new</a>";
+	}
+  	echo "<div class=\"spacer\"></div>";
+    echo "<table class=\"table\">";
+	  if (count($results)==0){
+			if (isSuperUser(false))
+			{
+				echo "<tr><td>";
+				echo "currently have no entries";
+				echo "</td></tr>";
+			}
+  	 }else{
+	
+		foreach ($results as $obj){
+		  
+		  if ($alt){
+			$rowclass="row_even";
+		  } else {
+			$rowclass="row_odd";
+		  }
+		  $alt=!$alt;
+		  
+		  echo "<tr>";
+		  if (isset($obj->name)){
+			echo "<td class=\"$rowclass\">".$obj->name."</td>";
+		  } else if(isset($obj->heading)) {
+			echo "<td class=\"$rowclass\">".$obj->heading."</td>";
+		  }
+		  if (isset($obj->description)){
+			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+		  } else if(isset($obj->text)){
+			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+		  }
+		  if (isset($obj->link)){
+			echo "<td class=\"$rowclass\">".$obj->link."</td>";
+		  }
+		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+		  
+			$classId=$class."Id"; 
+		  $status=$class."_status"; 
+		  echo "<td class=\"$rowclass\">";
+		  echo "<ul><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></li>";
+		  //echo "</td>";
+		  switch ($obj->$status){
+			case "active":
+			  //echo "<td class=\"$rowclass\">";
+			  echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Deactivate</a></li>";
+			  //echo "</td>";
+			  break;
+			case "disabled":
+			  //echo "<td class=\"$rowclass\">";
+			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+			  //echo "</td>";
+			  break;
+		  }
+		  if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
+			//echo "<td class=\"$rowclass\">";
+			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
+		  }
+		  if ( isSuperUser(false) ){
+			//echo "<td class=\"$rowclass\">";
+			echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+		  }
+		  //echo "</td>";
+		  echo "</ul>";
+		  echo "</td>";
+		  echo "</tr>";
+		}
+	}
+	echo "</table>";
+  }
+  echo "<br/>";
+  echo "<br/>";
+}
+
 ?>

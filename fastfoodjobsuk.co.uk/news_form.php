@@ -9,9 +9,9 @@ if ($id==0){
 if ($id>0){	
 	$news=$news->Get($id);
 	//check to see user has access to modify this object	
-	$user->canAccess($news);
+	//$user->canAccess($news);
 } else { //new object
-	$news->onlineuser_onlineuserid = $user->onlineuserId;
+	//$news->onlineuser_onlineuserid = $user->onlineuserId;
 
 	//default link
 	$news->link="http://";
@@ -39,8 +39,9 @@ if ((bool)$_POST["submitting"])
   if ($errorText==""){
   
     $news->Save();
-    $errorText="<P><B>News has successfully been saved</b></p>";
+    //$errorText="<P><B>News has successfully been saved</b></p>";
     unset($_POST);
+	header("Location: news_success.php");
   } else {
     $errorText="<ul>".$errorText."</ul>";
   }

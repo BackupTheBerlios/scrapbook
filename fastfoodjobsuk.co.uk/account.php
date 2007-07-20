@@ -1,81 +1,5 @@
 <?php
 require("common_user.php");
-function generate($title,$user,$object){
-  global $truncateText;
-  
-
-  $results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_created");
-
-  $alt=false;
-  $rowclass="";
-  
-  if (count($results)==0){
-    //echo "<tr><td>";
-    //echo "You currently have no entries";
-    //echo "</td></tr>";
-  } else {
-    echo $title."<br/>";
-  echo "<div class=\"spacer\"></div>";
-    echo "<table class=\"table\">";
-    foreach ($results as $obj){
-      
-      if ($alt){
-        $rowclass="row_odd";
-      } else {
-        $rowclass="row_even";
-      }
-      $alt=!$alt;
-      
-      echo "<tr>";
-      if (isset($obj->name)){
-        echo "<td class=\"$rowclass\">".$obj->name."</td>";
-      } else if(isset($obj->heading)) {
-        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
-      }
-      if (isset($obj->description)){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
-      } else if(isset($obj->text)){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
-      }
-      if (isset($obj->link)){
-        echo "<td class=\"$rowclass\">".substr($obj->link,7)."</td>";
-      }
-      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
-      $class=strtolower(get_class($obj));
-		$classId=$class."Id"; 
-      $status=$class."_status"; 
-      echo "<td class=\"$rowclass\">";
-      echo "<ul style=\"padding-left:1.5em;line-height:1.6em\"><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a>";
-      //echo "</td>";
-      switch ($obj->$status){
-        case "active":
-          //echo "<td class=\"$rowclass\">";
-          echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Deactivate</a>";
-          //echo "</td>";
-          break;
-        case "disabled":
-          //echo "<td class=\"$rowclass\">";
-          echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a>";
-          //echo "</td>";
-          break;
-      }
-      if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
-        //echo "<td class=\"$rowclass\">";
-        echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a>";
-      }
-      if ( isSuperUser(false) ){
-        //echo "<td class=\"$rowclass\">";
-        echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a>";
-      }
-      //echo "</td>";
-      echo "</ul>";
-      echo "</td>";
-      echo "</tr>";
-    }
-	echo "</table>";
-  }
-  
-}
 
 function showAdmin(){
   echo "<table id=\"table_admin\">";
@@ -103,7 +27,7 @@ if(isset($_POST["whichUser"]) && isSuperUser(false)){
   $user=$user->Get((int)$_POST["whichUser"]);
   $_SESSION["onlineuser"]=$user;
 }
-require("top.php");
+require("top_wide.php");
 ?>
 
 <link rel="stylesheet" href="css/account.css" type="text/css">
@@ -126,64 +50,78 @@ function sure(classname,id){
 
 <?php
 //generateCVLink($user);
-//generateJobLink($user);
-generate("Venue(s)",$user,new Restaurant());
-generate("Franchise For sales",$user,new Franchise());
+generateJobLink($user);
 generate("Gold Advert(s)",$user,new Gold_membership());
 generate("Platinum Advert(s)",$user,new Platinum_membership());
 generate("Supplier(s)",$user,new Supplier());
 ?>
 </td></tr></table>
 <?php
-/*
-function generateJobLink($title,$user,$object){
+function generateJobLink($user){
   global $truncateText;
   
-  $results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_created");
 
-  $alt=false;
-  $rowclass="";
-  
-  if (count($results)==0){
+  $db=new DatabaseConnection();
+  $result=$db->Query("SELECT * FROM job where onlineuser_onlineuserid=$user->onlineuserId ORDER BY dt_created DESC");
+
+  $rows=$db->Rows();  
+  if ($rows == 0){
     //echo "<tr><td>";
     //echo "You currently have no entries";
     //echo "</td></tr>";
   } else {
-    echo $title."<br/>";
-  echo "<div class=\"spacer\"></div>";
-    echo "<table class=\"table\">";
-    foreach ($results as $obj){
-      
-      if ($alt){
-        $rowclass="row_odd";
-      } else {
-        $rowclass="row_even";
-      }
-      $alt=!$alt;
-      
-      echo "<tr>";
-      if (isset($obj->name)){
-        echo "<td class=\"$rowclass\">".$obj->name."</td>";
-      } else if(isset($obj->heading)) {
-        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
-      }
-      if (isset($obj->description)){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
-      } else if(isset($obj->text)){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
-      }
-      if (isset($obj->link)){
-        echo "<td class=\"$rowclass\">".substr($obj->link,7)."</td>";
-      }
-      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
-      $class=strtolower(get_class($obj));
-		$classId=$class."Id"; 
-      echo "<td class=\"$rowclass\"><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></td>";
-      echo "</tr>";
-    }
+     $alt=false;
+	 $rowclass="";
+     echo "Job(s)"."<br/>";
+	  echo "<div class=\"spacer\"></div>";
+		echo "<table class=\"table\">";
+	 	for ($i=0;$i<$rows;$i++){
+			$row=mysql_fetch_assoc($result);
+			  if ($alt){
+				$rowclass="row_odd";
+			  } else {
+				$rowclass="row_even";
+			  }
+			  $alt=!$alt;
+		  
+			  echo "<tr>";
+			  echo "<td class=\"$rowclass\">".$row["position"]."</td>";
+				echo "<td class=\"$rowclass\">".$row["overview"]."</td>";
+				echo "<td class=\"$rowclass\">".$row["salary"]."</td>";
+				echo "<td class=\"$rowclass\">".$row["location"]."</td>";
+				echo "<td class=\"$rowclass\">".$row["company"]."</td>";
+			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_created"],5)."</td>";
+			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_expire"],5)."</td>";
+			  echo "<td class=\"$rowclass\">";
+			  $jobid=$row["jobid"];
+			  echo "<ul><li><a href='job_post.php?jobid=$jobid'>Modify</a></li>";
+			  //echo "</td>";
+			  switch ($row["job_status"]){
+				case "active":
+				  //echo "<td class=\"$rowclass\">";
+				  echo "<li><a href='deactivate.php?type=Job&id=$jobid'>Deactivate</a>";
+				  //echo "</td>";
+				  break;
+				case "disabled":
+				  //echo "<td class=\"$rowclass\">";
+				  echo "<li><a href='activate.php?type=Job&id=$jobid'>Activate</a>";
+				  //echo "</td>";
+				  break;
+			  }			
+			 if ( isSuperUser(false) ){
+				//echo "<td class=\"$rowclass\">";
+				echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";
+			  }				  
+  
+			   echo "</ul>";
+     		 echo "</td>";
+			  echo "</tr>";
+		}
   }
   echo "</table>";
+  echo "<br/>";
+  echo "<br/>";
 }
-*/
-require("bottom.php");
+
+require("bottom_wide.php");
 ?>

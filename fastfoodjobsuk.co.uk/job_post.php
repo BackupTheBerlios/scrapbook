@@ -8,10 +8,11 @@ ob_start();
 
 // Load key from QueryString
 $x_jobid = @$_GET["jobid"];
-if (($x_jobid == "") || (is_null($x_jobid))) $bCopy = false;
+if (($x_jobid == "") || (is_null($x_jobid))) 
+	$sAction = "AI"; //new form
 
 // Get action
-$sAction = @$_POST["a_add"];
+$sAction = @$_POST["x_action"];
 if (($sAction == "") || ((is_null($sAction)))) {
 		$sAction = "I"; // Display blank record
 } else {
@@ -41,6 +42,16 @@ switch ($sAction) {
 			exit();
 		}
 		break;
+	case "U": // Update
+		if (EditData($conn)) { // Update record
+			$_SESSION[ewSessionMessage] = "Update Record Successful";
+			phpmkr_db_close($conn);
+			ob_end_clean();
+			header("Location: joblist.php");
+			exit();
+		}
+		break;		
+		
 }
 ?>
 <?php include ("top.php") ?>
@@ -86,7 +97,8 @@ return true;
  <h2 style = "margin-left:5px;">Create your job post </h2>
 <form name="fjobadd" id="fjobadd" action="job_post.php" method="post" onsubmit="return EW_checkMyForm(this);" style= "margin:5px;">
 <p>
-<input type="hidden" name="a_add" value="A">
+<input type="hidden" name="x_action" value="A">
+<input type="hidden" id="x_jobid" name="x_jobid" value="<?php echo @$x_jobid; ?>">
 <?php
 if (@$_SESSION[ewSessionMessage] <> "") {
 ?>
@@ -363,6 +375,115 @@ function Recordset_Inserted($newrs)
 	$sEmailContent = str_replace("<!--action-->", "Inserted", $sEmailContent);
 	@Send_Email($sEmailFrom, $sEmailTo, $sEmailCc, $sEmailBcc, $sEmailSubject, $sEmailContent, $sEmailFormat);
 	*/
+}
+?>
+<?php
+
+//-------------------------------------------------------------------------------
+// Function EditData
+// - Variables used: field variables
+
+function EditData($conn)
+{
+	global $x_jobid;
+	$sFilter = ewSqlKeyWhere;
+	if (!is_numeric($x_jobid)) return false;
+	$sTmp =  (get_magic_quotes_gpc()) ? stripslashes($x_jobid) : $x_jobid;
+	$sFilter = str_replace("@jobid", AdjustSql($sTmp), $sFilter); // Replace key value
+	$sSql = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sFilter, "");
+	$rs = phpmkr_query($sSql,$conn) or die("Failed to execute query at line " . __LINE__ . ": " . phpmkr_error($conn) . '<br>SQL: ' . $sSql);
+
+	// Get old recordset
+	$oldrs = phpmkr_fetch_array($rs);
+	if (phpmkr_num_rows($rs) == 0) {
+		return false; // Update Failed
+	} else {
+		$x_jobid = @$_POST["x_jobid"];
+		$x_onlineuser_onlineuserid = @$_POST["x_onlineuser_onlineuserid"];
+		$x_position = @$_POST["x_position"];
+		$x_overview = @$_POST["x_overview"];
+		$x_salary = @$_POST["x_salary"];
+		$x_bonus = @$_POST["x_bonus"];
+		$x_benifits = @$_POST["x_benifits"];
+		$x_location = @$_POST["x_location"];
+		$x_company = @$_POST["x_company"];
+		$x_profile = @$_POST["x_profile"];
+		$x_contact_email = @$_POST["x_contact_email"];
+		$x_dt_created = @$_POST["x_dt_created"];
+		$x_dt_expire = @$_POST["x_dt_expire"];
+		$x_job_status = @$_POST["x_job_status"];
+		$theValue = ($GLOBALS["x_jobid"] != "") ? intval($GLOBALS["x_jobid"]) : "NULL";
+		$fieldList["`jobid`"] = $theValue;
+		$theValue = ($GLOBALS["x_onlineuser_onlineuserid"] != "") ? intval($GLOBALS["x_onlineuser_onlineuserid"]) : "NULL";
+		$fieldList["`onlineuser_onlineuserid`"] = $theValue;
+		$theValue = ($GLOBALS["x_position"] != "") ? intval($GLOBALS["x_position"]) : "NULL";
+		$fieldList["`position`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_overview"]) : $GLOBALS["x_overview"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`overview`"] = $theValue;
+		$theValue = ($GLOBALS["x_salary"] != "") ? intval($GLOBALS["x_salary"]) : "NULL";
+		$fieldList["`salary`"] = $theValue;
+		$theValue = ($GLOBALS["x_bonus"] != "") ? intval($GLOBALS["x_bonus"]) : "NULL";
+		$fieldList["`bonus`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_benifits"]) : $GLOBALS["x_benifits"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`benifits`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_location"]) : $GLOBALS["x_location"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`location`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_company"]) : $GLOBALS["x_company"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`company`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_profile"]) : $GLOBALS["x_profile"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`profile`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_contact_email"]) : $GLOBALS["x_contact_email"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`contact_email`"] = $theValue;
+		$theValue = ($GLOBALS["x_dt_created"] != "") ? " '" . ConvertDateToMysqlFormat($GLOBALS["x_dt_created"]) . "'" :  "'" . date("D, d M Y H:i:s") . "'";
+		$fieldList["`dt_created`"] = $theValue;
+		$theValue = ($GLOBALS["x_dt_expire"] != "") ? " '" . ConvertDateToMysqlFormat($GLOBALS["x_dt_expire"]) . "'" : "Null";
+		$fieldList["`dt_expire`"] = $theValue;
+		$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_job_status"]) : $GLOBALS["x_job_status"]; 
+		$theValue = ($theValue != "") ? " '" . $theValue . "'" : "NULL";
+		$fieldList["`job_status`"] = $theValue;
+
+		// Updating event
+		if (Recordset_Updating($fieldList, $oldrs)) {
+
+			// Update
+			$sSql = "UPDATE `job` SET ";
+			foreach ($fieldList as $key=>$temp) {
+				$sSql .= "$key = $temp, ";
+			}
+			if (substr($sSql, -2) == ", ") {
+				$sSql = substr($sSql, 0, strlen($sSql)-2);
+			}
+			$sSql .= " WHERE " . $sFilter;
+			phpmkr_query($sSql,$conn) or die("Failed to execute query at line " . __LINE__ . ": " . phpmkr_error($conn) . '<br>SQL: ' . $sSql);
+			$result = (phpmkr_affected_rows($conn) >= 0);
+
+			// Updated event
+			if ($result) Recordset_Updated($fieldList, $oldrs);
+		} else {
+			$result = false; // Update Failed
+		}
+	}
+	return $result;
+}
+
+// Updating Event
+function Recordset_Updating(&$newrs, $oldrs)
+{
+
+	// Enter your customized codes here
+	return true;
+}
+
+// Updated event
+function Recordset_Updated($newrs, $oldrs)
+{
+	$table = "job";
 }
 ?>
 <?php

@@ -67,7 +67,7 @@ require("top.php");
   <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
  </tr>
  <tr>
-  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">VenueAdvertisement</span> <span class="redbar">|</span><br />
+  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Venue Advertisement</span> <span class="redbar">|</span><br />
     <br />
    <p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 135 wide by 115 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
       <br />
