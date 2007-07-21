@@ -222,10 +222,10 @@ function generate($title,$user,$object,$getAll=false){
 			//echo "<td class=\"$rowclass\">";
 			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
 		  }
-		  if ( isSuperUser(false) ){
-			//echo "<td class=\"$rowclass\">";
-			echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
-		  }
+		  //if ( isSuperUser(false) ){
+			//Delete has  not been implemented
+			//echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+		  //}
 		  //echo "</td>";
 		  echo "</ul>";
 		  echo "</td>";

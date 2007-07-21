@@ -107,19 +107,19 @@ function generateJobLink($user){
 				  //echo "</td>";
 				  break;
 			  }			
-			 if ( isSuperUser(false) ){
-				//echo "<td class=\"$rowclass\">";
-				echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";
-			  }				  
+			 //if ( isSuperUser(false) ){
+				//this is not enabled
+				//echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";
+			  //}				  
   
 			   echo "</ul>";
      		 echo "</td>";
 			  echo "</tr>";
 		}
+  	echo "</table>";
+  	echo "<br/>";
+  	echo "<br/>";
   }
-  echo "</table>";
-  echo "<br/>";
-  echo "<br/>";
 }
 
 require("bottom_wide.php");
