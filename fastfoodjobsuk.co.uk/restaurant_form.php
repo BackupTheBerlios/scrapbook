@@ -16,7 +16,7 @@ if ($id>0){
 	//default link
 	$restaurant->link="http://";
 	//free for now
-	$restaurant->restaurant_status='active';
+	$restaurant->restaurant_status='temp';
 }
 
 //check if form is being submitted

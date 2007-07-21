@@ -34,7 +34,7 @@ else
 
 ?>
 <br>
-Your advert has been deactivated
+Your advert has been paused
 <p>
   <a href="account.php" class = "news">Click here</a> to return to your account.
 </p>

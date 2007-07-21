@@ -34,6 +34,10 @@ else
 	  $object->$status="active";
 	  $object->Save();
 	  
+	  if ($object->dt_expire=="0000-00-00"){
+	   $object->updateExpiry(); // defaults to 30 days
+	  }
+	  
 	} else {
 	  // this user is not allowed to access this resource
 	  exit;

@@ -17,7 +17,7 @@
   $type=(int)$_GET["type"];
 
   $supplier=new Supplier();
-  $results=$supplier->GetList(array(array("supplier_category_id","=",$type)),"dt_created");
+  $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active"),array("dt_expire",">",date("Y-m-d"))),"dt_created");
   shuffle($results);
   
   $rowCount=0;
@@ -30,10 +30,18 @@
     foreach ($results as $obj){
       echo "<TD width = \"135\" valign=\"top\" >";
       echo "<table id=\"table_inner\">";
-      echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
+      echo "<TR><TD class=\"cell_logo\">";
+      echo "<a href=\"".$obj->link."\">";
+      echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" border=0>";
+      echo "</a>";
       echo "</td></tr>";
       echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
+      echo "<TR><TD>";
+      if (($spotlightId=$obj->hasSpotlight()) !== false){
+        echo "<a href=\"spotlight.php?id=$spotlightId\">previous spotlight</a>";
+      }
+      echo "</td></tr>";
       echo "<TR><TD><BR></td></tr></table>";
       echo "</td>";
       $rowCount++;

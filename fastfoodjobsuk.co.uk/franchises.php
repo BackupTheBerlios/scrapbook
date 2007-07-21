@@ -23,7 +23,7 @@ Or, you can add your logo and 25 words of text.<br /></p>
 <?php
 
   $franchise=new Franchise();
-  $results=$franchise->GetList(array(array("franchiseid",">=","0")),"dt_created");
+  $results=$franchise->GetList(array(array("franchiseid",">=","0"),array("franchise_status","=","active"),array("dt_expire",">",date("Y-m-d"))),"dt_created");
   shuffle($results);
   
   $rowCount=0;  
@@ -31,7 +31,10 @@ Or, you can add your logo and 25 words of text.<br /></p>
   foreach ($results as $obj){
     echo "<TD valign=\"top\" width = \"135\">";
     echo "<table id=\"table_inner\">";
-    echo "<TR><TD class=\"cell_logo\"><img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\">";
+    echo "<TR><TD class=\"cell_logo\">";
+    echo "<a href=\"".$obj->link."\">";
+    echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" border=0>";
+    echo "</a>";
     echo "</td></tr>";
     echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";

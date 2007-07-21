@@ -17,7 +17,7 @@ if ($id>0){
 	//default link
 	$member->link="http://";
 	//free for now
-	$member->gold_membership_status='active';
+	$member->gold_membership_status='temp';
 }
 
 //check if form is being submitted

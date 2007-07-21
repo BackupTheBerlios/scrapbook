@@ -18,7 +18,7 @@ if ($id>0){
 	//default link
 	$supplier->link="http://";	
 	//free for now
-	$supplier->supplier_status='active';
+	$supplier->supplier_status='temp';
 }
 
 //check if form is being submitted

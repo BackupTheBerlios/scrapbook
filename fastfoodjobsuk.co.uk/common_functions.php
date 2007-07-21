@@ -230,46 +230,57 @@ function generate($title,$user,$object,$getAll=false){
     foreach ($results as $obj){
 		  
 		  if ($alt){
-			$rowclass="row_even";
+        $rowclass="row_even";
 		  } else {
-			$rowclass="row_odd";
+        $rowclass="row_odd";
 		  }
 		  $alt=!$alt;
 		  
 		  echo "<tr>";
 		  if ($hasName){
-			echo "<td class=\"$rowclass\">".$obj->name."</td>";
+        echo "<td class=\"$rowclass\">".$obj->name."</td>";
 		  } else if($hasHeading) {
-			echo "<td class=\"$rowclass\">".$obj->heading."</td>";
+        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
 		  }
 		  if ($hasDescription){
-			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
 		  } else if($hasText){
-			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
 		  }
 		  if ($hasLink){
-			echo "<td class=\"$rowclass\">".$obj->link."</td>";
+        echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
-		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
-		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_expire,5)."</td>";
+		  
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
+		  echo "<td class=\"$rowclass\">".(($d=FormatDateTime($obj->dt_expire,7)) == "00/00/0000" ? "please<BR>activate" : $d)."</td>";
 		  
 			$classId=$class."Id"; 
 		  $status=$class."_status"; 
 		  echo "<td class=\"$rowclass\">";
 		  echo "<ul><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></li>";
 		  //echo "</td>";
-		  switch ($obj->$status){
-			case "active":
-			  //echo "<td class=\"$rowclass\">";
-			  echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Deactivate</a></li>";
-			  //echo "</td>";
-			  break;
-			case "disabled":
-			  //echo "<td class=\"$rowclass\">";
-			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
-			  //echo "</td>";
-			  break;
-		  }
+		  
+      if ($obj->dt_expire!="0000-00-00" && $obj->dt_expire<=date("Y-m-d")){
+        echo "<li><a href=\"renew.php?type=$class&id=".$obj->$classId."\">Renew</a></li>";
+      } else {
+      
+        switch ($obj->$status){
+          case "temp":
+    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+            break;
+          case "active":
+    			  //echo "<td class=\"$rowclass\">";
+            echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Pause</a></li>";
+    			  //echo "</td>";
+    			  break;
+    			case "disabled":
+    			  //echo "<td class=\"$rowclass\">";
+    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Continue</a></li>";
+    			  //echo "</td>";
+    			  break;
+  		  }
+  		  
+  		}
 		  if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
 			//echo "<td class=\"$rowclass\">";
 			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
