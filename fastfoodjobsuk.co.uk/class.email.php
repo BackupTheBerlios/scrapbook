@@ -17,6 +17,10 @@ class Emailer {
     //$this->body.="<BR>";
   }
   
+  function bodyClear(){
+    $this->body="";
+  }
+  
   function setTo($s){
     $this->to=$s;
   }

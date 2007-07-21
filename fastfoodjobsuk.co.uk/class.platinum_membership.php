@@ -79,7 +79,7 @@ class Platinum_membership
 		);
 	var $pog_query;
 	
-	function Platinum_membership($onlineuser_onlineuserid='', $logo='', $image1='', $image2='', $heading='', $text='', $name='', $address='', $tel='', $fax='', $email='', $link='', $dt_created='', $platinum_membership_status='')
+	function Platinum_membership($onlineuser_onlineuserid='', $logo='', $image1='', $image2='', $heading='', $text='', $name='', $address='', $tel='', $fax='', $email='', $link='', $dt_created='', $dt_expire='', $platinum_membership_status='')
 	{
 		$this->onlineuser_onlineuserid = $onlineuser_onlineuserid;
 		$this->logo = $logo;
@@ -94,6 +94,7 @@ class Platinum_membership
 		$this->email=$email;
 		$this->link = $link;
 		$this->dt_created = $dt_created;
+		$this->dt_expire=$dt_expire;
 		$this->platinum_membership_status = $platinum_membership_status;
 	}
 	
