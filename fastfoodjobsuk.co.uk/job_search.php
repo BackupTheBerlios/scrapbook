@@ -135,26 +135,8 @@ return true;
         <td><select id='x_position' name='x_position'>
             <option value="">All</option>
             <?php
-        if (isset($x_position)){
-          $f=fopen("position_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_position){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("position_list.htm");
-        }
-      ?>
+				loadOptions("position_list.htm",$x_position);
+      		?>
         </select>
         </td>
     </tr>
@@ -165,26 +147,8 @@ return true;
         <td><select d='x_location' name='x_location'>
             <option value=''>All</option>
             <?php
-        if (isset($x_location)){
-          $f=fopen("county_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_location){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("county_list.htm");
-        }
-      ?>
+				loadOptions("county_list.htm",$x_location);
+      		?>
         </select></td>
     </tr>
 </table>

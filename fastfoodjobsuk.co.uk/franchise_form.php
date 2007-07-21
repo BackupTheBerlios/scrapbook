@@ -128,25 +128,7 @@ require("top.php");
     <td>
       <select name="county" id="county">
       <?php
-        if (isset($franchise->county)){
-          $f=fopen("county_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$franchise->county){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("county_list.htm");
-        }
+       loadOptions("county_list.htm",$franchise->county);
       ?>
       </select>
     </td>

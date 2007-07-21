@@ -114,27 +114,10 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	<tr>
 		<td width="134"><span style="font-weight: bold">Position </span></td>
 		<td width="316">
-<select id='x_position' name='x_position'>
-                  <?php
-        if (isset($x_position)){
-          $f=fopen("position_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_position){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("position_list.htm");
-        }
+		<select id='x_position' name='x_position'>
+       <?php
+	   $listFile="position_list.htm";
+       loadOptions($listFile,$x_position);
       ?></select></td>
 	</tr>
 	<tr>
@@ -178,27 +161,9 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 		<td><span style="font-weight: bold">Location</span></td>
 		<td>
         <select d='x_location' name='x_location'>
-      <?php
-        if (isset($x_location)){
-          $f=fopen("county_list.htm","r");
-          while (!feof($f)){
-            $d=fgets($f);
-            $start=strpos($d,"\"")+1;
-            $end=strrpos($d,"\"");
-            $val=substr($d,$start,$end-$start);
-            if ($val==$x_location){
-              $newD=substr($d,0,$end+1);
-              $newD.=" SELECTED";
-              $newD.=substr($d,$end+1);
-              $d=$newD;
-            }
-            echo $d;
-          }
-          fclose($f);
-        } else {
-          require("county_list.htm");
-        }
-      ?>
+		<?php
+       	loadOptions("county_list.htm",$x_location);
+       ?>
       </select></td>
 	</tr>
 

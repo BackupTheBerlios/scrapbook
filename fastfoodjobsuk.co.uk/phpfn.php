@@ -841,7 +841,7 @@ function RenderControl($totcnt, $rowcnt, $repeatcnt, $rendertype) {
 	// Render control start
 	if ($rendertype == 1) { 
 
-		if ($rowcnt == 0) $sWrk .= "<table class=\"phpmakerlist\">";
+		if ($rowcnt == 0) $sWrk .= "<table>";
 		If (($rowcnt % $repeatcnt) == 0) $sWrk .= "<tr>";
 		$sWrk .= "<td>";
 

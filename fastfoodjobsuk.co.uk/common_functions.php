@@ -142,6 +142,32 @@ function expiryDate($numberOfDays=30)
 	return date("Y-m-d", $future);
 }
 
+//load options from a file
+function loadOptions($listFile,$selectedValue)
+{
+	if (isset($selectedValue)){
+		$f=fopen($listFile,"r");
+		while (!feof($f)){
+			$d=fgets($f);
+			$start=strpos($d,"\"")+1;
+			$end=strrpos($d,"\"");
+			$val=substr($d,$start,$end-$start);
+			if ($val==$selectedValue){
+			  $newD=substr($d,0,$end+1);
+			  $newD.=" SELECTED";
+			  $newD.=substr($d,$end+1);
+			  $d=$newD;
+			}
+			echo $d;
+		}
+		fclose($f);
+    }else{
+		require($listFile);
+	}
+}
+
+
+
 // report table
 function generate($title,$user,$object,$getAll=false){
   global $truncateText;

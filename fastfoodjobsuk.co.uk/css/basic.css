@@ -202,7 +202,6 @@ text-align::left;
 .error {
 	color:red;
 	font-size:14px;
-	background-color:#FF0000;
 	border:2px;
 }
 .registerTable{

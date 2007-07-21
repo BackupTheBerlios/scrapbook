@@ -230,7 +230,7 @@ if ($nTotalRecs > 0) {
 <?php if ($nTotalRecs > 0) { ?>
 		<td nowrap>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td align="right" valign="top" nowrap>Records Per Page&nbsp;
-		    <select name="<?php echo ewTblRecPerPage; ?>" onchange="this.form.submit();" class="phpmaker">
+		    <select name="<?php echo ewTblRecPerPage; ?>" onchange="this.form.submit();" >
 		        <option value="10"<?php if ($nDisplayRecs == 10) { echo " selected";  }?>>10</option>
 		        <option value="20"<?php if ($nDisplayRecs == 20) { echo " selected";  }?>>20</option>
 		        <option value="50"<?php if ($nDisplayRecs == 50) { echo " selected";  }?>>50</option>
