@@ -84,19 +84,45 @@ function validate($d,$eregi,$length,$minLength=0){
       $eregi='^[0-9\(\)\-\ ]+$';
       break;
   }
-   
-	if ( $eregi!="" && !eregi($eregi,$d) ){
-		return "invalid";
-	} else if (strlen($d)>$length){
-		return "too long";
-	}else if (strlen($d)<$minLength){
-		return "too short";
-	}else if (strlen($d)==0) {
-	  return "mandatory";
-	} else {
-    return true;
-	}
-
+  
+  if ($eregi=="words"){
+    
+    // special case whereby we want to check how many words there are
+    $reformat=$d;
+    $reformat=str_replace(", ", ",", $reformat);
+    $reformat=str_replace(". ", ".", $reformat);
+    $reformat=str_replace(" - ", "-", $reformat);
+    $wordCount=0;
+    $wordCount+=substr_count($reformat,".");
+    $wordCount+=substr_count($reformat,",");
+    $wordCount+=substr_count($reformat," ");
+    $wordCount+=substr_count($reformat,"-");
+    
+    // there are 6.8 characters on average per english word
+    // so 7 should be enough, but I have opted for 8
+    if ($wordCount>=$length || strlen($d)>(8*$length)){
+      return "too long";
+    } else if (strlen($d)<=$minLength){
+      return "mandatory";
+    } else {
+      return true;    
+    }
+    
+  } else {
+  
+  	if ( $eregi!="" && !eregi($eregi,$d) ){
+  		return "invalid";
+  	} else if (strlen($d)>$length){
+  		return "too long";
+  	}else if (strlen($d)<$minLength){
+  		return "too short";
+  	}else if (strlen($d)==0) {
+  	  return "mandatory";
+  	} else {
+      return true;
+  	}
+  
+  }
 }
 //get a list of all object
 function getAllObjects($instance, $sortBy='', $ascending=true, $limit='')

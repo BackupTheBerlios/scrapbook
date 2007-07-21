@@ -122,7 +122,7 @@ function sure(classname,id){
 
 <?php
 generate("News",$user,new News(),true);
-generate("Venue(s)",$user,new Restaurant());
+generate("Venue",$user,new Restaurant());
 generate("Franchise For sales",$user,new Franchise());
 require("bottom_wide.php");
 ?>

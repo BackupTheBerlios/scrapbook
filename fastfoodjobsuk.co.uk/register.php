@@ -221,16 +221,20 @@ if (isset($_POST["register"])){
         <input type="password" name="password" value="">
       </td>
     </tr>
-    <!--
     <TR>
       <TD>
-        I am a...
+        What is your role?
       </td>
       <TD>
-        <input type="checkbox" name="password" value="">
+        <select name="role">
+          <option value="Job Seeker">Job Seeker</option>
+          <option value="Supplier">Supplier</option>
+          <option value="Franchisor">Franchisor</option>
+          <option value="Recruiter">Recruiter</option>
+          <option value="Other">Other</option>
+        </select>
       </td>
     </tr>
-    -->
     <tr>
       <td>
         I have read the <a href="terms.html" style="color:#0000FF">terms</a>

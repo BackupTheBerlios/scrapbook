@@ -29,9 +29,6 @@ if(isset($_POST["whichUser"]) && isSuperUser(false)){
 }
 require("top_wide.php");
 ?>
-
-<link rel="stylesheet" href="css/account.css" type="text/css">
-
 <script language="JavaScript">
 function sure(classname,id){
   if (confirm("Are you sure you wish to delete this record?")){
@@ -47,15 +44,15 @@ function sure(classname,id){
 <p>
   <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
 </p>
-
+</td></tr></table>
 <?php
 //generateCVLink($user);
 generateJobLink($user);
-generate("Gold Advert(s)",$user,new Gold_membership());
-generate("Platinum Advert(s)",$user,new Platinum_membership());
-generate("Supplier(s)",$user,new Supplier());
+generate("Gold Advert",$user,new Gold_membership());
+generate("Platinum Advert",$user,new Platinum_membership());
+generate("Supplier",$user,new Supplier());
 ?>
-</td></tr></table>
+
 <?php
 function generateJobLink($user){
   global $truncateText;
@@ -65,14 +62,16 @@ function generateJobLink($user){
   $result=$db->Query("SELECT * FROM job where onlineuser_onlineuserid=$user->onlineuserId ORDER BY dt_created DESC");
 
   $rows=$db->Rows();  
-  if ($rows == 0){
-    //echo "<tr><td>";
-    //echo "You currently have no entries";
-    //echo "</td></tr>";
-  } else {
+  if ($rows > 0||isSuperUser(false))
+  {
      $alt=false;
 	 $rowclass="";
-     echo "Job(s)"."<br/>";
+	 echo "<br/>";
+     echo "Job Admin";
+	if (isSuperUser(false))
+	{
+    	echo "  - <a href='job_post.php'>create new</a>";
+	}	 
 	  echo "<div class=\"spacer\"></div>";
 		echo "<table class=\"table\">";
 	 	for ($i=0;$i<$rows;$i++){

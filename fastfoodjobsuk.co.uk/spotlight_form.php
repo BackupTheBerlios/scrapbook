@@ -1,5 +1,5 @@
 <?php
-require("common_super.php");
+require("common_user.php");
 checkForAddress();
 $errorText="";
 
@@ -107,6 +107,7 @@ if ((bool)$_POST["submitting"])
     	if (!file_exists("logos")){
       		mkdir("logos");
     	}
+      $member->address=str_replace("\n","<br>",$member->address);
     	$member->Save();
     	header("Location: spotlight_success.php?i=".$member->spotlightId);
   	} else { // in error
@@ -252,7 +253,7 @@ require("top.php");
     </td>
     <td>
       <textarea name="address" id="address"><?php
-        echo $member->address;
+        echo str_replace("<BR>","\n",$member->address);
       ?></textarea>
 
     </td>
