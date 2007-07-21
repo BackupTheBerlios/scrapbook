@@ -1,6 +1,6 @@
 <?php
 	require("common_all.php");
-
+  require("class.email.php");
 
 if (isset($_POST["register"])){
   
@@ -12,6 +12,7 @@ if (isset($_POST["register"])){
   $email=$_POST["email"];
   $password=$_POST["password"];
   $showAddress=$_POST["showAddress"];
+  $role=$_POST["role"];
   
   if (($result=validate($first_name,"name",45))!==true)
     $errorText.="<LI>Your first name is $result";
@@ -61,42 +62,46 @@ if (isset($_POST["register"])){
     } else {
       $user=new OnlineUser($email, $first_name, $last_name, $password, '', '', '', '', '', '', 'temp');
       $userId=$user->Save();
-	  $user=$user->Get($userId);
-	  $created=strtotime($user->dt_created);
+	    $user=$user->Get($userId);
+	    $created=strtotime($user->dt_created);
       
-      $headers="From: noreply@fastfoodjobsuk.co.uk\r\n";
-      $headers.="X-Mailer: CJS_MailSystem\r\n";
-      $headers.= "MIME-Version: 1.0\r\n";
-      $headers.= "Content-type: text/html; charset=iso-8859-1\r\n";
+      $mail=new Emailer();
+      $mail->setTo($email);
+      $mail->setFrom($configuration["fromEmail"]);
+      $mail->setSubject("Fastfoodjobsuk Registration");      
+
       $url="http://www.fastfoodjobsuk.co.uk/register_activate.php?email=$email&code=$created";
       
-      $message="<HTML><pre>";
-      $message.="Dear $first_name $last_name\n\n";
-
-      $message.="Thank you for registering with Fast Food Jobs but as we take your privacy seriously, ";
-      $message.="we just wanted to check you did register with our site. ";
-      $message.="In order to gain access to all of the web site functionality please click on ";
-      $message.="<a href=\"$url\">this link</a>\n\n";
-
-      $message.="If you should not have received this e-mail, please click on the e-mail link below ";
-      $message.="and just put \"remove\" in the heading and we will remove your details from our system.\n\n";
-
-      $message.="Regards,\n\n";
-
-      $message.="The Fast Food Jobs Team\n\n";
-
-      $message.="Tel: 0845 644 8252\n";
-      $message.="info@fastfoodjobsuk.co.uk\n";
-
-      /*
-      $message.="If the link above does not work, please visit:\n";
-      $message.="http://www.fastfoodjobsuk.co.uk/register_activate.php\n\n";
-      $message.="And when prompted, please enter your email address and the code: $created";
-      */
+      $mail->bodyAdd("Dear $first_name $last_name");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("Thank you for registering with Fast Food Jobs but as we take your privacy seriously, we just wanted to check you did register with our site.");
+      $mail->bodyAdd("In order to gain access to all of the web site functionality please click on <a href=\"$url\">this link</a>");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("If you should not have received this e-mail, please click on the e-mail link below and just put \"remove\" in the heading and we will remove your details from our system.");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("Regards");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("The Fast Food Jobs Team");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("Tel: 0845 644 8252");
+      $mail->bodyAdd("info@fastfoodjobsuk.co.uk");
       
-      $message.="</pre></html>";
+      $mail->send();
       
-      mail($email, "Fastfoodjobsuk Registration", $message, $headers);
+      $adminMail=new Emailer();
+      $adminMail->setTo($configuration["adminEmail"]);
+      $adminMail->setFrom($configuration["fromEmail"]);
+      $adminMail->setSubject("New Sign up");
+      
+      $adminMail->bodyAdd("Dear admin,");
+      $adminMail->bodyAdd("Just to let you know that new member");
+      $adminMail->bodyAdd("Name: ".$first_name." ".$last_name);
+      $adminMail->bodyAdd("Emai: $email");
+      $adminMail->bodyAdd("Role: $role");
+      $adminMail->bodyAdd("has just joined Fast Foods.");
+      
+      $adminMail->send();
+      
       header("Location: register_thankyou.php");
       exit;
     }

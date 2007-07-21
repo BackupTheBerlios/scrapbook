@@ -302,5 +302,17 @@ class Supplier
 			return $Database->Query($pog_query);
 		}
 	}
+
+  function hasSpotlight(){
+    $db=new DatabaseConnection();
+    $result=$db->Query("SELECT spotlightid FROM spotlight WHERE membershipid='".$this->supplierId."' AND spotlight_type='supplier'");
+    if ($db->Rows()>0){
+      $id=mysql_fetch_row($result);
+      return $id[0];
+    }	else {
+      return false;
+    }
+	}
+
 }
 ?>

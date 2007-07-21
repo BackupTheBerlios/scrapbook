@@ -202,7 +202,32 @@ function generate($title,$user,$object,$getAll=false){
 			}
   	 }else{
 	
-		foreach ($results as $obj){
+		$hasName=isset($results[0]->name);
+		$hasHeading=isset($results[0]->heading);
+		$hasDescription=isset($results[0]->description);
+		$hasText=isset($results[0]->text);
+		$hasLink=isset($results[0]->link);
+
+    echo "<TR>";
+    if ($hasName){
+      echo "<TD>Name</td>";
+    } elseif ($hasHeading){
+      echo "<TD>Heading</td>";
+    }
+    if ($hasDescription){
+      echo "<TD>Description</td>";
+    } elseif ($hasText){
+      echo "<TD>Text</td>";
+    }
+    if ($hasLink){
+      echo "<TD>URL</td>";
+    }
+    echo "<TD>Created</td>";
+    echo "<TD>Expires</td>";
+    echo "<TD><!-- Functions --></td>";
+    echo "</tr>";
+		
+    foreach ($results as $obj){
 		  
 		  if ($alt){
 			$rowclass="row_even";
@@ -212,20 +237,21 @@ function generate($title,$user,$object,$getAll=false){
 		  $alt=!$alt;
 		  
 		  echo "<tr>";
-		  if (isset($obj->name)){
+		  if ($hasName){
 			echo "<td class=\"$rowclass\">".$obj->name."</td>";
-		  } else if(isset($obj->heading)) {
+		  } else if($hasHeading) {
 			echo "<td class=\"$rowclass\">".$obj->heading."</td>";
 		  }
-		  if (isset($obj->description)){
+		  if ($hasDescription){
 			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
-		  } else if(isset($obj->text)){
+		  } else if($hasText){
 			echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
 		  }
-		  if (isset($obj->link)){
+		  if ($hasLink){
 			echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
 		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_expire,5)."</td>";
 		  
 			$classId=$class."Id"; 
 		  $status=$class."_status"; 

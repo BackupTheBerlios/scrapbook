@@ -24,9 +24,7 @@ if ((bool)$_POST["submitting"])
   if ($errorText==""){
     
     $mail=new Emailer();
-    $mail->setTo("me@chrissweeney.co.uk");
-    //$mail->setTo("admin@fastfoodjobsuk.co.uk");
-    
+    $mail->setTo($configuration["adminEmail"]);
     $mail->setFrom("classified@fastfoodjobsuk.co.uk");
     $mail->setSubject("Classified Advert");
     $mail->bodyAdd("NEW CLASSIFIED ADVERT");

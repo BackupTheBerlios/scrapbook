@@ -16,6 +16,12 @@ $configuration['user']	= 'web84-fastfood';		//	database user
 $configuration['pass']	= 'pizza555';		//	database password
 $configuration['port'] 	= '3306';		//	database port
 
+// admin email address
+  $configuration["adminEmail"]="me@chrissweeney.co.uk";
+  //$configuration["adminEmail"]="admin@fastfoodjobsuk.co.uk";
+// from email address
+  $configuration["fromEmail"]="noreply@fastfoodjobsuk.co.uk";
+
 global $goldTableCols,$truncateText,$logoWidth,$logoHeight,$platinumImageWidth,$platinumImageHeight;
 // controls the table size of the gold membership and restaurants
  $goldTableCols=3;
@@ -30,4 +36,5 @@ global $goldTableCols,$truncateText,$logoWidth,$logoHeight,$platinumImageWidth,$
 // platinum image sizes
  $platinumImageWidth=153;
  $platinumImageHeight=104;
+ 
 ?>
