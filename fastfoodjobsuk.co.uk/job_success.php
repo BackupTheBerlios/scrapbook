@@ -1,5 +1,5 @@
 <?php
-require("common_all.php");
+require("common_user.php");
 require("top.php");
 ?>
 <span class="redbar">| </span><span class="heading">Job Post</span> <span class="redbar">|</span><br>

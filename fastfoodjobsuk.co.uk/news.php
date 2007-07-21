@@ -15,7 +15,7 @@ foreach ($newsList as $newsObject){
   echo $newsObject->description;
   echo "</td></tr>";
   echo "<tr><TD class=\"cell_link\">";
-  echo "<a href=\"".$newsObject->link."\" class=\"news\">Click here for the full story</a>";
+  echo "<a href=\"".$newsObject->link."\" class=\"news\" target='_link'>Click here for the full story</a>";
   echo "</td>";
   echo "</tr>";
   

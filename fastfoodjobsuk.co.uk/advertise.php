@@ -39,7 +39,7 @@ Company Logo linked to your web site with 25 words,<br>
 displayed on UK Food Franchises Page.</td>
 </tr>
 <tr>
-<td width="168"><a href="feature.html"><img src="images/ads_34.jpg" alt="" width="162"  border="0"></a></td>
+<td width="168"><a href="classified_form.php"><img src="images/ads_34.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Classified	<br>
 </span>Home Page - Classified Text advert (max 4 companies)<br>
 
