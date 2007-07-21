@@ -23,7 +23,11 @@
   
   $platinumImages=array(6);
   $db=new DatabaseConnection();
-  $result=$db->Query("SELECT platinum_membershipId,logo FROM platinum_membership where platinum_membership_status='active' ORDER BY RAND() LIMIT 6");
+  $result=$db->Query("SELECT platinum_membershipId,logo
+                      FROM platinum_membership
+                      WHERE platinum_membership_status='active'
+                            AND dt_expire>'".date("Y-m-d")."'
+                      ORDER BY RAND() LIMIT 6");
   $rows=$db->Rows();
   for ($i=0;$i<$rows;$i++){
     $qr=mysql_fetch_row($result);
