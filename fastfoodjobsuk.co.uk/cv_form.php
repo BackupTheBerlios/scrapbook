@@ -6,24 +6,16 @@ ob_start();
 <?php include ("ewupload.php") ?>
 <?php
 // Load key from QueryString
-$bCopy = true;
 $x_cvid = @$_GET["cvid"];
-if (($x_cvid == "") || (is_null($x_cvid))) $bCopy = false;
 
 // Get action
 $sAction = @$_POST["a_add"];
 if (($sAction == "") || ((is_null($sAction)))) {
-	if ($bCopy) {
-		$sAction = "C"; // Copy record
-	} else {
 		$sAction = "I"; // Display blank record
-	}
 } else {
-
 	// Get fields from form
-	$x_cvid = @$_POST["x_cvid"];
-	$x_onlineuser_onlineuserid = @$_POST["x_onlineuser_onlineuserid"];
-	$x_picture = @$_POST["x_picture"];
+	//$x_cvid = @$_POST["x_cvid"];
+	//$x_picture = @$_POST["x_picture"];
 	$x_first_name = @$_POST["x_first_name"];
 	$x_mid_name = @$_POST["x_mid_name"];
 	$x_last_name = @$_POST["x_last_name"];
@@ -68,15 +60,6 @@ if (($sAction == "") || ((is_null($sAction)))) {
 }
 $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 switch ($sAction) {
-	case "C": // Copy record
-		if (!LoadData($conn)) { // Load record
-			$_SESSION[ewSessionMessage] = "No records found";
-			phpmkr_db_close($conn);
-			ob_end_clean();
-			header("Location: cvlist.php");
-			exit();
-		}
-		break;
 	case "A": // Add
 		if (AddData($conn)) { // Add new record
 			$_SESSION[ewSessionMessage] = "Add New Record Successful";
@@ -89,32 +72,17 @@ switch ($sAction) {
 }
 ?>
 <?php include ("top.php") ?>
-<script type="text/javascript">
-<!--
-EW_LookupFn = "ewlookup.php"; // ewlookup file name
-EW_AddOptFn = "ewaddopt.php"; // ewaddopt.php file name
-
-//-->
-</script>
 <script type="text/javascript" src="scripts/ewp.js"></script>
 <script type="text/javascript">
 <!--
 EW_dateSep = "/"; // set date separator
 EW_UploadAllowedFileExt = "gif,jpg,jpeg,bmp,png"; // allowed upload file extension
-
 //-->
 </script>
 <script type="text/javascript">
 <!--
 function EW_checkMyForm(EW_this) {
-if (EW_this.x_onlineuser_onlineuserid && !EW_hasValue(EW_this.x_onlineuser_onlineuserid, "TEXT")) {
-	if (!EW_onError(EW_this, EW_this.x_onlineuser_onlineuserid, "TEXT", "Please enter required field - onlineuserid"))
-		return false;
-}
-if (EW_this.x_onlineuser_onlineuserid && !EW_checkinteger(EW_this.x_onlineuser_onlineuserid.value)) {
-	if (!EW_onError(EW_this, EW_this.x_onlineuser_onlineuserid, "TEXT", "Incorrect integer - onlineuserid"))
-		return false; 
-}
+
 if (EW_this.x_picture && !EW_checkfiletype(EW_this.x_picture.value)) { 
 	if (!EW_onError(EW_this, EW_this.x_picture, "FILE", "File type is not allowed.")) 
 	return false; 
@@ -186,12 +154,6 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 }
 ?>
 <table>
-	<tr>
-		<td><span>onlineuserid<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_onlineuser_onlineuserid">
-<input type="text" name="x_onlineuser_onlineuserid" id="x_onlineuser_onlineuserid" size="30" value="<?php echo htmlspecialchars(@$x_onlineuser_onlineuserid) ?>">
-</span></td>
-	</tr>
 	<tr>
 		<td><span>Picture</span></td>
 		<td><span id="cb_x_picture">
@@ -629,7 +591,6 @@ function LoadData($conn)
 
 		// Get the field contents
 		$GLOBALS["x_cvid"] = $row["cvid"];
-		$GLOBALS["x_onlineuser_onlineuserid"] = $row["onlineuser_onlineuserid"];
 		$GLOBALS["x_picture"] = $row["picture"];
 		$GLOBALS["x_first_name"] = $row["first_name"];
 		$GLOBALS["x_mid_name"] = $row["mid_name"];
@@ -686,7 +647,7 @@ function LoadData($conn)
 
 function AddData($conn)
 {
-	global $x_cvid;
+	global $x_cvid,$user;
 	$sFilter = ewSqlKeyWhere;
 
 	// Check for duplicate key
@@ -729,8 +690,7 @@ function AddData($conn)
 		$a_x_picture =  @$_POST["a_x_picture"];
 
 	// Field onlineuser_onlineuserid
-	$theValue = ($GLOBALS["x_onlineuser_onlineuserid"] != "") ? intval($GLOBALS["x_onlineuser_onlineuserid"]) : "NULL";
-	$fieldList["`onlineuser_onlineuserid`"] = $theValue;
+	$fieldList["`onlineuser_onlineuserid`"] = $user->onlineuserId;
 
 	// Field picture
 		if (is_uploaded_file($_FILES["x_picture"]["tmp_name"])) {
