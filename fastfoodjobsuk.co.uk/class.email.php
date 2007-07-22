@@ -32,11 +32,12 @@ class Emailer {
   function send(){
     $headers="From: ".$this->from."\r\n";
     $headers.="X-Mailer: CJSMailSystem\r\n";
+    /*
     $headers.= "MIME-Version: 1.0\r\n";
     $headers.= "Content-type: text/html; charset=iso-8859-1\r\n";
-    
     $this->body="<HTML><PRE>".$this->body."</pre></html>";
-    
+    */
+
     return mail($this->to, $this->subject, $this->body, $headers);
   }
 }
