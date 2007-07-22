@@ -30,7 +30,7 @@ FAST FOOD JOBS UK For the first time brings the needs of our industry together i
       <?php
       
         $supCategory=new Supplier_category();
-        $results=$supCategory->GetList(array(array("supplier_category_id",">=","0")),"name");
+        $results=$supCategory->GetList(array(array(1)),"name");
         $max=count($results);
         for($i=0;$i<$max;$i++){
           $obj=$results[$i];
@@ -75,8 +75,8 @@ If your companies' category is not listed above, let us know.<br></div></td>
 </tr>
 </table>
 <table id="table">
-  <TR>
-    <TD>
+  <tr>
+    <td>
 <!--original position -->
 
     </td>

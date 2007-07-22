@@ -18,7 +18,7 @@
 <?php
 
   $member=new Gold_membership();
-  $results=$member->GetList(array(array("gold_membershipid",">=","0"),array("gold_membership_status","=","active"),array("dt_expire",">",date("Y-m-d"))),"dt_created");
+  $results=$member->GetList(array(array("gold_membership_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
   shuffle($results);
   $rowCount=0;  
   echo "<TR>";

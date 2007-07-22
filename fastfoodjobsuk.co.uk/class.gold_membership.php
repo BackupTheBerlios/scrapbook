@@ -146,6 +146,7 @@ class Gold_membership
 				}
 			}
 			$this->pog_query .= " order by gold_membershipid asc $sqlLimit";
+
 			$Database->Query($this->pog_query);
 
 			for ($i=0; $i < $Database->Rows(); $i++)

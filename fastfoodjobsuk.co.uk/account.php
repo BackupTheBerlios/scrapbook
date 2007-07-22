@@ -6,8 +6,8 @@ function showAdmin(){
   echo "<form action=\"account.php\" method=\"POST\">";
   echo "<TR><TD>Log in as which user?</TD>";
   echo "<TD><select name=\"whichUser\">";
-  $users=new OnlineUser();
-  $results=$users->GetList(array(array("onlineuserid",">=","0")),"onlineuserid");
+  $theuser=new OnlineUser();
+  $results=getAllObjects($theuser);
   foreach ($results as $obj){
     echo "<option value=\"".$obj->onlineuserId."\">".$obj->email."</option>\n";
   }

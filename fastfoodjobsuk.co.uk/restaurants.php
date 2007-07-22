@@ -19,7 +19,7 @@
 <?php
 
   $restaurant=new Restaurant();
-  $results=$restaurant->GetList(array(array("restaurantid",">=","0"),array("restaurant_status","=","active"),array("dt_expire",">",date("Y-m-d"))),"dt_created");
+  $results=$restaurant->GetList(array(array("restaurant_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
   
   shuffle($results);
   

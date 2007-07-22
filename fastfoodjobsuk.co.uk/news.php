@@ -3,7 +3,7 @@
 require("top.php");
 require("news_fixed.html");
 $news=new News();
-$newsList=$news->GetList(array(array("live","=","1")),"dt_created",false);
+$newsList=$news->GetList(array(array("live")),"dt_created",false);
 
 echo "<table id=\"table\">";
 

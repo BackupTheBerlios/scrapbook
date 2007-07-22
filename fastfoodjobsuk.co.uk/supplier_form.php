@@ -116,7 +116,7 @@ if ((bool)$_POST["submitting"])
       <select name="category" id="category">
       <?php
         $supCategory=new Supplier_category();
-        $result=$supCategory->GetList(array(array("supplier_category_id",">=","0")),"name");
+        $result=$supCategory->GetList(array(array(1)),"name");
         foreach ($result as $obj){
           if ($supplier->supplier_category_id==$obj->supplier_categoryId){
             $chk=" SELECTED";

@@ -178,7 +178,7 @@ function generate($title,$user,$object,$getAll=false){
 	}
 	else
 	{
-  		$results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)),"dt_expire" );
+  		$results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)) );
     }
 
   $alt=false;
