@@ -1,5 +1,6 @@
 <?php 
 require("common_user.php");
+$user->canSearchCV();
 ob_start();
 ?>
 <?php include ("cvinfo.php") ?>
@@ -24,7 +25,7 @@ $sListTrJs = "";
 $bEditRow = "";
 $nEditRowCnt = "";
 $sDeleteConfirmMsg = "";
-$nDisplayRecs = "20";
+$nDisplayRecs = "5";
 $nRecRange = 10;
 
 // Set up records per page dynamically
@@ -100,12 +101,11 @@ if ($nDisplayRecs <= 0) { // Display all records
 $nStartRec = 1;
 SetUpStartRec(); // Set up start record position
 ?>
-<p><span>CV List </span></p>
+ <h2 style = "margin-left:5px;">CV Search Result</h2>
 <form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" >
 <table class="ewBasicSearch">
 	<tr>
 		<td><span>
-			<a href="cvlist.php?cmd=reset">Show all</a>&nbsp;
 			<a href="cv_search.php">Back to Search</a>
 		</span></td>
 	</tr>
@@ -211,7 +211,9 @@ if ($nTotalRecs > 0) {
 		<td nowrap>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		<td align="right" valign="top" nowrap><span>Records Per Page&nbsp;
 		<select name="<?php echo ewTblRecPerPage; ?>" onchange="this.form.submit();" >
-			<option value="20"<?php if ($nDisplayRecs == 20) { echo " selected";  }?>>20</option>
+		        <option value="5"<?php if ($nDisplayRecs == 5) { echo " selected";  }?>>5</option>					
+		        <option value="10"<?php if ($nDisplayRecs == 10) { echo " selected";  }?>>10</option>
+		        <option value="20"<?php if ($nDisplayRecs == 20) { echo " selected";  }?>>20</option>
 		</select>
 		</span></td>
 <?php } ?>
@@ -238,12 +240,12 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 		$nRecActual++;
 
 		// Set row color
-		$sItemRowClass = " class=\"ewTableRow\"";
+		$sItemRowClass = " class=\"row_odd\"";
 		$sListTrJs = "";
 
 		// Display alternate color for rows
 		if ($nRecCount % 2 <> 1) {
-			$sItemRowClass = " class=\"ewTableRow\"";
+			$sItemRowClass = " class=\"row_even\"";
 		}
 		$x_cvid = $row["cvid"];
 		$x_onlineuser_onlineuserid = $row["onlineuser_onlineuserid"];
@@ -452,8 +454,12 @@ $x_can_relocate = $sTmp;
 </span></td>
 			</tr>
 			<tr>
+				<td>Salary Expectations</td>
+				<td></td>
+			</tr>					
+			<tr>
 				<td><span>
-	Salary Expectations Start<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	&#8226;Start<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_salary_expectation_start; ?>
@@ -461,7 +467,7 @@ $x_can_relocate = $sTmp;
 			</tr>
 			<tr>
 				<td><span>
-	Within a year<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_one"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_one"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	<span>&#8226;</span>Within a year<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_one"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_one"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_salary_expectation_one; ?>
@@ -469,15 +475,19 @@ $x_can_relocate = $sTmp;
 			</tr>
 			<tr>
 				<td><span>
-	Within 2-3 years<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_two"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_two"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	<span>&#8226;</span>Within 2-3 years<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_two"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_two"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_salary_expectation_two; ?>
 </span></td>
 			</tr>
 			<tr>
+				<td>Achievement</td>
+				<td></td>
+			</tr>			
+			<tr>
 				<td><span>
-	Achievement last 12 months Sales<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_sales"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_sales"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+					<span>&#8226;</span>Sales<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_sales"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_sales"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_achievement_sales; ?>
@@ -485,7 +495,7 @@ $x_can_relocate = $sTmp;
 			</tr>
 			<tr>
 				<td><span>
-	Food Cost<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_food"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_food"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	<span>&#8226;</span>Food Cost<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_food"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_food"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_achievement_food; ?>
@@ -493,7 +503,7 @@ $x_can_relocate = $sTmp;
 			</tr>
 			<tr>
 				<td><span>
-	Labour Cost<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_labour"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_labour"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	<span>&#8226;</span>Labour Cost<?php if (@$_SESSION[ewSessionTblSort . "_x_achievement_labour"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_achievement_labour"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo $x_achievement_labour; ?>
@@ -517,8 +527,7 @@ $x_can_relocate = $sTmp;
 			</tr>
 		</table>
 <span>
-	<a href="<?php if ($x_cvid <> "") {echo "cvview.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">View</a>&nbsp;
-	<a href="<?php if ($x_cvid <> "") {echo "cvedit.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a>&nbsp;
+	<b><a href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>
 </span>
 		</td>
 <?php if ((($nRecActual % $nRecPerRow) == 0) || ($nRecPerRow < 2)) { ?>  

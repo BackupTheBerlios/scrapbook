@@ -5,8 +5,6 @@ ob_start();
 <?php include ("cvinfo.php") ?>
 <?php include ("ewupload.php") ?>
 <?php
-// Load key from QueryString
-$x_cvid = @$_GET["cvid"];
 
 // Get action
 $sAction = @$_POST["a_add"];
@@ -15,7 +13,7 @@ if (($sAction == "") || ((is_null($sAction)))) {
 } else {
 	// Get fields from form
 	//$x_cvid = @$_POST["x_cvid"];
-	//$x_picture = @$_POST["x_picture"];
+	$x_picture = @$_POST["x_picture"];
 	$x_first_name = @$_POST["x_first_name"];
 	$x_mid_name = @$_POST["x_mid_name"];
 	$x_last_name = @$_POST["x_last_name"];
@@ -158,31 +156,31 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 		<td><span>Picture</span></td>
 		<td><span id="cb_x_picture">
 <?php $x_picture = ""; // Clear BLOB related fields ?>
-<input type="file" id="x_picture" name="x_picture" size="30">
+<input type="file" id="x_picture" name="x_picture" >
 </span></td>
 	</tr>
 	<tr>
 		<td><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_first_name">
-<input type="text" name="x_first_name" id="x_first_name" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_first_name) ?>">
+<input type="text" name="x_first_name" id="x_first_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_first_name) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Middle Name</span></td>
 		<td><span id="cb_x_mid_name">
-<input type="text" name="x_mid_name" id="x_mid_name" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_mid_name) ?>">
+<input type="text" name="x_mid_name" id="x_mid_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_mid_name) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Last Name<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_last_name">
-<input type="text" name="x_last_name" id="x_last_name" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_last_name) ?>">
+<input type="text" name="x_last_name" id="x_last_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_last_name) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Age<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_age">
-<input type="text" name="x_age" id="x_age" size="30" value="<?php echo htmlspecialchars(@$x_age) ?>">
+<input type="text" name="x_age" id="x_age" value="<?php echo htmlspecialchars(@$x_age) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -213,7 +211,7 @@ echo $x_sexList;
 	<tr>
 		<td><span>Nationality</span></td>
 		<td><span id="cb_x_nationality">
-<input type="text" name="x_nationality" id="x_nationality" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_nationality) ?>">
+<input type="text" name="x_nationality" id="x_nationality" maxlength="255" value="<?php echo htmlspecialchars(@$x_nationality) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -233,55 +231,55 @@ echo $x_sexList;
 	<tr>
 		<td><span>No of years residence in UK</span></td>
 		<td><span id="cb_x_years_of_residence">
-<input type="text" name="x_years_of_residence" id="x_years_of_residence" size="30" value="<?php echo htmlspecialchars(@$x_years_of_residence) ?>">
+<input type="text" name="x_years_of_residence" id="x_years_of_residence" value="<?php echo htmlspecialchars(@$x_years_of_residence) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Address line 1<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_address_1">
-<input type="text" name="x_address_1" id="x_address_1" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_1) ?>">
+<input type="text" name="x_address_1" id="x_address_1" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_1) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>line 2</span></td>
 		<td><span id="cb_x_address_2">
-<input type="text" name="x_address_2" id="x_address_2" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_2) ?>">
+<input type="text" name="x_address_2" id="x_address_2" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_2) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>line 3</span></td>
 		<td><span id="cb_x_address_3">
-<input type="text" name="x_address_3" id="x_address_3" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_3) ?>">
+<input type="text" name="x_address_3" id="x_address_3" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_3) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Post code<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_postcode">
-<input type="text" name="x_postcode" id="x_postcode" size="30" maxlength="20" value="<?php echo htmlspecialchars(@$x_postcode) ?>">
+<input type="text" name="x_postcode" id="x_postcode" maxlength="20" value="<?php echo htmlspecialchars(@$x_postcode) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Email Address<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_email">
-<input type="text" name="x_email" id="x_email" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_email) ?>">
+<input type="text" name="x_email" id="x_email" maxlength="45" value="<?php echo htmlspecialchars(@$x_email) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Mobile number</span></td>
 		<td><span id="cb_x_mobile">
-<input type="text" name="x_mobile" id="x_mobile" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_mobile) ?>">
+<input type="text" name="x_mobile" id="x_mobile" maxlength="45" value="<?php echo htmlspecialchars(@$x_mobile) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Land line number<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_tel">
-<input type="text" name="x_tel" id="x_tel" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
+<input type="text" name="x_tel" id="x_tel" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Current Employer</span></td>
 		<td><span id="cb_x_employer">
-<input type="text" name="x_employer" id="x_employer" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_employer) ?>">
+<input type="text" name="x_employer" id="x_employer" maxlength="255" value="<?php echo htmlspecialchars(@$x_employer) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -315,7 +313,7 @@ echo $x_sexList;
 	<tr>
 		<td><span>Number of points on license</span></td>
 		<td><span id="cb_x_license_points">
-<input type="text" name="x_license_points" id="x_license_points" size="30" value="<?php echo htmlspecialchars(@$x_license_points) ?>">
+<input type="text" name="x_license_points" id="x_license_points" value="<?php echo htmlspecialchars(@$x_license_points) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -412,7 +410,7 @@ echo $x_employement_statusList;
 	<tr>
 		<td><span>Current work location</span></td>
 		<td><span id="cb_x_work_location">
-<input type="text" name="x_work_location" id="x_work_location" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_work_location) ?>">
+<input type="text" name="x_work_location" id="x_work_location" maxlength="255" value="<?php echo htmlspecialchars(@$x_work_location) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -438,13 +436,13 @@ echo $x_employement_statusList;
 	<tr>
 		<td><span>Current / last annual bonus paid </span></td>
 		<td><span id="cb_x_bonus">
-<input type="text" name="x_bonus" id="x_bonus" size="30" maxlength="45" value="<?php echo htmlspecialchars(@$x_bonus) ?>">
+<input type="text" name="x_bonus" id="x_bonus" maxlength="45" value="<?php echo htmlspecialchars(@$x_bonus) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Ambitions within next 2-3 years</span></td>
 		<td><span id="cb_x_ambitions">
-<input type="text" name="x_ambitions" id="x_ambitions" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_ambitions) ?>">
+<input type="text" name="x_ambitions" id="x_ambitions" maxlength="255" value="<?php echo htmlspecialchars(@$x_ambitions) ?>">
 </span></td>
 	</tr>
 	<tr>
@@ -535,13 +533,13 @@ echo $x_employement_statusList;
 	<tr>
 		<td><span>Interests / Hobbies</span></td>
 		<td><span id="cb_x_interests">
-<input type="text" name="x_interests" id="x_interests" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_interests) ?>">
+<input type="text" name="x_interests" id="x_interests" maxlength="255" value="<?php echo htmlspecialchars(@$x_interests) ?>">
 </span></td>
 	</tr>
 	<tr>
 		<td><span>Qualifications Held</span></td>
 		<td><span id="cb_x_qualifications">
-<input type="text" name="x_qualifications" id="x_qualifications" size="30" maxlength="255" value="<?php echo htmlspecialchars(@$x_qualifications) ?>">
+<input type="text" name="x_qualifications" id="x_qualifications" maxlength="255" value="<?php echo htmlspecialchars(@$x_qualifications) ?>">
 </span></td>
 	</tr>
 	<tr>

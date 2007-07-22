@@ -46,66 +46,66 @@ switch ($sAction)
 </span></p>
 <p>
 <form>
-<table class="ewTable">
+<table>
 	<tr>
-		<td class="ewTableHeader"><span>cvid</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>cvid</span></td>
+		<td><span>
 <?php echo $x_cvid; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>onlineuserid</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>onlineuserid</span></td>
+		<td><span>
 <?php echo $x_onlineuser_onlineuserid; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Picture</span></td>
-		<td class="ewTableRow"><span>
-<?php if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
-<a href="<?php echo ewUploadPathEx(False, EW_UploadDestPath) . $x_picture ?>"><?php echo $x_picture; ?></a>
-<?php } ?>
-</span></td>
+		<td><span>Picture</span></td>
+		<td>
+		<?php if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
+			<img src="<?php echo ewUploadPathEx(False, EW_UploadDestPath) . $x_picture ?>" width="160">
+		<?php } ?>	
+		</td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>First Name</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>First Name</span></td>
+		<td><span>
 <?php echo $x_first_name; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Middle Name</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Middle Name</span></td>
+		<td><span>
 <?php echo $x_mid_name; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Last Name</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Last Name</span></td>
+		<td><span>
 <?php echo $x_last_name; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Age</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Age</span></td>
+		<td><span>
 <?php echo $x_age; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Sex</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Sex</span></td>
+		<td><span>
 <?php echo $x_sex; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Nationality</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Nationality</span></td>
+		<td><span>
 <?php echo $x_nationality; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Legally entitled to work in UK</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Legally entitled to work in UK</span></td>
+		<td><span>
 <?php
 switch ($x_is_legal) {
 	case "1":
@@ -125,62 +125,62 @@ $x_is_legal = $sTmp;
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>No of years residence in UK</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>No of years residence in UK</span></td>
+		<td><span>
 <?php echo $x_years_of_residence; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Address line 1</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Address line 1</span></td>
+		<td><span>
 <?php echo $x_address_1; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>line 2</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>line 2</span></td>
+		<td><span>
 <?php echo $x_address_2; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>line 3</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>line 3</span></td>
+		<td><span>
 <?php echo $x_address_3; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Post code</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Post code</span></td>
+		<td><span>
 <?php echo $x_postcode; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Email Address</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Email Address</span></td>
+		<td><span>
 <?php echo $x_email; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Mobile number</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Mobile number</span></td>
+		<td><span>
 <?php echo $x_mobile; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Land line number</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Land line number</span></td>
+		<td><span>
 <?php echo $x_tel; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current Employer</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current Employer</span></td>
+		<td><span>
 <?php echo $x_employer; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Full clean UK driving license </span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Full clean UK driving license </span></td>
+		<td><span>
 <?php
 switch ($x_uk_license) {
 	case "1":
@@ -200,8 +200,8 @@ $x_uk_license = $sTmp;
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>European license held</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>European license held</span></td>
+		<td><span>
 <?php
 switch ($x_european_license) {
 	case "1":
@@ -221,20 +221,20 @@ $x_european_license = $sTmp;
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Number of points on license</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Number of points on license</span></td>
+		<td><span>
 <?php echo $x_license_points; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Marital Status</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Marital Status</span></td>
+		<td><span>
 <?php echo $x_marital_status; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Any dependents</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Any dependents</span></td>
+		<td><span>
 <?php
 switch ($x_has_dependent) {
 	case "1":
@@ -254,8 +254,8 @@ $x_has_dependent = $sTmp;
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Willing to relocate</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Willing to relocate</span></td>
+		<td><span>
 <?php
 switch ($x_can_relocate) {
 	case "1":
@@ -275,116 +275,116 @@ $x_can_relocate = $sTmp;
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Willing to travel</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Willing to travel</span></td>
+		<td><span>
 <?php echo $x_can_travel; ?> miles
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current Employment Status</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current Employment Status</span></td>
+		<td><span>
 <?php echo $x_employement_status; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current work location</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current work location</span></td>
+		<td><span>
 <?php echo $x_work_location; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current / Last position held</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current / Last position held</span></td>
+		<td><span>
 <?php echo $x_position_held; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current / last salary</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current / last salary</span></td>
+		<td><span>
 <?php echo $x_salary; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Current / last annual bonus paid </span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Current / last annual bonus paid </span></td>
+		<td><span>
 <?php echo $x_bonus; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Ambitions within next 2-3 years</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Ambitions within next 2-3 years</span></td>
+		<td><span>
 <?php echo $x_ambitions; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Salary Expectations Start</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Salary Expectations Start</span></td>
+		<td><span>
 <?php echo $x_salary_expectation_start; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Within a year</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Within a year</span></td>
+		<td><span>
 <?php echo $x_salary_expectation_one; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Within 2-3 years</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Within 2-3 years</span></td>
+		<td><span>
 <?php echo $x_salary_expectation_two; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Achievement last 12 months Sales</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Achievement last 12 months Sales</span></td>
+		<td><span>
 <?php echo $x_achievement_sales; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Food Cost</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Food Cost</span></td>
+		<td><span>
 <?php echo $x_achievement_food; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Labour Cost</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Labour Cost</span></td>
+		<td><span>
 <?php echo $x_achievement_labour; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Interests / Hobbies</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Interests / Hobbies</span></td>
+		<td><span>
 <?php echo $x_interests; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Qualifications Held</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Qualifications Held</span></td>
+		<td><span>
 <?php echo $x_qualifications; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Tell us about yourself: max 50 words</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Tell us about yourself: max 50 words</span></td>
+		<td><span>
 <?php echo str_replace(chr(10), "<br>", $x_tell_us); ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Notice required in current position</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Notice required in current position</span></td>
+		<td><span>
 <?php echo $x_notice; ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>Date created</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>Date created</span></td>
+		<td><span>
 <?php echo FormatDateTime($x_dt_created,5); ?>
 </span></td>
 	</tr>
 	<tr>
-		<td class="ewTableHeader"><span>CV Status</span></td>
-		<td class="ewTableRow"><span>
+		<td><span>CV Status</span></td>
+		<td><span>
 <?php echo $x_cv_status; ?>
 </span></td>
 	</tr>
@@ -415,10 +415,17 @@ function LoadData($conn)
 	} else {
 		$bLoadData = true;
 		$row = phpmkr_fetch_array($rs);
+		
+		if  ($row["onlineuser_onlineuserid"]!=$user->onlineuserId)
+		{
+			//permission denied
+			header("Location: logout.php");
+			exit;
+		}
 
 		// Get the field contents
 		$GLOBALS["x_cvid"] = $row["cvid"];
-		$GLOBALS["x_onlineuser_onlineuserid"] = $row["onlineuser_onlineuserid"];
+		//$GLOBALS["x_onlineuser_onlineuserid"] = $row["onlineuser_onlineuserid"];
 		$GLOBALS["x_picture"] = $row["picture"];
 		$GLOBALS["x_first_name"] = $row["first_name"];
 		$GLOBALS["x_mid_name"] = $row["mid_name"];

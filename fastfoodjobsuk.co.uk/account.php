@@ -44,6 +44,16 @@ function sure(classname,id){
 <p>
   <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
 </p>
+<?php
+if ($user->canSearchCV(false))
+{
+?>
+<p>
+  <a href="cv_search.php" style="color:#0000FF;text-decoration:underline">Search CV</a>
+</p>
+<?php
+}
+?>
 </td></tr></table>
 <?php
 //generateCVLink($user);
@@ -62,24 +72,27 @@ function generateJobLink($user){
   $result=$db->Query("SELECT * FROM job where onlineuser_onlineuserid=$user->onlineuserId ORDER BY dt_created DESC");
 
   $rows=$db->Rows();  
+       $alt=false;
+	 $rowclass="";
   if ($rows > 0||isSuperUser(false))
   {
-     $alt=false;
-	 $rowclass="";
+
 	 echo "<br/>";
      echo "Job Admin";
 	if (isSuperUser(false))
 	{
     	echo "  - <a href='job_post.php'>create new</a>";
-	}	 
-	  echo "<div class=\"spacer\"></div>";
-		echo "<table class=\"table\">";
+	}	
+	 echo "<div class=\"spacer\"></div>";
+	 echo "<table class=\"table\">";
+	 echo "<TR><TD>Position</td><TD>Description</td><TD>Salary</td><TD>Location</td><TD>Company</td><TD>Created</td><TD>Expires</td><TD><!-- Functions --></td></tr>";
+	 
 	 	for ($i=0;$i<$rows;$i++){
 			$row=mysql_fetch_assoc($result);
 			  if ($alt){
-				$rowclass="row_odd";
-			  } else {
 				$rowclass="row_even";
+			  } else {
+				$rowclass="row_odd";
 			  }
 			  $alt=!$alt;
 		  

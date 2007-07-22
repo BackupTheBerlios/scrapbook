@@ -1,5 +1,6 @@
 <?php 
 require("common_user.php");
+$user->canSearchCV();
 ob_start();
 ?>
 <?php include ("cvinfo.php") ?>
@@ -268,7 +269,7 @@ return true;
 //-->
 </script>
 
-<p><span>Search TABLE: cv<br><br><a href="cvlist.php">Back to List</a></span></p>
+ <h2 style = "margin-left:5px;">Search CV</h2>
 <form name="fcvsearch" id="fcvsearch" action="cv_search.php" method="post" onsubmit="return EW_checkMyForm(this);">
 <p>
 <input type="hidden" name="a_search" value="S">
@@ -367,12 +368,11 @@ echo $x_marital_statusList;
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Willing to travel more than </span></td>
-		<td><span><
-		  <input type="hidden" name="z_can_travel" value="<,,"></span></td>
+		<td><span>Willing to travel</span></td>
+		<td><input type="hidden" name="z_can_travel" value=">=,,"></td>
 		<td><span>
 <input type="text" name="x_can_travel" id="x_can_travel" size="3" value="<?php echo htmlspecialchars(@$x_can_travel) ?>"> 
-miles
+miles or more
 </span></td>
 	</tr>
 	<tr>
@@ -504,15 +504,16 @@ echo $x_employement_statusList;
 	</tr>
 	<tr>
 		<td><span>Notice required in current position</span></td>
-		<td><span>
-		  <input type="hidden" name="z_notice" value="=,','"></span></td>
+		<td><input type="hidden" name="z_notice" value=">=,','"></td>
 		<td>
 		<select id='x_notice' name='x_notice'>
 		<?php
 			   loadOptions("notice_period_list.htm",@$x_notice);
 		?>
-		</select>
-		</td>		</tr>
+		</select> 
+		or more 
+		</td>		
+	</tr>
 </table>
 <p>
 <input type="submit" name="Action" value="Search">

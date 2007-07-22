@@ -126,7 +126,7 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	 </tr>
 	<tr>
 		<td><span style="font-weight: bold">Job description</span><span>&nbsp;* <br />
-		    (Up to 255 letters)</span></td>
+		    (Up to 50 words)</span></td>
 		<td>
         <textarea name="x_overview" cols="35" rows="3" id="x_overview"><?php echo @$x_overview; ?></textarea></td>
 	</tr>

@@ -4,7 +4,7 @@ require("top.php");
 ?>
 <span class="redbar">| </span><span class="heading">Gold Membership Advertisement</span> <span class="redbar">|</span><br>
 <br>
-<table class = "registerTable">
+<table>
 <tr><td>
 Thank you. Your franchise advertisement has been saved.<p>
   <a href="account.php" class = "news">Click here</a> to return to your account.

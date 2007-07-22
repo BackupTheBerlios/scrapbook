@@ -340,5 +340,23 @@ class OnlineUser
       return true;
     }
   }
+
+	//check to see if user has live job
+  function canSearchCV($logout=true){
+	$db = new DatabaseConnection();
+	$result=$db->Query("select * from `job` where onlineuser_onlineuserid='".$this->onlineuserId."' and job_status<>'temp' and dt_expire>".date("Y-m-d"));
+    if ($db->Rows()>0){
+		return true;
+    } else if ($logout){
+		
+        header("Location: logout.php");
+		exit;
+    }
+	else
+	{
+		return false;
+	}
+  }  
+  
 }
 ?>
