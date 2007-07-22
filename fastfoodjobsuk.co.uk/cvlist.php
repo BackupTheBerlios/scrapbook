@@ -1,5 +1,8 @@
 <?php 
 require("common_user.php");
+
+//$_SESSION["cv_search_results"]=$_SERVER["REQUEST_URI"];
+
 $user->canSearchCV();
 ob_start();
 ?>

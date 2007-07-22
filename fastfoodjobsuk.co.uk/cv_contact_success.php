@@ -7,7 +7,7 @@ require("top.php");
 <table class = "registerTable">
 <tr><td>
 An email has been sent to the job seeker.<p>
-  <a href="<?php echo $_SESSION["cv_search_results"]; ?>" class = "news">Click here</a> to return to your search results.
+  <a href="cvlist.php" class = "news">Click here</a> to return to your search results.
 </p>
 </td></tr></table>
 <?php

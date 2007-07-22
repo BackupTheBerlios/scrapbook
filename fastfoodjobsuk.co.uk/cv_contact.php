@@ -110,13 +110,13 @@ var jobData=new Array();
   <?php
     if ($jobCount>1){
       ?>
-      <TR>
-        <TD>
+      <tr>
+        <td>
           Please select which job:
         </td>
       </tr>
       <tr>
-        <TD>
+        <td>
           <select name="jobId" id="selectJobId" onChange="changeDetails()">
           <?php
             echo $options;            
@@ -130,14 +130,14 @@ var jobData=new Array();
   ?>
   
   <tr>
-    <Td>
+    <td>
       Email to be sent:
     </td>
   </tr>
   
   <tr>
-    <Td>
-      <PRE><?php
+    <td>
+      <pre><?php
           echo $emailMessage;
         ?>
       </pre>
@@ -145,8 +145,8 @@ var jobData=new Array();
   </tr>
   
   <tr>
-    <TD>
-      <input type=button value="Cancel" onClick="window.location='<?php echo $_SESSION["cv_search_results"]; ?>'">
+    <td>
+      <input type=button value="Cancel" onClick="window.location='cvlist.php'">
       <input type=submit value="Send Email">
     </td>
   </tr>
