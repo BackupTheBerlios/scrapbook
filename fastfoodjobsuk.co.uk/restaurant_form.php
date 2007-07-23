@@ -15,8 +15,8 @@ if ($id>0){
 
 	//default link
 	$restaurant->link="http://";
-	//free for now
-	$restaurant->restaurant_status='temp';
+	//super admin access only, so always active
+	$restaurant->restaurant_status='active';
 }
 
 //check if form is being submitted

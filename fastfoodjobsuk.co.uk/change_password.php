@@ -1,6 +1,6 @@
 <?php
 require("common_user.php");
-
+$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
 if ((bool)$_POST["submitting"]){
   $errorText="";
   $new_password=$_POST["new_password"];
@@ -19,7 +19,7 @@ if ((bool)$_POST["submitting"]){
 	  $updatePassword=true;  	
       $user->Save($updatePassword);
       $_SESSION["onlineuser"]=$user;	  
-      header("Location: account.php");
+      header("Location: $adminUrl");
       exit;
   }
   else
@@ -55,7 +55,7 @@ require("top.php");
     <input type="submit" value="Change Password">
      
       &nbsp;&nbsp;&nbsp;
-       <input type="button" value="Cancel" onclick="window.location='account.php'">          </td>
+       <input type="button" value="Cancel" onClick="window.location='<?php echo $adminUrl; ?>'" />          </td>
   </tr>
 </table>
 

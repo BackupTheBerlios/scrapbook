@@ -108,7 +108,7 @@
           <input type=hidden name="redirect" value="<?php echo $_SERVER["PHP_SELF"]; ?>">
           <table border="0" align="right" cellpadding="0" cellspacing="0">
             <tr>
-              <td><input type="text" name="email" id="inputlogin" value = "your email address" onFocus="if(this.value=='your email address')this.value='';" /></td>
+              <td><input type="text" name="email" id="inputlogin" value = "your email address" onfocus="if(this.value=='your email address')this.value='';" /></td>
             </tr>  
     
             <tr>

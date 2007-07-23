@@ -1,6 +1,7 @@
 <?php
 require("common_super.php");
-
+//reset onlineuser to super
+$_SESSION["onlineuser"]=$_SESSION["superuser"];
 $db=new DatabaseConnection();
 $firstname=$_POST["firstname"];
 $lastname=$_POST["lastname"];
@@ -42,6 +43,12 @@ function sure(classname,id){
   }
 }
 </script>
+<p>
+  <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">My Profile</a>
+</p>
+<p>
+  <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
+</p>
 <table id="table">
 <form action="admin_account.php" method="POST">
   <tr>
@@ -90,7 +97,9 @@ function sure(classname,id){
       <br><br>
     </td>
   </tr>
-  
+        <?php
+        if ($matches){
+		?>
   <form action="account.php" method="POST">
   <tr>
     <td>
@@ -98,14 +107,11 @@ function sure(classname,id){
     </td>
     <td>
       <select name="whichUser" size=8>
-      <option value="1">Super User - super@fastfoodjobsuk.co.uk</option>
       <?php
-        if ($matches){
           for($i=0;$i<count($resultArray);$i++){
             echo "<option value=\"".$resultArray[$i][0]."\">".$resultArray[$i][1]." ".$resultArray[$i][2]." - ".$resultArray[$i][3];
             echo "</option>\n";
-          }
-        }        
+          }       
       ?>
       </select>
     </td>
@@ -114,15 +120,18 @@ function sure(classname,id){
     <td>
     </td>
     <td>
-      <input type=submit value="OK">
+      <input type=submit value="Login">
     </td>
   </tr>
    </form> 
+        <?php
+		}
+		?>
   </table>
 
 <?php
-generate("News",$user,new News(),true);
-generate("Venue",$user,new Restaurant());
-generate("Franchise For sales",$user,new Franchise());
+super_generate("News",$user,new News());
+super_generate("Venue",$user,new Restaurant());
+super_generate("Franchise For sales",$user,new Franchise());
 require("bottom_wide.php");
 ?>

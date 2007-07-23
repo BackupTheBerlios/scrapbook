@@ -1,52 +1,42 @@
 <?php
-require("common_user.php");
+require("common_super.php");
 checkForAddress();
 $errorText="";
 
 $member=new Spotlight();
-$id=intval($_GET["id"]);
-if ($id==0){
-	$id=intval($_POST["id"]);
-}
-if ($id>0){	
-	$member=$member->Get($id);
-	$user->canAccess($member);
-} else { //new object
-	//default link
-	$member->link="http://";
-}
 
 $spotlight_type=$_GET["type"];
 if ($spotlight_type==""){
   $spotlight_type=$_POST["type"];
 }
-if ($spotlight_type!=""){
-  $member->spotlight_type=$spotlight_type;
-} else {
-  // there must always be a type
+if ($spotlight_type==""){
+  echo( "there must always be a type");
   exit;
 }
-
 $membershipId=(int)$_GET["membershipid"];
 if ($membershipId==0){
   $membershipId=(int)$_POST["membershipid"];
-} else { 
-  // At this point we know that the membershipId was sent using GET
-  // This should only occur once, when we first visit this page
-  // (subsequently we should get the membershipId through POST)
-  $tempObject=new $spotlight_type;
-  $tempObject=$tempObject->Get($membershipId);
-  $member->logo=$tempObject->logo;
-  $member->link=$tempObject->link;
-  $member->name=$tempObject->name;
-}
-
+} 
 if ($membershipId>0){
-  $member->membershipId=$membershipId;
+  $member = $member->GetSpotlight($spotlight_type,$membershipId);
 } else {
-  // there should always be a membershipId
+  echo( "there must always be a membershipId");
   exit;
 }
+
+  
+if (intval($member->spotlightId)==0){
+  // new form
+  $member->membershipId= $membershipId;
+  $member->spotlight_type=$spotlight_type;
+  $parent=new $spotlight_type;
+  $parent=$parent->Get($membershipId);
+  $member->logo=$parent->logo;
+  $member->link=$parent->link;
+  $member->name=$parent->name;
+}
+
+
 
 //check if form is being submitted
 if ((bool)$_POST["submitting"])
@@ -131,7 +121,6 @@ require("top.php");
 </script>
 
 <form action="spotlight_form.php"  method="POST" enctype="multipart/form-data">
-<input type=hidden name="id" value="<?php echo $member->spotlightId; ?>">
 <input type=hidden name="submitting" value="true">
 <input type=hidden name="membershipid" value="<?php echo $member->membershipId; ?>">
 <input type=hidden name="type" value="<?php echo $member->spotlight_type; ?>">

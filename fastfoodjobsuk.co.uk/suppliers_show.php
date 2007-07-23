@@ -17,7 +17,7 @@
   $type=(int)$_GET["type"];
 
   $supplier=new Supplier();
-  $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active"),array("dt_expire",">",date("Y-m-d"))),"dt_created");
+  $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active")),"dt_created");
   shuffle($results);
   
   $rowCount=0;
@@ -39,7 +39,7 @@
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
       echo "<TR><TD>";
       if (($spotlightId=$obj->hasSpotlight()) !== false){
-        echo "<a href=\"spotlight.php?id=$spotlightId\">previous spotlight</a>";
+        echo "<a href=\"spotlight.php?id=$spotlightId\">Under Spotlight!</a>";
       }
       echo "</td></tr>";
       echo "<TR><TD><BR></td></tr></table>";

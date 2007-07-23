@@ -1,9 +1,6 @@
 <?php
 require("common_user.php");
-
-$user=new OnlineUser();
-$user=$user->Get($_SESSION["onlineuser"]->onlineuserId);
-
+$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
 if ((bool)$_POST["submitting"]){
   
   $db=new DatabaseConnection();
@@ -53,7 +50,7 @@ if ((bool)$_POST["submitting"]){
     } else {
       $_SESSION["onlineuser"]=$user;
       $user->Save();
-      header("Location: account.php");
+      header("Location: $adminUrl");
       exit;
     }
   }
@@ -155,7 +152,7 @@ require("top.php");
     <td>
       <input type="submit" value="Update" />
       &nbsp;&nbsp;&nbsp;
-      <input type="button" value="Cancel" onclick="window.location='account.php'" /></td>
+      <input type="button" value="Cancel" onClick="window.location='<?php echo $adminUrl; ?>'" /></td>
   </tr>
   
 </table>
