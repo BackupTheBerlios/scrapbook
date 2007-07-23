@@ -241,7 +241,7 @@ function super_generate($title,$user,$object){
         echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
 		  
-      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
 		  
 			$classId=$class."Id"; 
 		  $status=$class."_status"; 
@@ -329,6 +329,7 @@ function generate($title,$user,$object){
     }
     echo "<TD>Created</td>";
     echo "<TD>Expires</td>";
+	echo "<td>Status</td>";
     echo "<TD><!-- Functions --></td>";
     echo "</tr>";
 		
@@ -348,44 +349,46 @@ function generate($title,$user,$object){
         echo "<td class=\"$rowclass\">".$obj->heading."</td>";
 		  }
 		  if ($hasDescription){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+        	echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
 		  } else if($hasText){
-        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+       	 	echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
 		  }
 		  if ($hasLink){
-        echo "<td class=\"$rowclass\">".$obj->link."</td>";
+        	echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
 		  
-      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
-		  echo "<td class=\"$rowclass\">".(($d=FormatDateTime($obj->dt_expire,7)) == "00/00/0000" ? "please<BR>activate" : $d)."</td>";
+      	  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+		  echo "<td class=\"$rowclass\">".(($d=FormatDateTime($obj->dt_expire,5)) == "0000/00/00" ? "please<BR>activate" : $d)."</td>";
 		  
-			$classId=$class."Id"; 
+		  $classId=$class."Id"; 
 		  $status=$class."_status"; 
-		  echo "<td class=\"$rowclass\">";
-		  echo "<ul><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></li>";
+
 		  //echo "</td>";
 		  
       if ($obj->dt_expire!="0000-00-00" && $obj->dt_expire<=date("Y-m-d")){
+	  	echo "<td class=\"$rowclass\">Expired</td><td class=\"$rowclass\"><ul>";
         echo "<li><a href=\"renew.php?type=$class&id=".$obj->$classId."\">Renew</a></li>";
       } else {
       
-        switch ($obj->$status){
-          	case "temp":
-    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
-            break;
-          	case "active":
-    			if (isSuperUser(false))
-            		echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Pause</a></li>";
-    			break;			
-			case "disabled":
-				if (isSuperUser(false))
-					echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Continue</a></li>";
-				else
-			  		echo "<li>This ads has been paused</li>";
-			break;
+        	switch ($obj->$status){
+				case "temp":
+					  echo "<td class=\"$rowclass\">Temporary</td><td class=\"$rowclass\"><ul>";	
+					  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+				break;
+				case "active":
+					echo "<td class=\"$rowclass\">Active</td><td class=\"$rowclass\"><ul>";
+					if (isSuperUser(false))
+						echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Pause</a></li>";
+					break;			
+				case "disabled":
+					echo "<td class=\"$rowclass\">Paused</td><td class=\"$rowclass\"><ul>";
+					if (isSuperUser(false))
+						echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Continue</a></li>";
+				break;
   		  }
   		  
   		}
+		  echo "<li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></li>";			
 		  if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
 			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
 		  }		

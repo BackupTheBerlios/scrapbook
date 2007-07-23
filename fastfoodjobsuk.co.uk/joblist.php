@@ -69,13 +69,19 @@ if ($sSrchWhere <> "") {
 	if ($sDbWhere <> "") $sDbWhere .= " AND ";
 	$sDbWhere .= "(" . $sSrchWhere . ")";
 }
+//defaul search conditions
+if ($sDbWhere <> "")  $sDbWhere .= " AND ";
+$sDbWhere .= "(job_status='active')";
+$sDbWhere .= " AND ";
+$toDay = date("Y-m-d");
+$sDbWhere .= "(dt_expire>'$toDay')";
 
 // Set up sorting order
 $sOrderBy = "";
-SetUpSortOrder();
+
 $sSql = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sDbWhere, $sOrderBy);
 
-// echo $sSql . "<br>"; // Uncomment to show SQL for debugging
+//echo $sSql . "<br>"; // Uncomment to show SQL for debugging
 ?>
 <?php include ("top.php") ?>
 <script type="text/javascript" src="scripts/ewp.js"></script>
@@ -123,6 +129,7 @@ var roweditcolor = '#FFFF99'; // row edit color
 <?php
 
 // Set up recordset
+
 $rs = phpmkr_query($sSql, $conn) or die("Failed to execute query at line " . __LINE__ . ": " . phpmkr_error($conn) . '<br>SQL: ' . $sSql);
 $nTotalRecs = phpmkr_num_rows($rs);
 if ($nDisplayRecs <= 0) { // Display all records

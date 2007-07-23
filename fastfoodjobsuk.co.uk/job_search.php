@@ -151,6 +151,7 @@ return true;
       		?>
         </select></td>
     </tr>
+
 </table>
 <p>
 <input type="submit" name="Action" value="Search">
