@@ -250,7 +250,7 @@ class Platinum_membership
 		}
 		else
 		{
-			$this->pog_query = "insert into `platinum_membership` (`onlineuser_onlineuserid`, `logo`, `image1`, `image2`, `heading`, `text`, `name`, `address`, `tel`, `fax`, `email`, `link`, `dt_expire`, `platinum_membership_status` ) values (
+			$this->pog_query = "insert into `platinum_membership` (`onlineuser_onlineuserid`, `logo`, `image1`, `image2`, `heading`, `text`, `name`, `address`, `tel`, `fax`, `email`, `link`, `platinum_membership_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->image1)."', 
@@ -263,7 +263,6 @@ class Platinum_membership
 			'".$Database->Escape($this->fax)."', 
 			'".$Database->Escape($this->email)."', 
 			'".$Database->Escape($this->link)."', 
-			'0000-00-00', 
 			'".$this->platinum_membership_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

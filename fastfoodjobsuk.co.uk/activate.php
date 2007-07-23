@@ -9,14 +9,15 @@ $newExpiryDate=expiryDate();
 if ($class=="Job")
 {
 	  $db=new DatabaseConnection();
+	  $db->Query("update job set dt_expire = '$newExpiryDate' where job_status='temp' and onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");	  
 	  $db->Query("update job set job_status = 'active' where onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");
-	  $db->Query("update job set dt_expire = $newExpiryDate where dt_expire='0000-00-00' and onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");
+
 }
 else if ($class=="CV")
 {
 	  $db=new DatabaseConnection();
+	  $db->Query("update cv set dt_expire = '$newExpiryDate' where cv_status='temp' and onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
 	  $db->Query("update cv set cv_status = 'active' where onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
-	  $db->Query("update cv set dt_expire = $newExpiryDate where dt_expire='0000-00-00' and onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
 	  
 }
 else
@@ -37,7 +38,7 @@ else
 	  $status=$class."_status";
 	  $object->$status="active";
 	  
-	  if ($object->dt_expire=="0000-00-00"){
+	  if ($object->$status=="temp"){
 	    $object->dt_expire=$newExpiryDate; 
 	  }	  
 	  $object->Save();

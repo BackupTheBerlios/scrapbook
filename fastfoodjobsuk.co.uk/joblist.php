@@ -290,12 +290,7 @@ if ($nTotalRecs > 0) {
                 </span></td>
                    <td valign="top"><span style="font-weight: bold">Expires on</span></td>        
 	    <td valign="top">&nbsp;</td>
-         <?php if (isSuperUser(false)){ ?> 
-        
- 
-            <td valign="top">&nbsp;</td>
-     
-         <?php } ?> 
+
 	</tr>
     <?php
 
@@ -372,11 +367,6 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 	    <!-- dt_created -->
 	    <!-- dt_expire -->
 	    <!-- job_status -->
-            <?php if (isSuperUser(false)){ ?> 
-                 
-            <td><a href="<?php if ($x_jobid <> "") {echo "jobedit.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a></td>
-     
-         <?php } ?> 
 	    </tr>
     <?php
 	}

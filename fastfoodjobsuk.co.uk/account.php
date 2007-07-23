@@ -113,14 +113,14 @@ function generateJobLink($user){
 			  
 			  
 				$jobid=$row["jobid"];
-				if ($row["dt_expire"]!="0000-00-00" && $row["dt_expire"]<=date("Y-m-d")){
+				if ($row["job_status"]!="temp" && $row["dt_expire"]<=date("Y-m-d")){
 				      echo "<td class=\"$rowclass\">Expired</td><td class=\"$rowclass\"><ul>";                              
         			echo "<li><a href=\"renew.php?type=Job&id=".$jobid."\">Renew</a></li>";
   	    } else {
 				      switch ($row["job_status"]){
       					case "temp":
       						  echo "<td class=\"$rowclass\">Temporary</td><td class=\"$rowclass\"><ul>";	
-      						  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+      						  echo "<li><a href='activate.php?type=Job&id=$jobid'>Activate</a></li>";
       					break;				  
       					case "active":
       						echo "<td class=\"$rowclass\">Active</td><td class=\"$rowclass\"><ul>";
@@ -134,7 +134,7 @@ function generateJobLink($user){
 				      }	
 		
 			  }			  
-			  echo "<li><a href='job_post.php?jobid=$jobid'>Modify</a></li>";
+			  echo "<li><a href='jobedit.php?jobid=$jobid'>Modify</a></li>";
 			  echo "<li><a href='jobview.php?jobid=$jobid'  target='_view'>View</a></li>";		
 			 //if ( isSuperUser(false) ){
 				//this is not implemented

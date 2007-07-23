@@ -33,8 +33,18 @@ switch ($sAction)
 			$_SESSION[ewSessionMessage] = "No records found";
 			phpmkr_db_close($conn);
 			ob_end_clean();
-			header("Location: joblist.php");
+			header("Location: job_search.php");
 			exit();
+		}
+		else
+		{	
+			$toDay = date("Y-m-d");
+			if ($x_job_status!='active'||$x_dt_expire < $toDay )
+			{
+				ob_end_clean();
+				header("Location: job_search.php");
+				exit();
+			}
 		}
 }
 ?>
@@ -42,12 +52,6 @@ switch ($sAction)
 <script type="text/javascript" src="ewp.js"></script>
 <p>View Job<br><br>
 <a href="joblist.php">Back to List</a>
-<?php if (isSuperUser(false)){ ?>   
-    &nbsp;
-    <a href="<?php if ($x_jobid <> "") {echo "jobedit.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Edit</a>  
-	&nbsp;  
-    <a href="<?php if ($x_jobid <> "") {echo "jobdelete.php?jobid=" . urlencode($x_jobid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Delete</a>&nbsp;</p>
-<?php } ?>
 <p>
 <form>
 <table>
@@ -114,12 +118,6 @@ switch ($sAction)
 	    		<td><span style="font-weight: bold">Expiry Date</span></td>
                 <td>
                     <?php echo FormatDateTime($x_dt_expire,5); ?>            
-                </td>
-	    	</tr>
-			<tr>
-	    		<td><span style="font-weight: bold">Job Status</span></td>
-		    	<td>
-            		<?php echo $x_job_status; ?>
                 </td>
 	    	</tr>
         <?php } ?>

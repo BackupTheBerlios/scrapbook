@@ -365,7 +365,7 @@ function generate($title,$user,$object){
 
 		  //echo "</td>";
 		  
-      if ($obj->dt_expire!="0000-00-00" && $obj->dt_expire<=date("Y-m-d")){
+      if ($obj->$status!="temp" && $obj->dt_expire<=date("Y-m-d")){
 	  	echo "<td class=\"$rowclass\">Expired</td><td class=\"$rowclass\"><ul>";
         echo "<li><a href=\"renew.php?type=$class&id=".$obj->$classId."\">Renew</a></li>";
       } else {
