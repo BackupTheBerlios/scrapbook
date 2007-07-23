@@ -378,30 +378,16 @@ miles or more
 	<tr>
 		<td><span>Current Employment Status</span></td>
 		<td><span>
-		  <input type="hidden" name="z_employement_status" value="=,','"></span></td>
-		<td><span>
-<?php
-$x_employement_statusList = "<select id='x_employement_status' name='x_employement_status'>";
-$x_employement_statusList .= "<option value=''>Any</option>";
-	$x_employement_statusList .= "<option value=\"employed\"";
-	if (@$x_employement_status == "employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "employed" . "</option>";
-	$x_employement_statusList .= "<option value=\"self employed\"";
-	if (@$x_employement_status == "self employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "self employed" . "</option>";
-	$x_employement_statusList .= "<option value=\"un-employed\"";
-	if (@$x_employement_status == "un-employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "un-employed" . "</option>";
-$x_employement_statusList .= "</select>";
-echo $x_employement_statusList;
-?>
-</span></td>
+		  <input type="hidden" name="z_employement_status" value="=,','"></span>
+		 </td>
+		<td>
+		<select id='x_employement_status' name='x_employement_status'>
+		<option value=''>Any</option>
+		<?php
+			   loadOptions("employement_status_list.htm",@$x_employement_status);
+		?>
+		</select>
+		</td>
 	</tr>
 	<tr>
 		<td><span>Current / Last position held</span></td>
@@ -504,15 +490,14 @@ echo $x_employement_statusList;
 	</tr>
 	<tr>
 		<td><span>Notice required in current position</span></td>
-		<td><input type="hidden" name="z_notice" value=">=,','"></td>
+		<td><input type="hidden" name="z_notice" value="<=,','"></td>
 		<td>
 		<select id='x_notice' name='x_notice'>
 		<?php
-			   loadOptions("notice_period_list.htm",@$x_notice);
+			   loadOptions("notice_period_list_reverse.htm",@$x_notice);
 		?>
 		</select> 
-		or more 
-		</td>		
+		or less </td>		
 	</tr>
 </table>
 <p>

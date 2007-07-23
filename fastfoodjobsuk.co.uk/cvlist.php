@@ -519,9 +519,7 @@ $x_can_relocate = $sTmp;
 				<td><span>
 	Notice required in current position<?php if (@$_SESSION[ewSessionTblSort . "_x_notice"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_notice"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
-				<td><span>
-<?php echo $x_notice; ?>
-</span></td>
+				<td><?php echo getOptionLabel("notice_period_list.htm",@$x_notice); ?></td>
 			</tr>
 		</table>
 <span>

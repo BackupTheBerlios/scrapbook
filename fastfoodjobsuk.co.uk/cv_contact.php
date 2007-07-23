@@ -117,7 +117,7 @@ var jobData=new Array();
       </tr>
       <tr>
         <td>
-          <select name="jobId" id="selectJobId" onChange="changeDetails()">
+          <select name="jobIds" id="selectJobId" onChange="changeDetails()">
           <?php
             echo $options;            
           ?>
@@ -153,6 +153,7 @@ var jobData=new Array();
   </tr>
   
 </table>
+</form>
 
 <script language="JavaScript">
 function changeDetails(){

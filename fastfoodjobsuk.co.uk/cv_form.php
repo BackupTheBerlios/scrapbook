@@ -381,28 +381,13 @@ miles
 	</tr>
 	<tr>
 		<td><span>Current Employment Status</span></td>
-		<td><span id="cb_x_employement_status">
-<?php
-$x_employement_statusList = "<select id='x_employement_status' name='x_employement_status'>";
-	$x_employement_statusList .= "<option value=\"employed\"";
-	if (@$x_employement_status == "employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "employed" . "</option>";
-	$x_employement_statusList .= "<option value=\"self employed\"";
-	if (@$x_employement_status == "self employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "self employed" . "</option>";
-	$x_employement_statusList .= "<option value=\"un-employed\"";
-	if (@$x_employement_status == "un-employed") {
-		$x_employement_statusList .= " selected";
-	}
-	$x_employement_statusList .= ">" . "un-employed" . "</option>";
-$x_employement_statusList .= "</select>";
-echo $x_employement_statusList;
-?>
-</span></td>
+		<td>
+		<select id='x_employement_status' name='x_employement_status'>
+		<?php
+			   loadOptions("employement_status_list.htm",@$x_employement_status);
+		?>
+		</select>
+		</td>
 	</tr>
 	<tr>
 		<td><span>Current work location</span></td>

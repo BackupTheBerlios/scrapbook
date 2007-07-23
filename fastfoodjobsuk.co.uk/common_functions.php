@@ -169,6 +169,29 @@ function loadOptions($listFile,$selectedValue)
 	}
 }
 
+//load options from a file
+function getOptionLabel($listFile,$selectedValue)
+{
+	$f=fopen($listFile,"r");
+	while (!feof($f)){
+		$d=fgets($f);
+		$start=strpos($d,"\"")+1;
+		$end=strrpos($d,"\"");
+		$val=substr($d,$start,$end-$start);
+		
+		if ($val==$selectedValue){
+		
+			$lstart=strpos($d,">")+1;
+			$lend=strrpos($d,"<");
+			$Label=substr($d,$lstart,$lend-$lstart);
+			break;
+		}
+
+	}
+	fclose($f);
+	return $Label;
+}
+
 function super_generate($title,$user,$object){
   global $truncateText;
 
