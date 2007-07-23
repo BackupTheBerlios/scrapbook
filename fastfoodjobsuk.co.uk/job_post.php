@@ -32,7 +32,7 @@ $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 switch ($sAction) {
 	case "A": // Add
 		if (AddData($conn)) { // Add new record
-			$_SESSION[ewSessionMessage] = "Job Saved";
+			//$_SESSION[ewSessionMessage] = "Job Saved";
 			phpmkr_db_close($conn);
 			ob_end_clean();
 			
@@ -86,13 +86,9 @@ return true;
 <form name="fjobadd" id="fjobadd" action="job_post.php" method="post" onsubmit="return EW_checkMyForm(this);" style= "margin:5px;">
 <p>
 <input type="hidden" name="a_add" value="A">
-<?php
-if (@$_SESSION[ewSessionMessage] <> "") {
-?>
-<p><?php echo $_SESSION[ewSessionMessage] ?></p>
+
 <?php
 	$_SESSION[ewSessionMessage] = ""; // Clear message
-}
 ?>
 <table class="job">
 	<tr>
