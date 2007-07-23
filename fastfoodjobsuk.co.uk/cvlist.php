@@ -117,7 +117,6 @@ SetUpStartRec(); // Set up start record position
 <p>
 <?php
 	$_SESSION[ewSessionMessage] = ""; // Clear message
-}
 ?>
 <form action="cvlist.php" name="ewpagerform" id="ewpagerform">
 <table>
