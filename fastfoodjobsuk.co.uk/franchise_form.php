@@ -19,7 +19,8 @@ if ($id>0){
 	
 	//default link
 	$franchise->link="http://";	
-	$franchise->franchise_status='temp';
+	//super admin access only, so always active
+	$franchise->franchise_status='active';
 }
 
 

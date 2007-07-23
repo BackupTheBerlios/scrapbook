@@ -5,14 +5,19 @@ ob_start();
 <?php include ("cvinfo.php") ?>
 <?php include ("ewupload.php") ?>
 <?php
-
+$x_cvid = $user->getCVId();
+if ($x_cvid>0)
+{
+	ob_end_clean();
+	header("Location: cvedit.php");
+	exit();
+}
 // Get action
 $sAction = @$_POST["a_add"];
 if (($sAction == "") || ((is_null($sAction)))) {
 		$sAction = "I"; // Display blank record
 } else {
 	// Get fields from form
-	//$x_cvid = @$_POST["x_cvid"];
 	$x_picture = @$_POST["x_picture"];
 	$x_first_name = @$_POST["x_first_name"];
 	$x_mid_name = @$_POST["x_mid_name"];
@@ -60,7 +65,7 @@ $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 switch ($sAction) {
 	case "A": // Add
 		if (AddData($conn)) { // Add new record
-			$_SESSION[ewSessionMessage] = "Add New Record Successful";
+			//$_SESSION[ewSessionMessage] = "Add New Record Successful";
 			phpmkr_db_close($conn);
 			ob_end_clean();
 			header("Location: cvlist.php");
@@ -143,14 +148,6 @@ return true;
 <p>
 <input type="hidden" name="a_add" value="A">
 <input type="hidden" name="EW_Max_File_Size" value="2000000">
-<?php
-if (@$_SESSION[ewSessionMessage] <> "") {
-?>
-<p><span class="ewmsg"><?php echo $_SESSION[ewSessionMessage] ?></span></p>
-<?php
-	$_SESSION[ewSessionMessage] = ""; // Clear message
-}
-?>
 <table>
 	<tr>
 		<td><span>Picture</span></td>
@@ -566,76 +563,7 @@ echo $x_employement_statusList;
 <?php
 phpmkr_db_close($conn);
 ?>
-<?php
 
-//-------------------------------------------------------------------------------
-// Function LoadData
-// - Variables setup: field variables
-
-function LoadData($conn)
-{
-	global $x_cvid;
-	$sFilter = ewSqlKeyWhere;
-	if (!is_numeric($x_cvid)) return false;
-	$x_cvid =  (get_magic_quotes_gpc()) ? stripslashes($x_cvid) : $x_cvid;
-	$sFilter = str_replace("@cvid", AdjustSql($x_cvid), $sFilter); // Replace key value
-	$sSql = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sFilter, "");
-	$rs = phpmkr_query($sSql,$conn) or die("Failed to execute query at line " . __LINE__ . ": " . phpmkr_error($conn) . '<br>SQL: ' . $sSql);
-	if (phpmkr_num_rows($rs) == 0) {
-		$bLoadData = false;
-	} else {
-		$bLoadData = true;
-		$row = phpmkr_fetch_array($rs);
-
-		// Get the field contents
-		$GLOBALS["x_cvid"] = $row["cvid"];
-		$GLOBALS["x_picture"] = $row["picture"];
-		$GLOBALS["x_first_name"] = $row["first_name"];
-		$GLOBALS["x_mid_name"] = $row["mid_name"];
-		$GLOBALS["x_last_name"] = $row["last_name"];
-		$GLOBALS["x_age"] = $row["age"];
-		$GLOBALS["x_sex"] = $row["sex"];
-		$GLOBALS["x_nationality"] = $row["nationality"];
-		$GLOBALS["x_is_legal"] = $row["is_legal"];
-		$GLOBALS["x_years_of_residence"] = $row["years_of_residence"];
-		$GLOBALS["x_address_1"] = $row["address_1"];
-		$GLOBALS["x_address_2"] = $row["address_2"];
-		$GLOBALS["x_address_3"] = $row["address_3"];
-		$GLOBALS["x_postcode"] = $row["postcode"];
-		$GLOBALS["x_email"] = $row["email"];
-		$GLOBALS["x_mobile"] = $row["mobile"];
-		$GLOBALS["x_tel"] = $row["tel"];
-		$GLOBALS["x_employer"] = $row["employer"];
-		$GLOBALS["x_uk_license"] = $row["uk_license"];
-		$GLOBALS["x_european_license"] = $row["european_license"];
-		$GLOBALS["x_license_points"] = $row["license_points"];
-		$GLOBALS["x_marital_status"] = $row["marital_status"];
-		$GLOBALS["x_has_dependent"] = $row["has_dependent"];
-		$GLOBALS["x_can_relocate"] = $row["can_relocate"];
-		$GLOBALS["x_can_travel"] = $row["can_travel"];
-		$GLOBALS["x_employement_status"] = $row["employement_status"];
-		$GLOBALS["x_work_location"] = $row["work_location"];
-		$GLOBALS["x_position_held"] = $row["position_held"];
-		$GLOBALS["x_salary"] = $row["salary"];
-		$GLOBALS["x_bonus"] = $row["bonus"];
-		$GLOBALS["x_ambitions"] = $row["ambitions"];
-		$GLOBALS["x_salary_expectation_start"] = $row["salary_expectation_start"];
-		$GLOBALS["x_salary_expectation_one"] = $row["salary_expectation_one"];
-		$GLOBALS["x_salary_expectation_two"] = $row["salary_expectation_two"];
-		$GLOBALS["x_achievement_sales"] = $row["achievement_sales"];
-		$GLOBALS["x_achievement_food"] = $row["achievement_food"];
-		$GLOBALS["x_achievement_labour"] = $row["achievement_labour"];
-		$GLOBALS["x_interests"] = $row["interests"];
-		$GLOBALS["x_qualifications"] = $row["qualifications"];
-		$GLOBALS["x_tell_us"] = $row["tell_us"];
-		$GLOBALS["x_notice"] = $row["notice"];
-		$GLOBALS["x_dt_created"] = $row["dt_created"];
-		$GLOBALS["x_cv_status"] = $row["cv_status"];
-	}
-	phpmkr_free_result($rs);
-	return $bLoadData;
-}
-?>
 <?php
 
 //-------------------------------------------------------------------------------
@@ -659,7 +587,7 @@ function AddData($conn)
 		$sSqlChk = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sFilter, "");
 		$rsChk = phpmkr_query($sSqlChk, $conn) or die("Failed to execute query at line " . __LINE__ . ": " . phpmkr_error($conn) . '<br>SQL: ' . $sSqlChk);
 		if (phpmkr_num_rows($rsChk) > 0) {
-			$_SESSION[ewSessionMessage] = "Duplicate value for primary key";
+			//$_SESSION[ewSessionMessage] = "Duplicate value for primary key";
 			phpmkr_free_result($rsChk);
 			return false;
 		}

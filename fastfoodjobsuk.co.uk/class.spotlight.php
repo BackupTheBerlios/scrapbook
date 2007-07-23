@@ -92,7 +92,13 @@ class Spotlight
 	}
 	
 
-	
+	function GetSpotlight($type,$membershipId)
+	{
+		$Database = new DatabaseConnection();
+		$this->pog_query = "select * from `spotlight` where `spotlight_type`='".$type."' and `membershipId`='".$membershipId."' LIMIT 1";
+		$Database->Query($this->pog_query);
+		return $this->populate($Database);
+	}
 	
 	/**
 	* Gets object from database
@@ -254,7 +260,7 @@ class Spotlight
 			'".$Database->Escape($this->fax)."', 
 			'".$Database->Escape($this->email)."', 
 			'".$Database->Escape($this->link)."', 
-			'".$this->membership_type."' )";
+			'".$this->spotlight_type."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);
 		if ($this->spotlightId == "")

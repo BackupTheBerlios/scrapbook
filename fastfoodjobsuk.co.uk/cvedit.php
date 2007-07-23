@@ -5,8 +5,13 @@ ob_start();
 <?php include ("cvinfo.php") ?>
 <?php include ("ewupload.php") ?>
 <?php
-// Load key from QueryString
-$x_cvid = @$_GET["cvid"];
+$x_cvid = $user->getCVId();
+if ($x_cvid==0)
+{
+	ob_end_clean();
+	header("Location: cv_form.php");
+	exit();
+}
 
 // Get action
 $sAction = @$_POST["a_edit"];
@@ -14,9 +19,7 @@ $sAction = @$_POST["a_edit"];
 if ($sAction == "") {
 	$sAction = "I";	// Display record	
 } else {
-	// Get fields from form
-	$x_cvid = @$_POST["x_cvid"];
-	//$x_onlineuser_onlineuserid = @$_POST["x_onlineuser_onlineuserid"];
+	$x_onlineuser_onlineuserid = $user->onlineuserId;
 	$x_picture = @$_POST["x_picture"];
 	$x_first_name = @$_POST["x_first_name"];
 	$x_mid_name = @$_POST["x_mid_name"];
@@ -60,11 +63,6 @@ if ($sAction == "") {
 	$x_dt_created = @$_POST["x_dt_created"];
 	$x_cv_status = @$_POST["x_cv_status"];
 }
-if (($x_cvid == "") || (is_null($x_cvid))) {
-	ob_end_clean();
-	header("Location: cvlist.php");
-	exit();
-}
 $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 switch ($sAction) {
 	case "I": // Display record
@@ -81,7 +79,7 @@ switch ($sAction) {
 			$_SESSION[ewSessionMessage] = "Update Record Successful";
 			phpmkr_db_close($conn);
 			ob_end_clean();
-			header("Location: cvlist.php");
+			header("Location: account.php");
 			exit();
 		}
 		break;
@@ -160,7 +158,6 @@ return true;
 //-->
 </script>
  <h2 style = "margin-left:5px;">Update CV</h2>
-<br><br><a href="cvlist.php">Back to List</a>
 <form name="fcvedit" id="fcvedit" action="cvedit.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 	<input type="hidden" name="a_edit" value="U">
@@ -174,8 +171,6 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 }
 ?>
 	<table>
-<input type="hidden" id="x_cvid" name="x_cvid" value="<?php echo @$x_cvid; ?>">
-
 <?php if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
 <tr>
 <td>
@@ -599,22 +594,10 @@ echo $x_employement_statusList;
 <input type="hidden" id="x_dt_created" name="x_dt_created" value="<?php echo FormatDateTime(@$x_dt_created,5); ?>">
 </span></td>
 		</tr>
-		<tr>
-			<td><span>CV Status<span class='ewmsg'>&nbsp;*</span></span></td>
-			<td><span id="cb_x_cv_status">
-<?php echo RenderControl(1, 0, 5, 1); ?>
-<input type="radio" name="x_cv_status"<?php if (@$x_cv_status == "active") { ?> checked<?php } ?> value="<?php echo htmlspecialchars("active"); ?>">
-<?php echo "active"; ?>
-<?php echo RenderControl(1, 0, 5, 2); ?>
-<?php echo RenderControl(1, 1, 5, 1); ?>
-<input type="radio" name="x_cv_status"<?php if (@$x_cv_status == "disabled") { ?> checked<?php } ?> value="<?php echo htmlspecialchars("disabled"); ?>">
-<?php echo "disabled"; ?>
-<?php echo RenderControl(1, 1, 5, 2); ?>
-</span></td>
-		</tr>
 	</table>
 	<p>
-	<input type="submit" name="btnAction" id="btnAction" value="EDIT">
+	<input type="submit" name="btnAction" id="btnAction" value="Submit">
+    <input type=button value="Cancel" onclick="window.location='account.php'">
 </form>
 <?php include ("bottom.php") ?>
 <?php
@@ -640,17 +623,6 @@ function LoadData($conn)
 	} else {
 		$bLoadData = true;
 		$row = phpmkr_fetch_array($rs);
-		
-		if  ($row["onlineuser_onlineuserid"]!=$user->onlineuserId)
-		{
-			//permission denied
-			header("Location: logout.php");
-			exit;
-		}
-		
-		// Get the field contents
-		$GLOBALS["x_cvid"] = $row["cvid"];
-		//$GLOBALS["x_onlineuser_onlineuserid"] = $row["onlineuser_onlineuserid"];
 		$GLOBALS["x_picture"] = $row["picture"];
 		$GLOBALS["x_first_name"] = $row["first_name"];
 		$GLOBALS["x_mid_name"] = $row["mid_name"];
@@ -722,9 +694,6 @@ function EditData($conn)
 
 		// Check file size
 		$EW_MaxFileSize = @$_POST["EW_Max_File_Size"];
-		$x_cvid = @$_POST["x_cvid"];
-		$x_onlineuser_onlineuserid = @$_POST["x_onlineuser_onlineuserid"];
-
 		// Check the file size
 		if (!empty($_FILES["x_picture"]["size"])) {
 			if (!empty($EW_MaxFileSize) && $_FILES["x_picture"]["size"] > $EW_MaxFileSize) {

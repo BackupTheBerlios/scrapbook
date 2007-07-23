@@ -23,7 +23,7 @@ Or, you can add your logo and 25 words of text.<br /></p>
 <?php
 
   $franchise=new Franchise();
-  $results=$franchise->GetList(array(array("franchise_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
+  $results=$franchise->GetList(array(array("franchise_status","=","active")));
   shuffle($results);
   
   $rowCount=0;  

@@ -116,10 +116,6 @@ SetUpStartRec(); // Set up start record position
 </form>
 <p>
 <?php
-if (@$_SESSION[ewSessionMessage] <> "") {
-?>
-<p><span class="ewmsg"><?php echo $_SESSION[ewSessionMessage]; ?></span></p>
-<?php
 	$_SESSION[ewSessionMessage] = ""; // Clear message
 }
 ?>

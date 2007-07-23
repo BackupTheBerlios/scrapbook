@@ -336,16 +336,6 @@ class Platinum_membership
 			return $Database->Query($pog_query);
 		}
 	}
-	function updateExpiry($numberDays=''){
-    $db=new DatabaseConnection();
-    $className=strtolower(get_class($this));
-    $classId=$className."Id";
-    
-    $expiry=( $numberDays=="" ? expiryDate() : expiryDate($numberDays) );
-    
-    $query="UPDATE $className SET dt_expire='$expiry' WHERE ".$className."id='".$this->$classId."'";
-    $result=$db->Query($query);
-    return $result;
-	}
+
 }
 ?>

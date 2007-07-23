@@ -7,7 +7,8 @@ function isUserLoggedIn(){
 	if (isset($_SESSION["onlineuser"])){
 		return $_SESSION["onlineuser"];
 	} else {
-		$_SESSION["redirect"]=$_SERVER["PHP_SELF"];
+		//$_SESSION["redirect"]= $_SERVER["PHP_SELF"];
+		$_SESSION["redirect"]= $_SERVER["REQUEST_URI"];
 		header("Location: login.php");
 		exit;
 	}
@@ -18,7 +19,7 @@ function isUserLoggedIn(){
 // the current user is the super user, and false if they are not
 function isSuperUser($active=true){
   $user=(isset($_SESSION["superuser"])? $_SESSION["superuser"] : $_SESSION["onlineuser"]);
-  if ($user->email=="super@fastfoodjobsuk.co.uk"){
+  if (isset($user)&&$user->isSuperAdmin()){
 	if (!isset($_SESSION["superuser"])){
 	  $_SESSION["superuser"]=$_SESSION["onlineuser"];
 	}
@@ -31,7 +32,8 @@ function isSuperUser($active=true){
 	
   } else {
 	if ($active){
-	  $_SESSION["redirect"]=$_SERVER["PHP_SELF"];
+	  //$_SESSION["redirect"]=$_SERVER["PHP_SELF"];
+	  $_SESSION["redirect"]= $_SERVER["REQUEST_URI"];
 	  header("Location: logout.php");
 	  exit;
 	} else {
@@ -54,7 +56,8 @@ function showLoggedInAs(){
 function checkForAddress(){
 	$user=$_SESSION["onlineuser"];
 	if ($user->address_1==""){
-		$_SESSION["redirect"]=$_SERVER["PHP_SELF"];
+		//$_SESSION["redirect"]=$_SERVER["PHP_SELF"];
+		$_SESSION["redirect"]= $_SERVER["REQUEST_URI"];
 			header("Location: register_address.php");
 			exit;
 	}
@@ -166,20 +169,123 @@ function loadOptions($listFile,$selectedValue)
 	}
 }
 
-
-
-// report table
-function generate($title,$user,$object,$getAll=false){
+function super_generate($title,$user,$object){
   global $truncateText;
 
-	if  ($getAll)
-	{
 	   $results=  getAllObjects($object, "dt_created", false);
-	}
-	else
-	{
-  		$results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)) );
+
+
+  $alt=false;
+  $rowclass="";
+  
+  if (count($results)>0||isSuperUser(false)) {
+    $class=strtolower(get_class($object));
+	echo $title." Admin";
+
+  echo "  - <a href='".$class."_form.php'>create new</a>";
+
+  	echo "<div class=\"spacer\"></div>";
+    echo "<table class=\"table\">";
+	  if (count($results)==0){
+				echo "<tr><td>";
+				echo "currently have no entries";
+				echo "</td></tr>";
+
+  	 }else{
+	
+		$hasName=isset($results[0]->name);
+		$hasHeading=isset($results[0]->heading);
+		$hasDescription=isset($results[0]->description);
+		$hasText=isset($results[0]->text);
+		$hasLink=isset($results[0]->link);
+
+    echo "<TR>";
+    if ($hasName){
+      echo "<TD>Name</td>";
+    } elseif ($hasHeading){
+      echo "<TD>Heading</td>";
     }
+    if ($hasDescription){
+      echo "<TD>Description</td>";
+    } elseif ($hasText){
+      echo "<TD>Text</td>";
+    }
+    if ($hasLink){
+      echo "<TD>URL</td>";
+    }
+    echo "<TD>Created</td>";
+    echo "<TD><!-- Functions --></td>";
+    echo "</tr>";
+		
+    foreach ($results as $obj){
+		  
+		  if ($alt){
+        $rowclass="row_even";
+		  } else {
+        $rowclass="row_odd";
+		  }
+		  $alt=!$alt;
+		  
+		  echo "<tr>";
+		  if ($hasName){
+        echo "<td class=\"$rowclass\">".$obj->name."</td>";
+		  } else if($hasHeading) {
+        echo "<td class=\"$rowclass\">".$obj->heading."</td>";
+		  }
+		  if ($hasDescription){
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->description,0,$truncateText))."...</td>";
+		  } else if($hasText){
+        echo "<td class=\"$rowclass\">".strip_tags(substr($obj->text,0,$truncateText))."...</td>";
+		  }
+		  if ($hasLink){
+        echo "<td class=\"$rowclass\">".$obj->link."</td>";
+		  }
+		  
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
+		  
+			$classId=$class."Id"; 
+		  $status=$class."_status"; 
+		  echo "<td class=\"$rowclass\">";
+		  echo "<ul><li><a href=\"".$class."_form.php?id=".$obj->$classId."\">Modify</a></li>";
+		  //echo "</td>";
+		  
+
+        switch ($obj->$status){
+          case "temp":
+    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+            break;
+			/*
+          case "active":
+    			  //echo "<td class=\"$rowclass\">";
+            echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Deactivate</a></li>";
+    			  //echo "</td>";
+    			  break;
+    			case "disabled":
+    			  //echo "<td class=\"$rowclass\">";
+    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
+    			  //echo "</td>";
+    			  break;
+  		  */
+  		}
+
+		 //echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+
+		  echo "</ul>";
+		  echo "</td>";
+		  echo "</tr>";
+		}
+	}
+	echo "</table>";
+  }
+  echo "<br/>";
+  echo "<br/>";
+}
+
+
+function generate($title,$user,$object){
+  global $truncateText;
+
+  		$results=$object->GetList(array(array("onlineuser_onlineuserid","=",$user->onlineuserId)) );
 
   $alt=false;
   $rowclass="";
@@ -194,14 +300,13 @@ function generate($title,$user,$object,$getAll=false){
   	echo "<div class=\"spacer\"></div>";
     echo "<table class=\"table\">";
 	  if (count($results)==0){
-			if (isSuperUser(false))
+	  		if (isSuperUser(false))
 			{
 				echo "<tr><td>";
 				echo "currently have no entries";
 				echo "</td></tr>";
 			}
   	 }else{
-	
 		$hasName=isset($results[0]->name);
 		$hasHeading=isset($results[0]->heading);
 		$hasDescription=isset($results[0]->description);
@@ -265,31 +370,25 @@ function generate($title,$user,$object,$getAll=false){
       } else {
       
         switch ($obj->$status){
-          case "temp":
+          	case "temp":
     			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Activate</a></li>";
             break;
-          case "active":
-    			  //echo "<td class=\"$rowclass\">";
-            echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Pause</a></li>";
-    			  //echo "</td>";
-    			  break;
-    			case "disabled":
-    			  //echo "<td class=\"$rowclass\">";
-    			  echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Continue</a></li>";
-    			  //echo "</td>";
-    			  break;
+          	case "active":
+    			if (isSuperUser(false))
+            		echo "<li><a href=\"deactivate.php?type=$class&id=".$obj->$classId."\">Pause</a></li>";
+    			break;			
+			case "disabled":
+				if (isSuperUser(false))
+					echo "<li><a href=\"activate.php?type=$class&id=".$obj->$classId."\">Continue</a></li>";
+				else
+			  		echo "<li>This ads has been paused</li>";
+			break;
   		  }
   		  
   		}
 		  if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
-			//echo "<td class=\"$rowclass\">";
 			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
-		  }
-		  //if ( isSuperUser(false) ){
-			//Delete has  not been implemented
-			//echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
-		  //}
-		  //echo "</td>";
+		  }		
 		  echo "</ul>";
 		  echo "</td>";
 		  echo "</tr>";
@@ -300,5 +399,4 @@ function generate($title,$user,$object,$getAll=false){
   echo "<br/>";
   echo "<br/>";
 }
-
 ?>

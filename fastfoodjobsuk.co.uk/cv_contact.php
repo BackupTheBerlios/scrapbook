@@ -146,8 +146,9 @@ var jobData=new Array();
   
   <tr>
     <td>
-      <input type=button value="Cancel" onClick="window.location='cvlist.php'">
+
       <input type=submit value="Send Email">
+	        <input type=button value="Cancel" onClick="window.location='cvlist.php'">
     </td>
   </tr>
   

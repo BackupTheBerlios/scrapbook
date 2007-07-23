@@ -356,7 +356,16 @@ class OnlineUser
 	{
 		return false;
 	}
-  }  
+  } 
   
+  function getCVId(){
+	$db = new DatabaseConnection();
+	$result=$db->Query("select cvid from `cv` where onlineuser_onlineuserid='".$this->onlineuserId."'");
+    return $db->Result(0, "cvid");
+  }   
+  
+  function isSuperAdmin(){
+  	return ($this->email=="super@fastfoodjobsuk.co.uk");
+  } 
 }
 ?>
