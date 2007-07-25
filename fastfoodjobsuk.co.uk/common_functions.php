@@ -251,6 +251,11 @@ function super_generate($title,$user,$object){
 		$hasDescription=isset($results[0]->description);
 		$hasText=isset($results[0]->text);
 		$hasLink=isset($results[0]->link);
+    if ($class=="platinum_membership" || $class=="supplier"){
+      $hasStats=true;
+    } else {
+      $hasStats=false;
+    }
 
     echo "<TR>";
     if ($hasName){
@@ -268,6 +273,10 @@ function super_generate($title,$user,$object){
     }
     echo "<TD>Created</td>";
     echo "<TD><!-- Functions --></td>";
+    if ($hasStats){
+      echo "<TD>Impressions</TD>";
+      echo "<TD>Clicks</TD>";
+    }
     echo "</tr>";
 		
     foreach ($results as $obj){
@@ -321,11 +330,20 @@ function super_generate($title,$user,$object){
   		  */
   		}
 
-		 echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+      echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
 
-		  echo "</ul>";
+      echo "</ul>";
+      if ($hasStats){
+        $stats=new Stats();
+        $results=$stats->GetList(array(array("objectname","=",$class),array("objectid","=",$obj->$classId)));
+        // we should only get one object back in the array
+        $statObject=$results[0];
+        echo "<TD>".$statObject->impressions."</td>";
+        echo "<TD>".$statObject->clicks."</td>";
+      }	   
 		  echo "</td>";
-		  echo "</tr>";
+		  
+      echo "</tr>";
 		}
 	}
 	echo "</table>";
@@ -363,6 +381,11 @@ function generate($title,$user,$object){
 		$hasText=isset($results[0]->text);
 		$hasLink=isset($results[0]->link);
 
+    if ($class=="platinum_membership" || $class=="supplier"){
+      $hasStats=true;
+    } else {
+      $hasStats=false;
+    }
     echo "<TR>";
     if ($hasName){
       echo "<TD>Name</td>";
@@ -379,8 +402,12 @@ function generate($title,$user,$object){
     }
     echo "<TD>Created</td>";
     echo "<TD>Expires</td>";
-	echo "<td>Status</td>";
+    echo "<td>Status</td>";
     echo "<TD><!-- Functions --></td>";
+    if ($hasStats){
+      echo "<TD>Impressions</TD>";
+      echo "<TD>Clicks</TD>";
+    }
     echo "</tr>";
 		
     foreach ($results as $obj){
@@ -444,6 +471,14 @@ function generate($title,$user,$object){
 		  }		
 		  echo "</ul>";
 		  echo "</td>";
+      if ($hasStats){
+        $stats=new Stats();
+        $results=$stats->GetList(array(array("objectname","=",$class),array("objectid","=",$obj->$classId)));
+        // we should only get one object back in the array
+        $statObject=$results[0];
+        echo "<TD>".$statObject->impressions."</td>";
+        echo "<TD>".$statObject->clicks."</td>";
+      }	   
 		  echo "</tr>";
 		}
 	}
