@@ -1,4 +1,4 @@
-<?php
+a<?php
 include("phpfn.php");
 /* a few common user funtions*/
 
