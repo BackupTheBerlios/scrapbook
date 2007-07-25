@@ -2,7 +2,7 @@
 						</td><td style ="width:1px; background-color:black;"></td><td valign="top" width="150"><div id="logo">
 
   <img src="logos/<?php echo $member->image1; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageright">
-  <BR>
+  <br>
   <img src="logos/<?php echo $member->image2; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageright">
 </div>
 						<div>
@@ -10,7 +10,7 @@
               <?php echo $member->name; ?>
              </a> 
 						</div>
-            <div id = "address">
+            <div id = "addresstext">
               <?php echo $member->address; ?>
             </div>
 						<div>

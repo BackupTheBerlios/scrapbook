@@ -43,10 +43,10 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($franchise->county,"",255))!==true){
     $errorText.="<li>The chosen county is $result";
   }
-  if (($result=validate($franchise->name,"",255))!==true){
+  if (($result=validate($franchise->name,"",50))!==true){
     $errorText.="<li>The name is $result";
   }
-  if (($result=validate($franchise->description,"",5000))!==true){
+  if (($result=validate($franchise->description,"words",25))!==true){
     $errorText.="<li>The description is $result";
   }
   if (($result=validate($franchise->tel,"phonenumber",45))!==true){

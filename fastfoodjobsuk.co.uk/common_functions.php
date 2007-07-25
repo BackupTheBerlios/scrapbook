@@ -132,8 +132,8 @@ function validate($d,$eregi,$length,$minLength=0){
     $wordCount+=substr_count($reformat,"-");
     
     // there are 6.8 characters on average per english word
-    // so 7 should be enough, but I have opted for 8
-    if ($wordCount>=$length || strlen($d)>(8*$length)){
+    // so 7 should be enough
+    if ($wordCount>=$length || strlen($d)>(7*$length)){
       return "too long";
     } else if (strlen($d)<=$minLength){
       return "mandatory";
@@ -321,7 +321,7 @@ function super_generate($title,$user,$object){
   		  */
   		}
 
-		 //echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+		 echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
 
 		  echo "</ul>";
 		  echo "</td>";
@@ -346,10 +346,7 @@ function generate($title,$user,$object){
   if (count($results)>0||isSuperUser(false)) {
     $class=strtolower(get_class($object));
 	echo $title." Admin";
-	if (isSuperUser(false))
-	{
-    	echo "  - <a href='".$class."_form.php'>create new</a>";
-	}
+	echo "  - <a href='".$class."_form.php'>create new</a>";
   	echo "<div class=\"spacer\"></div>";
     echo "<table class=\"table\">";
 	  if (count($results)==0){

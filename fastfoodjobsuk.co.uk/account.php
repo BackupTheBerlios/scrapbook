@@ -74,10 +74,9 @@ function generateJobLink($user){
 
 	 echo "<br/>";
      echo "Job Admin";
-	if (isSuperUser(false))
-	{
-    	echo "  - <a href='job_post.php'>create new</a>";
-	}	
+
+    echo "  - <a href='job_post.php'>create new</a>";
+
 	echo "<div class=\"spacer\"></div>";
 	 echo "<table class=\"table\">";  	 
 	if ($rows == 0)

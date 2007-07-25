@@ -74,12 +74,12 @@ if (isset($_POST["register"])){
       
       $mail->bodyAdd("Dear $first_name $last_name");
       $mail->bodyAdd("");
-      $mail->bodyAdd("Thank you for registering with Fast Food Jobs but as we take your privacy seriously, we just wanted to check you did register with our site.");
-      $mail->bodyAdd("In order to gain access to all of the web site functionality please click on <a href=\"$url\">this link</a>");
+      $mail->bodyAdd("Thank you for registering with Fast Food Jobs but as we take your privacy seriously, we just wanted to check you did register with our site. In order to gain access to all of the web site functionality please click on this link:");
+	  $mail->bodyAdd($url);
       $mail->bodyAdd("");
       $mail->bodyAdd("If you should not have received this e-mail, please click on the e-mail link below and just put \"remove\" in the heading and we will remove your details from our system.");
       $mail->bodyAdd("");
-      $mail->bodyAdd("Regards");
+      $mail->bodyAdd("Regards,");
       $mail->bodyAdd("");
       $mail->bodyAdd("The Fast Food Jobs Team");
       $mail->bodyAdd("");
@@ -226,11 +226,11 @@ if (isset($_POST["register"])){
         <input type="password" name="password" value="">
       </td>
     </tr>
-    <TR>
-      <TD>
+    <tr>
+      <td>
         What is your role?
       </td>
-      <TD>
+      <td>
         <select name="role">
           <option value="Job Seeker">Job Seeker</option>
           <option value="Supplier">Supplier</option>

@@ -36,10 +36,10 @@ if ((bool)$_POST["submitting"])
     move_uploaded_file($tempFilename,"logos/$member->logo");
   }
 
-  if (($result=validate($member->name,"",255))!==true){
+  if (($result=validate($member->name,"",50))!==true){
     $errorText.="<li>Franchise name is $result";
   }
-  if (($result=validate($member->description,"",5000))!==true){
+  if (($result=validate($member->description,"words",25))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($member->link,"",255))!==true){
@@ -130,7 +130,7 @@ Complete the Restaurant name, a brief description, website address (if available
   <tr>
     <td>
       Description:
-    </td>
+      </td>
     <td>
       <textarea name="description" id="description"><?php
         echo $member->description;

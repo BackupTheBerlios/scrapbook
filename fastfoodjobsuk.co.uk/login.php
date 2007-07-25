@@ -37,7 +37,7 @@ if (isset($_POST["email"])){
     	if (isSuperUser(false)){
         header("Location: admin_account.php");
     	} else {
-        header("Location: account.php");
+        header("Location: home.php");
       }
     	exit;
 	 }
@@ -81,43 +81,43 @@ require("top.php");
       
       <form action="login.php" method="POST">
         <table>
-          <TR>
-            <TD>
+          <tr>
+            <td>
               Email address:
             </td>
-            <TD>
+            <td>
               <?php
                 echo "<input type=\"text\" name=\"email\" value=\"".(isset($_POST["email"]) ? $_POST["email"] : "")."\">";
               ?>
             </td>
           </tr>
           
-          <TR>
-            <TD>
+          <tr>
+            <td>
               Password:
             </td>
-            <TD>
+            <td>
               <input type="password" name="password">
             </td>
           </tr>
   
-          <TR>
-            <TD>
+          <tr>
+            <td>
             </td>
-            <TD>
+            <td>
               <input type="submit" value="Login">
             </td>
           </tr>
         </table>
       </form>
 
-      <P>
+      <p>
         Not registered? <a href="register.php" class="news">Register here</a>
       </p>
-      <P>
+      <p>
         Forgotten your password? <a href="forgotten_password.php" class="news">Click here</a>
 </p>
-      <P>&nbsp;      </p>
+      <p>&nbsp;      </p>
     </td>
   </tr>
   <tr>

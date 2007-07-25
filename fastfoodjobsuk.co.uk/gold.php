@@ -34,7 +34,7 @@
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
     echo "<TR><TD>";
     if (($spotlightId=$obj->hasSpotlight()) !== false){
-      echo "<a href=\"spotlight.php?id=$spotlightId\">previous spotlight</a>";
+      echo "<a href=\"spotlight.php?id=$spotlightId\">Under the spotlight!</a>";
     }
     echo "</td></tr>";
     echo "<TR><TD><BR></td></tr></table>";

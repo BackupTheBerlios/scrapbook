@@ -94,7 +94,7 @@ require("top.php");
 <!--
 	window.onload = function()
 	{
-		var oFCKeditor = new FCKeditor('text', 360, 250);
+		var oFCKeditor = new FCKeditor('text', 360, 500);
 		oFCKeditor.BasePath = "fckeditor/";
 		oFCKeditor.ToolbarSet = "MySets" ;
 		oFCKeditor.ReplaceTextarea();
@@ -222,7 +222,7 @@ require("top.php");
       Address:
     </td>
     <td>
-      <textarea name="address" id="address"><?php
+      <textarea name="address" rows="4" id="address"><?php
         echo str_replace("<BR>","\n",$member->address);
       ?></textarea>
 

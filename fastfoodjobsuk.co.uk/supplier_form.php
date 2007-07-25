@@ -39,10 +39,10 @@ if ((bool)$_POST["submitting"])
     move_uploaded_file($tempFilename,"logos/$supplier->logo");
   }
 
-  if (($result=validate($supplier->name,"",255))!==true){
+  if (($result=validate($supplier->name,"",50))!==true){
     $errorText.="<li>Supplier name is $result";
   }
-  if (($result=validate($supplier->description,"",5000))!==true){
+  if (($result=validate($supplier->description,"words",25))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($supplier->link,"",255))!==true){
