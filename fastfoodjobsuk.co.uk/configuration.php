@@ -16,6 +16,9 @@ $configuration['user']	= 'web84-fastfood';		//	database user
 $configuration['pass']	= 'pizza555';		//	database password
 $configuration['port'] 	= '3306';		//	database port
 
+//plugin settings
+$configuration['plugins_path'] = '';  //absolute path to plugins folder, e.g c:/mycode/test/plugins or /home/phpobj/public_html/plugins
+
 // admin email address
   $configuration["adminEmail"]="me@chrissweeney.co.uk";
   //$configuration["adminEmail"]="admin@fastfoodjobsuk.co.uk";

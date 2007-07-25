@@ -1,17 +1,17 @@
 <?php
   function loadImage(){
     global $imagePos, $platinumImages, $logoWidth, $logoHeight;
-	if ($platinumImages[$imagePos][0]>0)
-	{
-    	echo "<a href=\"platinum.php?id=".$platinumImages[$imagePos][0]."\">";
-    	echo "<img src=\"logos/".$platinumImages[$imagePos][1]."\" width='153' height='104' border='0' class='platinumImages'></a>";
-		$imagePos++;
-	}
-	else
-	{
-		echo "<a href=\"advertise.html\">";
-    	echo "<img src='logos/your_company_here.gif' width='153' height='104' border='0' class='platinumImages'></a>";
-	}
+  	if ($platinumImages[$imagePos][0]>0)
+  	{
+      	echo "<a href=\"platinum.php?id=".$platinumImages[$imagePos][0]."\">";
+      	echo "<img src=\"logos/".$platinumImages[$imagePos][1]."\" width='153' height='104' border='0' class='platinumImages'></a>";
+  		$imagePos++;
+  	}
+  	else
+  	{
+  		echo "<a href=\"advertise.html\">";
+      	echo "<img src='logos/your_company_here.gif' width='153' height='104' border='0' class='platinumImages'></a>";
+  	}
     
   }
 
@@ -35,6 +35,10 @@
   }
   $imagePos=0;
   
+  for ($i=0;$i<count($platinumImages);$i++){
+    isUniqueVisit("platinum_membership",$platinumImages[$i][0],"impressions");
+  }
+
   $loginEmail=showLoggedInAs();  
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

@@ -24,7 +24,7 @@ if (isset($_POST["register"])){
     if (($result=validate($postcode,"",20))!==true)
       $errorText.="<LI>Your post code is $result";
   
-    if (($result=validate($telephone,"phonenumber",45))!==true)
+    if (($result=validate($tel,"phonenumber",45))!==true)
       $errorText.="<LI>Your telephone number is $result";
   
     if ($fax!="" && ($result=validate($fax,"phonenumber",45))!==true)

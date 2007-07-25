@@ -42,6 +42,36 @@ function isSuperUser($active=true){
   } 
 }
 
+function isUniqueVisit($class,$id,$type){
+  if (!isset($_COOKIE["ffjvisit_".$class.$id.$type])){
+    setcookie("ffjvisit_".$class.$id.$type, "true", (time()+86400), "/", ".fastfoodjobsuk.co.uk");
+    updateStats($class,$id,$type);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function updateStats($objectName,$objectId,$type){
+  $db=new DatabaseConnection();
+  $stats=new Stats();
+  //$query="SELECT statsid FROM stats WHERE objectname='platinum_membership' AND objectid='".$platinumImages[$i][0]."'";
+  $query="SELECT statsid FROM stats WHERE objectname='$objectName' AND objectid='$objectId'";
+  $results=$db->Query($query);
+  if ($db->Rows()>0){
+    $data=mysql_fetch_row($results);
+    $stats=$stats->Get((int)$data[0]);
+  } else {
+    //$stats->objectname="platinum_membership";
+    //$stats->objectid=$platinumImages[$i][0];
+    $stats->objectname=$objectName;
+    $stats->objectid=$objectId;
+  }
+  
+  $stats->$type=$stats->$type+1;
+  $stats->Save();
+}
+
 function showLoggedInAs(){
 
   if (isset($_SESSION["onlineuser"])){

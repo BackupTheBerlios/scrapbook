@@ -148,7 +148,7 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 <input type="text" name="x_bonus" id="x_bonus" value="<?php echo htmlspecialchars(@$x_bonus) ?>">		</td>
 	</tr>
 	<tr>
-		<td><span style="font-weight: bold">Benifits</span></td>
+		<td><span style="font-weight: bold">Benefits</span></td>
 		<td>
 <input type="text" name="x_benifits" id="x_benifits" value="<?php echo htmlspecialchars(@$x_benifits) ?>">		</td>
 	</tr>

@@ -1,6 +1,15 @@
 <?php
 	require("common_all.php");
+  $type=(int)$_GET["type"];
 
+  $supplier=new Supplier();
+  $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active")),"dt_created");
+  shuffle($results);
+  
+  foreach ($results as $obj){
+    isUniqueVisit("supplier",$obj->supplierId,"impressions");
+  }
+  
 ?>
 <?php
 	require("top.php");
@@ -14,11 +23,6 @@
 								</div>
 <table id="table" cellspacing = "0" cellpadding = "0">
 <?php
-  $type=(int)$_GET["type"];
-
-  $supplier=new Supplier();
-  $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active")),"dt_created");
-  shuffle($results);
   
   $rowCount=0;
   echo "<TR>";
@@ -28,14 +32,17 @@
     echo "</td>";
   } else {
     foreach ($results as $obj){
+      $url="goto.php?type=supplier&id=".$obj->supplierId;
       echo "<TD width = \"135\" valign=\"top\" >";
       echo "<table id=\"table_inner\">";
       echo "<TR><TD class=\"cell_logo\">";
-      echo "<a href=\"".$obj->link."\">";
+      //echo "<a href=\"".$obj->link."\">";
+      echo "<a href=\"$url\">";
       echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" border=0>";
       echo "</a>";
       echo "</td></tr>";
-      echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
+      //echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
+      echo "<TR><TD class=\"cell_heading\"><a href=\"$url\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
       echo "<TR><TD>";
       if (($spotlightId=$obj->hasSpotlight()) !== false){

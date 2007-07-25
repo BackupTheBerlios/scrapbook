@@ -10,6 +10,8 @@ if ($member->platinum_membershipId==0) //object not exist
 	exit();
 }
 
+isUniqueVisit("platinum_membership",$id,"clicks");
+
 ?>
 <?php
 	require("top_wpv.php");

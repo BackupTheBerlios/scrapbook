@@ -84,7 +84,7 @@ switch ($sAction)
             <?php echo $x_bonus; ?>  </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Benifits</span></td>
+	    <td><span style="font-weight: bold">Benefits</span></td>
 		    <td>
             <?php echo $x_benifits; ?>            </td>
 	    </tr>
