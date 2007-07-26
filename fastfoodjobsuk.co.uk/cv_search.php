@@ -269,7 +269,7 @@ return true;
 //-->
 </script>
 
- <h2 style = "margin-left:5px;">Search CV</h2>
+ <h2 style = "margin-left:5px;">Search Job Seekers Profile</h2>
 <form name="fcvsearch" id="fcvsearch" action="cv_search.php" method="post" onsubmit="return EW_checkMyForm(this);">
 <p>
 <input type="hidden" name="a_search" value="S">

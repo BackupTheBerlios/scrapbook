@@ -69,11 +69,6 @@ switch ($sAction)
      </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Job description</span></td>
-		    <td>
-            <?php echo str_replace(chr(10), "<br>", $x_overview); ?>            </td>
-	    </tr>
-	<tr>
 	    <td><span style="font-weight: bold">Yearly Salary</span></td>
 		    <td>
             &pound;<?php echo $x_salary; ?>            </td>
@@ -96,7 +91,7 @@ switch ($sAction)
 	    </tr>
 	<tr>
         <td><span style="font-weight: bold">Date Posted</span></td>
-	    <td><?php echo FormatDateTime($x_dt_created,5); ?> </td>
+	    <td><?php echo FormatDateTime($x_dt_created,7); ?> </td>
 	    </tr>
 	<tr>
 	    <td><span style="font-weight: bold">Recruiter / Company</span></td>
@@ -104,7 +99,7 @@ switch ($sAction)
             <?php echo $x_company; ?>            </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Job Profile</span></td>
+	    <td><span style="font-weight: bold">Job description</span></td>
 		    <td>
             <?php echo str_replace(chr(10), "<br>", $x_profile); ?>            </td>
 	    </tr>
@@ -117,7 +112,7 @@ switch ($sAction)
 			<tr>
 	    		<td><span style="font-weight: bold">Expiry Date</span></td>
                 <td>
-                    <?php echo FormatDateTime($x_dt_expire,5); ?>            
+                    <?php echo FormatDateTime($x_dt_expire,7); ?>            
                 </td>
 	    	</tr>
         <?php } ?>

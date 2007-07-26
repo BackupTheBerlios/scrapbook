@@ -104,7 +104,7 @@ if ($nDisplayRecs <= 0) { // Display all records
 $nStartRec = 1;
 SetUpStartRec(); // Set up start record position
 ?>
- <h2 style = "margin-left:5px;">CV Search Result</h2>
+ <h2 style = "margin-left:5px;">Search Result</h2>
 <form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" >
 <table class="ewBasicSearch">
 	<tr>

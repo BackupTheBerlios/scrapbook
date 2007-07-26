@@ -7,7 +7,7 @@ require("top.php");
 <br>
 <table class = "registerTable">
 <tr><td>
-Please check your email account for your missing password.
+Please check your email account for your new password.
 </td></tr></table>
 
 

@@ -66,10 +66,7 @@ EW_dateSep = "/"; // set date separator
  <script type="text/javascript">
 <!--
 function EW_checkMyForm(EW_this) {
-if (EW_this.x_overview && !EW_hasValue(EW_this.x_overview, "TEXTAREA")) {
-	if (!EW_onError(EW_this, EW_this.x_overview, "TEXTAREA", "Please enter required field - Overview"))
-		return false;
-}
+<?php if (!isSuperUser(false)){ ?> 
 if (EW_this.x_salary && !EW_checkinteger(EW_this.x_salary.value)) {
 	if (!EW_onError(EW_this, EW_this.x_salary, "TEXT", "Incorrect amount - salary"))
 		return false; 
@@ -90,6 +87,7 @@ if (EW_this.x_contact_email && !EW_checkemail(EW_this.x_contact_email.value)) {
 	if (!EW_onError(EW_this, EW_this.x_contact_email, "TEXT", "Incorrect email - Contact Email"))
 		return false; 
 }
+<?php } ?> 
 return true;
 }
 
@@ -126,15 +124,6 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	 <td class="backgroundBorderStriped">Your job description must not discriminate directly or indirectly against an applicant on the basis of gender, marital status, nationality, race, disability, religious beliefs or sexual orientation.</td>
 	 </tr>
 	<tr>
-		<td><span style="font-weight: bold">Job description</span><span>&nbsp;* <br />
-		    (Up to 50 words)</span></td>
-		<td>
-        <textarea name="x_overview" cols="35" rows="3" id="x_overview"><?php echo @$x_overview; ?></textarea></td>
-	</tr>
-	<tr>
-	 <td colspan="2" class="line">&nbsp;</td>
-	 </tr>
-	<tr>
 	 <td colspan="2"><h3>Financial Info:</h3></td>
 	 </tr>
 	<tr>
@@ -169,7 +158,7 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	</tr>
 
 	<tr>
-		<td><span style="font-weight: bold">Profile</span><span>&nbsp;*</span></td>
+		<td><span style="font-weight: bold">Job Description</span><span>&nbsp;*</span></td>
 		<td>
 <textarea name="x_profile" cols="35" rows="6" id="x_profile"><?php echo @$x_profile; ?></textarea></td>
 	</tr>

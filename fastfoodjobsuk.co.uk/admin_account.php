@@ -44,12 +44,6 @@ function sure(classname,id){
 }
 </script>
 <p>
-  <a href="user_profile.php" style="color:#0000FF;text-decoration:underline">My Profile</a>
-</p>
-<p>
-  <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
-</p>
-<p>
   <a href="register.php?showAddress=1&status=active" style="color:#0000FF;text-decoration:underline">Create User</a>
 </p>
 <table id="table">
@@ -100,9 +94,7 @@ function sure(classname,id){
       <br><br>
     </td>
   </tr>
-        <?php
-        if ($matches){
-		?>
+
   <form action="account.php" method="POST">
   <tr>
     <td>
@@ -110,11 +102,14 @@ function sure(classname,id){
     </td>
     <td>
       <select name="whichUser" size=8>
+	  <option value="1">Super User - super@fastfoodjobsuk.co.uk</option>
       <?php
+	  if ($matches){
           for($i=0;$i<count($resultArray);$i++){
             echo "<option value=\"".$resultArray[$i][0]."\">".$resultArray[$i][1]." ".$resultArray[$i][2]." - ".$resultArray[$i][3];
             echo "</option>\n";
-          }       
+          }    
+	  }   
       ?>
       </select>
     </td>
@@ -127,9 +122,6 @@ function sure(classname,id){
     </td>
   </tr>
    </form> 
-        <?php
-		}
-		?>
   </table>
 
 <?php

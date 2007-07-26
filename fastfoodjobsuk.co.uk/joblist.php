@@ -258,14 +258,6 @@ if ($nTotalRecs > 0) {
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
                 </span></td>
-    <td valign="top"><span style="font-weight: bold">
-        Job description
-                <?php if (@$_SESSION[ewSessionTblSort . "_x_overview"] == "ASC") { ?>
-                <img src="images/sortup.gif" width="10" height="9" border="0">
-                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_overview"] == "DESC") { ?>
-                <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>    
-                </span></td>
     <td valign="top">
         <span style="font-weight: bold">Yearly salary</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
@@ -280,15 +272,7 @@ if ($nTotalRecs > 0) {
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
                 </span></td>
-    <td valign="top"><span style="font-weight: bold">
-        Recruiter /Company
-                <?php if (@$_SESSION[ewSessionTblSort . "_x_company"] == "ASC") { ?>
-                <img src="images/sortup.gif" width="10" height="9" border="0">
-                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_company"] == "DESC") { ?>
-                <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>    
-                </span></td>
-                   <td valign="top"><span style="font-weight: bold">Expires on</span></td>        
+                   <td valign="top"><span style="font-weight: bold">Date posted</span></td>        
 	    <td valign="top">&nbsp;</td>
 
 	</tr>
@@ -340,9 +324,6 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 	    <td>
 
     <?php echo $x_position; ?>  </td>
-		    <!-- overview -->
-	    <td>
-                <?php echo str_replace(chr(10), "<br>", $x_overview); ?>    </td>
 		    <!-- salary -->
 	    <td>
                 &pound;<?php echo $x_salary; ?></td>
@@ -350,10 +331,7 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 	    <!-- benifits -->
 	    <!-- location -->
 	    <td><?php echo $x_location; ?> 		  </td>
-		    <!-- company -->
-	    <td>
-                <?php echo $x_company; ?>    </td>
-                 <td><?php echo $x_dt_expire; ?> </td>  
+                 <td><?php echo $x_dt_created; ?> </td>  
 		    <td>
             <?php if ($x_link <> "") {
 					$ahref="<a href='$x_link' target='_external'>View Detail</a>";

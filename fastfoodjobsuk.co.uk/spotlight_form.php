@@ -1,6 +1,5 @@
 <?php
 require("common_super.php");
-checkForAddress();
 $errorText="";
 
 $member=new Spotlight();

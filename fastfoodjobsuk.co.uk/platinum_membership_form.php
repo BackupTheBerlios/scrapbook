@@ -1,6 +1,6 @@
 <?php
-require("common_user.php");
-checkForAddress();
+require("common_super.php");
+//checkForAddress();
 $errorText="";
 
 $member=new Platinum_membership();

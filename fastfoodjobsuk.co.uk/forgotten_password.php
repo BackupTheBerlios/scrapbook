@@ -24,8 +24,9 @@ if (isset($_POST["reset"])){
     
     $message="<HTML><pre>";
     $message.="Dear $fname $lname\n\n";
-    $message.="You password is: $password and if you need any further help please e-mail support@fastfoodjobsuk.co.uk\n\n";
-    $message.="Regards,\n\n";
+    $message.="You password is: $password and if you need any further help please e-mail\n";
+    $message.="support@fastfoodjobsuk.co.uk\n\n";
+	$message.="Regards,\n\n";
     $message.="The Fast Food Jobs Support Team.";
     $message.="</pre></html>";
     
@@ -48,7 +49,7 @@ if (isset($_POST["reset"])){
 <table class = "registerTable">
 <tr>
  <td>
-Please enter your registered e-mail address and we will send you an email with a new temporary password.<br /><br /></td>
+Please enter your registered e-mail address and we will send you an email with a new password.<br /><br /></td>
 </tr><tr>
 <td>  <input type="text" name="email">
  </td></tr><tr>

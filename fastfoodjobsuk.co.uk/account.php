@@ -9,11 +9,11 @@ if(isset($_POST["whichUser"]) && isSuperUser(false)){
   $user=$user->Get((int)$_POST["whichUser"]);
   $_SESSION["onlineuser"]=$user;
 }
-if($user->isSuperAdmin())
-{  
-  header("Location: admin_account.php");
-  exit;
-}
+//if($user->isSuperAdmin())
+//{  
+  //header("Location: admin_account.php");
+  //exit;
+//}
 require("top_wide.php");
 ?>
 <script language="JavaScript">
@@ -37,7 +37,7 @@ function sure(classname,id){
 
  ?>
  <p>
- <a href="cvedit.php" style="color:#0000FF;text-decoration:underline">My CV</a>
+ <a href="cvedit.php" style="color:#0000FF;text-decoration:underline">My Job Seeker Profile</a>
  </p>
  <?php	
 if ($user->canSearchCV(false))
@@ -45,7 +45,7 @@ if ($user->canSearchCV(false))
 ?>
 
 <p>
-  <a href="cv_search.php" style="color:#0000FF;text-decoration:underline">Search CV</a>
+  <a href="cv_search.php" style="color:#0000FF;text-decoration:underline">Search Job Seekers Profile</a>
 </p>
 <?php
 }
@@ -106,8 +106,8 @@ function generateJobLink($user){
 				echo "<td class=\"$rowclass\">".$row["salary"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["location"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["company"]."</td>";
-			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_created"],5)."</td>";
-			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_expire"],5)."</td>";
+			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_created"],7)."</td>";
+			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_expire"],7)."</td>";
 			  
 			  
 			  

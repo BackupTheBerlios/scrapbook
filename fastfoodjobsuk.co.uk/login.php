@@ -37,7 +37,7 @@ if (isset($_POST["email"])){
     	if (isSuperUser(false)){
         header("Location: admin_account.php");
     	} else {
-        header("Location: home.php");
+        header("Location: index.php");
       }
     	exit;
 	 }

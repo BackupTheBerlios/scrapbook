@@ -143,14 +143,14 @@ return true;
 
 //-->
 </script>
- <h2 style = "margin-left:5px;">Create your CV</h2>
+ <h2 style = "margin-left:5px;">Create Your Job Seeker Profile</h2>
 <form name="fcvadd" id="fcvadd" action="cv_form.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 <input type="hidden" name="a_add" value="A">
 <input type="hidden" name="EW_Max_File_Size" value="2000000">
 <table>
 	<tr>
-		<td><span>Picture</span></td>
+		<td><span>Insert your photograph</span></td>
 		<td><span id="cb_x_picture">
 <?php $x_picture = ""; // Clear BLOB related fields ?>
 <input type="file" id="x_picture" name="x_picture" >

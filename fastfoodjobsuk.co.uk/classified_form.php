@@ -11,10 +11,10 @@ if ((bool)$_POST["submitting"])
   $text=$_POST["text"];
   $link=$_POST["link"];
 
-  if(($result=validate($heading,"words",4))!==true){
+  if(($result=validate($heading,"",20))!==true){
     $errorText.="<li>The heading is $result";
   }
-  if (($result=validate($text,"words",10))!==true){
+  if (($result=validate($text,"",50))!==true){
     $errorText.="<li>The main text is $result";
   }
   if (($result=validate($link,"",255))!==true){

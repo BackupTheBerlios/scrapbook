@@ -43,7 +43,7 @@ displayed on UK Food Franchises Page.</td>
 <td class="contact" valign="top"><span class="redhead">Classified	<br>
 </span>Home Page - Classified Text advert (max 4 companies)<br>
 
-4 word heading and 10 word text (max) linked to your web site.</td>
+20 characters heading and 50 characters word text (max) linked to your web site.</td>
 </tr>
 <tr>
 <td width="168"><a href="job_post.php"><img src="images/ads_35.jpg" alt="" width="162"  border="0"></a></td>

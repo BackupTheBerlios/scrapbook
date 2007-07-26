@@ -303,7 +303,7 @@ function super_generate($title,$user,$object){
         echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
 		  
-      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
+      echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
 		  
 			$classId=$class."Id"; 
 		  $status=$class."_status"; 
@@ -434,8 +434,8 @@ function generate($title,$user,$object){
         	echo "<td class=\"$rowclass\">".$obj->link."</td>";
 		  }
 		  
-      	  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,5)."</td>";
-		  echo "<td class=\"$rowclass\">".(($d=FormatDateTime($obj->dt_expire,5)) == "0000/00/00" ? "please<BR>activate" : $d)."</td>";
+      	  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_created,7)."</td>";
+		  echo "<td class=\"$rowclass\">".FormatDateTime($obj->dt_expire,7)."</td>";
 		  
 		  $classId=$class."Id"; 
 		  $status=$class."_status"; 

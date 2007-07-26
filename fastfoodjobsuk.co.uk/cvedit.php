@@ -148,17 +148,13 @@ if (EW_this.x_can_travel && !EW_checkinteger(EW_this.x_can_travel.value)) {
 	if (!EW_onError(EW_this, EW_this.x_can_travel, "TEXT", "Incorrect integer - Willing to travel"))
 		return false; 
 }
-if (EW_this.x_cv_status && !EW_hasValue(EW_this.x_cv_status, "RADIO")) {
-	if (!EW_onError(EW_this, EW_this.x_cv_status, "RADIO", "Please enter required field - CV Status"))
-		return false;
-}
 return true;
 }
 
 //-->
 </script>
- <h2 style = "margin-left:5px;">Update CV</h2>
-<form name="fcvedit" id="fcvedit" action="cvedit.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
+ <h2 style = "margin-left:5px;">Update Job Seeker Profile</h2>
+ <form name="fcvedit" id="fcvedit" action="cvedit.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 	<input type="hidden" name="a_edit" value="U">
 	<input type="hidden" name="EW_Max_File_Size" value="2000000">
@@ -174,14 +170,14 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 <?php if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
 <tr>
 <td>
-Current Picture</td>
+Current photograph</td>
 <td>
 <img src="<?php echo ewUploadPathEx(False, EW_UploadDestPath) . $x_picture ?>" width="160">
 </td>
 </tr>
 <?php } ?>
 	<tr>
-			<td><span>Picture</span></td>
+			<td><span><span>Insert your photograph</span></span></td>
 			<td><span id="cb_x_picture">
 <?php if ((!is_null($x_picture)) && $x_picture <> "") {  ?>
 <input type="radio" name="a_x_picture" value="1" checked>Keep&nbsp;
@@ -575,8 +571,8 @@ miles
 		<tr>
 			<td><span>Date created<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_dt_created">
-<?php echo FormatDateTime($x_dt_created,5); ?>
-<input type="hidden" id="x_dt_created" name="x_dt_created" value="<?php echo FormatDateTime(@$x_dt_created,5); ?>">
+<?php echo FormatDateTime($x_dt_created,7); ?>
+<input type="hidden" id="x_dt_created" name="x_dt_created" value="<?php echo FormatDateTime(@$x_dt_created,7); ?>">
 </span></td>
 		</tr>
 	</table>

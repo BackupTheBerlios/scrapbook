@@ -42,7 +42,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($member->name,"",255))!==true){
     $errorText.="<li>Franchise name is $result";
   }
-  if (($result=validate($member->description,"",5000))!==true){
+  if (($result=validate($member->description,"",45))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($member->link,"",255))!==true){
@@ -128,7 +128,7 @@ Complete the Restaurant name, a brief description, website address (if available
   ?>
   <tr>
     <td>
-      Upload Logo:
+      Upload logo:
     </td>
     <td>
       <input type="file" id="file" name="logo">
@@ -137,7 +137,7 @@ Complete the Restaurant name, a brief description, website address (if available
   </tr>
   <tr>
     <td>
-      Restaurant Name:
+      Company name:
     </td>
     <td>
       <input type="text" id="name" name="name" value="<?php echo $member->name; ?>">
