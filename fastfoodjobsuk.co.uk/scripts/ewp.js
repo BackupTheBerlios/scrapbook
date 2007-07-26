@@ -712,21 +712,21 @@ function ew_confirmdelete(msg)
 
 // Set mouse over color
 function ew_mouseover(row) {
-	row.mover = true; // mouse over
-	if (!row.selected) {
-		if (usecss)
-			row.className = rowmoverclass;
-		else
-			row.style.backgroundColor = rowmovercolor;
-	}
+	//row.mover = true; // mouse over
+	//if (!row.selected) {
+		//if (usecss)
+			//row.className = rowmoverclass;
+		//else
+			//row.style.backgroundColor = rowmovercolor;
+	//}
 }
 
 // Set mouse out color
 function ew_mouseout(row) {
-	row.mover = false; // mouse out
-	if (!row.selected) {
-		ew_setcolor(row);
-	}
+	//row.mover = false; // mouse out
+	//if (!row.selected) {
+		///ew_setcolor(row);
+	//}
 }
 
 // Set row color
