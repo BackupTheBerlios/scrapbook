@@ -41,7 +41,7 @@ $cv_last_name=$data[1];
 $cv_email=$data[2];
 
 if ((bool)$_POST["submitting"]){
-  $jobId=(int)$_POST["jobId"];
+  $jobId=(int)$_POST["jobIds"];
   $queryJob=$db->Query("SELECT contact_email FROM job WHERE jobid='$jobId'");
   if ($db->Rows()<=0){
     // shouldn't really ever get here

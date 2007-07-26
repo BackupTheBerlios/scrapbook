@@ -9,10 +9,12 @@ if ($id==0){
 	$id=intval($_POST["id"]);
 }
 if ($id>0){	
-	$member=$member->Get($id);
+	$isNew=0;
+  $member=$member->Get($id);
 	$user->canAccess($member);
 } else { //new object
-	$member->onlineuser_onlineuserid = $user->onlineuserId;
+	$isNew=1;
+  $member->onlineuser_onlineuserid = $user->onlineuserId;
 
 	//default link
 	$member->link="http://";
@@ -23,6 +25,7 @@ if ($id>0){
 //check if form is being submitted
 if ((bool)$_POST["submitting"])
 {
+  $isNew=(int)$_POST["isNew"];
   $member->logo=$_POST["currentFilename"];
   $member->name=$_POST["name"];
   $member->description=$_POST["description"];
@@ -36,10 +39,10 @@ if ((bool)$_POST["submitting"])
     move_uploaded_file($tempFilename,"logos/$member->logo");
   }
 
-  if (($result=validate($member->name,"",50))!==true){
+  if (($result=validate($member->name,"",255))!==true){
     $errorText.="<li>Franchise name is $result";
   }
-  if (($result=validate($member->description,"words",25))!==true){
+  if (($result=validate($member->description,"",5000))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($member->link,"",255))!==true){
@@ -55,6 +58,18 @@ if ((bool)$_POST["submitting"])
     }
 
     $member->Save();
+    if ($isNew==1){
+      require("class.email.php");
+      $mail=new Emailer();
+      $mail->setFrom($configuration["fromEmail"]);
+      $mail->setTo($configuration["adminEmail"]);
+      $mail->setSubject("New Services Taken");
+      $mail->bodyAdd("Dear admin,");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("Just to let you know the following services have been taken by ".$user->first_name." ".$user->last_name);
+      $mail->bodyAdd("Service: gold membership");
+      $mail->send();
+    }
     header("Location: gold_membership_success.php");
   } else {
     $errorText="<ul>".$errorText."</ul>";
@@ -88,6 +103,7 @@ Complete the Restaurant name, a brief description, website address (if available
 </table>
 <form action="gold_membership_form.php" method="POST" enctype="multipart/form-data">
 <input type=hidden name="id" value="<?php echo $member->gold_membershipId; ?>">
+<input type=hidden name="isNew" value="<?php echo $isNew; ?>">
 <input type=hidden name="submitting" value="true">
 
 <table id="table_create">
@@ -130,7 +146,7 @@ Complete the Restaurant name, a brief description, website address (if available
   <tr>
     <td>
       Description:
-      </td>
+    </td>
     <td>
       <textarea name="description" id="description"><?php
         echo $member->description;

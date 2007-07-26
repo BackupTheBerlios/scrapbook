@@ -36,11 +36,11 @@ else
 	  }
 	  */
 	  $status=$class."_status";
-	  $object->$status="active";
 	  
 	  if ($object->$status=="temp"){
-	    $object->dt_expire=$newExpiryDate; 
+      $object->dt_expire=$newExpiryDate; 
 	  }	  
+	  $object->$status="active";
 	  $object->Save();
 
 	  

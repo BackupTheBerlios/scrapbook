@@ -49,6 +49,9 @@ function sure(classname,id){
 <p>
   <a href="change_password.php" style="color:#0000FF;text-decoration:underline">Update Password</a>
 </p>
+<p>
+  <a href="register.php?showAddress=1&status=active" style="color:#0000FF;text-decoration:underline">Create User</a>
+</p>
 <table id="table">
 <form action="admin_account.php" method="POST">
   <tr>
@@ -76,7 +79,7 @@ function sure(classname,id){
   
   <tr>
     <td>
-      Eamil:
+      Email:
     </td>
     <td>
       <input name="email" id="email" value="<?php echo $email; ?>">

@@ -96,6 +96,7 @@ if (!$result){
     $mail->bodyAdd("Tel: 0845 644 8252");
     $mail->bodyAdd("advertise@fastfoodjobsuk.co.uk ");
     $mail->send();
+    echo "Email sent to: ".$mail->to."\n";
   }
 }
   
@@ -136,9 +137,9 @@ while (($f=readdir($dir)) !== false){
   $filename="logos/$f";
   if (is_file($filename)){
     if (!array_search($f,$dbFiles)){
-      echo "f=($f)";
-      unlink($filename);
-      //rename($filename, $filename.".deleted");
+      //echo "f=($f)";
+      //unlink($filename);
+      rename($filename, $filename.".deleted");
     }
   }
 }

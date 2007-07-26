@@ -9,10 +9,12 @@ if ($id==0){
 	$id=intval($_POST["id"]);
 }
 if ($id>0){	
+	$isNew=0;
 	$supplier=$supplier->Get($id);
 	//check to see user has access to modify this object	
 	$user->canAccess($supplier);
 } else { //new object
+	$isNew=1;
 	$supplier->onlineuser_onlineuserid = $user->onlineuserId;
 	
 	//default link
@@ -24,7 +26,7 @@ if ($id>0){
 //check if form is being submitted
 if ((bool)$_POST["submitting"])
 {
-
+  $isNew=$_POST["isNew"];
   $supplier->logo=$_POST["currentFilename"];
   $supplier->name=$_POST["name"];
   $supplier->description=$_POST["description"];
@@ -39,10 +41,10 @@ if ((bool)$_POST["submitting"])
     move_uploaded_file($tempFilename,"logos/$supplier->logo");
   }
 
-  if (($result=validate($supplier->name,"",50))!==true){
+  if (($result=validate($supplier->name,"",255))!==true){
     $errorText.="<li>Supplier name is $result";
   }
-  if (($result=validate($supplier->description,"words",25))!==true){
+  if (($result=validate($supplier->description,"",5000))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($supplier->link,"",255))!==true){
@@ -57,6 +59,19 @@ if ((bool)$_POST["submitting"])
       mkdir("logos");
     }
     $supplier->Save();
+
+    if ($isNew==1){
+      require("class.email.php");
+      $mail=new Emailer();
+      $mail->setFrom($configuration["fromEmail"]);
+      $mail->setTo($configuration["adminEmail"]);
+      $mail->setSubject("New Services Taken");
+      $mail->bodyAdd("Dear admin,");
+      $mail->bodyAdd("");
+      $mail->bodyAdd("Just to let you know the following services have been taken by ".$user->first_name." ".$user->last_name);
+      $mail->bodyAdd("Service: supplier");
+      $mail->send();
+    }
 
     header("Location: supplier_success.php");
   } else {
@@ -86,6 +101,7 @@ if ((bool)$_POST["submitting"])
 </table>
 <form action="supplier_form.php" method="POST" enctype="multipart/form-data">
 <input type=hidden name="id" value="<?php echo $supplier->supplierId; ?>">
+<input type=hidden name="isNew" value="<?php echo $isNew; ?>">
 <input type=hidden name="submitting" value="true">
 
 <table id="table_create">

@@ -20,8 +20,8 @@ $configuration['port'] 	= '3306';		//	database port
 $configuration['plugins_path'] = '';  //absolute path to plugins folder, e.g c:/mycode/test/plugins or /home/phpobj/public_html/plugins
 
 // admin email address
-  $configuration["adminEmail"]="me@chrissweeney.co.uk";
-  //$configuration["adminEmail"]="admin@fastfoodjobsuk.co.uk";
+  $configuration["adminEmail"]="mick@multilevelmedia.eu";
+  //$configuration["adminEmail"]="me@chrissweeney.co.uk";
 // from email address
   $configuration["fromEmail"]="noreply@fastfoodjobsuk.co.uk";
 
