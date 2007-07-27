@@ -14,7 +14,7 @@ isUniqueVisit("platinum_membership",$id,"clicks");
 
 ?>
 <?php
-	require("top_wpv.php");
+	require("top_wide.php");
 ?>
 <link rel=stylesheet href="css/platinum.css" type="text/css">
   <img src="logos/<?php echo $member->logo; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">

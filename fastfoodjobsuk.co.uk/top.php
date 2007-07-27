@@ -159,6 +159,7 @@
                       </tr>
                     </table>
                     <table width="796" border="0" cellspacing="0" cellpadding="0">
+					<?php if (!$wide){ ?>
                       <tr>
                         <td valign="top" width="167"><table border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -170,15 +171,21 @@
                             <tr>
                               <td height="116"><?php loadImage();?></td>
                             </tr>
+							
                             <tr>
                               <td width="167"><a href="FranchiseeoftheYear.pdf" target="_blank"><img src="images/wingleft_19.gif" alt="" width="167" height="192" border="0" /></a></td>
                             </tr>							
                         </table></td>
                         <td valign="top" width="463">
 						<!--content starts-->
-                        <?php
-                          if (!isset($noScroll)){
-                            echo "<div id=\"content\" class=\"scroll\">";
-                          }
-                        ?>
+							<?php
+							  if (!isset($noScroll)){
+								echo "<div id=\"content\" class=\"scroll\">";
+							  }
+							?>
+						<?php } else { // non-wide mode?>
+						<tr>
+                        <td valign="top" width="650" class = "paddingforinfocell">
+						<!--content starts-->
+						<?php } ?>
 						<!--<p style="margin-top: 0; margin-bottom: 0">&nbsp;<strong><?php echo $_GET['msg']; ?></strong></p>-->

@@ -2,7 +2,7 @@
   require("common_all.php");
 ?>
 <?php
-	require("top_wpv.php");
+	require("top_wide.php");
 ?>
 <link rel=stylesheet href="css/platinum.css" type="text/css">
 <table width="775" border="0" cellspacing="0" cellpadding="0">
