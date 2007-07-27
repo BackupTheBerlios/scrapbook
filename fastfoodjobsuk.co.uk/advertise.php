@@ -34,9 +34,7 @@ linked to your Personal Company web page including<br>
 <td width="168"><a href="gold_membership_form.php"><img src="images/ads_33.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Gold	<br>
 </span>
-Company Logo linked to your web site with 25 words,<br>
-
-displayed on UK Food Franchises Page.</td>
+Company logo linked to your web site with 45 character’s including spaces, plus periodical spotlight feature from our home page.</td>
 </tr>
 <tr>
 <td width="168"><a href="classified_form.php"><img src="images/ads_34.jpg" alt="" width="162"  border="0"></a></td>

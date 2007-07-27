@@ -1,6 +1,6 @@
 <?php
-require("common_super.php");
-//checkForAddress();
+require("common_user.php");
+checkForAddress();
 $errorText="";
 
 $member=new Platinum_membership();
@@ -192,7 +192,7 @@ require("top.php");
   </tr>
   <tr>
     <td>
-      Heading:
+      First Line of Text:
     </td>
     <td>
       <input type="text" id="heading" name="heading" value="<?php echo $member->heading; ?>">
@@ -200,7 +200,7 @@ require("top.php");
   </tr>
   <tr>
     <td>
-      Text:
+      Stored Description:
     </td>
     <td>
       <textarea name="text" id="text"><?php
