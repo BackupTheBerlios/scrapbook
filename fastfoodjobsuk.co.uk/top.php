@@ -95,19 +95,24 @@
   <div id="adminLogoutContainer">
 
   <?php
-    if (isSuperUser(false)){
-      echo "<a href=\"admin_account.php\" class=\"adminlogout\">Admin &gt;</a>&nbsp;&nbsp;";
-    } else {
-      echo "<a href=\"account.php\" class=\"adminlogout\">Admin &gt;</a>&nbsp;&nbsp;";
-    }
+
     if ($loginEmail!==false){
+		 if (isSuperUser(false)){
+		  echo "<a href=\"admin_account.php\" class=\"adminlogout\">Super Admin &gt;</a>&nbsp;&nbsp;";
+		  echo "<a href=\"account.php\" class=\"adminlogout\">Customer Admin &gt;</a>&nbsp;&nbsp;";
+		} else {
+		  echo "<a href=\"account.php\" class=\"adminlogout\">Advertiser Admin &gt;</a>&nbsp;&nbsp;";
+		  echo "<a href=\"account.php\" class=\"adminlogout\">Jobseeker Admin &gt;</a>&nbsp;&nbsp;";
+		}	
+
       echo "<a href=\"logout.php\" class=\"adminlogout\">Logout &gt;</a><br/><br/><br/><br/>";
 	  
     } else {
       ?>
-        <a href="login.php" class="adminlogout">Login &gt;</a>
+        <a href="login.php" class="adminlogout">Advertiser Login</a>&nbsp;&nbsp;
+		<a href="login.php" class="adminlogout">Jobseeker Login</a>&nbsp;&nbsp;
         </div>
-        
+        <!--
         <form name="form1" method="post" action="login.php" style = "margin-top:3px;margin-bottom:3px;">
           <input type=hidden name="redirect" value="<?php echo $_SERVER["PHP_SELF"]; ?>">
           <table border="0" align="right" cellpadding="0" cellspacing="0">
@@ -127,6 +132,7 @@
             </tr>
           </table>
         </form>
+		-->
       <?php
           }
       ?>
@@ -143,7 +149,7 @@
                   </table>
                     <table width="686" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td><a href="index.php"><img src="images/homebuttOn_04.gif" alt="" name="homebuttOn_04" width="68" height="33" border="0" id="homebuttOn_04" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttOn_04.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttonIff_04.gif');return true" href="index.php"><img src="images/homebuttonIff_04.gif" alt="" name="homebuttonIff_04" width="68" height="33" border="0" id="homebuttIff_04" /></a></td>
                         <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttOn_05.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttonIff_05.gif');return true" href="news.php"><img src="images/homebuttonIff_05.gif" alt="" name="homebuttonIff_05" width="45" height="33" border="0" id="homebuttonIff_05" /></a></td>
                         <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttOn_06.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttonIff_06.gif');return true" href="aboutus.php"><img src="images/homebuttonIff_06.gif" alt="" name="homebuttonIff_06" width="59" height="33" border="0" id="homebuttonIff_06" /></a></td>
                         <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttOn_07.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttonIff_07.gif');return true" href="gold.php"><img src="images/homebuttonIff_07.gif" alt="" name="homebuttonIff_07" width="85" height="33" border="0" id="homebuttonIff_07" /></a></td>
