@@ -104,46 +104,50 @@ if (!$result){
 // remove redundant logos
 //---------------------------
 
-$query ="SELECT logo FROM franchise UNION ";
-$query.="SELECT logo FROM gold_membership UNION ";
-$query.="SELECT logo FROM platinum_membership UNION ";
-$query.="SELECT image1 FROM platinum_membership UNION ";
-$query.="SELECT image2 FROM platinum_membership UNION ";
-$query.="SELECT logo FROM restaurant UNION ";
-$query.="SELECT logo FROM supplier";
+if (isset($_GET["images"]){
 
-$result=mysql_query($query);
-if (!$result){
-  msg("Bad query ($query)");
-  msg("Error: ".mysql_error());
-} else {
+  $query ="SELECT logo FROM franchise UNION ";
+  $query.="SELECT logo FROM gold_membership UNION ";
+  $query.="SELECT logo FROM platinum_membership UNION ";
+  $query.="SELECT image1 FROM platinum_membership UNION ";
+  $query.="SELECT image2 FROM platinum_membership UNION ";
+  $query.="SELECT logo FROM restaurant UNION ";
+  $query.="SELECT logo FROM supplier";
   
-  $rowCount=mysql_num_rows($result);
-  $dbFiles=array();
+  $result=mysql_query($query);
+  if (!$result){
+    msg("Bad query ($query)");
+    msg("Error: ".mysql_error());
+  } else {
+    
+    $rowCount=mysql_num_rows($result);
+    $dbFiles=array();
+    
+    // bug in function? The first element of the array cannot be found when searching (?)
+    array_push($dbFiles,"");
+    // the line above fixes this problem
+    
+    for ($i=0;$i<$rowCount;$i++){
+      $data=mysql_fetch_row($result);
+      array_push($dbFiles,$data[0]);
+    }
   
-  // bug in function? The first element of the array cannot be found when searching (?)
-  array_push($dbFiles,"");
-  // the line above fixes this problem
-  
-  for ($i=0;$i<$rowCount;$i++){
-    $data=mysql_fetch_row($result);
-    array_push($dbFiles,$data[0]);
   }
-
-}
-
-$dir=opendir("logos");
-while (($f=readdir($dir)) !== false){
-  $filename="logos/$f";
-  if (is_file($filename)){
-    if (!array_search($f,$dbFiles)){
-      //echo "f=($f)";
-      //unlink($filename);
-      rename($filename, $filename.".deleted");
+  
+  $dir=opendir("logos");
+  while (($f=readdir($dir)) !== false){
+    $filename="logos/$f";
+    if (is_file($filename)){
+      if (!array_search($f,$dbFiles)){
+        //echo "f=($f)";
+        //unlink($filename);
+        rename($filename, $filename.".deleted");
+      }
     }
   }
+  closedir($dir);
+
 }
-closedir($dir);
 
 msg("END: ".date("r"));
 
