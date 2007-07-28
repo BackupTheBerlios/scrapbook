@@ -68,7 +68,7 @@ switch ($sAction) {
 			//$_SESSION[ewSessionMessage] = "Add New Record Successful";
 			phpmkr_db_close($conn);
 			ob_end_clean();
-			header("Location: cvlist.php");
+			header("Location: cv_success.php");
 			exit();
 		}
 		break;
@@ -144,18 +144,22 @@ return true;
 //-->
 </script>
  <h2 style = "margin-left:5px;">Create Your Job Seeker Profile</h2>
-<form name="fcvadd" id="fcvadd" action="cv_form.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
+ Please NOTE none of your personal contact information or name ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you.
+<p style = "margin-left:5px;">&nbsp;</p>
+ <form name="fcvadd" id="fcvadd" action="cv_form.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 <input type="hidden" name="a_add" value="A">
 <input type="hidden" name="EW_Max_File_Size" value="2000000">
 <table>
+<!--
 	<tr>
 		<td><span>Insert your photograph</span></td>
 		<td><span id="cb_x_picture">
-<?php $x_picture = ""; // Clear BLOB related fields ?>
+<?php //$x_picture = ""; // Clear BLOB related fields ?>
 <input type="file" id="x_picture" name="x_picture" >
 </span></td>
 	</tr>
+	-->
 	<tr>
 		<td><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_first_name">

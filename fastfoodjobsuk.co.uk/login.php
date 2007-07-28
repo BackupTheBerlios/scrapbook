@@ -28,18 +28,21 @@ if (isset($_POST["email"])){
     $_SESSION["onlineuser"]=$user;
 
     //proceed to loged in page
-    if (isset($_SESSION["redirect"]) || isset($_POST["redirect"])){
-      $url=(isset($_SESSION["redirect"]) ? $_SESSION["redirect"] : $_POST["redirect"]);
-      unset($_SESSION["redirect"]);
-      header("Location: $url");
-      exit;
-    } else {
-    	if (isSuperUser(false)){
-        header("Location: admin_account.php");
-    	} else {
-        header("Location: index.php");
-      }
-    	exit;
+  	if (isSuperUser(false)){
+    	header("Location: admin_account.php");
+		exit;
+  	}
+	else
+	{		
+		if (isset($_SESSION["redirect"]) || isset($_POST["redirect"])){
+		  $url=(isset($_SESSION["redirect"]) ? $_SESSION["redirect"] : $_POST["redirect"]);
+		  unset($_SESSION["redirect"]);
+		  header("Location: $url");
+		  exit;
+		} else {
+			header("Location: index.php");
+			exit;
+		 }	
 	 }
     
   } else {
@@ -49,8 +52,10 @@ if (isset($_POST["email"])){
   
   if (isSuperUser(false)){
     header("Location: admin_account.php");
+	exit;
   } else {
-    header("Location: account.php");
+    header("Location: index.php");
+	exit;
   }
   
 }

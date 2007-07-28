@@ -30,7 +30,7 @@ if ((bool)$_POST["submitting"])
 	$member->heading=$_POST["heading"];
 	$member->text=$_POST["text"];
 	$member->name=$_POST["name"];
-	$member->address=$_POST["address"];
+	$member->address=str_replace("<br>", "\n", $_POST["address"]); 
 	$member->tel=$_POST["tel"];
 	$member->fax=$_POST["fax"];
 	$member->email=$_POST["email"];

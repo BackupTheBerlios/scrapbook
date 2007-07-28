@@ -38,14 +38,18 @@ function sure(classname,id){
     echo "<a href=\"delete_user.php?id=".$user->onlineuserId."\" style=\"color:#0000FF;text-decoration:underline\">Delete User</a>";
     echo "</p>";
   }
-
- $cvid=$user->getCVId();
-
- ?>
- <p>
- <a href="cvedit.php" style="color:#0000FF;text-decoration:underline">My Job Seeker Profile</a>
- </p>
+  ?>
+<p>
  <?php	
+ $cvid=$user->getCVId();
+ if ( $cvid > 0 ) {
+ ?>
+ <a href="cvedit.php" style="color:#0000FF;text-decoration:underline">Update Job Seeker Profile</a>
+ <?php } else { ?>
+ <a href="cv_form.php" style="color:#0000FF;text-decoration:underline">Create Job Seeker Profile</a>
+ <?php } ?>
+  </p>
+ <?php
 if ($user->canSearchCV(false))
 {
 ?>

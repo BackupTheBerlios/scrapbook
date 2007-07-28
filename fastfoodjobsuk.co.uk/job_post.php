@@ -115,12 +115,16 @@ return true;
 	<tr>
 		<td><span style="font-weight: bold">Bonus</span></td>
 		<td>
-<input type="text" name="x_bonus" id="x_bonus" value="<?php echo htmlspecialchars(@$x_bonus) ?>">		</td>
+			<input type="radio" name="x_bonus"<?php if (@$x_bonus == "yes") { ?> checked<?php } ?> value="yes">yes	
+			<input type="radio" name="x_bonus"<?php if (@$x_bonus == "no") { ?> checked<?php } ?> value="no">no	
+		</td>
 	</tr>
 	<tr>
 		<td><span style="font-weight: bold">Benefits</span></td>
 		<td>
-<input type="text" name="x_benifits" id="x_benifits" value="<?php echo htmlspecialchars(@$x_benifits) ?>">		</td>
+			<input type="radio" name="x_benifits"<?php if (@$x_benifits == "yes") { ?> checked<?php } ?> value="yes">yes	
+			<input type="radio" name="x_benifits"<?php if (@$x_benifits == "no") { ?> checked<?php } ?> value="no">no
+			</td>
 	</tr>
 	<tr>
 	 <td colspan="2" class="line">&nbsp;</td>

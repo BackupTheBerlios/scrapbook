@@ -76,10 +76,10 @@ switch ($sAction) {
 		break;
 	case "U": // Update
 		if (EditData($conn)) { // Update record
-			$_SESSION[ewSessionMessage] = "Update Record Successful";
+			//$_SESSION[ewSessionMessage] = "Update Record Successful";
 			phpmkr_db_close($conn);
 			ob_end_clean();
-			header("Location: account.php");
+			header("Location: cv_success.php");
 			exit();
 		}
 		break;
@@ -154,6 +154,7 @@ return true;
 //-->
 </script>
  <h2 style = "margin-left:5px;">Update Job Seeker Profile</h2>
+ Please NOTE none of your personal contact information or name  ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer  will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer’s interest in you.
  <form name="fcvedit" id="fcvedit" action="cvedit.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 	<input type="hidden" name="a_edit" value="U">
@@ -167,28 +168,30 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 }
 ?>
 	<table>
-<?php if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
+	<!--
+<?php //if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
 <tr>
 <td>
 Current photograph</td>
 <td>
-<img src="<?php echo ewUploadPathEx(False, EW_UploadDestPath) . $x_picture ?>" width="160">
+<img src="<?php //echo ewUploadPathEx(False, EW_UploadDestPath) . $x_picture ?>" width="160">
 </td>
 </tr>
-<?php } ?>
+<?php //} ?>
 	<tr>
 			<td><span><span>Insert your photograph</span></span></td>
 			<td><span id="cb_x_picture">
-<?php if ((!is_null($x_picture)) && $x_picture <> "") {  ?>
+<?php //if ((!is_null($x_picture)) && $x_picture <> "") {  ?>
 <input type="radio" name="a_x_picture" value="1" checked>Keep&nbsp;
 <input type="radio" name="a_x_picture" value="2">Remove&nbsp;
 <input type="radio" name="a_x_picture" value="3">Replace<br>
-<?php } else {?>
+<?php //} else {?>
 <input type="hidden" name="a_x_picture" value="3">
-<?php } ?>
+<?php //} ?>
 <input type="file" id="x_picture" name="x_picture" onchange="if (this.form.a_x_picture[2]) this.form.a_x_picture[2].checked=true;">
 </span></td>
 		</tr>
+-->
 		<tr>
 			<td><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_first_name">

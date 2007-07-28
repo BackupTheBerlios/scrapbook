@@ -13,6 +13,7 @@ if ((bool)$_POST["submitting"]){
     $db->Query("DELETE FROM $tableName WHERE onlineuser_onlineuserid='$id'");
   }
   $user->Delete();
+  $_SESSION["onlineuser"]=$_SESSION["superuser"];
   header("Location: delete_user_success.php");
   exit;
 }
@@ -42,7 +43,7 @@ require("top.php");
 
 ?>
 
-<P>
+<p>
   Delete User
 </p>
 
@@ -50,7 +51,7 @@ require("top.php");
 <input type=hidden name="id" value="<?php echo $id; ?>">
 <input type=hidden name="submitting" value="true">
 Please confirm you wish to delete the following user:
-<BR>
+<br>
 <?php
 
   $user=$user->Get($id);
@@ -68,7 +69,7 @@ Please confirm you wish to delete the following user:
   if ($supplierCount>0) echo $supplierCount."x Supplier adverts<BR>";
 ?>
 
-<BR>
+<br>
 
 <input type=button value="Confirm" onClick="document.formDelete.submit()">
 &nbsp;&nbsp;&nbsp;
