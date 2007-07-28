@@ -221,7 +221,7 @@ class Supplier
 		}
 		else
 		{
-			$this->pog_query = "insert into `supplier` (`onlineuser_onlineuserid`, `supplier_category_id`, `name`, `logo`, `description`, `link`, `tel`, `supplier_status` ) values (
+			$this->pog_query = "insert into `supplier` (`onlineuser_onlineuserid`, `supplier_category_id`, `name`, `logo`, `description`, `link`, `tel`, `dt_expire`, `supplier_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->supplier_category_id)."', 
 			'".$Database->Escape($this->name)."', 
@@ -229,6 +229,7 @@ class Supplier
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
+			'".$Database->Escape($this->dt_expire)."', 
 			'".$this->supplier_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

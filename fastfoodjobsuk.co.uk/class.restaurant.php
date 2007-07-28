@@ -212,13 +212,14 @@ class Restaurant
 		}
 		else
 		{
-			$this->pog_query = "insert into `restaurant` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `restaurant_status` ) values (
+			$this->pog_query = "insert into `restaurant` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `dt_expire`, `restaurant_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->name)."', 
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
+			'".$Database->Escape($this->dt_expire)."', 
 			'".$this->restaurant_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

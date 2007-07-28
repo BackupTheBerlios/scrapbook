@@ -19,7 +19,7 @@ if ($id>0){
 	//default link
 	$member->link="http://";
 	//free for now
-	$member->gold_membership_status='temp';
+	$member->gold_membership_status='active';
 }
 
 //check if form is being submitted
@@ -31,8 +31,8 @@ if ((bool)$_POST["submitting"])
   $member->description=$_POST["description"];
   $member->link=$_POST["link"];
   $member->tel=$_POST["tel"];
+  $member->dt_expire=expiryDate(365);
 
-  
   $tempFilename=$_FILES["logo"]["tmp_name"];
   if ($tempFilename!=""){
    $member->logo=generateFilename($user->onlineuserId,$_FILES["logo"]["name"]);

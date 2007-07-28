@@ -33,6 +33,12 @@ function sure(classname,id){
 </p>
 
 <?php
+  if (isSuperUser(false)){
+    echo "<p>";
+    echo "<a href=\"delete_user.php?id=".$user->onlineuserId."\" style=\"color:#0000FF;text-decoration:underline\">Delete User</a>";
+    echo "</p>";
+  }
+
  $cvid=$user->getCVId();
 
  ?>

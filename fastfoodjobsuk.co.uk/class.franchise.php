@@ -224,7 +224,7 @@ class Franchise
 		}
 		else
 		{
-			$this->pog_query = "insert into `franchise` (`onlineuser_onlineuserid`, `logo`, `town`, `name`, `description`, `link`, `tel`, `franchise_status` ) values (
+			$this->pog_query = "insert into `franchise` (`onlineuser_onlineuserid`, `logo`, `town`, `name`, `description`, `link`, `tel`, `dt_expire`, `franchise_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->town)."', 
@@ -232,6 +232,7 @@ class Franchise
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
+			'".$Database->Escape($this->dt_expire)."', 
 			'".$this->franchise_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

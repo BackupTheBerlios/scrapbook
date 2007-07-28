@@ -1,9 +1,14 @@
 <?php
 	require("common_all.php");
 
-?>
+  $member=new Gold_membership();
+  $results=$member->GetList(array(array("gold_membership_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
+  shuffle($results);
 
-<?php
+  foreach ($results as $obj){
+    isUniqueVisit("gold_membership",$obj->gold_membershipId,"impressions");
+  }
+
 	require("top.php");
 ?>
 <link rel=stylesheet href="css/gold.css" type="text/css">
@@ -17,24 +22,24 @@
 <table id="table" cellspacing = "0" cellpadding = "0">
 <?php
 
-  $member=new Gold_membership();
-  $results=$member->GetList(array(array("gold_membership_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
-  shuffle($results);
   $rowCount=0;  
   echo "<TR>";
   foreach ($results as $obj){
     echo "<TD valign=\"top\" width = \"135\">";
     echo "<table id=\"table_inner\">";
     echo "<TR><TD class=\"cell_logo\">";
-    echo "<a href=\"".$obj->link."\">";
+    $url="goto.php?type=gold_membership&id=".$obj->gold_membershipId;
+    echo "<a href=\"".$url."\">";
     echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" align = \"top\" border=0>";
     echo "</a>";
     echo "</td></tr>";
-    echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
+    //echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
+    echo "<TR><TD class=\"cell_heading\"><a href=\"$url\">".$obj->name."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
+    echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
     echo "<TR><TD>";
     if (($spotlightId=$obj->hasSpotlight()) !== false){
-      echo "<a href=\"spotlight.php?id=$spotlightId\">Under the spotlight!</a>";
+      echo "<a href=\"spotlight.php?id=$spotlightId\">previous spotlight</a>";
     }
     echo "</td></tr>";
     echo "<TR><TD><BR></td></tr></table>";

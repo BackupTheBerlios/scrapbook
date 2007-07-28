@@ -213,13 +213,14 @@ class Gold_membership
 		}
 		else
 		{
-			$this->pog_query = "insert into `gold_membership` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `gold_membership_status` ) values (
+			$this->pog_query = "insert into `gold_membership` (`onlineuser_onlineuserid`, `logo`, `name`, `description`, `link`, `tel`, `dt_expire`, `gold_membership_status` ) values (
 			'".$Database->Escape($this->onlineuser_onlineuserid)."', 
 			'".$Database->Escape($this->logo)."', 
 			'".$Database->Escape($this->name)."', 
 			'".$Database->Escape($this->description)."', 
 			'".$Database->Escape($this->link)."', 
 			'".$Database->Escape($this->tel)."', 
+			'".$Database->Escape($this->dt_expire)."', 
 			'".$this->gold_membership_status."' )";
 		}
 		$Database->InsertOrUpdate($this->pog_query);

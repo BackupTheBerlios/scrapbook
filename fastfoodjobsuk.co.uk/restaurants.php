@@ -35,6 +35,7 @@
     echo "</td></tr>";
     echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class = \"news\">".$obj->name."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
+    echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
     echo "<TR><TD><BR></td></tr></table>";
     echo "</td>";
     $rowCount++;

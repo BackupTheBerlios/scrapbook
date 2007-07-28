@@ -44,9 +44,10 @@
       //echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_heading\"><a href=\"$url\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
+      echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
       echo "<TR><TD>";
       if (($spotlightId=$obj->hasSpotlight()) !== false){
-        echo "<a href=\"spotlight.php?id=$spotlightId\">Under the spotlight!</a>";
+        echo "<a href=\"spotlight.php?id=$spotlightId\">Under Spotlight!</a>";
       }
       echo "</td></tr>";
       echo "<TR><TD><BR></td></tr></table>";
