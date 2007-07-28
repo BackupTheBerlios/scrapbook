@@ -331,7 +331,7 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 	    <!-- benifits -->
 	    <!-- location -->
 	    <td><?php echo $x_location; ?> 		  </td>
-                 <td><?php echo FormatDateTime($x_dt_expire,7); ?> </td>  
+                 <td><?php echo FormatDateTime($x_dt_created,7); ?> </td>  
 		    <td>
             <?php if ($x_link <> "") {
 					$ahref="<a href='$x_link' target='_external'>View Detail</a>";

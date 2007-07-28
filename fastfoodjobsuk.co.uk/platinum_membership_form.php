@@ -13,11 +13,12 @@ if ($id>0){
 	$user->canAccess($member);
 } else { //new object
 	$member->onlineuser_onlineuserid = $user->onlineuserId;
-
+	
 	//default link
 	$member->link="http://";
 	//free for now
 	$member->platinum_membership_status='active';
+	$member->dt_expire=expiryYear();
 }
 
 //check if form is being submitted
@@ -34,7 +35,6 @@ if ((bool)$_POST["submitting"])
 	$member->fax=$_POST["fax"];
 	$member->email=$_POST["email"];
 	$member->link=$_POST["link"];
-	$member->dt_expire=expiryDate(365);
 	
 	if (($tempFilename=$_FILES["logo"]["tmp_name"])!=""){
 		$member->logo=generateFilename($user->onlineuserId,$_FILES["logo"]["name"]);

@@ -10,11 +10,6 @@ if ($class=="Job")
 	  $db=new DatabaseConnection();
 	  $db->Query("update job set job_status = 'disabled' where onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");
 }
-else if ($class=="CV")
-{
-	  $db=new DatabaseConnection();
-	  $db->Query("update cv set cv_status = 'disabled' where onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
-}
 else
 {
 	$object=new $class;

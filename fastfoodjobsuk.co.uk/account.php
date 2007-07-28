@@ -108,8 +108,8 @@ function generateJobLink($user){
 		  
 			  echo "<tr>";
 			  echo "<td class=\"$rowclass\">".$row["position"]."</td>";
-				echo "<td class=\"$rowclass\">".$row["overview"]."</td>";
-				echo "<td class=\"$rowclass\">".$row["salary"]."</td>";
+				echo "<td class=\"$rowclass\">".substr($row["profile"],0,$truncateText)."...</td>";
+				echo "<td class=\"$rowclass\">£".$row["salary"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["location"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["company"]."</td>";
 			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_created"],7)."</td>";
@@ -140,7 +140,7 @@ function generateJobLink($user){
 		
 			  }			  
 			  echo "<li><a href='jobedit.php?jobid=$jobid'>Modify</a></li>";
-			  echo "<li><a href='jobview.php?jobid=$jobid'  target='_view'>View</a></li>";		
+			  //echo "<li><a href='jobview.php?jobid=$jobid'  target='_blank'>View</a></li>";		
 			 //if ( isSuperUser(false) ){
 				//this is not implemented
 				//echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";

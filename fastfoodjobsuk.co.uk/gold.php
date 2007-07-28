@@ -6,7 +6,7 @@
   shuffle($results);
 
   foreach ($results as $obj){
-    isUniqueVisit("gold_membership",$obj->gold_membershipId,"impressions");
+	updateImpressions("gold_membership",$obj->gold_membershipId);
   }
 
 	require("top.php");
@@ -28,18 +28,18 @@
     echo "<TD valign=\"top\" width = \"135\">";
     echo "<table id=\"table_inner\">";
     echo "<TR><TD class=\"cell_logo\">";
-    $url="goto.php?type=gold_membership&id=".$obj->gold_membershipId;
-    echo "<a href=\"".$url."\">";
+    $url="goto.php?type=gold_membership&id=".$obj->gold_membershipId."&link=$obj->link";
+    echo "<a href=\"".$url."\" target='_gold'>";
     echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" align = \"top\" border=0>";
     echo "</a>";
     echo "</td></tr>";
     //echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
-    echo "<TR><TD class=\"cell_heading\"><a href=\"$url\">".$obj->name."</a></td></tr>";
+    echo "<TR><TD class=\"cell_heading\"><a href=\"$url\" target='_gold'>".$obj->name."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
     echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
     echo "<TR><TD>";
     if (($spotlightId=$obj->hasSpotlight()) !== false){
-      echo "<a href=\"spotlight.php?id=$spotlightId\">previous spotlight</a>";
+      echo "<a href=\"spotlight.php?id=$spotlightId\">Under Spotlight!</a>";
     }
     echo "</td></tr>";
     echo "<TR><TD><BR></td></tr></table>";

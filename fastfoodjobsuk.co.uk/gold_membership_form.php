@@ -10,16 +10,17 @@ if ($id==0){
 }
 if ($id>0){	
 	$isNew=0;
-  $member=$member->Get($id);
+    $member=$member->Get($id);
 	$user->canAccess($member);
 } else { //new object
 	$isNew=1;
-  $member->onlineuser_onlineuserid = $user->onlineuserId;
+    $member->onlineuser_onlineuserid = $user->onlineuserId;
 
 	//default link
 	$member->link="http://";
 	//free for now
 	$member->gold_membership_status='active';
+	$member->dt_expire=expiryYear();
 }
 
 //check if form is being submitted
@@ -31,7 +32,6 @@ if ((bool)$_POST["submitting"])
   $member->description=$_POST["description"];
   $member->link=$_POST["link"];
   $member->tel=$_POST["tel"];
-  $member->dt_expire=expiryDate(365);
 
   $tempFilename=$_FILES["logo"]["tmp_name"];
   if ($tempFilename!=""){

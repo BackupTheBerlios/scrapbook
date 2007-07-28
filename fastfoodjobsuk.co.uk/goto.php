@@ -4,12 +4,10 @@ require("common_all.php");
 
 $class=$_GET["type"];
 $id=(int)$_GET["id"];
+$link=$_GET["link"];
 
-$object=@new $class;
-$object=@$object->Get($id);
+updateUniqueClicks($class, $id);
 
-isUniqueVisit($class, $id, "clicks");
-
-header("Location: ".$object->link);
+header("Location: ".$link);
 
 ?>

@@ -9,9 +9,7 @@ if ($member->platinum_membershipId==0) //object not exist
 	header("Location: index.php");
 	exit();
 }
-
-isUniqueVisit("platinum_membership",$id,"clicks");
-
+updateUniqueClicks("platinum_membership",$id);
 ?>
 <?php
 	require("top_wide.php");

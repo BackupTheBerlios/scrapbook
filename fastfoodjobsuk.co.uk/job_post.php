@@ -26,7 +26,6 @@ if (($sAction == "") || ((is_null($sAction)))) {
 	$x_profile = @$_POST["x_profile"];
 	$x_contact_email = @$_POST["x_contact_email"];
 	$x_link = @$_POST["x_link"];
-	$x_job_status = @$_POST["x_job_status"];
 }
 $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 switch ($sAction) {
@@ -161,8 +160,6 @@ return true;
 <input name="x_link" type="text" id="x_link" value="<?php echo htmlspecialchars(@$x_link) ?>" size="45"></td>
 	</tr>    
     <?php } ?> 
-<?php $x_job_status = "temp" // Set default value ?>
-<input type="hidden" id="x_job_status" name="x_job_status" value="<?php echo @$x_job_status; ?>">
 </table>
 <p>
 <input type="submit" name="btnAction" id="btnAction" value="Post Job">
@@ -201,8 +198,9 @@ function AddData($conn)
 	// Field onlineuser_onlineuserid
 	$fieldList["`onlineuser_onlineuserid`"] = $user->onlineuserId;
 	// Field job_status
-	$fieldList["`job_status`"] = " 'temp'";		
-	
+	$fieldList["`job_status`"] = " 'active'";		
+	// Field expiry
+	$fieldList["`dt_expire`"] = "'".expiryDate()."'";			
 
 	// Field position
 	$theValue = (!get_magic_quotes_gpc()) ? addslashes($GLOBALS["x_position"]) : $GLOBALS["x_position"]; 	

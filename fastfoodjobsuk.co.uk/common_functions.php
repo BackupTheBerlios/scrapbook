@@ -41,33 +41,29 @@ function isSuperUser($active=true){
 	}
   } 
 }
+function updateImpressions($class,$id){
+    updateStats($class,$id,"impressions");
+}
 
-function isUniqueVisit($class,$id,$type){
-  if (!isset($_COOKIE["ffjvisit_".$class.$id.$type])){
-    setcookie("ffjvisit_".$class.$id.$type, "true", (time()+86400), "/", ".fastfoodjobsuk.co.uk");
-    updateStats($class,$id,$type);
-    return true;
-  } else {
-    return false;
+function updateUniqueClicks($class,$id){
+  if (!isset($_COOKIE["ffjvisit_".$class.$id])){
+    setcookie("ffjvisit_".$class.$id, "true", (time()+86400), "/", ".fastfoodjobsuk.co.uk");
+    updateStats($class,$id,"clicks");
   }
 }
 
 function updateStats($objectName,$objectId,$type){
   $db=new DatabaseConnection();
   $stats=new Stats();
-  //$query="SELECT statsid FROM stats WHERE objectname='platinum_membership' AND objectid='".$platinumImages[$i][0]."'";
   $query="SELECT statsid FROM stats WHERE objectname='$objectName' AND objectid='$objectId'";
   $results=$db->Query($query);
-  if ($db->Rows()>0){
+  if ($db->Rows()>0){//exsiting
     $data=mysql_fetch_row($results);
     $stats=$stats->Get((int)$data[0]);
-  } else {
-    //$stats->objectname="platinum_membership";
-    //$stats->objectid=$platinumImages[$i][0];
+  } else { //new record
     $stats->objectname=$objectName;
     $stats->objectid=$objectId;
   }
-  
   $stats->$type=$stats->$type+1;
   $stats->Save();
 }
@@ -167,11 +163,18 @@ function getAllObjects($instance, $sortBy='', $ascending=true, $limit='')
 	
 	
 }
+//expires in $numberOfYears
+function expiryYear($numberOfYears=1)
+{
+    $future = mktime(23,59,59,date("m"),date("d"),date("Y")+$numberOfYears);
+	return date("Y-m-d", $future);
+}
 
 //expiry date
 function expiryDate($numberOfDays=30)
 {
-	$future = mktime(23,59,59,date("m"),date("d")+$numberOfDays,date("Y"));
+	//$future=((int)date("U"))+(86400*$numberOfDays);
+    $future = mktime(23,59,59,date("m"),date("d")+$numberOfDays,date("Y"));
 	return date("Y-m-d", $future);
 }
 
@@ -381,7 +384,7 @@ function generate($title,$user,$object){
 		$hasText=isset($results[0]->text);
 		$hasLink=isset($results[0]->link);
 
-    if ($class=="platinum_membership" || $class=="supplier"){
+    if ($class=="platinum_membership" || $class=="supplier" || $class=="gold_membership"){
       $hasStats=true;
     } else {
       $hasStats=false;
@@ -404,7 +407,7 @@ function generate($title,$user,$object){
     echo "<TD>Expires</td>";
     echo "<td>Status</td>";
     echo "<TD><!-- Functions --></td>";
-    if ($hasStats){
+    if ($hasStats  && isSuperUser(false) ){
       echo "<TD>Impressions</TD>";
       echo "<TD>Clicks</TD>";
     }
@@ -471,13 +474,13 @@ function generate($title,$user,$object){
 		  }		
 		  echo "</ul>";
 		  echo "</td>";
-      if ($hasStats){
+      if ($hasStats && isSuperUser(false)){
         $stats=new Stats();
         $results=$stats->GetList(array(array("objectname","=",$class),array("objectid","=",$obj->$classId)));
         // we should only get one object back in the array
         $statObject=$results[0];
-        echo "<TD>".$statObject->impressions."</td>";
-        echo "<TD>".$statObject->clicks."</td>";
+        echo "<TD class=\"$rowclass\">".$statObject->impressions."</td>";
+        echo "<TD class=\"$rowclass\">".$statObject->clicks."</td>";
       }	   
 		  echo "</tr>";
 		}

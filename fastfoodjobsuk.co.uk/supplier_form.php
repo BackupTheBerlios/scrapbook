@@ -20,7 +20,8 @@ if ($id>0){
 	//default link
 	$supplier->link="http://";	
 	//free for now
-	$supplier->supplier_status='temp';
+	$supplier->supplier_status='active';
+	$supplier->dt_expire=expiryDate();
 }
 
 //check if form is being submitted

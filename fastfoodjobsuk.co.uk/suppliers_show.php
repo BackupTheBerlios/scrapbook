@@ -7,7 +7,7 @@
   shuffle($results);
   
   foreach ($results as $obj){
-    isUniqueVisit("supplier",$obj->supplierId,"impressions");
+	updateImpressions("supplier",$obj->supplierId);
   }
   
 ?>
@@ -32,17 +32,17 @@
     echo "</td>";
   } else {
     foreach ($results as $obj){
-      $url="goto.php?type=supplier&id=".$obj->supplierId;
+      $url="goto.php?type=supplier&id=".$obj->supplierId."&link=$obj->link";
       echo "<TD width = \"135\" valign=\"top\" >";
       echo "<table id=\"table_inner\">";
       echo "<TR><TD class=\"cell_logo\">";
       //echo "<a href=\"".$obj->link."\">";
-      echo "<a href=\"$url\">";
+      echo "<a href=\"$url\" target='_supplier'>";
       echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" border=0>";
       echo "</a>";
       echo "</td></tr>";
       //echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
-      echo "<TR><TD class=\"cell_heading\"><a href=\"$url\" class=\"news\" target = \"_blank\">".$obj->name."</a></td></tr>";
+      echo "<TR><TD class=\"cell_heading\"><a href=\"$url\" class=\"news\" target = \"_supplier\">".$obj->name."</a></td></tr>";
       echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
       echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
       echo "<TR><TD>";

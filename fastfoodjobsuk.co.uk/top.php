@@ -36,7 +36,7 @@
   $imagePos=0;
   
   for ($i=0;$i<count($platinumImages);$i++){
-    isUniqueVisit("platinum_membership",$platinumImages[$i][0],"impressions");
+	updateImpressions("platinum_membership",$platinumImages[$i][0]);
   }
 
   $loginEmail=showLoggedInAs();  

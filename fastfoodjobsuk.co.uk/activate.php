@@ -5,20 +5,17 @@ require("top.php");
 $class=stripslashes($_GET["type"]);
 $id=(int)$_GET["id"];
 $newExpiryDate=expiryDate(); 
-
+if ($class=="gold_membership"||$class=="platinum_membership")
+{
+	$newExpiryDate=expiryYear();
+}
 if ($class=="Job")
 {
 	  $db=new DatabaseConnection();
+	  //in case the status s temp we need to set a Expirydate
 	  $db->Query("update job set dt_expire = '$newExpiryDate' where job_status='temp' and onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");	  
 	  $db->Query("update job set job_status = 'active' where onlineuser_onlineuserid=$user->onlineuserId and jobid=$id");
 
-}
-else if ($class=="CV")
-{
-	  $db=new DatabaseConnection();
-	  $db->Query("update cv set dt_expire = '$newExpiryDate' where cv_status='temp' and onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
-	  $db->Query("update cv set cv_status = 'active' where onlineuser_onlineuserid=$user->onlineuserId and cvid=$id");
-	  
 }
 else
 {
@@ -36,9 +33,9 @@ else
 	  }
 	  */
 	  $status=$class."_status";
-	  
+	  //in case the status s temp we need to set a Expirydate
 	  if ($object->$status=="temp"){
-      $object->dt_expire=$newExpiryDate; 
+      	$object->dt_expire=$newExpiryDate; 
 	  }	  
 	  $object->$status="active";
 	  $object->Save();
