@@ -12,6 +12,7 @@
   
 ?>
 <?php
+	$section=7;
 	require("top.php");
 ?>
 						<div class="roundcont">

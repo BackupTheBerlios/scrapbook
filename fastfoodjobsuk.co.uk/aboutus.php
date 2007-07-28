@@ -1,6 +1,7 @@
 <?php
 $noScroll=true;
 require("common_all.php");
+$section=3;
 require("top.php");
 ?>
 <style type="text/css">

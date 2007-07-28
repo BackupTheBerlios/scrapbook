@@ -1,5 +1,6 @@
 <?php
-	require("common_all.php");
+require("common_all.php");
+$section=2;
 require("top.php");
 require("news_fixed.html");
 $news=new News();

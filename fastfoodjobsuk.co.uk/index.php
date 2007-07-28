@@ -1,6 +1,7 @@
 <?php
 $noScroll=true;
 require("common_all.php");
+$section=1;
 require("top.php");
 ?>
 	<table width="462" border="0" cellpadding="0" cellspacing="0">

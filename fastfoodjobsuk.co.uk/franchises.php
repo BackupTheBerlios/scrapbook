@@ -3,6 +3,7 @@
 ?>
 
 <?php
+$section=5;
 	require("top.php");
 ?>
 <link rel=stylesheet href="css/franchises.css" type="text/css">

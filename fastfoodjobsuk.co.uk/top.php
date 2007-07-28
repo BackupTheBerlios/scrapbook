@@ -40,6 +40,43 @@
   }
 
   $loginEmail=showLoggedInAs();  
+  
+  //default
+  $button1="homebuttonIff_04";
+  $button2="homebuttonIff_05";
+  $button3="homebuttonIff_06";
+  $button4="homebuttonIff_07";
+  $button5="homebuttonIff_08";
+  $button6="homebuttonIff_09";
+  $button7="homebuttonIff_10";
+  $button8="homebuttonIff_11";
+
+  switch ($section) {
+    case "1":
+      $button1="homebuttOn_04";
+      break;
+    case "2":
+      $button2="homebuttOn_05";
+      break;
+    case "3":
+      $button3="homebuttOn_06";
+      break;
+    case "4":
+      $button4="homebuttOn_07";
+      break;
+    case "5":
+      $button5="homebuttOn_08";
+      break;
+    case "6":
+      $button6="homebuttOn_09";
+      break;
+    case "7":
+      $button7="homebuttOn_10";
+      break;
+    case "8":
+      $button8="homebuttOn_11";
+      break;	  	  	  
+  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,6 +94,7 @@
 			var preloadFlag = false;
 			function preloadImages() {
 				if (document.images) {
+					over_homebuttonIff_04 = newImage(/*URL*/'images/homebuttOn_04.gif');
 					over_homebuttonIff_05 = newImage(/*URL*/'images/homebuttOn_05.gif');
 					over_homebuttonIff_06 = newImage(/*URL*/'images/homebuttOn_06.gif');
 					over_homebuttonIff_07 = newImage(/*URL*/'images/homebuttOn_07.gif');
@@ -149,14 +187,14 @@
                   </table>
                     <table width="686" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttOn_04.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttonIff_04.gif');return true" href="index.php"><img src="images/homebuttonIff_04.gif" alt="" name="homebuttonIff_04" width="68" height="33" border="0" id="homebuttIff_04" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttOn_05.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttonIff_05.gif');return true" href="news.php"><img src="images/homebuttonIff_05.gif" alt="" name="homebuttonIff_05" width="45" height="33" border="0" id="homebuttonIff_05" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttOn_06.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttonIff_06.gif');return true" href="aboutus.php"><img src="images/homebuttonIff_06.gif" alt="" name="homebuttonIff_06" width="59" height="33" border="0" id="homebuttonIff_06" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttOn_07.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttonIff_07.gif');return true" href="gold.php"><img src="images/homebuttonIff_07.gif" alt="" name="homebuttonIff_07" width="85" height="33" border="0" id="homebuttonIff_07" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_08',/*URL*/'images/homebuttOn_08.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_08',/*URL*/'images/homebuttonIff_08.gif');return true" href="franchises.php"><img src="images/homebuttonIff_08.gif" alt="" name="homebuttonIff_08" width="115" height="33" border="0" id="homebuttonIff_08" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_09',/*URL*/'images/homebuttOn_09.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_09',/*URL*/'images/homebuttonIff_09.gif');return true" href="restaurants.php"><img src="images/homebuttonIff_09.gif" alt="" name="homebuttonIff_09" width="75" height="33" border="0" id="homebuttonIff_09" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_10',/*URL*/'images/homebuttOn_10.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_10',/*URL*/'images/homebuttonIff_10.gif');return true" href="suppliers.php"><img src="images/homebuttonIff_10.gif" alt="" name="homebuttonIff_10" width="64" height="33" border="0" id="homebuttonIff_10" /></a></td>
-                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_11',/*URL*/'images/homebuttOn_11.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_11',/*URL*/'images/homebuttonIff_11.gif');return true" href="contact.php"><img src="images/homebuttonIff_11.gif" alt="" name="homebuttonIff_11" width="59" height="33" border="0" id="homebuttonIff_11" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttOn_04.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_04',/*URL*/'images/homebuttonIff_04.gif');return true" href="index.php"><img src="images/<?php echo $button1; ?>.gif" alt="" name="<?php echo $button1; ?>" width="68" height="33" border="0" id="<?php echo $button1; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttOn_05.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_05',/*URL*/'images/homebuttonIff_05.gif');return true" href="news.php"><img src="images/<?php echo $button2; ?>.gif" alt="" name="<?php echo $button2; ?>" width="45" height="33" border="0" id="<?php echo $button2; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttOn_06.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_06',/*URL*/'images/homebuttonIff_06.gif');return true" href="aboutus.php"><img src="images/<?php echo $button3; ?>.gif" alt="" name="<?php echo $button3; ?>" width="59" height="33" border="0" id="<?php echo $button3; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttOn_07.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_07',/*URL*/'images/homebuttonIff_07.gif');return true" href="gold.php"><img src="images/<?php echo $button4; ?>.gif" alt="" name="<?php echo $button4; ?>" width="85" height="33" border="0" id="<?php echo $button4; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_08',/*URL*/'images/homebuttOn_08.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_08',/*URL*/'images/homebuttonIff_08.gif');return true" href="franchises.php"><img src="images/<?php echo $button5; ?>.gif" alt="" name="<?php echo $button5; ?>" width="115" height="33" border="0" id="<?php echo $button5; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_09',/*URL*/'images/homebuttOn_09.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_09',/*URL*/'images/homebuttonIff_09.gif');return true" href="restaurants.php"><img src="images/<?php echo $button6; ?>.gif" alt="" name="<?php echo $button6; ?>" width="75" height="33" border="0" id="<?php echo $button6; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_10',/*URL*/'images/homebuttOn_10.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_10',/*URL*/'images/homebuttonIff_10.gif');return true" href="suppliers.php"><img src="images/<?php echo $button7; ?>.gif" alt="" name="<?php echo $button7; ?>" width="64" height="33" border="0" id="<?php echo $button7; ?>" /></a></td>
+                        <td><a onmouseover="changeImages( /*CMP*/'homebuttonIff_11',/*URL*/'images/homebuttOn_11.gif');return true" onmouseout="changeImages( /*CMP*/'homebuttonIff_11',/*URL*/'images/homebuttonIff_11.gif');return true" href="contact.php"><img src="images/<?php echo $button8; ?>.gif" alt="" name="<?php echo $button8; ?>" width="59" height="33" border="0" id="<?php echo $button8; ?>" /></a></td>
                         <td><img src="images/homebuttonIff_12.gif" alt="" width="66" height="33" border="0" /></td>
                         <td><a href="advertise.php"><img src="images/homebuttonIff_13.gif" alt="" width="161" height="33" border="0" /></a></td>
                       </tr>

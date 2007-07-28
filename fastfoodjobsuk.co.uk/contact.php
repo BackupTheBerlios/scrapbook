@@ -1,5 +1,6 @@
 <?php
 require("common_all.php");
+$section=8;
 require("top.php");
 ?>
 <style type="text/css">

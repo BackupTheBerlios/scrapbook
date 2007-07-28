@@ -1,5 +1,5 @@
 <?php
-	require("common_all.php");
+require("common_all.php");
 
   $member=new Gold_membership();
   $results=$member->GetList(array(array("gold_membership_status","=","active"),array("dt_expire",">",date("Y-m-d"))));
@@ -8,8 +8,8 @@
   foreach ($results as $obj){
 	updateImpressions("gold_membership",$obj->gold_membershipId);
   }
-
-	require("top.php");
+$section=4;
+require("top.php");
 ?>
 <link rel=stylesheet href="css/gold.css" type="text/css">
 							<div class="roundcont">

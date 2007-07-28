@@ -4,6 +4,7 @@
 ?>
 
 <?php
+$section=6;
 	require("top.php");
 ?>
 <link rel=stylesheet href="css/restaurants.css" type="text/css">

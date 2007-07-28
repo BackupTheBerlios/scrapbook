@@ -1,5 +1,6 @@
 <?php
 	require("common_all.php");
+	$section=7;
 	require("top.php");
 ?>
 <table width="459" border="0" cellspacing="0" cellpadding="0">
