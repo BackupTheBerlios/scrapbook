@@ -19,6 +19,9 @@ if ($id>0){
 	//free for now
 	$member->platinum_membership_status='active';
 	$member->dt_expire=expiryYear();
+	//$member->logo="platinum.gif";
+	//$member->image1="platinum.gif";
+	//$member->image2="platinum.gif";	
 }
 
 //check if form is being submitted
@@ -66,7 +69,7 @@ if ((bool)$_POST["submitting"])
 	if (($result=validate($member->tel,"phonenumber",40))!==true){
 		$errorText.="<li>The telephone number is $result";
 	}
-	if (($member->fax!="" && $result=validate($member->fax,"phonenumber",40))!==true){
+	if ($member->fax!="" && ($result=validate($member->fax,"phonenumber",40))!==true){
 		$errorText.="<li>The fax number is $result";
 	}
 	if (($result=validate($member->email,"email",255))!==true){

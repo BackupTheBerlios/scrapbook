@@ -472,6 +472,10 @@ function generate($title,$user,$object){
 		  if ( ($class=="gold_membership" || $class=="supplier") && (isSuperUser(false)) ){
 			echo "<li><a href=\"spotlight_form.php?type=$class&membershipid=".$obj->$classId."\">Spotlight</a></li>";
 		  }		
+		 if ( isSuperUser(false) ){
+			      echo "<li><a href=\"#\" onClick=\"sure('$class','".$obj->$classId."')\">Delete</a></li>";
+		  }						  
+	  		  
 		  echo "</ul>";
 		  echo "</td>";
       if ($hasStats && isSuperUser(false)){

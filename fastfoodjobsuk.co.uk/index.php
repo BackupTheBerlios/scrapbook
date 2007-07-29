@@ -68,7 +68,7 @@ require("top.php");
    <tr>
     <td><a href="http://www.thomaseggar.com/" target="_blank"><img src="images/lower_08.gif" width="96" height="44" border ="0"/></a></td>
     <td><a href="http://www.rbs.co.uk/Small_Business/Specialist_Sectors/Franchising/" target="_blank"><img src="images/lower_09.gif" width="108" height="44" border="0" /></a></td>
-    <td><a href="http://www.thebfa.org/" target="_blank"><img src="images/lower_10.gif" width="110" height="44" border="0" /></a></td>
+    <td><a href="http://www.franchiseek.com/" target="_blank"><img src="images/lower_10.gif" width="110" height="44" border="0" /></a></td>
     <td><a href="http://www.lanbury.com/" target="_blank"><img src="images/lower_11.gif" width="107" height="44" border="0" /></a></td>
    </tr>
   </table></td>

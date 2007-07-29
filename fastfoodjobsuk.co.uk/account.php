@@ -219,10 +219,9 @@ function generateJobLink($user){
 			  }			  
 			  echo "<li><a href='jobedit.php?jobid=$jobid'>Modify</a></li>";
 			  //echo "<li><a href='jobview.php?jobid=$jobid'  target='_blank'>View</a></li>";		
-			 //if ( isSuperUser(false) ){
-				//this is not implemented
-				//echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";
-			  //}				  
+			 if ( isSuperUser(false) ){
+				echo "<li><a href='#' onClick=\"sure('Job','$jobid')\">Delete</a></li>";
+			  }				  
   
 			   echo "</ul>";
      		 echo "</td>";

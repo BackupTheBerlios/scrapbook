@@ -5,6 +5,14 @@ require("top.php");
 $class=stripslashes($_GET["type"]);
 $id=(int)$_GET["id"];
 
+if ($class=="news"||$class=="restaurant"||$class=="franchise")
+{
+	$adminUrl = "admin_account.php";
+}
+else
+{
+	$adminUrl = "account.php";
+}
 if ($class=="Job")
 {
 	  $db=new DatabaseConnection();
@@ -42,7 +50,7 @@ else
  <tr>
   <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">&nbsp;</p>
     <p style = "padding-left:5px; margin:0px;"> Item has been successfully deleted </p>
-    <p style = "padding-left:5px; margin:0px;"> Back to <a href="admin_account.php" class = "news">account</a><br />
+    <p style = "padding-left:5px; margin:0px;"> Back to <a href="<?php echo $adminUrl; ?>" class = "news">account</a><br />
       <br />
    </p></td>
  </tr>

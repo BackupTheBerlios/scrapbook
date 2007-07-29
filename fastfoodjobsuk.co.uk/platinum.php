@@ -15,7 +15,11 @@ updateUniqueClicks("platinum_membership",$id);
 	require("top_wide.php");
 ?>
 <link rel=stylesheet href="css/platinum.css" type="text/css">
-  <img src="logos/<?php echo $member->logo; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">
+	<?php if ($member->logo!=="") { ?>
+  	<img src="logos/<?php echo $member->logo; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">
+	<?php } else { ?>
+	<img src="images/spacer.gif" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">
+	<?php } ?>
   <br>
 <div id="heading">
   <?php echo $member->heading; ?>
