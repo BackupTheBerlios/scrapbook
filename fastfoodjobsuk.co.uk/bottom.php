@@ -44,6 +44,23 @@
 								</div></div>
 								</td></tr></table>
 								</td>
+						<?php } else { ?>
+							<td valign="top" width="167">
+								<table border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									  <td height="116" align="right"><?php loadImage();?></td>
+									</tr>
+									<tr>
+									  <td height="116" align="right"><?php loadImage();?></td>
+									</tr>
+									<tr>
+									  <td height="116" align="right"><?php loadImage();?></td>
+									</tr>
+									<tr>
+										<td width="167" align="right"><a href="http://www.jestic.co.uk/" target="_blank"><img src="images/wingright_19.gif" alt="" width="162" height="192" border="0" align="right" /></a></td>
+									</tr>
+								</table>		
+							</td>								
 						<?php } ?>
                       </tr>
                     </table>

@@ -125,15 +125,12 @@ SetUpStartRec(); // Set up start record position
    <form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" >
 <table class="ewBasicSearch">
 	<tr>
-		<td><span>
-			<a href="cv_search.php">Back to Search</a>
+		<td width="219"><span>
+			<a class = "news" href="cv_search.php">Back to Search</a>
 		</span></td>
 	</tr>
 </table>
 </form></p></td>
- </tr>
- <tr>
-  <td></td>
  </tr>
 </table>
 
@@ -243,7 +240,7 @@ if ($nTotalRecs > 0) {
 </form>
 <?php if ($nTotalRecs > 0)  { ?>
 <form method="post">
-<table border="0" cellspacing="5" cellpadding="5">
+<table border="0" cellspacing="0" cellpadding="5">
 <?php
 
 // Set the last record to display
@@ -475,9 +472,13 @@ $x_can_relocate = $sTmp;
 </span></td>
 			</tr>
 			<tr>
-				<td>Salary Expectations</td>
+			 <td colspan="2" class = "line">&nbsp;</td>
+			 </tr>
+			<tr>
+				<td><strong>Salary Expectations</strong></td>
 				<td></td>
-			</tr>					
+			</tr>
+								
 			<tr>
 				<td><span>
 	&#8226;Start<?php if (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary_expectation_start"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
@@ -503,7 +504,10 @@ $x_can_relocate = $sTmp;
 </span></td>
 			</tr>
 			<tr>
-				<td>Achievement</td>
+			 <td colspan="2" class = "line">&nbsp;</td>
+			 </tr>
+			<tr>
+				<td><strong>Achievement</strong></td>
 				<td></td>
 			</tr>			
 			<tr>
@@ -542,9 +546,10 @@ $x_can_relocate = $sTmp;
 				<td><span>
 	Notice required in current position<?php if (@$_SESSION[ewSessionTblSort . "_x_notice"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_notice"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
-				<td><?php echo getOptionLabel("notice_period_list.htm",@$x_notice); ?></td>
+				<td><span><?php echo getOptionLabel("notice_period_list.htm",@$x_notice); ?></span></td>
 			</tr>
-		</table><br />
+		</table>
+		<br />
 <span>
 	<b><a class = "news" href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>
 </span>

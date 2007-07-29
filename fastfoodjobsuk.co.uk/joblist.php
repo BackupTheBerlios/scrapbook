@@ -247,35 +247,7 @@ if ($nTotalRecs > 0) {
 </form>
 <?php if ($nTotalRecs > 0)  { ?>
 <form method="post">
-<table id="ewlistmain">
-	<!-- Table header -->
-	<tr>
-    <td valign="top"><span style="font-weight: bold">
-        Position
-                <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
-                <img src="images/sortup.gif" width="10" height="9" border="0">
-                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
-                <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>    
-                </span></td>
-    <td valign="top">
-        <span style="font-weight: bold">Yearly salary</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
-                <img src="images/sortup.gif" width="10" height="9" border="0">
-                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
-                <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>                </td>
-    <td valign="top"><span style="font-weight: bold">
-        Location
-                <?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
-                <img src="images/sortup.gif" width="10" height="9" border="0">
-                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
-                <img src="images/sortdown.gif" width="10" height="9" border="0">        
-                <?php } ?>    
-                </span></td>
-                   <td valign="top"><span style="font-weight: bold">Date posted</span></td>        
-	    <td valign="top">&nbsp;</td>
-
-	</tr>
+<table>
     <?php
 
 // Set the last record to display
@@ -316,36 +288,57 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 		$x_job_status = $row["job_status"];
 		$x_link = $row["link"];
 ?>
-	<!-- Table body -->
-	<tr<?php echo $sItemRowClass; ?><?php echo $sListTrJs; ?>>
-    <!-- jobid -->
-	    <!-- onlineuser_onlineuserid -->
-	    <!-- position -->
-	    <td>
-
-    <?php echo $x_position; ?>  </td>
-		    <!-- salary -->
-	    <td>
-                &pound;<?php echo $x_salary; ?></td>
-		    <!-- bonus -->
-	    <!-- benifits -->
-	    <!-- location -->
-	    <td><?php echo $x_location; ?> 		  </td>
-                 <td><?php echo FormatDateTime($x_dt_created,7); ?> </td>  
-		    <td>
-            <?php if ($x_link <> "") {
-					$ahref="<a href='$x_link' target='_external'>View Detail</a>";
+	<tr>   
+		<td valign="top"><!--<?php echo $sItemRowClass; ?>-->
+		<table class = "job">
+			<tr>
+			<td valign="top"><span style="font-weight: bold">
+        	Position
+                <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
+                <img src="images/sortup.gif" width="10" height="9" border="0">
+                <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
+                <img src="images/sortdown.gif" width="10" height="9" border="0">        
+                <?php } ?>    
+                </span></td>
+			<td><?php echo $x_position; ?></td>
+			</tr>
+			<tr>			
+			<td valign="top">
+				<span style="font-weight: bold">Yearly salary</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
+						<img src="images/sortup.gif" width="10" height="9" border="0">
+						<?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
+						<img src="images/sortdown.gif" width="10" height="9" border="0">        
+						<?php } ?>                </td>
+			<td>&pound;<?php echo $x_salary; ?></td>
+			</tr>
+			<tr>					
+			<td valign="top"><span style="font-weight: bold">
+				Location
+						<?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
+						<img src="images/sortup.gif" width="10" height="9" border="0">
+						<?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
+						<img src="images/sortdown.gif" width="10" height="9" border="0">        
+						<?php } ?>    
+						</span></td>
+			<td><?php echo $x_location; ?></td>
+			</tr>
+			<tr>				
+						   <td valign="top"><span style="font-weight: bold">Date posted</span></td>
+			<td><?php echo FormatDateTime($x_dt_created,7); ?></td>
+			</tr>
+			</table>
+			<br />
+			<?php if ($x_link <> "") {
+					$ahref="<a class = 'news'  href='$x_link' target='_external'>View Detail</a>";
 				  } else {
-					 $ahref="<a href='jobview.php?jobid=".urlencode($x_jobid)."'>View Detail</a>"; 
+					 $ahref="<a class = 'news'  href='jobview.php?jobid=".urlencode($x_jobid)."'>View Detail</a>"; 
 				  }	
 			?>
-            
-            <?php echo $ahref; ?></td>
-		    <!-- contact_email -->
-	    <!-- dt_created -->
-	    <!-- dt_expire -->
-	    <!-- job_status -->
-	    </tr>
+			<span>
+				<b><?php echo $ahref; ?> </b>
+			</span>
+		</td>	
+	</tr>		
     <?php
 	}
 }
