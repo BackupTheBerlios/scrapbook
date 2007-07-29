@@ -1,11 +1,11 @@
 						<!--div cancelled-->	<!--</div>--><!--content ends-->
-						</td><td style ="width:1px; background-color:black;"></td><td valign="top" width="150"><div id="logo">
-
+	</td><td style ="width:1px; background-color:#ccc;"></td><td valign="top" width="150"><table cellpadding="0" cellspacing="0"><tr><td valign = "top">
   <img src="logos/<?php echo $member->image1; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageright">
   <br>
   <img src="logos/<?php echo $member->image2; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageright">
-</div>
-						<div>
+</td></tr><br />
+	<tr><td><div  id="details">
+    		<div>
 						<a href="<?php echo $member->link; ?>">
               <?php echo $member->name; ?>
              </a> 
@@ -23,14 +23,14 @@
 						</div>
 						<div>
 						Email: 
-              <?php echo $member->email; ?>
+              <a class = "news" href = mailto:"<?php echo $member->email; ?>">Click here</a> to email.
 						</div>
 						<div>
-              <a href="<?php echo $member->link; ?>">
-              <?php echo $member->link; ?>
-              </a>
-						</div>
-          
+       Web:        <a class = "news" href="<?php echo $member->link; ?>">
+              Click Here
+              </a> for website.
+						</div></div>
+          </td></tr></table>
           </td>
 </tr>
                     </table>

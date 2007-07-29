@@ -14,7 +14,12 @@ img.left {margin-right: 10px; margin-bottom: 10px }
   <td valign="top" width="463"><img src="images/spacer.gif" alt="mid" width="1" height="5" border="0" /></td>
  </tr>
  <tr>
-  <td style = "height:460px" valign="top" width="463"><span class="redbar">&nbsp;| </span><span class="heading">About us</span> <span class="redbar">|</span><br />
+  <td style = "height:460px" valign="top" width="463">      <div class="roundcont">
+       <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+       <h1>About US</h1>
+       <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+      </div>
+
     <br />
     <table width="453" border="0" cellspacing="0" cellpadding="0">
      <tr>

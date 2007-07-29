@@ -6,7 +6,7 @@ require("news_fixed.html");
 $news=new News();
 $newsList=$news->GetList(array(array("live")),"dt_created",false);
 
-echo "<table id=\"table\">";
+echo "<table class=\"newstable\">";
 
 foreach ($newsList as $newsObject){
   echo "<TR><TD class=\"cell_heading\">";
@@ -20,7 +20,7 @@ foreach ($newsList as $newsObject){
   echo "</td>";
   echo "</tr>";
   
-  echo "<TR><TD><BR></td></tr>";
+  echo "<TR><TD><hr width = \"100%\" noshade size=\"1\" ><BR></td></tr>";
   
 }
 

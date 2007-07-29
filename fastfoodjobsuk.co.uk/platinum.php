@@ -17,10 +17,6 @@ updateUniqueClicks("platinum_membership",$id);
 <link rel=stylesheet href="css/platinum.css" type="text/css">
   <img src="logos/<?php echo $member->logo; ?>" width="<?php echo $platinumImageWidth; ?>" height="<?php echo $platinumImageHeight; ?>" class="topimageleft">
   <br>
-<div id="address">
-  <?php echo $member->address; ?>
-</div>
-
 <div id="heading">
   <?php echo $member->heading; ?>
 </div>
