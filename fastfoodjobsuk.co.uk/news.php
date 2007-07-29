@@ -20,7 +20,7 @@ foreach ($newsList as $newsObject){
   echo "</td>";
   echo "</tr>";
   
-  echo "<TR><TD><hr width = \"100%\" noshade size=\"1\" ><BR></td></tr>";
+  echo "<TR><TD><hr class = \"newsbreaker\" ><BR></td></tr>";
   
 }
 

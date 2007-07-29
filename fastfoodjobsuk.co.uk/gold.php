@@ -12,13 +12,19 @@ $section=4;
 require("top.php");
 ?>
 <link rel=stylesheet href="css/gold.css" type="text/css">
-							<div class="roundcont">
-									<div class="roundtop">
-										<img class="corner" src="images/bl_01.gif" alt="" style=" display: none;" /></div>
-									<h1>UK Franchises</h1>
-									<div class="roundbottom">
-										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
-								</div><p style ="margin-left:10px;">Click on the logo to visit the companies web site or on the archived link for more details.</p>
+							<table width="459" border="0" cellspacing="0" cellpadding="0" >
+        <tr>
+         <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+        </tr>
+        <tr>
+         <td><div class="roundcont">
+           <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+          <h1>Gold Members - UK Franchises</h1>
+          <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+         </div></td>
+        </tr>
+       </table>
+							<p style ="margin-left:10px;">Click on the logo to visit the companies web site or on the archived link for more details.</p>
 <table id="table" cellspacing = "0" cellpadding = "0">
 <?php
 

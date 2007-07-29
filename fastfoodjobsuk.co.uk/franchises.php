@@ -8,13 +8,19 @@ $section=5;
 ?>
 <link rel=stylesheet href="css/franchises.css" type="text/css">
 <link rel=stylesheet href="css/gold.css" type="text/css">
-							<div class="roundcont">
-									<div class="roundtop">
-										<img class="corner" src="images/bl_01.gif" alt="" style=" display: none;" /></div>
-									<h1>Franchises for Sale</h1>
-									<div class="roundbottom">
-										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
-								</div><p style = "margin-left:10px;">Selling a trading franchise is a discreet business both for the franchisee and franchisor.
+							<table width="459" border="0" cellspacing="0" cellpadding="0" >
+        <tr>
+         <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+        </tr>
+        <tr>
+         <td><div class="roundcont">
+           <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+          <h1>Franchises for Sale</h1>
+          <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+         </div></td>
+        </tr>
+       </table>
+							<p style = "margin-left:10px;">Selling a trading franchise is a discreet business both for the franchisee and franchisor.
 Advertising in this section requires no pre-set information, it is designed to protect your business and privacy.<br /><br />
 
 An advert could be as simple as; 'Pizza franchise for sale, Essex. Trading 3 years. Contact Fred on 123456789'<br /><br />

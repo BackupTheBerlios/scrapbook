@@ -1,7 +1,7 @@
 <?php
 	require("common_all.php");
   $type=(int)$_GET["type"];
-
+  $name=$_GET["name"];	
   $supplier=new Supplier();
   $results=$supplier->GetList(array(array("supplier_category_id","=",$type),array("supplier_status","=","active")),"dt_created");
   shuffle($results);
@@ -15,13 +15,18 @@
 	$section=7;
 	require("top.php");
 ?>
-						<div class="roundcont">
-									<div class="roundtop">
-										<img class="corner" src="images/bl_01.gif" alt="" style=" display: none;" /></div>
-									<h1>Suppliers</h1>
-									<div class="roundbottom">
-										<img src="images/bl_06.gif" alt="" class="corner" style=" display: none;" /></div>
-								</div>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Suppliers for <?php echo $_GET['name']; ?></h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
 <table id="table" cellspacing = "0" cellpadding = "0">
 <?php
   

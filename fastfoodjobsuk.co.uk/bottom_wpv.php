@@ -6,7 +6,7 @@
 </td></tr><br />
 	<tr><td><div  id="details">
     		<div>
-						<a href="<?php echo $member->link; ?>">
+						<a class = "news" href="<?php echo $member->link; ?>">
               <?php echo $member->name; ?>
              </a> 
 						</div>

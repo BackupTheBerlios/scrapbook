@@ -45,23 +45,34 @@ if ((bool)$_POST["submitting"])
 }
 require("top.php");
 ?>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Classified Advertisement</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
 <table border="0" cellspacing="0" cellpadding="0">
  <tr>
-  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  <td valign="top" width="463"><img src="images/spacer.gif" alt="" width="1" height="5" border="0" /> </td>
  </tr>
  <tr>
-  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Classified Advert</span> <span class="redbar">|</span><br />
-    <br />
+  <td valign="top" width="463"><p style = "padding-left:5px; margin:0px;">Please send in your classified advertisement. Once received we will contact you with more information.</p>
+    <br /></td>
  </tr>
  <tr>
-  <td><hr noshade="noshade" size="1" />
-  </td>
+  <td></td>
  </tr>
 </table>
 <form action="classified_form.php" method="POST">
 <input type=hidden name="submitting" value="true">
 
-<table id="table_create">
+<table id="table_create"  class = "uploadform" width = "95%">
 
   <tr>
     <td colspan=2 id="cell_error_text">
@@ -75,7 +86,7 @@ require("top.php");
       Heading:
     </td>
     <td>
-      <input type="text" id="heading" name="heading" value="<?php echo $heading; ?>">
+      <input  class = "detail" type="text" id="heading" name="heading" value="<?php echo $heading; ?>">
     </td>
   </tr>
   <tr>
@@ -83,7 +94,7 @@ require("top.php");
       Text:
     </td>
     <td>
-      <textarea name="text" id="text"><?php
+      <textarea  class = "detail" name="text" id="text"><?php
         echo $text;
       ?></textarea>
     </td>
@@ -93,7 +104,7 @@ require("top.php");
       Link:
     </td>
     <td>
-      <input type="text" id="link" name="link" value="<?php echo $link ; ?>">
+      <input  class = "detail" type="text" id="link" name="link" value="<?php echo $link ; ?>">
     </td>
   </tr>
   <tr>

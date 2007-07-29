@@ -57,11 +57,21 @@ if (isset($_POST["register"])){
 
 <form action="register_address.php" method="POST">
   <input type=hidden name="register" value="1">
+  <table width="459" border="0" cellspacing="0" cellpadding="0" >
+   <tr>
+    <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+   </tr>
+   <tr>
+    <td><div class="roundcont">
+      <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+     <h1>Address Details Required</h1>
+     <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+    </div></td>
+   </tr>
+  </table>
   <table class = "registerTable">
     <tr>
       <th>
-              <span class="redbar">| </span><span class="heading">Registration</span> <span class="redbar">|</span><br>
-<br>
       </th>
     </tr>
     <tr>

@@ -66,7 +66,35 @@ require("top.php");
 <form action="user_profile.php" method="POST">
 <input type=hidden name="submitting" value="true">
 
-<table>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>User Profile</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Please use the form below to update any profile details.<br />
+    <br />
+     Thank you.<br />
+       <br />
+  </p>
+   </td>
+ </tr>
+ <tr>
+  <td></td>
+ </tr>
+</table>
+<table class = "uploadform">
   <tr>
     <td colspan=2>
     <?php
@@ -79,7 +107,7 @@ require("top.php");
       First Name:
     </td>
     <td>
-      <input type="text" name="firstName" value="<?php echo $user->first_name; ?>">
+      <input class = "detail" type="text" name="firstName" value="<?php echo $user->first_name; ?>">
     </td>
   </tr>
   <tr>
@@ -87,7 +115,7 @@ require("top.php");
       Last Name:
     </td>
     <td>
-      <input type="text" name="lastName" value="<?php echo $user->last_name; ?>">
+      <input class = "detail" type="text" name="lastName" value="<?php echo $user->last_name; ?>">
     </td>
   </tr>
   <tr>
@@ -95,7 +123,7 @@ require("top.php");
       Email Address:
     </td>
     <td>
-      <input type="text" name="email" value="<?php echo $user->email; ?>">
+      <input class = "detail" type="text" name="email" value="<?php echo $user->email; ?>">
     </td>
   </tr>
   <tr>
@@ -103,7 +131,7 @@ require("top.php");
       Address 1:
     </td>
     <td>
-      <input type="text" name="address1" value="<?php echo $user->address_1; ?>">
+      <input class = "detail" type="text" name="address1" value="<?php echo $user->address_1; ?>">
     </td>
   </tr>
   <tr>
@@ -111,7 +139,7 @@ require("top.php");
       Address 2:
     </td>
     <td>
-      <input type="text" name="address2" value="<?php echo $user->address_2; ?>">
+      <input class = "detail" type="text" name="address2" value="<?php echo $user->address_2; ?>">
     </td>
   </tr>
   <tr>
@@ -119,7 +147,7 @@ require("top.php");
       Address 3:
     </td>
     <td>
-      <input type="text" name="address3" value="<?php echo $user->address_3; ?>">
+      <input class = "detail" type="text" name="address3" value="<?php echo $user->address_3; ?>">
     </td>
   </tr>
   <tr>
@@ -127,7 +155,7 @@ require("top.php");
       Post Code:
     </td>
     <td>
-      <input type="text" name="postcode" value="<?php echo $user->postcode; ?>">
+      <input class = "detail" type="text" name="postcode" value="<?php echo $user->postcode; ?>">
     </td>
   </tr>
   <tr>
@@ -135,7 +163,7 @@ require("top.php");
       Telephone:
     </td>
     <td>
-      <input type="text" name="tel" value="<?php echo $user->tel; ?>">
+      <input class = "detail" type="text" name="tel" value="<?php echo $user->tel; ?>">
     </td>
   </tr>
   <tr>
@@ -143,7 +171,7 @@ require("top.php");
       Facsimile:
     </td>
     <td>
-      <input type="text" name="fax" value="<?php echo $user->fax; ?>">
+      <input class = "detail" type="text" name="fax" value="<?php echo $user->fax; ?>">
     </td>
   </tr>
   <tr>

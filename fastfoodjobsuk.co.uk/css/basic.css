@@ -10,10 +10,29 @@ td.line{
 border-bottom: #666666 dotted 1px;
 }
 table.job{
-border: #666666 dotted 1px;background-color:#FFFFCC;
+border: #666666 dotted 1px;background-color:#E8E8E8;
 }
+table.uploadform{
+border: #666666 dotted 1px;background-color:#E8E8E8;
+margin-left:5px;
+}
+.uploadform .detail {
+width:280px;
+}
+.job .detail {
+width:280px;
+}
+table.uploadform td{
+font-weight:bold;
+}
+
 table.job td {
 line-height: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left;vertical-align: top;
+}
+table.newstable{
+padding-left:5px;
+padding-right:5px;
+
 }
 td.backgroundBorderStriped{
 background-color:#CCCCCC;
@@ -30,6 +49,7 @@ td   { color: black; font-size: 10px; line-height: 12px; font-family: Verdana, A
 margin:0px;
 }
 td.contact { color: black; font-size: 12px; line-height: 16px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left }
+td.contactSmall { color: black; font-size: 11px; line-height: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-align: left }
 td.height { height: 180px }
 td.height2 { height: 163px }
 .redbar { color: red; font-size: 10px; font-family: Verdana, Arial, Helvetica, SunSans-Regular }
@@ -46,6 +66,8 @@ a.bottomNav { color: black; font-weight: bold; font-size: 9px; font-family: Verd
 a.contact { color: #0083cc; font-weight: bold; font-size: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: none }
 a.news { color: #0083cc; font-size: 10px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: none }
 a.news:hover { color: #0083cc; font-size: 10px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: underline }
+a.newslarge { color: #0083cc; font-size: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: none }
+a.newslarge:hover { color: #0083cc; font-size: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: underline }
 a.contact:hover { color: #0083cc; font-weight: bold; font-size: 12px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: underline }
 a.bottomNav:hover { color: black; font-weight: bold; font-size: 9px; font-family: Verdana, Arial, Helvetica, SunSans-Regular; text-decoration: underline }
 #inputlogin {
@@ -144,7 +166,7 @@ a.smallAdd:hover {
 	float:right;
 		}
 		.roundcont { width: 435px; background-color: #86C8ED; color: #fff; margin-top:5px; margin-bottom:10px; margin-left:4px;}
-
+	.roundcontadmin { width: 500px; background-color: #86C8ED; color: #fff; margin-top:5px; margin-bottom:10px; margin-left:4px;}
 .roundcont p {
 	
 }
@@ -171,7 +193,18 @@ margin-left:20px;
 margin-right:0px;
 margin-top:0px;
 margin-bottom:0px;
-}.paddingforinfocell {
+}
+.roundcontadmin h1 {
+color:#FFFFFF;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:16px;
+margin-left:20px;
+margin-right:0px;
+margin-top:0px;
+margin-bottom:0px;
+}
+
+.paddingforinfocell {
 	padding-left: 10px;
 	padding-right:10px;
 }
@@ -179,8 +212,7 @@ margin-bottom:0px;
 font-family:Verdana, Arial, Helvetica, sans-serif;
 font-weight:bold;
 color:black;
-padding:20px;
-
+margin-bottom:10px;
 }
 .topimageleft{
 	border:1px #CCC solid;
@@ -196,13 +228,14 @@ margin-bottom:5px;
 .loginTable{
 font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:12px;
-margin-left:20px;
+margin-left:5px;
 text-align::left;
 }
 .error {
 	color:red;
 	font-size:14px;
 	border:2px;
+	line-height:16px;
 }
 .registerTable{
 font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -217,4 +250,21 @@ text-align::left;
 .row_odd{
   background-color:#CCCCCC;
 	
+}
+hr.newsbreaker{
+height: 0px;
+border-bottom-color:#CCCCCC;
+border:1px dotted;
+width:100%;
+}
+
+span.supplierlinespace{
+line-height:16px;
+
+}
+h3 {
+font-family:Arial, Helvetica, sans-serif;
+font-size:14px;
+font-weight:bold;
+
 }

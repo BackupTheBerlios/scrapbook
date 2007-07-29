@@ -82,7 +82,7 @@ if (isset($_POST["register"])){
       $mail->bodyAdd("Dear $first_name $last_name");
       $mail->bodyAdd("");
       $mail->bodyAdd("Thank you for registering with Fast Food Jobs but as we take your privacy seriously, we just wanted to check you did register with our site.");
-      $mail->bodyAdd("In order to gain access to all of the web site functionality please click on <a href=\"$url\">this link</a>");
+      $mail->bodyAdd("In order to gain access to all of the web site functionality please click on here: $url");
       $mail->bodyAdd("");
       $mail->bodyAdd("If you should not have received this e-mail, please click on the e-mail link below and just put \"remove\" in the heading and we will remove your details from our system.");
       $mail->bodyAdd("");
@@ -141,18 +141,28 @@ if (isset($_POST["register"])){
     }
     echo $showAddress;
   ?>">
+  <table width="459" border="0" cellspacing="0" cellpadding="0" >
+   <tr>
+    <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+   </tr>
+   <tr>
+    <td><div class="roundcont">
+      <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+     <h1>Register</h1>
+     <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+    </div></td>
+   </tr>
+  </table>
   <table class = "registerTable">
     <tr>
       <td>
-       <span class="redbar">| </span><span class="heading">Registration</span> <span class="redbar">|</span><br>
-<br>
-      </td>
+  </td>
     </tr>
     <tr>
       <td colspan=2>
-      <?php
+     <span class = "error" ><?php
         echo $errorText;
-      ?>
+      ?><span>
       </td>
     </tr>
     <tr>
@@ -258,7 +268,7 @@ if (isset($_POST["register"])){
     </tr>
     <tr>
       <td>
-        I have read the <a href="terms.html" style="color:#0000FF">terms</a>
+        I have read the <a href="terms.html" class ="news">terms</a>
       </td>
       <td>
         <input type="checkbox" name="readTerms">

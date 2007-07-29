@@ -79,9 +79,19 @@ return true;
 
 //-->
 </script>
- <h2 style = "margin-left:5px;">Create your job post </h2>
+ <table width="459" border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+   <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+  </tr>
+  <tr>
+   <td><div class="roundcont">
+     <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+    <h1>Advertise Your Position</h1>
+    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+   </div></td>
+  </tr>
+ </table>
 <form name="fjobadd" id="fjobadd" action="job_post.php" method="post" onsubmit="return EW_checkMyForm(this);" style= "margin:5px;">
-<p>
 <input type="hidden" name="a_add" value="A">
 
 <?php
@@ -100,37 +110,36 @@ return true;
        loadOptions($listFile,$x_position);
       ?></select></td>
 	</tr>
+	
 	<tr>
-	 <td>&nbsp;</td>
-	 <td class="backgroundBorderStriped">Your job description must not discriminate directly or indirectly against an applicant on the basis of gender, marital status, nationality, race, disability, religious beliefs or sexual orientation.</td>
+  <td colspan="2" class="line">&nbsp;</td>
 	 </tr>
 	<tr>
-	 <td colspan="2"><h3>Financial Info:</h3></td>
+	 <td colspan="2"><h3><br />
+	  Financial Info:</h3></td>
 	 </tr>
 	<tr>
-		<td><span style="font-weight: bold">Yearly Salary</span></td>
-		<td><input type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>"> 
-		    GBP		</td>
+		<td><span style="font-weight: bold">Yearly Salary </span>- GBP</td>
+		<td><input class = "detail" type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>"></td>
 	</tr>
 	<tr>
 		<td><span style="font-weight: bold">Bonus</span></td>
 		<td>
 			<input type="radio" name="x_bonus"<?php if (@$x_bonus == "yes") { ?> checked<?php } ?> value="yes">yes	
-			<input type="radio" name="x_bonus"<?php if (@$x_bonus == "no") { ?> checked<?php } ?> value="no">no	
-		</td>
+			<input type="radio" name="x_bonus"<?php if (@$x_bonus == "no") { ?> checked<?php } ?> value="no">no		</td>
 	</tr>
 	<tr>
 		<td><span style="font-weight: bold">Benefits</span></td>
 		<td>
 			<input type="radio" name="x_benifits"<?php if (@$x_benifits == "yes") { ?> checked<?php } ?> value="yes">yes	
-			<input type="radio" name="x_benifits"<?php if (@$x_benifits == "no") { ?> checked<?php } ?> value="no">no
-			</td>
+			<input type="radio" name="x_benifits"<?php if (@$x_benifits == "no") { ?> checked<?php } ?> value="no">no			</td>
 	</tr>
 	<tr>
 	 <td colspan="2" class="line">&nbsp;</td>
 	 </tr>
 	<tr>
-	 <td colspan="2"><h3>Personal Info:</h3></td>
+	 <td colspan="2"><h3><br />
+	  Personal Info:</h3></td>
 	 </tr>
 	<tr>
 		<td><span style="font-weight: bold">Location</span></td>
@@ -143,30 +152,37 @@ return true;
 	</tr>
 
 	<tr>
+  <td>&nbsp;</td>
+	 <td class="backgroundBorderStriped">Your job description must not discriminate directly or indirectly against an applicant on the basis of gender, marital status, nationality, race, disability, religious beliefs or sexual orientation.</td>
+	 </tr>
+	<tr>
 		<td><span style="font-weight: bold">Job Description</span><span>&nbsp;*</span></td>
 		<td>
-<textarea name="x_profile" cols="35" rows="6" id="x_profile"><?php echo @$x_profile; ?></textarea></td>
+<textarea  class = "detail" name="x_profile" cols="35" rows="6" id="x_profile"><?php echo @$x_profile; ?></textarea></td>
 	</tr>
 	<tr>
 		<td><span style="font-weight: bold">Recruiter / Company</span><span>&nbsp;*</span></td>
 		<td>
-<input type="text" name="x_company" id="x_company" value="<?php echo htmlspecialchars(@$x_company) ?>"></td>
+<input  class = "detail" type="text" name="x_company" id="x_company" value="<?php echo htmlspecialchars(@$x_company) ?>"></td>
 	</tr>    
 	<tr>
 		<td><span style="font-weight: bold">Contact Email</span><span>&nbsp;*</span></td>
 		<td>
-<input type="text" name="x_contact_email" id="x_contact_email" value="<?php echo htmlspecialchars(@$x_contact_email) ?>"></td>
+<input  class = "detail" type="text" name="x_contact_email" id="x_contact_email" value="<?php echo htmlspecialchars(@$x_contact_email) ?>"></td>
 	</tr>
     <?php if (isSuperUser(false)){ ?> 
 	<tr>
 		<td bgcolor="#FF9900"><span style="font-weight: bold">External Job Link (Super user only) </span></td>
 		<td bgcolor="#FF9900">
-<input name="x_link" type="text" id="x_link" value="<?php echo htmlspecialchars(@$x_link) ?>" size="45"></td>
+<input  class = "detail" name="x_link" type="text" id="x_link" value="<?php echo htmlspecialchars(@$x_link) ?>" size="45"></td>
 	</tr>    
-    <?php } ?> 
+    <?php } ?> <tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" name="btnAction" id="btnAction" value="Post Job"></td>
+	</tr> 
 </table>
 <p>
-<input type="submit" name="btnAction" id="btnAction" value="Post Job">
+
 </form>
 
 <?php

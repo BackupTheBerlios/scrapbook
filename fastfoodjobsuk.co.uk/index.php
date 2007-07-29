@@ -9,14 +9,14 @@ require("top.php");
     <td valign="top"><img src="images/spacer.gif" alt="" width="1" height="5" border="0" /></td>
   </tr>
   <tr>
-    <td style = "height:180px" valign="top">
-    <p style="margin-top: 0; margin-bottom: 0; margin-left:5px"><span class="heading">Welcome to Fast Food Jobs UK.co.uk</span> <span class="redbar">|</span><br />
+    <td style = "height:180px" valign="top" class = "contactSmall">
+     <p style="margin-top: 0; margin-bottom: 0; margin-left:5px"><span class="heading">Welcome to Fast Food Jobs UK.co.uk</span> <span class="redbar">|</span><br />
             <br />
-        Our company was formed over a period of years from the frustration in our industry.<br />
-        <br />
+       Our company was formed over a period of years from the frustration in our industry.<br />
+     <br />
         There are many sites, consultants, agencies, etc. that deal with catering, general franchising and recruitment, but none that deal with the multi-million fast food industry which deserves its own status due to employing thousands of people.<br />
         <br />
-        Because we are not owned by any large corporation, we can remain impartial to all advertisers. This site has been designed to promote the best in our industry, thus all the best people, best companies, best franchises and best investors will be using and can be found at www.fastfoodjobsuk.co.uk - the industry's one shop stop.</p></td>
+   Because we are not owned by any large corporation, we can remain impartial to all advertisers. This site has been designed to promote the best in our industry, thus all the best people, best companies, best franchises and best investors will be using and can be found at www.fastfoodjobsuk.co.uk - the industry's one shop stop.</p></td>
   </tr>
   <tr>
     <td><img src="images/mid_20.gif" alt="" width="462" height="163" usemap="#mid_20c2838cbf" border="0" />
@@ -46,16 +46,22 @@ require("top.php");
     <td colspan="4"><table width="420" border="0" cellpadding="0" cellspacing="0">
      <tr>
       <td width="205" valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       New regional franchise available throughout the U.K.</td>
+       <DIV ID="TICKER" STYLE="overflow:hidden; width:180px">
+     New regional franchise available throughout the </DIV>
+       <script type="text/javascript" src="webticker_lib.js"></script></td>
       <td width="10" rowspan="2"><img src="images/spacer.gif" alt="" width="1" height="119" /></td>
       <td width="201" valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       New regional franchise available throughout the U.K.</td>
+       <DIV ID="TICKER" STYLE="overflow:hidden; width:180px">
+     New regional franchise available throughout the </DIV>
+				</td>
      </tr>
      <tr>
       <td valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       New regional franchise available throughout the U.K.</td>
+       <DIV ID="TICKER3" STYLE="overflow:hidden; width:180px">
+     New regional franchise available throughout the </DIV></td>
       <td valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       New regional franchise available throughout the U.K.</td>
+       <DIV ID="TICKER4" STYLE="overflow:hidden; width:180px">
+     New regional franchise available throughout the </DIV></td>
      </tr>
     </table></td>
    </tr>

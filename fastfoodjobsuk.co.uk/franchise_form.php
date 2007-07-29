@@ -72,27 +72,37 @@ if ((bool)$_POST["submitting"])
 }
 require("top.php");
 ?>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Franchise for Sale Advertisement</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
 <table border="0" cellspacing="0" cellpadding="0">
  <tr>
-  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
  </tr>
  <tr>
-  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Franchise for Sale Advertisment </span> <span class="redbar">|</span><br />
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 135 wide by 115 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
     <br />
-    <p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logo should be 135 wide by 115 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
-      <br />
-  Complete the town or county, the name of the franchise, a brief description, website address (if available) and your telephone number. Once completed you can amend this advertisement from the super user area.</p></td>
+Complete the town or county, the name of the franchise, a brief description, website address (if available) and your telephone number. Once completed you can amend this advertisement from the super user area.</p>
+   <br /></td>
  </tr>
  <tr>
-  <td><hr noshade="noshade" size="1" />
-  </td>
+  <td></td>
  </tr>
 </table>
 <form action="franchise_form.php" method="POST" enctype="multipart/form-data" >
 <input type=hidden name="id" value="<?php echo $franchise->franchiseId; ?>">
 <input type=hidden name="submitting" value="true">
 
-<table id="table_create">
+<table id="table_create" class = "uploadform">
   <tr>
     <td colspan=2 id="cell_error_text">
     <?php
@@ -138,7 +148,7 @@ require("top.php");
       Name:
     </td>
     <td>
-      <input type="text" id="name" name="name" value="<?php echo $franchise->name; ?>">
+      <input class = "detail" type="text" id="name" name="name" value="<?php echo $franchise->name; ?>">
     </td>
   </tr>
   <tr>
@@ -146,7 +156,7 @@ require("top.php");
       Description:
     </td>
     <td>
-      <textarea name="description" id="description"><?php
+      <textarea class = "detail" name="description" id="description"><?php
         echo $franchise->description;
       ?></textarea>
     </td>
@@ -156,7 +166,7 @@ require("top.php");
       Telephone Number:
     </td>
     <td>
-      <input type="text" id="tel" name="tel" value="<?php echo $franchise->tel; ?>">
+      <input class = "detail" type="text" id="tel" name="tel" value="<?php echo $franchise->tel; ?>">
     </td>
   </tr>
   <tr>
@@ -164,7 +174,7 @@ require("top.php");
       Link:
     </td>
     <td>
-      <input type="text" id="link" name="link" value="<?php echo $franchise->link ; ?>">
+      <input class = "detail" type="text" id="link" name="link" value="<?php echo $franchise->link ; ?>">
     </td>
   </tr>
   <tr>

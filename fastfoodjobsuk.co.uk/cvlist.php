@@ -104,8 +104,25 @@ if ($nDisplayRecs <= 0) { // Display all records
 $nStartRec = 1;
 SetUpStartRec(); // Set up start record position
 ?>
- <h2 style = "margin-left:5px;">Search Result</h2>
-<form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" >
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Search Results</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">
+   <form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" >
 <table class="ewBasicSearch">
 	<tr>
 		<td><span>
@@ -113,7 +130,13 @@ SetUpStartRec(); // Set up start record position
 		</span></td>
 	</tr>
 </table>
-</form>
+</form></p></td>
+ </tr>
+ <tr>
+  <td></td>
+ </tr>
+</table>
+
 <p>
 <?php
 	$_SESSION[ewSessionMessage] = ""; // Clear message
@@ -293,8 +316,8 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 <?php if ((($nRecActual % $nRecPerRow) == 1) || ($nRecPerRow < 2)) { ?>
 	<tr>  
 <?php } ?>  
-		<td valign="top"<?php echo $sItemRowClass; ?>>
-		<table>
+		<td valign="top"><!--<?php echo $sItemRowClass; ?>-->
+		<table class = "job">
 			<tr>
 				<td><span>
 	Full clean UK driving license <?php if (@$_SESSION[ewSessionTblSort . "_x_uk_license"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_uk_license"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
@@ -521,9 +544,9 @@ $x_can_relocate = $sTmp;
 				</span></td>
 				<td><?php echo getOptionLabel("notice_period_list.htm",@$x_notice); ?></td>
 			</tr>
-		</table>
+		</table><br />
 <span>
-	<b><a href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>
+	<b><a class = "news" href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>
 </span>
 		</td>
 <?php if ((($nRecActual % $nRecPerRow) == 0) || ($nRecPerRow < 2)) { ?>  

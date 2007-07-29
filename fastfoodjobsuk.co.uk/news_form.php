@@ -49,25 +49,35 @@ if ((bool)$_POST["submitting"])
 }
 require("top.php");
 ?>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>News Item</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
 <table border="0" cellspacing="0" cellpadding="0">
  <tr>
-  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
  </tr>
  <tr>
-  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">News</span> <span class="redbar">|</span><br />
-    <br />
-    <p style = "padding-left:5px; margin:0px;">Please enter the heading of your news item, then a descriptive passage and the link to the file that YOU will provide on the server. Please supply the abosolute path and do not use the same name for a file twice or overwrite will occur.</p></td>
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Please enter the heading of your news item, then a descriptive passage and the link to the file that YOU will provide on the server. Please supply the abosolute path and do not use the same name for a file twice or overwrite will occur.</p>
+    <br /></td>
  </tr>
  <tr>
-  <td><hr noshade="noshade" size="1" />
-  </td>
+  <td></td>
  </tr>
 </table>
 <form action="news_form.php" method="POST">
 <input type=hidden name="id" value="<?php echo $news->newsId; ?>">
 <input type=hidden name="submitting" value="true">
 
-<table id="table_create">
+<table id="table_create" class = "uploadform">
 
   <tr>
     <td colspan=2 id="cell_error_text">
@@ -81,7 +91,7 @@ require("top.php");
       Heading:
     </td>
     <td>
-      <input type="text" id="heading" name="heading" value="<?php echo $news->heading; ?>">
+      <input class = "detail" type="text" id="heading" name="heading" value="<?php echo $news->heading; ?>">
     </td>
   </tr>
   <tr>
@@ -89,7 +99,7 @@ require("top.php");
       Description:
     </td>
     <td>
-      <textarea name="description" id="description" ><?php
+      <textarea class = "detail" name="description" id="description" ><?php
         echo $news->description;
       ?></textarea>
     </td>
@@ -99,7 +109,7 @@ require("top.php");
       Link:
     </td>
     <td>
-      <input type="text" id="link" name="link" value="<?php echo $news->link ; ?>">
+      <input class = "uploadform" type="text" id="link" name="link" value="<?php echo $news->link ; ?>">
     </td>
   </tr>
   <tr>

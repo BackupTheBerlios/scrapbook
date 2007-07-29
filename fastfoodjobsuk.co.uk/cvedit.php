@@ -153,8 +153,32 @@ return true;
 
 //-->
 </script>
- <h2 style = "margin-left:5px;">Update Job Seeker Profile</h2>
- Please NOTE none of your personal contact information or name  ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer  will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer’s interest in you.
+ <table width="459" border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+   <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+  </tr>
+  <tr>
+   <td><div class="roundcont">
+     <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+    <h1>Update Job Seeker Profile</h1>
+    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+   </div></td>
+  </tr>
+ </table>
+ <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+   <td valign="top" width="445"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  </tr>
+  <tr>
+   <td valign="top" width="445"><p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+     <p style = "padding-left:5px; margin:0px;">Please NOTE none of your personal contact information or name  ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer  will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you. <br />
+    </p>
+    </td>
+  </tr>
+  <tr>
+   <td></td>
+  </tr>
+ </table>
  <form name="fcvedit" id="fcvedit" action="cvedit.php" method="post" enctype="multipart/form-data" onsubmit="return EW_checkMyForm(this);">
 <p>
 	<input type="hidden" name="a_edit" value="U">
@@ -167,7 +191,7 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	$_SESSION[ewSessionMessage] = ""; // Clear message
 }
 ?>
-	<table>
+	<table class = "job">
 	<!--
 <?php //if ((!is_null($x_picture)) &&  $x_picture <> "") { ?>
 <tr>
@@ -195,25 +219,25 @@ Current photograph</td>
 		<tr>
 			<td><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_first_name">
-<input type="text" name="x_first_name" id="x_first_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_first_name) ?>">
+<input class = "detail" type="text" name="x_first_name" id="x_first_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_first_name) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Middle Name</span></td>
 			<td><span id="cb_x_mid_name">
-<input type="text" name="x_mid_name" id="x_mid_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_mid_name) ?>">
+<input class = "detail" type="text" name="x_mid_name" id="x_mid_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_mid_name) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Last Name<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_last_name">
-<input type="text" name="x_last_name" id="x_last_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_last_name) ?>">
+<input class = "detail" type="text" name="x_last_name" id="x_last_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_last_name) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Age<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_age">
-<input type="text" name="x_age" id="x_age" value="<?php echo htmlspecialchars(@$x_age) ?>">
+<input class = "detail" type="text" name="x_age" id="x_age" value="<?php echo htmlspecialchars(@$x_age) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -245,7 +269,7 @@ echo $x_sexList;
 		<tr>
 			<td><span>Nationality</span></td>
 			<td><span id="cb_x_nationality">
-<input type="text" name="x_nationality" id="x_nationality" maxlength="255" value="<?php echo htmlspecialchars(@$x_nationality) ?>">
+<input class = "detail" type="text" name="x_nationality" id="x_nationality" maxlength="255" value="<?php echo htmlspecialchars(@$x_nationality) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -264,37 +288,37 @@ echo $x_sexList;
 		<tr>
 			<td><span>No of years residence in UK</span></td>
 			<td><span id="cb_x_years_of_residence">
-<input type="text" name="x_years_of_residence" id="x_years_of_residence" value="<?php echo htmlspecialchars(@$x_years_of_residence) ?>">
+<input class = "detail" type="text" name="x_years_of_residence" id="x_years_of_residence" value="<?php echo htmlspecialchars(@$x_years_of_residence) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Address line 1<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_address_1">
-<input type="text" name="x_address_1" id="x_address_1" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_1) ?>">
+<input class = "detail" type="text" name="x_address_1" id="x_address_1" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_1) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>line 2</span></td>
 			<td><span id="cb_x_address_2">
-<input type="text" name="x_address_2" id="x_address_2" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_2) ?>">
+<input class = "detail" type="text" name="x_address_2" id="x_address_2" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_2) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>line 3</span></td>
 			<td><span id="cb_x_address_3">
-<input type="text" name="x_address_3" id="x_address_3" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_3) ?>">
+<input class = "detail" type="text" name="x_address_3" id="x_address_3" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_3) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Post code<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_postcode">
-<input type="text" name="x_postcode" id="x_postcode" maxlength="20" value="<?php echo htmlspecialchars(@$x_postcode) ?>">
+<input class = "detail" type="text" name="x_postcode" id="x_postcode" maxlength="20" value="<?php echo htmlspecialchars(@$x_postcode) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Email Address<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_email">
-<input type="text" name="x_email" id="x_email" maxlength="45" value="<?php echo htmlspecialchars(@$x_email) ?>">
+<input class = "detail" type="text" name="x_email" id="x_email" maxlength="45" value="<?php echo htmlspecialchars(@$x_email) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -306,13 +330,13 @@ echo $x_sexList;
 		<tr>
 			<td><span>Land line number<span class='ewmsg'>&nbsp;*</span></span></td>
 			<td><span id="cb_x_tel">
-<input type="text" name="x_tel" id="x_tel" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
+<input class = "detail" type="text" name="x_tel" id="x_tel" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Current Employer</span></td>
 			<td><span id="cb_x_employer">
-<input type="text" name="x_employer" id="x_employer" maxlength="255" value="<?php echo htmlspecialchars(@$x_employer) ?>">
+<input class = "detail" type="text" name="x_employer" id="x_employer" maxlength="255" value="<?php echo htmlspecialchars(@$x_employer) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -344,7 +368,7 @@ echo $x_sexList;
 		<tr>
 			<td><span>Number of points on license</span></td>
 			<td><span id="cb_x_license_points">
-<input type="text" name="x_license_points" id="x_license_points" value="<?php echo htmlspecialchars(@$x_license_points) ?>">
+<input class = "detail" type="text" name="x_license_points" id="x_license_points" value="<?php echo htmlspecialchars(@$x_license_points) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -407,7 +431,7 @@ echo $x_marital_statusList;
 		<tr>
 			<td><span>Willing to travel</span></td>
 			<td><span id="cb_x_can_travel">
-<input type="text" name="x_can_travel" id="x_can_travel" value="<?php echo htmlspecialchars(@$x_can_travel) ?>">
+<input class = "detail" type="text" name="x_can_travel" id="x_can_travel" value="<?php echo htmlspecialchars(@$x_can_travel) ?>">
 miles
 </span></td>
 		</tr>
@@ -418,13 +442,12 @@ miles
 		<?php
 			   loadOptions("employement_status_list.htm",@$x_employement_status);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 		<tr>
 			<td><span>Current work location</span></td>
 			<td><span id="cb_x_work_location">
-<input type="text" name="x_work_location" id="x_work_location" maxlength="255" value="<?php echo htmlspecialchars(@$x_work_location) ?>">
+<input class = "detail" type="text" name="x_work_location" id="x_work_location" maxlength="255" value="<?php echo htmlspecialchars(@$x_work_location) ?>">
 </span></td>
 		</tr>
 		<tr>
@@ -434,8 +457,7 @@ miles
 		<?php
 			   loadOptions("position_list.htm",@$x_position_held);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 		<tr>
 			<td><span>Current / last salary</span></td>
@@ -444,30 +466,27 @@ miles
 		<?php
 			   loadOptions("salary_list.htm",@$x_salary);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 		<tr>
 			<td><span>Current / last annual bonus paid </span></td>
 			<td><span id="cb_x_bonus">
-<input type="text" name="x_bonus" id="x_bonus" maxlength="45" value="<?php echo htmlspecialchars(@$x_bonus) ?>">
+<input class = "detail" type="text" name="x_bonus" id="x_bonus" maxlength="45" value="<?php echo htmlspecialchars(@$x_bonus) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Ambitions within next 2-3 years</span></td>
 			<td><span id="cb_x_ambitions">
-<input type="text" name="x_ambitions" id="x_ambitions" maxlength="255" value="<?php echo htmlspecialchars(@$x_ambitions) ?>">
+<input class = "detail" type="text" name="x_ambitions" id="x_ambitions" maxlength="255" value="<?php echo htmlspecialchars(@$x_ambitions) ?>">
 </span></td>
 		</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td>&nbsp;
-		</td>
+		<td>&nbsp;		</td>
 	</tr>	
 	<tr>
 		<td><span>Salary Expectations:</span></td>
-		<td>&nbsp;
-		</td>
+		<td>&nbsp;		</td>
 	</tr>		
 		<tr>
 			<td><span>Start</span></td>
@@ -477,8 +496,7 @@ miles
 		<?php
 			   loadOptions("salary_list.htm",@$x_salary_expectation_start);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 		<tr>
 			<td><span>Within a year</span></td>
@@ -497,18 +515,15 @@ miles
 		<?php
 			   loadOptions("salary_list.htm",@$x_salary_expectation_two);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 	<tr>
 		<td>&nbsp;</td>
-		<td>&nbsp;
-		</td>
+		<td>&nbsp;		</td>
 	</tr>	
 	<tr>
 		<td><span>Achievement last 12 months :</span></td>
-		<td>&nbsp;
-		</td>
+		<td>&nbsp;		</td>
 	</tr>		
 		<tr>
 			<td><span>Sales</span></td>
@@ -518,8 +533,7 @@ miles
 		<?php
 			   loadOptions("achievement_list.htm",@$x_achievement_sales);
 		?>
-		</select>
-		</td>	
+		</select>		</td>	
 		</tr>
 		<tr>
 			<td><span>Food Cost</span></td>
@@ -529,8 +543,7 @@ miles
 		<?php
 			   loadOptions("achievement_list.htm",@$x_achievement_food);
 		?>
-		</select>
-		</td>
+		</select>		</td>
 		</tr>
 		<tr>
 			<td><span>Labour Cost</span></td>
@@ -540,25 +553,24 @@ miles
 		<?php
 			   loadOptions("achievement_list.htm",@$x_achievement_labour);
 		?>
-		</select>
-		</td>	
+		</select>		</td>	
 		</tr>
 		<tr>
 			<td><span>Interests / Hobbies</span></td>
 			<td><span id="cb_x_interests">
-<input type="text" name="x_interests" id="x_interests" maxlength="255" value="<?php echo htmlspecialchars(@$x_interests) ?>">
+<input class = "detail" type="text" name="x_interests" id="x_interests" maxlength="255" value="<?php echo htmlspecialchars(@$x_interests) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Qualifications Held</span></td>
 			<td><span id="cb_x_qualifications">
-<input type="text" name="x_qualifications" id="x_qualifications" maxlength="255" value="<?php echo htmlspecialchars(@$x_qualifications) ?>">
+<input class = "detail" type="text" name="x_qualifications" id="x_qualifications" maxlength="255" value="<?php echo htmlspecialchars(@$x_qualifications) ?>">
 </span></td>
 		</tr>
 		<tr>
 			<td><span>Tell us about yourself: max 50 words</span></td>
 			<td><span id="cb_x_tell_us">
-<textarea cols="35" rows="4" id="x_tell_us" name="x_tell_us"><?php echo @$x_tell_us; ?></textarea>
+<textarea class = "detail" cols="35" rows="4" id="x_tell_us" name="x_tell_us"><?php echo @$x_tell_us; ?></textarea>
 </span></td>
 		</tr>
 		<tr>
@@ -568,8 +580,7 @@ miles
 		<?php
 			   loadOptions("notice_period_list.htm",@$x_notice);
 		?>
-		</select>
-		</td>	
+		</select>		</td>	
 		</tr>
 		<tr>
 			<td><span>Date created<span class='ewmsg'>&nbsp;*</span></span></td>
@@ -578,10 +589,14 @@ miles
 <input type="hidden" id="x_dt_created" name="x_dt_created" value="<?php echo FormatDateTime(@$x_dt_created,7); ?>">
 </span></td>
 		</tr>
+		<tr>
+		 <td>&nbsp;</td>
+		 <td><input type="submit" name="btnAction" id="btnAction" value="Submit">
+    <input type=button value="Cancel" onclick="window.location='account.php'"></td>
+		 </tr>
 	</table>
 	<p>
-	<input type="submit" name="btnAction" id="btnAction" value="Submit">
-    <input type=button value="Cancel" onclick="window.location='account.php'">
+	
 </form>
 <?php include ("bottom.php") ?>
 <?php

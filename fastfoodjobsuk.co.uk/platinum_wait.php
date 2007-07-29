@@ -7,71 +7,37 @@
 <link rel=stylesheet href="css/platinum.css" type="text/css">
 <table width="775" border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top" width="569">
-<table width="562" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="562" valign="top"><img src="images/spacer.gif" alt="" width="1" height="5" border="0"></td>
-</tr>
-<tr>
-<td valign="top">
-<table width="562" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td colspan="2"><span class="redbar">| </span><span class="heading">Advertising</span> <span class="redbar"><span>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span></span><span class="headingPlus"><span>Advertising Packages</span></span><span> </span><span class="redheadPlus"><span>for 2008</span></span><br>
-<br>
-<b>PLEASE NOTE:</b> All advertising for 2007 is FREE OF CHARGE &amp; WE NEVER CHARGE A Refferal FEE!<br>
-<br></td>
-</tr>
-<tr>
-<td width="168"><a href="platinum_wait.php"><img src="images/ads_22.jpg" alt="" width="162"  border="0" /></a></td>
-<td width="380" valign="top" class="contact"><span class="redhead">Platinum*	<br>
-</span>Company Logo On <b>All pages*</b> including Home Page<br>
-
-linked to your Personal Company web page including<br>
-
-2 images,  logo, contact details, web site and e-mail links. <b>NO REFFERAL FEE &#150; NO COMPLICATED FORMS.</b></td>
-</tr>
-<tr>
-<td width="168"><a href="gold_membership_form.php"><img src="images/ads_33.jpg" alt="" width="162"  border="0"></a></td>
-<td class="contact" valign="top"><span class="redhead">Gold	- UK Franchises<br>
-</span>
-Company logo linked to your web site with 45 character’s including spaces, plus periodical spotlight feature from our home page.</td>
-</tr>
-<tr>
-<td width="168"><a href="classified_form.php"><img src="images/ads_34.jpg" alt="" width="162"  border="0"></a></td>
-<td class="contact" valign="top"><span class="redhead">Classified	<br>
-</span>Home Page - Classified Text advert (max 4 companies)<br>
-
-20 characters heading and 50 characters word text (max) linked to your web site.</td>
-</tr>
-<tr>
-<td width="168"><a href="job_post.php"><img src="images/ads_35.jpg" alt="" width="162"  border="0"></a></td>
-<td class="contact" valign="top"><span class="redhead">Recruitment<br>
-</span><b>Monthly</b> Single Job Advert<br></td>
-</tr>
-<tr>
-<td width="168"><a href="supplier_form.php"><img src="images/ads_36.jpg" alt="" width="162"  border="0"></a></td>
-<td class="contact" valign="top"><span class="redhead">Suppliers<br>
-</span>Company Logo linked to your web site with 25 words <br>
-
-including spaces, plus featured article page. <b>Including<br>
-
-periodical spotlight feature on the home page.</b></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td></td>
-</tr>
-</table>
-</td>
+<td valign="top" width="569"><table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="551"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="551"><div class="roundcontadmin">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Platinum Membership</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div>
+    <br />
+   <table class = "newstable">
+    <tr>
+     <td width="520" valign="top">
+       
+        Due to the unique nature of this package and in order for us to best tailor an ad to meet your requirements please contact us:
+      <p>Tel: 0845 644 8252</p>
+     <p><a href="mailto:Advertising@fastfoodjobsuk.co.uk">Advertising@fastfoodjobsuk.co.uk</a><br />
+      <br /><a class="contact" href="javascript:history.go(-1);">&laquo; back</a>
+     </p>
+     <hr class = "newsbreaker" /></td>
+    </tr>
+   </table>
+   <p style = "padding-left:5px; margin:0px;">&nbsp;</p></td>
+ </tr>
+ <tr>
+  <td></td>
+ </tr>
+</table></td>
 <td width="206" valign="top"><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<table border="0" cellspacing="0" cellpadding="0">
+ <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td><img src="images/rightfix_17.gif" alt="" width="6" height="12" border="0"></td>
 <td width="170"><img src="images/rightfix_18.gif" alt="" width="190" height="12" border="0"></td>

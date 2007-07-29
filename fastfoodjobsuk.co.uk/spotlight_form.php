@@ -118,27 +118,36 @@ require("top.php");
 	}
 -->
 </script>
-
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Spotlight Advertisement</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logos should be 153 wide by 104 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
+    <br />
+Complete the information required - information can always be modified later.</p>
+  </td>
+ </tr>
+ <tr>
+  <td></td>
+ </tr>
+</table>
 <form action="spotlight_form.php"  method="POST" enctype="multipart/form-data">
 <input type=hidden name="submitting" value="true">
 <input type=hidden name="membershipid" value="<?php echo $member->membershipId; ?>">
 <input type=hidden name="type" value="<?php echo $member->spotlight_type; ?>">
-<table border="0" cellspacing="0" cellpadding="0">
- <tr>
-  <td valign="top" width="463"><img src="images/spacer.gif" alt="" width="1" height="5" border="0" /> </td>
- </tr>
- <tr>
-  <td valign="top" width="463"><span class="redbar">| </span><span class="heading">Spotlight Advertisment </span> <span class="redbar">|</span><br />
-    <br />
-    <p style = "padding-left:5px; margin:0px;">Please begin by creating your advertisement. Your logos should be 153 wide by 104 high and be in gif or jpeg format. Logos with a canvas area different from the above will result in a squashed or distorted advertisement.<br />
-      <br />
-     Complete the information required - information can always be modified later.</p></td>
- </tr>
- <tr>
-  <td><hr noshade="noshade" size="1" />
-  </td>
- </tr>
-</table>
 <table id="table_create">
   <tr>
     <td colspan=2 id="cell_error_text">

@@ -2,19 +2,34 @@
 require("common_super.php");
 require("top.php");
 ?>
-
-<P>
-  Delete User
-</p>
-
-<P>
-  User successfully deleted
-</p>
-
-<P>
-  Back to <a href="admin_account.php">account</a>
-</p>
-
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Delete User</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+   <p style = "padding-left:5px; margin:0px;"> User successfully deleted </p>
+    <p style = "padding-left:5px; margin:0px;"> Back to <a href="admin_account.php" class = "news">account</a><br />
+     <br />
+    </p>
+  </td>
+ </tr>
+ <tr>
+  <td></td>
+ </tr>
+</table>
 <?php
 require("bottom.php");
 ?>
