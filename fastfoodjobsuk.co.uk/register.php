@@ -153,7 +153,7 @@ if (isset($_POST["register"])){
     </div></td>
    </tr>
   </table>
-  <table class = "registerTable">
+  <table class = "uploadform">
     <tr>
       <td>
   </td>
@@ -170,7 +170,7 @@ if (isset($_POST["register"])){
         First Name:
       </td>
       <td>
-        <input type="text" name="firstName" value="<?php echo (isset($_POST["firstName"]) ? $_POST["firstName"] : ""); ?>">
+        <input class = "detail" type="text" name="firstName" value="<?php echo (isset($_POST["firstName"]) ? $_POST["firstName"] : ""); ?>">
       </td>
     </tr>
     <tr>
@@ -178,7 +178,7 @@ if (isset($_POST["register"])){
         Last Name:
       </td>
       <td>
-        <input type="text" name="lastName" value="<?php echo (isset($_POST["lastName"]) ? $_POST["lastName"] : ""); ?>">
+        <input class = "detail" type="text" name="lastName" value="<?php echo (isset($_POST["lastName"]) ? $_POST["lastName"] : ""); ?>">
       </td>
     </tr>
     <tr>
@@ -186,7 +186,7 @@ if (isset($_POST["register"])){
         Email Address:
       </td>
       <td>
-        <input type="text" name="email" value="<?php echo (isset($_POST["email"]) ? $_POST["email"] : ""); ?>">
+        <input class = "detail" type="text" name="email" value="<?php echo (isset($_POST["email"]) ? $_POST["email"] : ""); ?>">
       </td>
     </tr>
     <?php
@@ -197,7 +197,7 @@ if (isset($_POST["register"])){
             Address 1:
           </td>
           <td>
-            <input type="text" name="address1" value="<?php echo (isset($_POST["address1"]) ? $_POST["address1"] : ""); ?>">
+            <input class = "detail" type="text" name="address1" value="<?php echo (isset($_POST["address1"]) ? $_POST["address1"] : ""); ?>">
           </td>
         </tr>
         <tr>
@@ -205,7 +205,7 @@ if (isset($_POST["register"])){
             Address 2:
           </td>
           <td>
-            <input type="text" name="address2" value="<?php echo (isset($_POST["address2"]) ? $_POST["address2"] : ""); ?>">
+            <input class = "detail" type="text" name="address2" value="<?php echo (isset($_POST["address2"]) ? $_POST["address2"] : ""); ?>">
           </td>
         </tr>
         <tr>
@@ -213,7 +213,7 @@ if (isset($_POST["register"])){
             Address 3:
           </td>
           <td>
-            <input type="text" name="address3" value="<?php echo (isset($_POST["address3"]) ? $_POST["address3"] : ""); ?>">
+            <input class = "detail" type="text" name="address3" value="<?php echo (isset($_POST["address3"]) ? $_POST["address3"] : ""); ?>">
           </td>
         </tr>
         <tr>
@@ -221,7 +221,7 @@ if (isset($_POST["register"])){
             Post Code:
           </td>
           <td>
-            <input type="text" name="postcode" value="<?php echo (isset($_POST["postCode"]) ? $_POST["postCode"] : ""); ?>">
+            <input class = "detail" type="text" name="postcode" value="<?php echo (isset($_POST["postCode"]) ? $_POST["postCode"] : ""); ?>">
           </td>
         </tr>
         <tr>
@@ -229,7 +229,7 @@ if (isset($_POST["register"])){
             Telephone:
           </td>
           <td>
-            <input type="text" name="telephone" value="<?php echo (isset($_POST["telephone"]) ? $_POST["telephone"] : ""); ?>">
+            <input class = "detail" type="text" name="telephone" value="<?php echo (isset($_POST["telephone"]) ? $_POST["telephone"] : ""); ?>">
           </td>
         </tr>
         <tr>
@@ -237,7 +237,7 @@ if (isset($_POST["register"])){
             Facsimile:
           </td>
           <td>
-            <input type="text" name="fax" value="<?php echo (isset($_POST["fax"]) ? $_POST["fax"] : ""); ?>">
+            <input class = "detail" type="text" name="fax" value="<?php echo (isset($_POST["fax"]) ? $_POST["fax"] : ""); ?>">
           </td>
         </tr>
       <?php
@@ -249,7 +249,7 @@ if (isset($_POST["register"])){
             <br />
             (minimum length 6)</td>
       <td>
-        <input type="password" name="password" value="">
+        <input class = "detail" type="password" name="password" value="">
       </td>
     </tr>
     <TR>

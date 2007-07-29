@@ -93,7 +93,29 @@ return true;
 
 //-->
 </script>
- <h2 style = "margin-left:5px;">Update your job post </h2>
+ <table width="459" border="0" cellspacing="0" cellpadding="0" >
+  <tr>
+   <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+  </tr>
+  <tr>
+   <td><div class="roundcont">
+     <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+    <h1>Update your Job Post</h1>
+    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+   </div></td>
+  </tr>
+ </table>
+ <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+   <td valign="top" width="445"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  </tr>
+  <tr>
+   <td valign="top" width="445"></p></td>
+  </tr>
+  <tr>
+   <td></td>
+  </tr>
+ </table>
  <form name="fjobadd" id="fjobadd" action="jobedit.php" method="post" onsubmit="return EW_checkMyForm(this);" style= "margin:5px;">
 <p>
 <input type="hidden" name="a_edit" value="U">

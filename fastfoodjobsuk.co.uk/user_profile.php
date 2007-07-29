@@ -1,6 +1,7 @@
 <?php
 require("common_user.php");
-$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
+//$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
+$adminUr = "account.php";
 if ((bool)$_POST["submitting"]){
   
   $db=new DatabaseConnection();

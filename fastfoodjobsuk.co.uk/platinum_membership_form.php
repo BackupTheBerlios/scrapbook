@@ -66,7 +66,7 @@ if ((bool)$_POST["submitting"])
 	if (($result=validate($member->tel,"phonenumber",40))!==true){
 		$errorText.="<li>The telephone number is $result";
 	}
-	if (($result=validate($member->fax,"phonenumber",40))!==true){
+	if (($member->fax!="" && $result=validate($member->fax,"phonenumber",40))!==true){
 		$errorText.="<li>The fax number is $result";
 	}
 	if (($result=validate($member->email,"email",255))!==true){

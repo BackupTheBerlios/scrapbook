@@ -16,10 +16,10 @@ require("top.php");
 </table>
 <table border="0" cellspacing="0" cellpadding="0">
  <tr>
-  <td valign="top" width="463"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+  <td valign="top" width="454"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
  </tr>
  <tr>
-  <td valign="top" width="463"><p style = "padding-left:5px; margin:0px;">Thank you. Your franchise advertisement has been saved.</p>
+  <td valign="top" width="454"><p style = "padding-left:5px; margin:0px;">Thank you. Your franchise advertisement has been saved.</p>
     <p> <a href="account.php" class = "news">Click here</a> to return to your account. </p>
   </td>
  </tr>

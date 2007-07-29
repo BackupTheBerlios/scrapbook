@@ -51,7 +51,7 @@ require("top.php");
        <script type="text/javascript" src="webticker_lib.js"></script></td>
       <td width="10" rowspan="2"><img src="images/spacer.gif" alt="" width="1" height="119" /></td>
       <td width="201" valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       <DIV ID="TICKER" STYLE="overflow:hidden; width:180px">
+       <DIV ID="TICKER2" STYLE="overflow:hidden; width:180px">
      New regional franchise available throughout the </DIV>
 				</td>
      </tr>
