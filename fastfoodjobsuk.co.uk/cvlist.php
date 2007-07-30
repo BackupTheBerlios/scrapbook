@@ -536,7 +536,7 @@ $x_can_relocate = $sTmp;
 			</tr>
 			<tr>
 				<td><span>
-	Tell us about yourself: max 50 words<?php if (@$_SESSION[ewSessionTblSort . "_x_tell_us"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_tell_us"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
+	Tell us about yourself<?php if (@$_SESSION[ewSessionTblSort . "_x_tell_us"] == "ASC") { ?><img src="images/sortup.gif" width="10" height="9" border="0"><?php } elseif (@$_SESSION[ewSessionTblSort . "_x_tell_us"] == "DESC") { ?><img src="images/sortdown.gif" width="10" height="9" border="0"><?php } ?>
 				</span></td>
 				<td><span>
 <?php echo str_replace(chr(10), "<br>", $x_tell_us); ?>

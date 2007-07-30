@@ -138,9 +138,34 @@ if ($nDisplayRecs <= 0) { // Display all records
 $nStartRec = 1;
 SetUpStartRec(); // Set up start record position
 ?>
-<p>Job List<br />
-    <br />
-<a href="job_search.php">Back to Search</a></p>
+<table width="459" border="0" cellspacing="0" cellpadding="0" >
+ <tr>
+  <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
+ </tr>
+ <tr>
+  <td><div class="roundcont">
+   <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
+   <h1>Search Results</h1>
+   <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
+  </div></td>
+ </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
+ </tr>
+ <tr>
+  <td valign="top" width="455">
+    <form id="fcvlistsrch" name="fcvlistsrch" action="cvlist.php" style = "margin:0px;">
+     <table class="ewBasicSearch">
+      <tr>
+       <td width="219"><span> <a class = "news" href="job_search.php">Back to Search</a> </span></td>
+      </tr>
+     </table>
+    </form>
+   </p></td>
+ </tr>
+</table>
 <?php
 if (@$_SESSION[ewSessionMessage] <> "") {
 ?>
@@ -149,8 +174,8 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	$_SESSION[ewSessionMessage] = ""; // Clear message
 }
 ?>
-<form action="joblist.php" name="ewpagerform" id="ewpagerform">
-<table>
+<form action="joblist.php" name="ewpagerform" id="ewpagerform"  style = "margin:0px;">
+<table class = "job">
 	<tr>
 		<td nowrap>
             <?php
@@ -246,8 +271,9 @@ if ($nTotalRecs > 0) {
 </table>
 </form>
 <?php if ($nTotalRecs > 0)  { ?>
+<br />
 <form method="post">
-<table>
+<table cellspacing="0" cellpadding="0" c>
     <?php
 
 // Set the last record to display
@@ -292,51 +318,54 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 		<td valign="top"><!--<?php echo $sItemRowClass; ?>-->
 		<table class = "job">
 			<tr>
-			<td valign="top"><span style="font-weight: bold">
-        	Position
+			<td width="191" valign="top">
+        	Position:
                 <?php if (@$_SESSION[ewSessionTblSort . "_x_position"] == "ASC") { ?>
                 <img src="images/sortup.gif" width="10" height="9" border="0">
                 <?php } elseif (@$_SESSION[ewSessionTblSort . "_x_position"] == "DESC") { ?>
                 <img src="images/sortdown.gif" width="10" height="9" border="0">        
                 <?php } ?>    
-                </span></td>
-			<td><?php echo $x_position; ?></td>
+               </td>
+			<td width="217"><span><?php echo $x_position; ?></span></td>
 			</tr>
 			<tr>			
 			<td valign="top">
-				<span style="font-weight: bold">Yearly salary</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
+				Yearly salary:</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
 						<img src="images/sortup.gif" width="10" height="9" border="0">
 						<?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
 						<img src="images/sortdown.gif" width="10" height="9" border="0">        
-						<?php } ?>                </td>
-			<td>&pound;<?php echo $x_salary; ?></td>
+						<?php } ?>  </td>
+			<td><span>&pound;<?php echo $x_salary; ?></span></td>
 			</tr>
 			<tr>					
-			<td valign="top"><span style="font-weight: bold">
-				Location
+			<td valign="top">
+				Location:
 						<?php if (@$_SESSION[ewSessionTblSort . "_x_location"] == "ASC") { ?>
 						<img src="images/sortup.gif" width="10" height="9" border="0">
 						<?php } elseif (@$_SESSION[ewSessionTblSort . "_x_location"] == "DESC") { ?>
 						<img src="images/sortdown.gif" width="10" height="9" border="0">        
 						<?php } ?>    
-						</span></td>
-			<td><?php echo $x_location; ?></td>
+						</td>
+			<td><span><?php echo $x_location; ?></span></td>
 			</tr>
 			<tr>				
-						   <td valign="top"><span style="font-weight: bold">Date posted</span></td>
-			<td><?php echo FormatDateTime($x_dt_created,7); ?></td>
+						   <td valign="top">Date posted</span></td>
+			<td><span><?php echo FormatDateTime($x_dt_created,7); ?></span></td>
 			</tr>
-			</table>
-			<br />
-			<?php if ($x_link <> "") {
+			<tr>
+			 <td align="right" valign="top" ></td><td><?php if ($x_link <> "") {
 					$ahref="<a class = 'news'  href='$x_link' target='_external'>View Detail</a>";
 				  } else {
 					 $ahref="<a class = 'news'  href='jobview.php?jobid=".urlencode($x_jobid)."'>View Detail</a>"; 
 				  }	
-			?>
-			<span>
-				<b><?php echo $ahref; ?> </b>
-			</span>
+			?>	<span aligh = "right">
+			<?php echo $ahref; ?> 
+			</span></td>
+			 </tr>
+			</table>
+			<br />
+	
+		
 		</td>	
 	</tr>		
     <?php

@@ -11,14 +11,37 @@ border-bottom: #666666 dotted 1px;
 }
 table.job{
 border: #666666 dotted 1px;background-color:#E8E8E8;
+margin-left:5px;
+width:420px;
 }
+table.job td{
+font-size:9px;
+font-weight:bold;
+}
+
 table.uploadform{
 border: #666666 dotted 1px;background-color:#E8E8E8;
 margin-left:5px;
+width:450px;
 }
 .uploadform .detail {
 width:280px;
 }
+table.uploadformadmin{
+border: #666666 dotted 1px;background-color:#E8E8E8;
+margin-left:5px;
+width:750px;
+}
+.uploadformadmin .detail {
+width:280px;
+}
+
+.job span{
+font-weight:normal;
+
+}
+
+
 .job .detail {
 width:280px;
 }
@@ -237,6 +260,13 @@ text-align::left;
 	border:2px;
 	line-height:16px;
 }
+#cell_error_text{
+color:red;
+	font-size:14px;
+	border:2px;
+	line-height:16px;
+}
+
 .registerTable{
 font-family:Verdana, Arial, Helvetica, sans-serif;
 font-size:12px;

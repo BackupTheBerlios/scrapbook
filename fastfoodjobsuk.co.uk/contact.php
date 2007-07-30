@@ -44,7 +44,7 @@ img.left {margin-right: 10px; margin-bottom: 10px }
   <td class="height2"><table width="398" border="0" cellspacing="0" cellpadding="0">
    <tr>
     <td align="right" valign="top" width="46"><img src="images/phone.gif" alt="mid" width="32" height="21" border="0" /></td>
-    <td class="contact"><span class="heading">0845 644 8252&nbsp;Mobile 07877 620 689<br />
+    <td class="contact"><span class="heading">0845 644 8252<br />
      </span><br />
      <b>General inquiries</b> <a class="contact" href="mailto:info@fastfoodjobsuk.co.uk">info@fastfoodjobs.co.uk</a><br />
      <br />
@@ -59,7 +59,7 @@ img.left {margin-right: 10px; margin-bottom: 10px }
   <td><img src="images/mid_222.gif" alt="mid" width="457" height="116" usemap="#mid_222c28396bb" border="0" />
  <map name="mid_222c28396bb" id="mid_222c28396bb2">
      <area shape="rect" coords="339,137,441,187" href="http://www.lanbury.com/" alt="" target="_blank" />
-     <area shape="rect" coords="231,132,328,184" href="http://www.thebfa.org/" alt="" target="_blank" />
+     <area shape="rect" coords="231,132,328,184" href="http:/www.franchiseek.com/" alt="" target="_blank" />
      <area shape="rect" coords="125,132,214,187" href="http://www.rbs.co.uk/Small_Business/Specialist_Sectors/Franchising" alt="" target="_blank" />
      <area shape="rect" coords="21,130,113,182" href="http://www.thomaseggar.com/" alt="" target="_blank" />
     </map></td>

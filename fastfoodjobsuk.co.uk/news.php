@@ -11,6 +11,8 @@ echo "<table class=\"newstable\">";
 foreach ($newsList as $newsObject){
   echo "<TR><TD class=\"cell_heading\">";
   echo $newsObject->heading;
+  echo "<br>";
+  echo FormatDateTime($newsObject->dt_created,7);
   echo "</td></tr>";
   echo "<TR><TD class=\"cell_description\">";
   echo $newsObject->description;

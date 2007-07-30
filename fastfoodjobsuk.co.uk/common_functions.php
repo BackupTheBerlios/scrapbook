@@ -236,9 +236,9 @@ function super_generate($title,$user,$object){
   
   if (count($results)>0||isSuperUser(false)) {
     $class=strtolower(get_class($object));
-	echo $title." Admin";
 
-  echo "  - <a href='".$class."_form.php'>create new</a>";
+	echo "<span class='adminrowheader'>$title Admin</span>";
+	echo "  - <a href='".$class."_form.php' class='newslarge'>create new</a>";
 
   	echo "<div class=\"spacer\"></div>";
     echo "<table class=\"table\">";
@@ -366,8 +366,9 @@ function generate($title,$user,$object){
   
   if (count($results)>0||isSuperUser(false)) {
     $class=strtolower(get_class($object));
-	echo $title." Admin";
-	echo "  - <a href='".$class."_form.php'>create new</a>";
+	echo "<span class='adminrowheader'>$title Admin</span>";
+	echo "  - <a href='".$class."_form.php' class='newslarge'>create new</a>";
+
   	echo "<div class=\"spacer\"></div>";
     echo "<table class=\"table\">";
 	  if (count($results)==0){

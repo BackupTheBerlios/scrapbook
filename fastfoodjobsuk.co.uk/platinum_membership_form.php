@@ -33,7 +33,7 @@ if ((bool)$_POST["submitting"])
 	$member->heading=$_POST["heading"];
 	$member->text=$_POST["text"];
 	$member->name=$_POST["name"];
-	$member->address=str_replace("<br>", "\n", $_POST["address"]); 
+	$member->address=$_POST["address"]; 
 	$member->tel=$_POST["tel"];
 	$member->fax=$_POST["fax"];
 	$member->email=$_POST["email"];
@@ -83,7 +83,6 @@ if ((bool)$_POST["submitting"])
     	if (!file_exists("logos")){
       		mkdir("logos");
     	}
-      $member->address=str_replace("\n","<br>",$member->address);
     	$member->Save();
     	header("Location: platinum_membership_success.php");
   	} else { // in error
@@ -98,7 +97,7 @@ require("top.php");
 <!--
 	window.onload = function()
 	{
-		var oFCKeditor = new FCKeditor('text', 360, 500);
+		var oFCKeditor = new FCKeditor('text', 350, 500);
 		oFCKeditor.BasePath = "fckeditor/";
 		oFCKeditor.ToolbarSet = "MySets" ;
 		oFCKeditor.ReplaceTextarea();
@@ -231,9 +230,7 @@ require("top.php");
     <td valign="top">
       Address:    </td>
  <td>
-      <textarea class = "detail" name="address" rows="4" id="address"><?php
-        echo str_replace("<BR>","\n",$member->address);
-      ?></textarea>
+      <textarea class = "detail" name="address" rows="4" id="address"><?php echo $member->address ;?></textarea>
 
     </td>
   </tr>

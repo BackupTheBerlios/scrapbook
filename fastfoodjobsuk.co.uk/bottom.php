@@ -23,7 +23,7 @@
 								</a> 
 								</div>
 								<div id = "addresstext">
-								<?php echo $member->address; ?>
+								<?php echo str_replace("\n","<br>",$member->address); ?>
 								</div>
 								<div>
 								Tel: 
@@ -75,10 +75,10 @@
             </table>
 			<table width="807" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="208"><a class="bottomNav" href="javascript:void(window.open('terms.html'));">Term &amp; Conditions</a> | <a class="bottomNav" href="javascript:void(window.open('privacy.html'));">Privacy Policy</a></td>
-                <td width="19"></td>
-                <td align="right"><p class="copyright">Copyright &copy; 2007 Fast Food Jobs UK.co.uk. All rights reserved. Designed by <a href="http://www.highlevelmedia.co.uk" target="_blank">www.highlevelmedia.co.uk</a></p></td>
-              </tr>
+                <td width="182"><a class="bottomNav" href="javascript:void(window.open('terms.html'));">Term &amp; Conditions</a> | <a class="bottomNav" href="javascript:void(window.open('privacy.html'));">Privacy Policy</a></td>
+               <td width="3"></td>
+               <td width="622" align="right"><p class="copyright">Copyright &copy; 2007 TTP Enterprises Ltd trading as Fast Food Jobs UK. All rights reserved. Designed by <a href="http://www.highlevelmedia.co.uk" target="_blank">www.highlevelmedia.co.uk</a></p></td>
+    </tr>
             </table>
 			<br>
 	</div>

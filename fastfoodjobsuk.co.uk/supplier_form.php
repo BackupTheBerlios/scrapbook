@@ -51,7 +51,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($supplier->link,"",255))!==true){
     $errorText.="<li>Website link is $result";
   }
-  if (($result=validate($supplier->tel,"phonenumber",255))!==true){
+  if ($supplier->tel!="" && ($result=validate($supplier->tel,"phonenumber",255))!==true){
     $errorText.="<li>Telephone number is $result";
   }
 

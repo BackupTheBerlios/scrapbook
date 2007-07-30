@@ -157,9 +157,8 @@ function generateJobLink($user){
   {
 
 	 echo "<br/>";
-     echo "Job Admin";
-
-    echo "  - <a href='job_post.php'>create new</a>";
+     echo "<span class='adminrowheader'>Job Admin</span>";
+     echo "  - <a href='job_post.php' class='newslarge'>create new</a>";
 
 	echo "<div class=\"spacer\"></div>";
 	 echo "<table class=\"table\">";  	 
