@@ -1,7 +1,7 @@
 <?php
 require("common_user.php");
 //$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
-$adminUr = "account.php";
+$adminUrl = "account.php";
 if ((bool)$_POST["submitting"]){
   $errorText="";
   $new_password=$_POST["new_password"];

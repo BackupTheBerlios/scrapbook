@@ -70,7 +70,8 @@ switch ($sAction)
  <tr>
   <td valign="top" width="434"  style = "padding-left:5px;">
     <a href="joblist.php" class = "news">Back to List</a>
-</td>
+    <br />
+    <br /></td>
  </tr>
  <tr>
   <td></td>
@@ -78,69 +79,65 @@ switch ($sAction)
 </table>
 
 <form>
-<table class = "job">
+<table bgcolor="#FFFFFF" class = "job">
 	
     <?php if (isSuperUser(false)){ ?> 
   	<tr>
-	    <td><span style="font-weight: bold">Job Id</span></td>
-		 <td><?php echo $x_jobid; ?></td>
+	    <td width="206"><span style="font-weight: bold">Job Id</span></td>
+		 <td width="202"><span><?php echo $x_jobid; ?></span></td>
 	 </tr>
     <?php } ?>
 	<tr>
-	    <td><span style="font-weight: bold">Position</span></td>
-		    <td>
-    <?php echo $x_position; ?>
-     </td>
-	    </tr>
+	    <td colspan="2" bgcolor="#E3E3E3">
+      <h2><?php echo $x_position; ?></h2></td>
+		    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Yearly Salary</span></td>
-		    <td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Yearly Salary</span></td>
+		    <td bgcolor="#FFFFFF">
             &pound;<?php echo $x_salary; ?>            </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Bonus</span></td>
-		    <td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Bonus</span></td>
+		    <td bgcolor="#FFFFFF">
             <?php echo $x_bonus; ?>  </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Benefits</span></td>
-		    <td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Benefits</span></td>
+		    <td bgcolor="#FFFFFF">
             <?php echo $x_benifits; ?>            </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Location</span></td>
-		    <td>
-    <?php echo $x_location; ?>
-	 </td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Location</span></td>
+		    <td bgcolor="#FFFFFF">
+    <?php echo $x_location; ?>	 </td>
 	    </tr>
 	<tr>
-        <td><span style="font-weight: bold">Date Posted</span></td>
-	    <td><?php echo FormatDateTime($x_dt_created,7); ?> </td>
+        <td bgcolor="#FFFFFF"><span style="font-weight: bold">Date Posted</span></td>
+	    <td bgcolor="#FFFFFF"><?php echo FormatDateTime($x_dt_created,7); ?> </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Recruiter / Company</span></td>
-		    <td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Recruiter / Company</span></td>
+		    <td bgcolor="#FFFFFF">
             <?php echo $x_company; ?>            </td>
 	    </tr>
 	<tr>
-	    <td><span style="font-weight: bold">Job description</span></td>
-		    <td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Job description</span></td>
+		    <td bgcolor="#FFFFFF">
             <?php echo str_replace(chr(10), "<br>", $x_profile); ?>            </td>
 	    </tr>
 		<tr>
-	    <td><span style="font-weight: bold">Contact detail</span></td>
-		    <td>
-             <a href="mailto:<?php echo $x_contact_email; ?>" class='newslarge'><?php echo $x_contact_email; ?></a> </td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Contact detail</span></td>
+		    <td bgcolor="#FFFFFF">
+            <!-- 
+            <a href="mailto:<?php echo $x_contact_email; ?>" class='newslarge'>--><?php echo $x_contact_email; ?><!--</a>--> </td>
 	    </tr>
         <?php if (isSuperUser(false)){ ?> 
 			<tr>
-	    		<td><span style="font-weight: bold">Expiry Date</span></td>
-                <td>
-                    <?php echo FormatDateTime($x_dt_expire,7); ?>            
-                </td>
+	    		<td bgcolor="#FFFFFF"><span style="font-weight: bold">Expiry Date</span></td>
+                <td bgcolor="#FFFFFF">
+                    <?php echo FormatDateTime($x_dt_expire,7); ?> </td>
 	    	</tr>
         <?php } ?>
-
 </table>
 </form>
 <p>

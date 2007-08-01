@@ -9,7 +9,7 @@
   	}
   	else
   	{
-  		echo "<a href=\"advertise.html\">";
+  		echo "<a href=\"advertise.php\">";
       	echo "<img src='logos/your_company_here.gif' width='153' height='104' border='0' class='platinumImages'></a>";
   	}
     

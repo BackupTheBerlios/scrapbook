@@ -45,7 +45,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($supplier->name,"",255))!==true){
     $errorText.="<li>Supplier name is $result";
   }
-  if (($result=validate($supplier->description,"",5000))!==true){
+  if (($result=validate($supplier->description,"",120))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($supplier->link,"",255))!==true){

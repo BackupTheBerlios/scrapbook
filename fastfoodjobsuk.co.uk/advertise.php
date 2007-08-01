@@ -34,14 +34,14 @@ linked to your Personal Company web page including<br>
 <td width="168"><a href="gold_membership_form.php"><img src="images/ads_33.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Gold	- UK Franchises<br>
 </span>
-Company logo linked to your web site with 45 character’s including spaces, plus periodical spotlight feature from our home page.</td>
+Company logo linked to your web site with 20 characters heading and 120 characters including spaces word text (max) linked to your web site.</td>
 </tr>
 <tr>
 <td width="168"><a href="classified_form.php"><img src="images/ads_34.jpg" alt="" width="162"  border="0"></a></td>
 <td class="contact" valign="top"><span class="redhead">Classified	<br>
 </span>Home Page - Classified Text advert (max 4 companies)<br>
 
-20 characters heading and 50 characters word text (max) linked to your web site.</td>
+20 characters heading and 120 characters including spaces word text (max) linked to your web site.</td>
 </tr>
 <tr>
 <td width="168"><a href="job_post.php"><img src="images/ads_35.jpg" alt="" width="162"  border="0"></a></td>
@@ -118,7 +118,7 @@ periodical spotlight feature on the home page.</b></td>
 </tr>
 <tr>
 <td background="images/rightfixblu_26.gif"><img src="images/rightfixblu_26.gif" alt="" width="6" height="5" border="0"></td>
-<td class="bluhead" bgcolor="#e0f0fa" width="180" style = "padding:5px;">Please <a href="#" class = "newslarge">click here</a> for 2008 price structure.</td>
+<td class="bluhead" bgcolor="#e0f0fa" width="180" style = "padding:5px;">Please <a href="AdvertisingPackagesNEW16-07-07.pdf" class = "newslarge">click here</a> for 2008 price structure.</td>
 <td background="images/rightfixblu_28.gif"><img src="images/rightfixblu_28.gif" alt="" width="10" height="5" border="0"></td>
 </tr>
 <tr>

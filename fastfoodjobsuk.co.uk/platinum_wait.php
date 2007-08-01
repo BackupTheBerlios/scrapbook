@@ -84,7 +84,7 @@
 </tr>
 <tr>
 <td background="images/rightfixblu_26.gif"><img src="images/rightfixblu_26.gif" alt="" width="6" height="5" border="0"></td>
-<td class="bluhead" bgcolor="#e0f0fa" width="180" style = "padding:5px;">Please <a href="#" class = "newslarge">click here</a> for 2008 price structure.</td>
+<td class="bluhead" bgcolor="#e0f0fa" width="180" style = "padding:5px;">Please <a href="AdvertisingPackagesNEW16-07-07.pdf" class = "newslarge">click here</a> for 2008 price structure.</td>
 <td background="images/rightfixblu_28.gif"><img src="images/rightfixblu_28.gif" alt="" width="10" height="5" border="0"></td>
 </tr>
 <tr>

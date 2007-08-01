@@ -42,7 +42,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($member->name,"",255))!==true){
     $errorText.="<li>Franchise name is $result";
   }
-  if (($result=validate($member->description,"",45))!==true){
+  if (($result=validate($member->description,"",120))!==true){
     $errorText.="<li>Description is $result";
   }
   if (($result=validate($member->link,"",255))!==true){

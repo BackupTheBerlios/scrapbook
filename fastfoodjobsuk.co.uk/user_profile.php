@@ -1,7 +1,7 @@
 <?php
 require("common_user.php");
 //$adminUrl = $user->isSuperAdmin()?"admin_account.php":"account.php";
-$adminUr = "account.php";
+$adminUrl = "account.php";
 if ((bool)$_POST["submitting"]){
   
   $db=new DatabaseConnection();
@@ -51,7 +51,7 @@ if ((bool)$_POST["submitting"]){
     } else {
       $_SESSION["onlineuser"]=$user;
       $user->Save();
-      header("Location: $adminUrl");
+	  header("Location: $adminUrl");
       exit;
     }
   }

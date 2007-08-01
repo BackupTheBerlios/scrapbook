@@ -119,6 +119,10 @@ return true;
 	  Financial Info:</h3></td>
 	 </tr>
 	<tr>
+	 <td >&nbsp;</td>
+	 <td class="backgroundBorderStriped">Please format the yearly salary without commas, spaces or characters a-z or A-Z</td>
+	 </tr>
+	<tr>
 		<td><span style="font-weight: bold">Yearly Salary </span>- GBP</td>
 		<td><input class = "detail" type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>"></td>
 	</tr>

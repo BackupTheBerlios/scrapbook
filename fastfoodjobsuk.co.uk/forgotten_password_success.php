@@ -20,8 +20,8 @@ require("top.php");
         <td valign="top" width="455"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
        </tr>
        <tr>
-        <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Please check your email account for your new password.</p>
-          <br /></td>
+        <td valign="top" width="455"><p style = "padding-left:5px; margin:0px;">Once you have received your new password in your e-mail account please copy and then click here to paste and log in. (here links to login page) </p>
+        <br /></td>
        </tr>
        <tr>
         <td></td>

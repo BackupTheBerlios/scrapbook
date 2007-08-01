@@ -150,7 +150,7 @@ return true;
   <tr>
    <td><div class="roundcont">
      <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
-    <h1>Create your Job Seeker Profile</h1>
+    <h1>Create your Job Seeker Profile (JSP)</h1>
     <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
    </div></td>
   </tr>
@@ -160,9 +160,14 @@ return true;
    <td valign="top" width="440"><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /> </td>
   </tr>
   <tr>
-   <td valign="top" width="440"><p style = "padding-left:5px; margin:0px;">Please NOTE none of your personal contact information or name ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you. <br />
-    <br />
-   </p></td>
+   <td valign="top" width="440"><p style = "padding-left:5px; margin:0px;; font-weight: bold">What is a Job seekers Profile?</p>
+    <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+    <p style = "padding-left:5px; margin:0px;">A Job Seekers Profile (JSP) is a new and unique way of matching employers and employees together. Unlike a traditional CV, a JSP shows the criteria clearly defined for which an employer seeks.</p>
+    <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+    <p style = "padding-left:5px; margin:0px;">A JSP does not replace a CV, but fast tracks employment opportunities by communicating clearly the applicant&rsquo;s suitability. ?? </p>
+    <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+    <p style = "padding-left:5px; margin:0px;">Please NOTE none of your personal contact information or name ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you. <br />
+    </p></td>
   </tr>
   <tr>
    <td></td>

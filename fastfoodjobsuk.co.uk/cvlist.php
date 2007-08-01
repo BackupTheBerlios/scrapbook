@@ -548,10 +548,15 @@ $x_can_relocate = $sTmp;
 				</span></td>
 				<td><span><?php echo getOptionLabel("notice_period_list.htm",@$x_notice); ?></span></td>
 			</tr>
+			<tr>
+			 <td colspan="2"><br />
+			<b><a class = "news" href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>  <br />
+			<br /></td>
+			 </tr>
 		</table>
 		<br />
 <span>
-	<b><a class = "news" href="<?php if ($x_cvid <> "") {echo "cv_contact.php?cvid=" . urlencode($x_cvid); } else { echo "javascript:alert('Invalid Record! Key is null');";} ?>">Send an email to this job seeker</a></b>
+	
 </span>
 		</td>
 <?php if ((($nRecActual % $nRecPerRow) == 0) || ($nRecPerRow < 2)) { ?>  

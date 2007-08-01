@@ -113,7 +113,7 @@ return true;
  <tr>
   <td><div class="roundcont">
    <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
-   <h1>Search for a Position</h1>
+   <h1>Job Search</h1>
    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
   </div></td>
  </tr>

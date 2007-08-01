@@ -6,13 +6,12 @@ require("news_fixed.html");
 $news=new News();
 $newsList=$news->GetList(array(array("live")),"dt_created",false);
 
-echo "<table class=\"newstable\">";
+echo "<table>";
 
 foreach ($newsList as $newsObject){
-  echo "<TR><TD class=\"cell_heading\">";
-  echo $newsObject->heading;
-  echo "<br>";
-  echo FormatDateTime($newsObject->dt_created,7);
+  echo "<TR><TD>";
+  echo "<table width = '100' align = 'right' cellpadding = '0' cellspacing = '0'><tr><td align = 'right'>".FormatDateTime($newsObject->dt_created,7)."</td></tr></table>";
+  echo "<b>".$newsObject->heading."</b>";
   echo "</td></tr>";
   echo "<TR><TD class=\"cell_description\">";
   echo $newsObject->description;

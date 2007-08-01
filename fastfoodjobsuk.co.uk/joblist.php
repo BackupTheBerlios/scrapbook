@@ -77,7 +77,7 @@ $toDay = date("Y-m-d");
 $sDbWhere .= "(dt_expire>'$toDay')";
 
 // Set up sorting order
-$sOrderBy = "";
+$sOrderBy = "`dt_created` DESC";
 
 $sSql = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sDbWhere, $sOrderBy);
 
