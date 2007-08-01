@@ -166,7 +166,8 @@ function getAllObjects($instance, $sortBy='', $ascending=true, $limit='')
 //expires in $numberOfYears
 function expiryYear($numberOfYears=1)
 {
-    $future = mktime(23,59,59,date("m"),date("d"),date("Y")+$numberOfYears);
+    //$future = mktime(23,59,59,date("m"),date("d"),date("Y")+$numberOfYears);
+	$future = mktime(0,0,0,1,1,2008);
 	return date("Y-m-d", $future);
 }
 
@@ -174,7 +175,8 @@ function expiryYear($numberOfYears=1)
 function expiryDate($numberOfDays=30)
 {
 	//$future=((int)date("U"))+(86400*$numberOfDays);
-    $future = mktime(23,59,59,date("m"),date("d")+$numberOfDays,date("Y"));
+    //$future = mktime(23,59,59,date("m"),date("d")+$numberOfDays,date("Y"));
+	$future = mktime(0,0,0,1,1,2008);
 	return date("Y-m-d", $future);
 }
 
@@ -367,7 +369,10 @@ function generate($title,$user,$object){
   if (count($results)>0||isSuperUser(false)) {
     $class=strtolower(get_class($object));
 	echo "<span class='adminrowheader'>$title Admin</span>";
-	echo "  - <a href='".$class."_form.php' class='newslarge'>create new</a>";
+	if ($class!="platinum_membership"||isSuperUser(false))
+	{
+		echo "  - <a href='".$class."_form.php' class='newslarge'>create new</a>";
+	}
 
   	echo "<div class=\"spacer\"></div>";
     echo "<table class=\"table\">";

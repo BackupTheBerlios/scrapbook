@@ -93,10 +93,6 @@ EW_dateSep = "/"; // set date separator
 <script type="text/javascript">
 <!--
 function EW_checkMyForm2(EW_this) {
-if (EW_this.x_salary && !EW_checkinteger(EW_this.x_salary.value)) {
-	if (!EW_onError(EW_this, EW_this.x_salary, "TEXT", "Incorrect integer - salary"))
-		return false; 
-}
 	for (var i=0;i<EW_this.elements.length;i++) {
 		var elem = EW_this.elements[i];
 		if (elem.name.substring(0,2) == "s_" || elem.name.substring(0,3) == "sv_")
@@ -330,12 +326,9 @@ while (($row = @phpmkr_fetch_array($rs)) && ($nRecCount < $nStopRec)) {
 			</tr>
 			<tr>			
 			<td valign="top">
-				Yearly salary:</span><?php if (@$_SESSION[ewSessionTblSort . "_x_salary"] == "ASC") { ?>
-						<img src="images/sortup.gif" width="10" height="9" border="0">
-						<?php } elseif (@$_SESSION[ewSessionTblSort . "_x_salary"] == "DESC") { ?>
-						<img src="images/sortdown.gif" width="10" height="9" border="0">        
-						<?php } ?>  </td>
-			<td><span>&pound;<?php echo $x_salary; ?></span></td>
+				Salary:
+			</td>
+			<td><span><?php echo $x_bonus; ?></span></td>
 			</tr>
 			<tr>					
 			<td valign="top">
@@ -444,13 +437,16 @@ function SetUpAdvancedSearch()
 	// Field salary
 	$sSrchStr = "";
 		$GLOBALS["x_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["x_salary"]) : @$_GET["x_salary"];
-	$GLOBALS["z_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["z_salary"]) : @$_GET["z_salary"];
-		$GLOBALS["y_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["y_salary"]) : @$_GET["y_salary"];
-	$GLOBALS["w_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["w_salary"]) : @$_GET["w_salary"];
+		$GLOBALS["z_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["z_salary"]) : @$_GET["z_salary"];
+		//$GLOBALS["y_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["y_salary"]) : @$_GET["y_salary"];
+	//$GLOBALS["w_salary"] = (get_magic_quotes_gpc()) ? stripslashes(@$_GET["w_salary"]) : @$_GET["w_salary"];
 	$arrFldOpr = split(",", $GLOBALS["z_salary"]);
-	if ($GLOBALS["x_salary"] <> "" And is_numeric($GLOBALS["x_salary"]) And $GLOBALS["y_salary"] <> "" And is_numeric($GLOBALS["y_salary"]) And isValidOpr($arrFldOpr)) {
-		$sSrchStr .= "`salary` BETWEEN " . @$arrFldOpr[1] . AdjustSql($GLOBALS["x_salary"]) . @$arrFldOpr[2] . " AND " . @$arrFldOpr[1] . AdjustSql($GLOBALS["y_salary"]) . @$arrFldOpr[2] ;
-	}
+	if ($GLOBALS["x_salary"] <> "" And isValidOpr($arrFldOpr)) {
+		$sSrchStr .= "`salary` " . $arrFldOpr[0] . " " . @$arrFldOpr[1] . AdjustSql($GLOBALS["x_salary"]) . @$arrFldOpr[2] . " ";
+	}	
+	//if ($GLOBALS["x_salary"] <> "" And is_numeric($GLOBALS["x_salary"]) And $GLOBALS["y_salary"] <> "" And is_numeric($GLOBALS["y_salary"]) And isValidOpr($arrFldOpr)) {
+		//$sSrchStr .= "`salary` BETWEEN " . @$arrFldOpr[1] . AdjustSql($GLOBALS["x_salary"]) . @$arrFldOpr[2] . " AND " . @$arrFldOpr[1] . AdjustSql($GLOBALS["y_salary"]) . @$arrFldOpr[2] ;
+	//}
 	if ($sSrchStr <> "") {
 		if ($sSrchAdvanced <> "") $sSrchAdvanced .= " AND ";
 		$sSrchAdvanced .= "(" . $sSrchStr . ")";

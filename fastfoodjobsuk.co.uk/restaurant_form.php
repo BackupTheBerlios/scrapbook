@@ -44,7 +44,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($restaurant->link,"",255))!==true){
     $errorText.="<li>Website link is $result";
   }
-  if (($result=validate($restaurant->tel,"phonenumber",255))!==true){
+  if ($restaurant->tel!="" &&($result=validate($restaurant->tel,"phonenumber",255))!==true){
     $errorText.="<li>Telephone number is $result";
   }
 

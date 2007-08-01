@@ -67,10 +67,6 @@ EW_dateSep = "/"; // set date separator
 <!--
 function EW_checkMyForm(EW_this) {
 <?php if (!isSuperUser(false)){ ?> 
-if (EW_this.x_salary && !EW_checkinteger(EW_this.x_salary.value)) {
-	if (!EW_onError(EW_this, EW_this.x_salary, "TEXT", "Incorrect amount - salary"))
-		return false; 
-}
 if (EW_this.x_company && !EW_hasValue(EW_this.x_company, "TEXT")) {
 	if (!EW_onError(EW_this, EW_this.x_company, "TEXT", "Please enter required field - Company"))
 		return false;
@@ -149,10 +145,28 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 	 <td colspan="2"><h3>Financial Info:</h3></td>
 	 </tr>
 	<tr>
-		<td><span style="font-weight: bold">Yearly Salary</span></td>
-		<td><input type="text" name="x_salary" id="x_salary" value="<?php echo htmlspecialchars(@$x_salary) ?>"> 
-		    GBP		</td>
+	 <td >&nbsp;</td>
+	 <td class="backgroundBorderStriped">This is used in search</td>
+	 </tr>
+	<tr>
+		<td><span style="font-weight: bold">Yearly Salary Range</span></td>
+		<td>
+		<select id='x_salary' name='x_salary'>
+		<?php
+			   loadOptions("salary_list.htm",@$x_salary);
+		?>
+		</select>
+		</td>
+	</tr>	
+	<tr>
+	 <td >&nbsp;</td>
+	 <td class="backgroundBorderStriped">This will be displayed to jobseekers. e.g. £10/h+bonus</td>
+	 </tr>	 
+	<tr>
+		<td><span style="font-weight: bold">Salary Detail</span></td>
+		<td><input class = "detail" type="text" name="x_bonus" id="x_bonus" value="<?php echo htmlspecialchars(@$x_bonus) ?>"></td>
 	</tr>
+	<!--
 	<tr>
 		<td><span style="font-weight: bold">Bonus</span></td>
 		<td>
@@ -160,6 +174,7 @@ if (@$_SESSION[ewSessionMessage] <> "") {
 		<input type="radio" name="x_bonus"<?php if (@$x_bonus == "no") { ?> checked<?php } ?> value="no">no
 		
 	</tr>
+	-->
 	<tr>
 		<td><span style="font-weight: bold">Benefits</span></td>
 		<td>			

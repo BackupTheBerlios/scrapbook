@@ -80,27 +80,21 @@ switch ($sAction)
 
 <form>
 <table bgcolor="#FFFFFF" class = "job">
-	
-    <?php if (isSuperUser(false)){ ?> 
-  	<tr>
-	    <td width="206"><span style="font-weight: bold">Job Id</span></td>
-		 <td width="202"><span><?php echo $x_jobid; ?></span></td>
-	 </tr>
-    <?php } ?>
 	<tr>
-	    <td colspan="2" bgcolor="#E3E3E3">
-      <h2><?php echo $x_position; ?></h2></td>
-		    </tr>
+	    <td colspan="2" bgcolor="#E3E3E3"><h3><?php echo $x_position; ?></h3></td>
+	</tr>
 	<tr>
-	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Yearly Salary</span></td>
+	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Salary</span></td>
 		    <td bgcolor="#FFFFFF">
-            &pound;<?php echo $x_salary; ?>            </td>
+            <?php echo $x_bonus; ?>            </td>
 	    </tr>
+		<!--
 	<tr>
 	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Bonus</span></td>
 		    <td bgcolor="#FFFFFF">
             <?php echo $x_bonus; ?>  </td>
 	    </tr>
+		-->
 	<tr>
 	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Benefits</span></td>
 		    <td bgcolor="#FFFFFF">
@@ -128,8 +122,8 @@ switch ($sAction)
 		<tr>
 	    <td bgcolor="#FFFFFF"><span style="font-weight: bold">Contact detail</span></td>
 		    <td bgcolor="#FFFFFF">
-            <!-- 
-            <a href="mailto:<?php echo $x_contact_email; ?>" class='newslarge'>--><?php echo $x_contact_email; ?><!--</a>--> </td>
+           
+            <a href="mailto:<?php echo $x_contact_email; ?>" class='news'><?php echo $x_contact_email; ?></a></td>
 	    </tr>
         <?php if (isSuperUser(false)){ ?> 
 			<tr>

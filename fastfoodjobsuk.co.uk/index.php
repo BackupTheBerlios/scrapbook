@@ -43,26 +43,13 @@ require("top.php");
   <td><img src="images/lower_04.gif" width="22" height="163" /></td>
   <td valign="top" background="images/lower_06.gif"><table width="422" border="0" align="center" cellpadding="0" cellspacing="0">
    <tr>
-    <td colspan="4"><table width="420" border="0" cellpadding="0" cellspacing="0">
+    <td height="117" colspan="4"><table width="420" border="0" cellpadding="0" cellspacing="0">
      <tr>
-      <td width="205" valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       <DIV ID="TICKER" STYLE="overflow:hidden; width:180px">
-     New regional franchise available throughout the </DIV>
-       <script type="text/javascript" src="webticker_lib.js"></script></td>
-      <td width="10" rowspan="2"><img src="images/spacer.gif" alt="" width="1" height="119" /></td>
-      <td width="201" valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       <DIV ID="TICKER2" STYLE="overflow:hidden; width:180px">
-     New regional franchise available throughout the </DIV>
-				</td>
-     </tr>
-     <tr>
-      <td valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       <DIV ID="TICKER3" STYLE="overflow:hidden; width:180px">
-     New regional franchise available throughout the </DIV></td>
-      <td valign="top" class="adText"><a href="#" class="smallAdd">Your Company Name</a><br />
-       <DIV ID="TICKER4" STYLE="overflow:hidden; width:180px">
-     New regional franchise available throughout the </DIV></td>
-     </tr>
+      <td valign="top" class="adText">
+       <DIV ID="TICKER"	STYLE="display:none; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; overflow:hidden; background-color:#FFFFFF; width:400px"  onmouseover="TICKER_PAUSED=true" onmouseout="TICKER_PAUSED=false">
+		<span style='background-color:#7FB51A;'> &nbsp; &nbsp; <font color=#FFFFFF> <B>Classified Advertisements</B></font>&nbsp; &nbsp; </span> &nbsp;<B><A class = "newslarge" href="http://www.mcstechproducts.co.uk/"><font color=#red>Cooktek 'FlashPak' Pizza</font></B> <B>Thermal Delivery Systems - Nobody orders a cold pizza, so why deliver one?</B></a>&nbsp;<span style='background-color:#FFAA00;'> &nbsp; &nbsp; <font color=#FFFFFF> <B>Classified Advertisements</B></font>&nbsp; &nbsp; </span> <B><A class = "newslarge" href="http://www.bandmcateringengineers.co.uk"><font color=#red>B&M Catering Engineers ltd</font></B> <B>Specialists in pizza conveyor ovens</B></a>&nbsp;<b>&nbsp; &nbsp; <font color=#FFFFFF> <B>Classified Advertisements</B></font>&nbsp; &nbsp; <font color=#red>Coming Soon</font> <font color=blue>SMS MESSAGING</font>&nbsp; &nbsp; <font color=#red>Coming Soon</font>   <font color=blue>SMS Messaging</font></b></DIV><script type="text/javascript" src="webticker_lib.js" language="javascript"></script></td>
+      </tr>
+     
     </table></td>
    </tr>
    <tr>

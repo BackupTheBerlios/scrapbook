@@ -26,10 +26,23 @@ switch ($sAction) {
 		if ($sSrchStr <> "") $sSrchStr .= "&";
 		$sSrchStr .= $sSrchWrk;
 	}
-
+	
 	// Field salary
-	$salary_range = @$_POST["salary_range"];
+	$x_salary = @$_POST["x_salary"];
+	$z_salary = (get_magic_quotes_gpc()) ? stripslashes(@$_POST["z_salary"]) : @$_POST["z_salary"]; 
+	$sSrchWrk = "";
+	if ($x_salary <> "") {
+		$sSrchWrk .= "x_salary=" . urlencode($x_salary);
+		$sSrchWrk .= "&z_salary=" . urlencode($z_salary);
+	}
+	if ($sSrchWrk <> "") {
+		if ($sSrchStr <> "") $sSrchStr .= "&";
+		$sSrchStr .= $sSrchWrk;
+	}	
 
+	/*
+	$salary_range = @$_POST["salary_range"];
+    
 	if (strstr ($salary_range, ","))
 	{
 
@@ -55,6 +68,7 @@ switch ($sAction) {
 			$sSrchStr .= $sSrchWrk;
 		}
 	}
+	*/
 
 	// Field location
 	$x_location = @$_POST["x_location"];
@@ -94,18 +108,6 @@ $conn = phpmkr_db_connect(HOST, USER, PASS, DB, PORT);
 EW_dateSep = "/"; // set date separator
 //-->
 </script>
-<script type="text/javascript">
-<!--
-function EW_checkMyForm(EW_this) {
-if (EW_this.x_salary && !EW_checkinteger(EW_this.x_salary.value)) {
-	if (!EW_onError(EW_this, EW_this.x_salary, "TEXT", "Incorrect integer - salary"))
-		return false; 
-}
-return true;
-}
-
-//-->
-</script>
 <table width="459" border="0" cellspacing="0" cellpadding="0" >
  <tr>
   <td><img src="images/spacer.gif" alt="spacer" width="1" height="5" border="0" /></td>
@@ -125,14 +127,27 @@ return true;
   <td></td>
  </tr>
 </table>
-<form name="fjobsearch" id="fjobsearch" action="job_search.php" method="post" onsubmit="return EW_checkMyForm(this);" style = "margin:0px;">
+<form name="fjobsearch" id="fjobsearch" action="job_search.php" method="post"  style = "margin:0px;">
 <input type="hidden" name="a_search" value="S">
 <table class = "job">
     <tr>
-        <td>Yearly Salary</td>
+        <td>Salary</td>
+        <td>
+			<input type="hidden" name="z_salary" value="=,','" />
+        </td>
+		<td>
+		<select id='x_salary' name='x_salary'>
+		<option value="">All</option>
+		<?php
+			   loadOptions("salary_list.htm",@$x_salary);
+		?>
+		</select>
+		</td>	
+		<!--
         <td> <input type="hidden" name="z_salary" value="BETWEEN,," />
         	<input type="hidden" name="w_salary" value="AND,," />
         </td>
+		
         <td><select name="salary_range" id="salary_range" >
             <option value="">All</option>
             <option value="0,15000">Under &pound;15k</option>
@@ -142,6 +157,7 @@ return true;
             <option value="30000,9999999">&pound;30K and over</option>
         </select>
         </td>
+		-->
     </tr>
     <tr>
         <td>Position</td>

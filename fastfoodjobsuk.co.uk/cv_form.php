@@ -166,7 +166,9 @@ return true;
     <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
     <p style = "padding-left:5px; margin:0px;">A JSP does not replace a CV, but fast tracks employment opportunities by communicating clearly the applicant&rsquo;s suitability. ?? </p>
     <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
-    <p style = "padding-left:5px; margin:0px;">Please NOTE none of your personal contact information or name ( fields with * and highlighted) are included in a search by employers looking at Job Seekers Profiles. A potential employer will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you. <br />
+    <p style = "padding-left:5px; margin:0px;"><strong>A JSP does not reveal ANY personal contact details to ANY person.</strong></p>
+    <p style = "padding-left:5px; margin:0px;">&nbsp;</p>
+    <p style = "padding-left:5px; margin:0px;">Please NOTE none of your personal contact information or name <span style="color: #FF0000">(fields with * and highlighted)</span> are included in a search by employers looking at Job Seekers Profiles. A potential employer will not know who you are and can only contact you by blind e-mail. You then can decide if you want to respond back to any employer&rsquo;s interest in you. <br />
     </p></td>
   </tr>
   <tr>
@@ -188,24 +190,24 @@ return true;
 	</tr>
 	-->
 	<tr>
-		<td><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_first_name">
+		<td bgcolor="#FFFF00"><span>First Name<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_first_name">
 <input class = "detail" type="text" name="x_first_name" id="x_first_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_first_name) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Middle Name</span></td>
-		<td><span id="cb_x_mid_name">
+		<td bgcolor="#FFFF00"><span>Middle Name*</span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_mid_name">
 <input class = "detail" type="text" name="x_mid_name" id="x_mid_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_mid_name) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Last Name<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_last_name">
+		<td bgcolor="#FFFF00"><span>Last Name<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_last_name">
 <input class = "detail" type="text" name="x_last_name" id="x_last_name" maxlength="45" value="<?php echo htmlspecialchars(@$x_last_name) ?>">
 </span></td>
 	</tr>
-	<tr>
+	<tr bgcolor="#FFFF33">
 		<td><span>Age<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_age">
 <input class = "detail" type="text" name="x_age" id="x_age" value="<?php echo htmlspecialchars(@$x_age) ?>">
@@ -263,44 +265,44 @@ echo $x_sexList;
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Address line 1<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_address_1">
+		<td bgcolor="#FFFF00"><span>Address line 1<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_address_1">
 <input class = "detail" type="text" name="x_address_1" id="x_address_1" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_1) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>line 2</span></td>
-		<td><span id="cb_x_address_2">
+		<td bgcolor="#FFFF00"><span>line 2</span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_address_2">
 <input class = "detail" type="text" name="x_address_2" id="x_address_2" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_2) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>line 3</span></td>
-		<td><span id="cb_x_address_3">
+		<td bgcolor="#FFFF00"><span>line 3</span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_address_3">
 <input class = "detail" type="text" name="x_address_3" id="x_address_3" maxlength="255" value="<?php echo htmlspecialchars(@$x_address_3) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Post code<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_postcode">
+		<td bgcolor="#FFFF00"><span>Post code<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_postcode">
 <input class = "detail" type="text" name="x_postcode" id="x_postcode" maxlength="20" value="<?php echo htmlspecialchars(@$x_postcode) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Email Address<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_email">
+		<td bgcolor="#FFFF00"><span>Email Address<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_email">
 <input class = "detail" type="text" name="x_email" id="x_email" maxlength="45" value="<?php echo htmlspecialchars(@$x_email) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Contact number<span class='ewmsg'>&nbsp;*</span></span></td>
-		<td><span id="cb_x_tel">
+		<td bgcolor="#FFFF00"><span>Contact number<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_tel">
 <input class = "detail" type="text" name="x_tel" id="x_tel" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Current Employer</span></td>
-		<td><span id="cb_x_employer">
+		<td bgcolor="#FFFF00"><span>Current Employer</span></td>
+		<td bgcolor="#FFFF00"><span id="cb_x_employer">
 <input class = "detail" type="text" name="x_employer" id="x_employer" maxlength="255" value="<?php echo htmlspecialchars(@$x_employer) ?>">
 </span></td>
 	</tr>

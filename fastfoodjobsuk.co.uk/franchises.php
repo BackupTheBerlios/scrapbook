@@ -43,7 +43,7 @@ Or, you can add your logo and 25 words of text.<br /></p>
     echo "<img src=\"logos/".$obj->logo."\" width=\"$logoWidth\" height=\"$logoHeight\" border=0>";
     echo "</a>";
     echo "</td></tr>";
-    echo "<TR><TD class=\"cell_heading\"><a href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
+    echo "<TR><TD class=\"cell_heading\"><a class = 'news' href=\"".$obj->link."\">".$obj->name."</a></td></tr>";
     echo "<TR><TD class=\"cell_description\">".$obj->description."</td></tr>";
     echo "<TR><TD class=\"cell_tel\">".$obj->tel."</td></tr>";
     echo "<TR><TD><BR></td></tr></table>";

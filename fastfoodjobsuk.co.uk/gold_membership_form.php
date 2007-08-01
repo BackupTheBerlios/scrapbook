@@ -48,7 +48,7 @@ if ((bool)$_POST["submitting"])
   if (($result=validate($member->link,"",255))!==true){
     $errorText.="<li>Website link is $result";
   }
-  if (($result=validate($member->tel,"phonenumber",255))!==true){
+  if ($member->tel!="" &&($result=validate($member->tel,"phonenumber",255))!==true){
     $errorText.="<li>Telephone number is $result";
   }
 
@@ -121,8 +121,7 @@ Complete the Restaurant name, a brief description, website address (if available
     <td colspan=2 id="cell_error_text">
     <?php
       echo $errorText;
-    ?>
-    </td>
+    ?>    </td>
   </tr>
   <?php
     if ($member->logo!=""){
@@ -138,58 +137,50 @@ Complete the Restaurant name, a brief description, website address (if available
   ?>
   <tr>
     <td>
-      Upload logo:
-    </td>
+      Upload logo:    </td>
     <td>
       <input type="file" id="file" name="logo">
-      <input type="hidden" name="currentFilename" value="<?php echo $member->logo; ?>">
-    </td>
+      <input type="hidden" name="currentFilename" value="<?php echo $member->logo; ?>">    </td>
   </tr>
   <tr>
     <td>
-      Company name:
-    </td>
+      Company name:    </td>
     <td>
-      <input class = "detail" type="text" id="name" name="name" value="<?php echo $member->name; ?>">
-    </td>
+      <input class = "detail" type="text" id="name" name="name" value="<?php echo $member->name; ?>">    </td>
   </tr>
   <tr>
     <td>
-      Description:
-    </td>
+      Description:    </td>
     <td>
       <textarea  class = "detail"name="description" id="description"><?php
         echo $member->description;
-      ?></textarea>
-    </td>
+      ?></textarea>    </td>
+  </tr>
+  <tr>
+   <td>&nbsp;</td>
+   <td class="backgroundBorderStriped">120 characters including spacing</td>
   </tr>
   <tr>
     <td>
-      Website link:
-    </td>
+      Website link:    </td>
     <td>
-      <input  class = "detail"type="text" id="link" name="link" value="<?php echo $member->link ; ?>">
-    </td>
+      <input  class = "detail"type="text" id="link" name="link" value="<?php echo $member->link ; ?>">    </td>
   </tr>
   <tr>
     <td>
-      Telephone number:
-    </td>
+      Telephone number:    </td>
     <td>
-      <input  class = "detail"type="text" id="tel" name="tel" value="<?php echo $member->tel; ?>">
-    </td>
+      <input  class = "detail"type="text" id="tel" name="tel" value="<?php echo $member->tel; ?>">    </td>
   </tr>
   <tr>
-    <td>
-    </td>
+    <td>    </td>
     <td>
       <input type="submit" id="submit" value="Submit">
       <?php
         if (isset($_SESSION["cancel"])){
           echo "<input type=\"button\" onClick=\"location.href='".$_SESSION["cancel"]."'\" value=\"Cancel\">";
         }
-      ?>
-    </td>
+      ?>    </td>
   </tr>
 </table>
 

@@ -186,7 +186,7 @@ function generateJobLink($user){
 			  echo "<tr>";
 			  echo "<td class=\"$rowclass\">".$row["position"]."</td>";
 				echo "<td class=\"$rowclass\">".substr($row["profile"],0,$truncateText)."...</td>";
-				echo "<td class=\"$rowclass\">£".$row["salary"]."</td>";
+				echo "<td class=\"$rowclass\">".$row["bonus"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["location"]."</td>";
 				echo "<td class=\"$rowclass\">".$row["company"]."</td>";
 			  echo "<td class=\"$rowclass\">".FormatDateTime($row["dt_created"],7)."</td>";
