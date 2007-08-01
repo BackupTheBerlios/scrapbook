@@ -58,7 +58,7 @@ switch ($sAction)
  <tr>
   <td><div class="roundcont">
    <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
-   <h1>Update Job Seeker Profile</h1>
+   <h1>Job Detail </h1>
    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
   </div></td>
  </tr>
@@ -130,7 +130,7 @@ switch ($sAction)
 		<tr>
 	    <td><span style="font-weight: bold">Contact detail</span></td>
 		    <td>
-            <?php echo $x_contact_email; ?>            </td>
+             <a href="mailto:<?php echo $x_contact_email; ?>" class='newslarge'><?php echo $x_contact_email; ?></a> </td>
 	    </tr>
         <?php if (isSuperUser(false)){ ?> 
 			<tr>

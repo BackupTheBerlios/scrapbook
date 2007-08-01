@@ -127,7 +127,7 @@ if (EW_this.x_email && !EW_checkemail(EW_this.x_email.value)) {
 		return false; 
 }
 if (EW_this.x_tel && !EW_hasValue(EW_this.x_tel, "TEXT")) {
-	if (!EW_onError(EW_this, EW_this.x_tel, "TEXT", "Please enter required field - Land line number"))
+	if (!EW_onError(EW_this, EW_this.x_tel, "TEXT", "Please enter required field - Contact number"))
 		return false;
 }
 if (EW_this.x_license_points && !EW_checkinteger(EW_this.x_license_points.value)) {
@@ -288,13 +288,7 @@ echo $x_sexList;
 </span></td>
 	</tr>
 	<tr>
-		<td><span>Mobile number</span></td>
-		<td><span id="cb_x_mobile">
-<input class = "detail" type="text" name="x_mobile" id="x_mobile" maxlength="45" value="<?php echo htmlspecialchars(@$x_mobile) ?>">
-</span></td>
-	</tr>
-	<tr>
-		<td><span>Land line number<span class='ewmsg'>&nbsp;*</span></span></td>
+		<td><span>Contact number<span class='ewmsg'>&nbsp;*</span></span></td>
 		<td><span id="cb_x_tel">
 <input class = "detail" type="text" name="x_tel" id="x_tel" maxlength="45" value="<?php echo htmlspecialchars(@$x_tel) ?>">
 </span></td>

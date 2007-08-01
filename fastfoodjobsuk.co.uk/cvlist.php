@@ -80,11 +80,11 @@ if ($sSrchWhere <> "") {
 }
 
 // Set up sorting order
-$sOrderBy = "";
-SetUpSortOrder();
+$sOrderBy = "`dt_created` DESC";
+//SetUpSortOrder();
 $sSql = ewBuildSql(ewSqlSelect, ewSqlWhere, ewSqlGroupBy, ewSqlHaving, ewSqlOrderBy, $sDbWhere, $sOrderBy);
 
-// echo $sSql . "<br>"; // Uncomment to show SQL for debugging
+//echo $sSql . "<br>"; exit;// Uncomment to show SQL for debugging
 ?>
 <?php include ("top.php") ?>
 <script type="text/javascript" src="scripts/ewp.js"></script>
@@ -111,7 +111,7 @@ SetUpStartRec(); // Set up start record position
  <tr>
   <td><div class="roundcont">
    <div class="roundtop"> <img class="corner" src="images/bl_01.gif" alt="edge" style=" display: none;" /></div>
-   <h1>Search Results</h1>
+   <h1>Job Seeker Profile Search Results</h1>
    <div class="roundbottom"> <img src="images/bl_06.gif" alt="edge" class="corner" style=" display: none;" /></div>
   </div></td>
  </tr>
