@@ -26,6 +26,11 @@ public class Jdk5PlayGround {
     // current time. In one line!
     return new Timestamp(new Date().getTime());
    }
+  
+  protected  void p1()
+  { 
+   
+  } 
     //The main method that calls the
     // getCurrentTime method and returns
     // the Timestamp object and prints

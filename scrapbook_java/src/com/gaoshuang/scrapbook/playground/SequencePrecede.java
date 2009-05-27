@@ -33,54 +33,54 @@ public class SequencePrecede {
 		// System.out.println("list1 vs list4 = " + compare(list1.toCharArray(),
 		// list4.toCharArray()));
 	}
+    class CompareAsync extends Thread {
+
+        private char a[];
+
+        private char b[];
+
+        private int from, to;
+
+        private int r;
+
+        CompareAsync(char aa[], char bb[], int f, int t) {
+            a = aa;
+            b = bb;
+            from = f;
+            to = t;
+        }
+
+        public void run() {
+
+            int k = from;
+            while (k < to) {
+                if (a[k] == b[k]) {
+                    k++;
+                }
+                else
+                    break;
+            }
+            if(a[k] == b[k])
+            {
+                   r = 0;
+            }else if (a[k] < b[k])
+            {
+                    r = 1;
+            } else
+            {
+                    r = 2;
+            }
+        }
+
+        int getResult() {
+
+            System.out.println("0 means Equal");
+            System.out.println("1 means Less");
+            System.out.println("2 means Greater");
+            System.out.println("r is " + r);
+            return r;
+        }
+
+    }
 }
 
-class CompareAsync extends Thread {
-
-	private char a[];
-
-	private char b[];
-
-	private int from, to;
-
-	private int r;
-
-	CompareAsync(char aa[], char bb[], int f, int t) {
-		a = aa;
-		b = bb;
-		from = f;
-		to = t;
-	}
-
-	public void run() {
-
-		int k = from;
-		while (k < to) {
-			if (a[k] == b[k]) {
-				k++;
-			}
-			else
-				break;
-		}
-		if(a[k] == b[k])
-		{
-	           r = 0;
-		}else if (a[k] < b[k]) 
-		{
-				r = 1;
-		} else 
-		{
-				r = 2;
-		}
-	}
-
-	int getResult() {
-
-		System.out.println("0 means Equal");
-		System.out.println("1 means Less");
-		System.out.println("2 means Greater");
-		System.out.println("r is " + r);
-		return r;
-	}
-
-}

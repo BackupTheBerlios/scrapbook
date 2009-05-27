@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Jdk5PlayGround1 {
     public Jdk5PlayGround1() {
+    	Jdk5PlayGround.p1();
     }
 
   // Method that returns a Timestamp

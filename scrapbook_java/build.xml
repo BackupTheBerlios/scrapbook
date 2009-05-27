@@ -70,7 +70,7 @@
 	    <attribute name="Main-Class" value="com.gaoshuang.scrapbook.playground.Config"/>
 	  	<!-- . means which ever directory the jar is put in, useful when externalising config files -->
 		<!-- internal propeeties always take priority-->
-		<!-- last line feed is important in manifest file -->
+		<!-- last line feed (an empty line) is important in manifest file -->
 		<attribute name="Class-Path" value=". spring.jar"/>
 	  </manifest>
 	</jar>

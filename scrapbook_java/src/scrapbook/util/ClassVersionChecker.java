@@ -30,7 +30,7 @@ public class ClassVersionChecker {
     /** Creates a new instance of ClassVersionChecker */
     public ClassVersionChecker() {} 
     public static void main( String[] args ) throws Exception {
-        java.io.FileInputStream fileInputStream=new java.io.FileInputStream("C:\\Agent.class");
+        java.io.FileInputStream fileInputStream=new java.io.FileInputStream("C:\\Item.class");
         byte readbyte;
         int i=3;
         while(i < 8 ) {

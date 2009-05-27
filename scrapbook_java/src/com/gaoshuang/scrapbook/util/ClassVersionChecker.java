@@ -1,16 +1,26 @@
 /*
  * ClassVersionChecker.java
+ * http://www.rgagnon.com/javadetails/java-0544.html
  *http://forum.java.sun.com/thread.jspa?forumID=31&threadID=624398
  * Created on 09 July 2005, 05:55
-JDK 1.1 = 45.3 
+JDK 1.1 = 45.3
 
-JDK 1.2 = 46.0 
+JDK 1.2 = 46.0
 
-JDK 1.3 = 47.0 
+JDK 1.3 = 47.0
 
-JDK 1.4 = 48.0 
+JDK 1.4 = 48.0
 
-JDK 1.5 = 49.0 
+JDK 1.5 = 49.0
+
+major  minor Java platform version
+45       3           1.0
+45       3           1.1
+46       0           1.2
+47       0           1.3
+48       0           1.4
+49       0           1.5
+50       0           1.6
 
 When i examine the class, as i referred earlier, Second Four Byte gave me the value 0 3 0 45. So i concluded that my class file is compiled in JDK 1.1.
 
@@ -26,13 +36,13 @@ package com.gaoshuang.scrapbook.util;
  * @author seangao
  */
 public class ClassVersionChecker {
-    
+
     /** Creates a new instance of ClassVersionChecker */
-    public ClassVersionChecker() {} 
+    public ClassVersionChecker() {}
     public static void main( String[] args ) throws Exception {
-        java.io.FileInputStream fileInputStream=new java.io.FileInputStream("C:\\Agent.class");
+        java.io.FileInputStream fileInputStream=new java.io.FileInputStream("C:\\DatePicker.class");
         byte readbyte;
-        int i=3;
+        int i=0;
         while(i < 8 ) {
             System.out.println(fileInputStream.read());
             i++;

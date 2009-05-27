@@ -1,4 +1,4 @@
-package scrapbook;
+package com.gaoshuang.scrapbook;
 
 import java.util.ArrayList;
 import java.util.Scanner;

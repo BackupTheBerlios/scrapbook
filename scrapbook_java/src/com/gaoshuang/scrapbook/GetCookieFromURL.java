@@ -1,7 +1,7 @@
 /*
 http://martin.nobilitas.com/java/cookies.html
 */
-package scrapbook;
+package com.gaoshuang.scrapbook;
 
 import java.net.*;
 import java.io.*;

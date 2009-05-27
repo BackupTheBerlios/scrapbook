@@ -27,7 +27,7 @@ public class InsaneString {
 		public Warper() {
 			try {
 				stringValue.set("Romeo, Romeo, wherefore art thou oh Romero?",
-						"Stop this romance nonsense, or I'll be sickKKKKKK"
+						"Stop this romance nonsense, or I'll be sickKKKKKKKKKKKKKKKKK"
 								.toCharArray());
 				stringValue.set("hi there", "cheers !".toCharArray());
 			} catch (IllegalAccessException ex) {
@@ -36,6 +36,7 @@ public class InsaneString {
 	}
 
 	public static void main(String[] args) {
+        System.out.println(OH_ROMEO);
 		System.out.println("Romeo, Romeo, wherefore art thou oh Romero?");
 	}
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package scrapbook;
+package com.gaoshuang.scrapbook;
 
 /**
  * @author Sean Gao

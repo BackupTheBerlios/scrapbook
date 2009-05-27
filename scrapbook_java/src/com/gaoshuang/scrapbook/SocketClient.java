@@ -1,7 +1,7 @@
 /**
  * 
  */
-package scrapbook;
+package com.gaoshuang.scrapbook;
 
 import java.io.IOException;
 import java.net.InetAddress;

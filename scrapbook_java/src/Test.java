@@ -9,6 +9,9 @@ public class Test {
     public static void main(String[] args) {
         int passed = 0;
         int failed = 0;
+        
+Jdk5PlayGround jp = new Jdk5PlayGround();
+jp.p1();
 
         if (args.length==0)
         {

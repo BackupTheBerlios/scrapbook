@@ -8,7 +8,7 @@
  * Open. You can then make changes to the template in the Source Editor.
  */
 
-package scrapbook;
+package com.gaoshuang.scrapbook;
 
 import java.io.File;
 import java.io.FileOutputStream;
